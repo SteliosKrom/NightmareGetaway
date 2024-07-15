@@ -8867,9 +8867,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6010864f96e42d344807b688f2f7c460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 379504537}
   spawnPoint: {fileID: 1542209436}
-  spawnValue: 10
+  animator: {fileID: 370128361}
+  characterController: {fileID: 379504545}
+  playerRotate: {fileID: 379504544}
+  cameraRotate: {fileID: 963194230}
 --- !u!1 &379583140
 GameObject:
   m_ObjectHideFlags: 0
@@ -11209,9 +11211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7f31d0a9e5bc594fa858f7421079ebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 379504537}
-  spawnPoint: {fileID: 1542209436}
-  spawnValue: 10
+  playerRespawn: {fileID: 379504549}
   resumeButton: {fileID: 2084806073}
   settingsButton: {fileID: 152314458}
   homeButton: {fileID: 279216664}
@@ -14311,6 +14311,7 @@ MonoBehaviour:
   sensX: 1
   minX: -40
   maxX: 40
+  yRotation: 0
 --- !u!114 &963194231
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20674,13 +20675,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1542209435}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.925, y: 77.174, z: -13.185}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -17.119, y: 77.174, z: -13.185}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1499798710}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!23 &1542209438
 MeshRenderer:
   m_ObjectHideFlags: 0

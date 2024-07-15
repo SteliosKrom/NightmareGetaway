@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -5,7 +6,7 @@ using UnityEngine.UI;
 
 public class MainGameUIManager : MonoBehaviour
 {
-
+    public PlayerRespawn playerRespawn;
     [Header("CLASSES")]
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button settingsButton;
@@ -72,7 +73,7 @@ public class MainGameUIManager : MonoBehaviour
         mainMenuAudioSource.Play();
         mainGameAudioSource.Stop();
         dot.SetActive(false);
-        SceneManager.LoadScene("MainGameScene");
+        playerRespawn.Respawn();
         RoundManager.instance.currentState = GameState.onMainMenu;
     }
 

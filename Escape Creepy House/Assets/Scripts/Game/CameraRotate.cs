@@ -7,14 +7,14 @@ public class CameraRotate : MonoBehaviour
     [SerializeField] private float sensX;
     [SerializeField] private float minX;
     [SerializeField] private float maxX;
-    private float xRotation = 0f;
-    private float yRotation = 0f;
-    private float zRotation = 0f;
+    private float xRotation;
+    public float yRotation;
+    private float zRotation;
 
 
     private void Start()
     {
-        xRotation = 2f;
+        xRotation = 0f;
         yRotation = -90f;
         zRotation = 0f;
         transform.localRotation = Quaternion.Euler(xRotation, yRotation, zRotation);
