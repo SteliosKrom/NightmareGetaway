@@ -28,11 +28,6 @@ public class PlayerController : MonoBehaviour
     {
         PauseAndResume();
         MovePlayer();
-
-        if (Physics.Raycast(transform.position, Vector3.down, out var hit))
-        {
-            Debug.Log(hit.collider);
-        }
     }
 
     public void MovePlayer()

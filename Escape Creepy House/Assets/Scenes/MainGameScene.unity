@@ -1044,6 +1044,7 @@ MonoBehaviour:
   backToMenu: {fileID: 1172468360}
   backToGame: {fileID: 111163246}
   dot: {fileID: 480800219}
+  player: {fileID: 379504537}
   secondaryCamera: {fileID: 366118862}
   mainCamera: {fileID: 963194227}
   hoverAudioSource: {fileID: 1738958847}
@@ -8870,8 +8871,6 @@ MonoBehaviour:
   spawnPoint: {fileID: 1542209436}
   animator: {fileID: 370128361}
   characterController: {fileID: 379504545}
-  playerRotate: {fileID: 379504544}
-  cameraRotate: {fileID: 963194230}
 --- !u!1 &379583140
 GameObject:
   m_ObjectHideFlags: 0

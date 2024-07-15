@@ -15,7 +15,6 @@ public class PlayerRespawn : MonoBehaviour
     public void Respawn()
     {
         transform.position = spawnPoint.position;
-        transform.rotation = Quaternion.Euler(0f, -90f, 0);
 
         if (characterController != null)
         {
