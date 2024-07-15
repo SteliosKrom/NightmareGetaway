@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 
 
 public class MainMenuUIManager : MonoBehaviour
@@ -29,6 +30,7 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private GameObject graphicsMenu;
     [SerializeField] private GameObject backToMenu;
     [SerializeField] private GameObject backToGame;
+    [SerializeField] private GameObject dot;
 
     [SerializeField] private Camera secondaryCamera;
     [SerializeField] private Camera mainCamera;
@@ -52,6 +54,7 @@ public class MainMenuUIManager : MonoBehaviour
         mainCamera.enabled = false;
         mainMenuAudioSource.Play();
         MainGameAudioSource.Stop();
+        dot.SetActive(false);
         initialPos = secondaryCamera.transform.position;
     }
 
@@ -75,6 +78,7 @@ public class MainMenuUIManager : MonoBehaviour
         MainGameAudioSource.Play();
         mainMenuAudioSource.Stop();
         MainGameAudioSource.volume = 0.2f;
+        dot.SetActive(true);
         RoundManager.instance.currentState = GameState.playing;
     }
 

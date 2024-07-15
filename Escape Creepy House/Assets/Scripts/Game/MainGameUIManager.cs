@@ -1,9 +1,11 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainGameUIManager : MonoBehaviour
 {
+
     [Header("CLASSES")]
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button settingsButton;
@@ -21,13 +23,13 @@ public class MainGameUIManager : MonoBehaviour
     [SerializeField] private GameObject audioButton;
     [SerializeField] private GameObject videoButton;
     [SerializeField] private GameObject graphicsButton;
+    [SerializeField] private GameObject dot;
 
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Camera secondaryCamera;
 
     [SerializeField] private AudioSource mainMenuAudioSource;
     [SerializeField] private AudioSource mainGameAudioSource;
-
 
     private void Start()
     {
@@ -40,6 +42,7 @@ public class MainGameUIManager : MonoBehaviour
         Time.timeScale = 1.0f;
         pauseMenu.SetActive(false);
         mainGameAudioSource.UnPause();
+        dot.SetActive(true);
         RoundManager.instance.currentState = GameState.playing;
     }
 
@@ -68,6 +71,8 @@ public class MainGameUIManager : MonoBehaviour
         secondaryCamera.enabled = true;
         mainMenuAudioSource.Play();
         mainGameAudioSource.Stop();
+        dot.SetActive(false);
+        SceneManager.LoadScene("MainGameScene");
         RoundManager.instance.currentState = GameState.onMainMenu;
     }
 

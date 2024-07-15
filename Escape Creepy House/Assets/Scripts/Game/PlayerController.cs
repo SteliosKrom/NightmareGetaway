@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("CLASSES")]
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject dot;
     [SerializeField] private CharacterController characterController;
     [SerializeField] private Animator playerAnimator;
     [SerializeField] private AudioSource mainGameAudioSource;
@@ -70,12 +71,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && RoundManager.instance.currentState == GameState.playing)
         {
             PauseGame();
-            mainGameAudioSource.Pause();
+
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && RoundManager.instance.currentState == GameState.pause)
         {
             ResumeGame();
-            mainGameAudioSource.UnPause();
         }
     }
 
@@ -83,6 +83,8 @@ public class PlayerController : MonoBehaviour
     {
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
+        mainGameAudioSource.Pause();
+        dot.SetActive(false);
         RoundManager.instance.currentState = GameState.pause;
     }
 
@@ -90,6 +92,8 @@ public class PlayerController : MonoBehaviour
     {
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
+        dot.SetActive(true);
+        mainGameAudioSource.UnPause();
         RoundManager.instance.currentState = GameState.playing;
     }
 }
