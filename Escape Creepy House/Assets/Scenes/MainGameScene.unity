@@ -1044,7 +1044,6 @@ MonoBehaviour:
   backToMenu: {fileID: 1172468360}
   backToGame: {fileID: 111163246}
   dot: {fileID: 480800219}
-  player: {fileID: 379504537}
   secondaryCamera: {fileID: 366118862}
   mainCamera: {fileID: 963194227}
   hoverAudioSource: {fileID: 1738958847}
@@ -8871,6 +8870,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 1542209436}
   animator: {fileID: 370128361}
   characterController: {fileID: 379504545}
+  cameraRotate: {fileID: 963194230}
 --- !u!1 &379583140
 GameObject:
   m_ObjectHideFlags: 0
@@ -20379,9 +20379,9 @@ Transform:
   m_Children:
   - {fileID: 705507995}
   - {fileID: 963194228}
+  - {fileID: 1542209436}
   - {fileID: 379148921}
   - {fileID: 4467756158259653}
-  - {fileID: 1542209436}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1505495035
@@ -20674,7 +20674,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1542209435}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -17.119, y: 77.174, z: -13.185}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

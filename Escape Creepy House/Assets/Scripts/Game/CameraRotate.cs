@@ -8,7 +8,7 @@ public class CameraRotate : MonoBehaviour
     [SerializeField] private float minX;
     [SerializeField] private float maxX;
     private float xRotation;
-    public float yRotation;
+    private float yRotation;
     private float zRotation;
 
 
@@ -49,5 +49,11 @@ public class CameraRotate : MonoBehaviour
         {
             playerRotate.RotatePlayer(yRotation);
         }
+    }
+
+    public void SetInitialRotation(float initialYRotation)
+    {
+        yRotation = initialYRotation;
+        transform.localRotation = Quaternion.Euler(xRotation, yRotation, zRotation);
     }
 }

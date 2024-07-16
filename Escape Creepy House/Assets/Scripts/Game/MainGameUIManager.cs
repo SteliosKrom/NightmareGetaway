@@ -1,13 +1,15 @@
 using System.Collections;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainGameUIManager : MonoBehaviour
 {
-    public PlayerRespawn playerRespawn;
+
     [Header("CLASSES")]
+
+    public PlayerRespawn playerRespawn;
+
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button settingsButton;
     [SerializeField] private Button homeButton;
