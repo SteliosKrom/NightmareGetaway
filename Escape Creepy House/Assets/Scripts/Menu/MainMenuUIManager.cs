@@ -107,7 +107,6 @@ public class MainMenuUIManager : MonoBehaviour
     public void ExitButton()
     {
         Application.Quit();
-        EditorApplication.ExitPlaymode();
     }
 
     public void BackToMenu()

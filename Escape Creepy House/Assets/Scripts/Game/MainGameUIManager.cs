@@ -82,7 +82,6 @@ public class MainGameUIManager : MonoBehaviour
     public void ExitButton()
     {
         Application.Quit();
-        EditorApplication.ExitPlaymode();
     }
 
     public void BackToGameButton()
