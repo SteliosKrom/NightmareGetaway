@@ -2,27 +2,28 @@ using UnityEngine;
 
 public class Flashlight : MonoBehaviour
 {
-    [SerializeField] private new Light light;
+    [Header("CLASSES")]
+    [SerializeField] private Light newLight;
     [SerializeField] private AudioSource flashlightAudioSource;
     [SerializeField] private AudioClip flashlightAudioClip;
 
     private void Start()
     {
-        light = GetComponent<Light>();
-        light.enabled = false;
+        newLight = GetComponent<Light>();
+        newLight.enabled = false;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && light.enabled == false && RoundManager.instance.currentState == GameState.playing)
+        if (Input.GetKeyDown(KeyCode.F) && newLight.enabled == false && RoundManager.instance.currentState == GameState.playing)
         {
-            light.enabled = true;
+            newLight.enabled = true;
             AudioManager.instance.PlaySound(flashlightAudioSource, flashlightAudioClip);
             flashlightAudioSource.volume = 1f;
         }
-        else if (Input.GetKeyDown(KeyCode.F) && light.enabled == true && RoundManager.instance.currentState == GameState.playing)
+        else if (Input.GetKeyDown(KeyCode.F) && newLight.enabled == true && RoundManager.instance.currentState == GameState.playing)
         {
-            light.enabled = false;
+            newLight.enabled = false;
             AudioManager.instance.PlaySound(flashlightAudioSource, flashlightAudioClip);
             flashlightAudioSource.volume = 1f;
         }

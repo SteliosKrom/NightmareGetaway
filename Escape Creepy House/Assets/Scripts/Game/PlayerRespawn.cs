@@ -3,10 +3,9 @@ using UnityEngine;
 public class PlayerRespawn : MonoBehaviour
 {
     [SerializeField] private Transform spawnPoint;
-    public Animator animator;
-    public CharacterController characterController;
-
-    public CameraRotate cameraRotate;
+    [SerializeField] private Animator animator;
+    [SerializeField] private CharacterController characterController;
+    [SerializeField] private CameraRotate cameraRotate;
 
     private void Start()
     {

@@ -7,7 +7,9 @@ using UnityEngine.SceneManagement;
 public class MainMenuUIManager : MonoBehaviour
 {
     private readonly float movementSpeed = 1f;
-    private readonly float movementRange = 0.5f; 
+    private readonly float movementRange = 0.5f;
+
+    [Header("STRUCTS")]
     private Vector3 initialPos;
 
     [Header("CLASSES")]

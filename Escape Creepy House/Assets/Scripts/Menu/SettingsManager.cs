@@ -17,22 +17,16 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private Slider mainGameVolumeSlider;
     [SerializeField] private Slider sfxVolumeSlider;
 
-    [SerializeField] private TextMeshProUGUI masterValueText; 
+    [SerializeField] private TextMeshProUGUI masterValueText;
     [SerializeField] private TextMeshProUGUI gameMusicValueText;
     [SerializeField] private TextMeshProUGUI sfxValueText;
-
-    private void Start()
-    {
-        myAudioMixer.SetFloat(masterVol, 0f);
-        myAudioMixer.SetFloat(gameMusicVol, 0f);
-        myAudioMixer.SetFloat(sfxVol, 0f);
-    }
 
     public void MasterVolumeSlider()
     {
         float masterVolume = masterVolumeSlider.value;
         masterValueText.text = masterVolume.ToString("0.0");
         myAudioMixer.SetFloat(masterVol, Mathf.Log10(masterVolume) * 20);
+        PlayerPrefs.SetFloat(masterVol, masterVolume);
     }
 
     public void GameVolumeSlider()
