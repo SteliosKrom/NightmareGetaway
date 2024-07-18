@@ -7,7 +7,6 @@ public class MainGameUIManager : MonoBehaviour
 {
 
     [Header("CLASSES")]
-
     public PlayerRespawn playerRespawn;
 
     [SerializeField] private Button resumeButton;
