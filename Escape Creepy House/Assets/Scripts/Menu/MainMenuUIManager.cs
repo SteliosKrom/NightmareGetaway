@@ -42,7 +42,6 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private AudioSource MainGameAudioSource;
     [SerializeField] private AudioClip hoverAudioClip;
 
-
     private void Start()
     {
         Time.timeScale = 1f;

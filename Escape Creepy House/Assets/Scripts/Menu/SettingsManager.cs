@@ -9,7 +9,6 @@ public class SettingsManager : MonoBehaviour
     private const string masterVol = "MasterVolume";
     private const string gameMusicVol = "GameMusicVolume";
     private const string sfxVol = "SoundEffectsVolume";
-    private const string display = "DisplayMode";
 
     [Header("CLASSES")]
     [SerializeField] private AudioMixer myAudioMixer;
@@ -26,7 +25,14 @@ public class SettingsManager : MonoBehaviour
 
     private void Start()
     {
-        SetFullscreen();
+        if (Screen.fullScreen)
+        {
+            fullscreenToggle.isOn = true;
+        }
+        else
+        {
+            fullscreenToggle.isOn = false;
+        }
     }
 
     public void MasterVolumeSlider()

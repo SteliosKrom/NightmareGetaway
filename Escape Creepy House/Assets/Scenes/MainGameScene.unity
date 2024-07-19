@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 2e75f26b1d9d9e64bbbd19cd02275a83, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -1025,7 +1025,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4077f3aac1038d544b1799ac1cdf6568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settingsManager: {fileID: 1763060355}
   playButton: {fileID: 998161090}
   controlsButton: {fileID: 329122715}
   settingsButton: {fileID: 929470050}
@@ -11286,7 +11285,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRespawn: {fileID: 379504549}
-  settingsManager: {fileID: 1763060355}
   resumeButton: {fileID: 2084806073}
   settingsButton: {fileID: 152314458}
   homeButton: {fileID: 279216664}
