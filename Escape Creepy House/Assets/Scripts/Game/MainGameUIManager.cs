@@ -24,6 +24,7 @@ public class MainGameUIManager : MonoBehaviour
     [SerializeField] private GameObject graphicsMenu;
     [SerializeField] private GameObject audioButton;
     [SerializeField] private GameObject videoButton;
+    [SerializeField] private GameObject controlsButton;
     [SerializeField] private GameObject graphicsButton;
     [SerializeField] private GameObject dot;
 
@@ -55,6 +56,7 @@ public class MainGameUIManager : MonoBehaviour
         audioButton.SetActive(true);
         videoButton.SetActive(true);
         graphicsButton.SetActive(true);
+        controlsButton.SetActive(true);
         audioMenu.SetActive(false);
         videoMenu.SetActive(false);
         graphicsMenu.SetActive(false);

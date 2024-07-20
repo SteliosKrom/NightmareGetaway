@@ -26,7 +26,6 @@ public class CameraRotate : MonoBehaviour
         yRotation = -90f;
         zRotation = 0f;
         transform.localRotation = Quaternion.Euler(xRotation, yRotation, zRotation);
-
         sensitivitySlider.value = defaultSensitivity;
     }
 
@@ -45,7 +44,7 @@ public class CameraRotate : MonoBehaviour
 
         if (RoundManager.instance.currentState == GameState.playing)
         {
-            float mouseY = Input.GetAxis("Mouse Y") * sensY; 
+            float mouseY = Input.GetAxis("Mouse Y") * sensY;
             float mouseX = Input.GetAxis("Mouse X") * sensX;
 
             xRotation -= mouseY;
@@ -53,10 +52,6 @@ public class CameraRotate : MonoBehaviour
 
             xRotation = Mathf.Clamp(xRotation, minX, maxX);
             transform.localRotation = Quaternion.Euler(xRotation, yRotation, zRotation);
-        }
-
-        if (playerRotate != null)
-        {
             playerRotate.RotatePlayer(yRotation);
         }
     }

@@ -14,7 +14,6 @@ public class MainMenuUIManager : MonoBehaviour
 
     [Header("CLASSES")]
     [SerializeField] private Button playButton;
-    [SerializeField] private Button controlsButton;
     [SerializeField] private Button settingsButton;
     [SerializeField] private Button exitButton;
     [SerializeField] private Button audioCategoryButton;
@@ -24,9 +23,11 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject controlsMenu;
     [SerializeField] private GameObject settingsMenu;
+    [SerializeField] private GameObject settings;
     [SerializeField] private GameObject audioButton;
     [SerializeField] private GameObject videoButton;
     [SerializeField] private GameObject graphicsButton;
+    [SerializeField] private GameObject controlsButton;
     [SerializeField] private GameObject audioMenu;
     [SerializeField] private GameObject videoMenu;
     [SerializeField] private GameObject graphicsMenu;
@@ -47,7 +48,7 @@ public class MainMenuUIManager : MonoBehaviour
         Time.timeScale = 1f;
         mainMenu.SetActive(true);
         controlsMenu.SetActive(false);
-        settingsMenu.SetActive(false);
+        settings.SetActive(false);
         audioMenu.SetActive(false);
         videoMenu.SetActive(false);
         graphicsMenu.SetActive(false);
@@ -85,23 +86,35 @@ public class MainMenuUIManager : MonoBehaviour
 
     public void ControlsButton()
     {
+        audioButton.SetActive(false);
+        controlsButton.SetActive(false);
+        graphicsButton.SetActive(false);
+        videoButton.SetActive(false);
+
         controlsMenu.SetActive(true);
         mainMenu.SetActive(false);
+        settingsMenu.SetActive(true);
+
         RoundManager.instance.currentState = GameState.onMainMenu;
     }
 
     public void SettingsButton()
     {
-        settingsMenu.SetActive(true);
+        settings.SetActive(true);
+
         audioButton.SetActive(true);
         videoButton.SetActive(true);
         graphicsButton.SetActive(true);
+        controlsButton.SetActive(true);
+
         audioMenu.SetActive(false);
         videoMenu.SetActive(false);
         graphicsMenu.SetActive(false);
         mainMenu.SetActive(false);
+
         backToGame.SetActive(false);
         backToMenu.SetActive(true);
+
         RoundManager.instance.currentState = GameState.onSettings;
     }
 
@@ -113,11 +126,14 @@ public class MainMenuUIManager : MonoBehaviour
     public void BackToMenu()
     {
         controlsMenu.SetActive(false);
-        settingsMenu.SetActive(false);
+        settings.SetActive(false);
         mainMenu.SetActive(true);
+
         audioButton.SetActive(false);
         videoButton.SetActive(false);
         graphicsButton.SetActive(false);
+        controlsButton.SetActive(false);
+
         RoundManager.instance.currentState = GameState.onMainMenu;
     }
 
@@ -126,19 +142,26 @@ public class MainMenuUIManager : MonoBehaviour
         audioButton.SetActive(true);
         videoButton.SetActive(true);
         graphicsButton.SetActive(true);
+        controlsButton.SetActive(true);
+
         mainMenu.SetActive(false) ;
         audioMenu.SetActive(false);
         videoMenu.SetActive(false);
-        graphicsMenu.SetActive (false);
+        graphicsMenu.SetActive(false);
+        controlsMenu.SetActive(false);
+        settingsMenu.SetActive(true);
+
         RoundManager.instance.currentState = GameState.onMainMenu;
     }
 
     public void AudioCategoryButton()
     {
         audioMenu.SetActive(true);
+
         audioButton.SetActive(false);
         videoButton.SetActive(false);
         graphicsButton.SetActive(false);
+        controlsButton.SetActive(false);
     }
 
     public void VideoCategoryButton()
@@ -147,6 +170,7 @@ public class MainMenuUIManager : MonoBehaviour
         videoButton.SetActive(false);
         graphicsButton.SetActive(false);
         audioButton.SetActive(false);
+        controlsButton.SetActive(false);
     }
 
     public void GraphicsCategoryButton()
@@ -155,6 +179,7 @@ public class MainMenuUIManager : MonoBehaviour
         graphicsButton.SetActive(false);
         videoButton.SetActive(false);
         audioButton.SetActive(false);
+        controlsButton.SetActive(false);
     }
 
     public void HoverSoundEffect()
