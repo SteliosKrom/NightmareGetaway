@@ -14,6 +14,7 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private AudioMixer myAudioMixer;
 
     [SerializeField] private Toggle fullscreenToggle;
+    [SerializeField] private Toggle vSyncToggle;
 
     [SerializeField] private Slider masterVolumeSlider;
     [SerializeField] private Slider mainGameVolumeSlider;
@@ -25,6 +26,18 @@ public class SettingsManager : MonoBehaviour
 
     private void Start()
     {
+        QualitySettings.vSyncCount = 0;
+        vSyncToggle.isOn = false;
+
+        if (QualitySettings.vSyncCount != 0)
+        {
+            vSyncToggle.isOn = true;
+        }
+        else
+        {
+            vSyncToggle.isOn = false;
+        }
+
         if (Screen.fullScreen)
         {
             fullscreenToggle.isOn = true;
@@ -75,6 +88,28 @@ public class SettingsManager : MonoBehaviour
             screenHeight = 720;
             Screen.fullScreen = !fullscreenToggle.isOn;
             Screen.SetResolution(screenWidth, screenHeight, FullScreenMode.Windowed);
+        }
+    }
+
+    [System.Obsolete]
+    public void SetVSync()
+    {
+        if (vSyncToggle.isOn)
+        {
+            QualitySettings.vSyncCount = 1;
+        }
+        else
+        {
+            QualitySettings.vSyncCount = 0;
+        }
+
+        if (vSyncToggle.isOn)
+        {
+            Application.targetFrameRate = Screen.currentResolution.refreshRate;
+        }
+        else
+        {
+            Application.targetFrameRate = -1;
         }
     }
 }

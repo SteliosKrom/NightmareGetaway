@@ -3,17 +3,22 @@ using UnityEngine.SceneManagement;
 
 public class Transition : MonoBehaviour
 {
-    public GameObject text;
+    [Header("CLASSES")]
+    public GameObject logoText;
+
+    public AudioSource secondSplashAudioSource;
+    public AudioClip secondSplashAudioClip;
 
     private void Awake()
     {
-        text.SetActive(false);
+        logoText.SetActive(false);
     }
 
     private void Start()
     {
-        Invoke("LoadText", 7f);
-        Invoke("LoadMainGameScene", 10f);
+        Invoke("LoadText", 6f);
+        Invoke("LoadMainGameScene", 12f);
+
     }
 
     public void LoadMainGameScene()
@@ -23,6 +28,7 @@ public class Transition : MonoBehaviour
 
     public void LoadText()
     {
-        text.SetActive(true);
+        logoText.SetActive(true);
+        AudioManager.instance.PlaySound(secondSplashAudioSource, secondSplashAudioClip);
     }
 }

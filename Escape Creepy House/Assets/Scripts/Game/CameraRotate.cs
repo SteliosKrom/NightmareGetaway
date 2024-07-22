@@ -8,6 +8,7 @@ public class CameraRotate : MonoBehaviour
     [SerializeField] private PlayerRotate playerRotate;
     [SerializeField] private Slider sensitivitySlider;
     [SerializeField] private TextMeshProUGUI sensitivityValueText;
+    [SerializeField] private Transform spotlight;
 
     [Header("TYPES")]
     [SerializeField] private float minX;
@@ -16,9 +17,12 @@ public class CameraRotate : MonoBehaviour
     [SerializeField] private float sensX;
 
     private float defaultSensitivity = 1f;
+    private float spotlightRotationSpeed = 2.5f;
     private float xRotation;
     private float yRotation;
     private float zRotation;
+    private float spotlightYRotation;
+    private float spotlightXRotation;
 
     private void Start()
     {
@@ -27,6 +31,9 @@ public class CameraRotate : MonoBehaviour
         zRotation = 0f;
         transform.localRotation = Quaternion.Euler(xRotation, yRotation, zRotation);
         sensitivitySlider.value = defaultSensitivity;
+
+        spotlightYRotation = yRotation;
+        spotlightXRotation = xRotation;
     }
 
     private void Update()
@@ -52,8 +59,18 @@ public class CameraRotate : MonoBehaviour
 
             xRotation = Mathf.Clamp(xRotation, minX, maxX);
             transform.localRotation = Quaternion.Euler(xRotation, yRotation, zRotation);
+
             playerRotate.RotatePlayer(yRotation);
+
+            UpdateSpotlightRotation(yRotation, xRotation);
         }
+    }
+
+    public void UpdateSpotlightRotation(float newYRotation, float newXRotation)
+    {
+        spotlightYRotation = Mathf.Lerp(spotlightYRotation, newYRotation, spotlightRotationSpeed * Time.deltaTime);
+        spotlightXRotation = Mathf.Lerp(spotlightXRotation, newXRotation, spotlightRotationSpeed * Time.deltaTime);
+        spotlight.rotation = Quaternion.Euler(spotlightXRotation, spotlightYRotation, zRotation);
     }
 
     public void SetInitialRotation(float initialYRotation)
