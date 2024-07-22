@@ -11570,7 +11570,7 @@ MonoBehaviour:
   settingsButton: {fileID: 152314458}
   homeButton: {fileID: 279216664}
   exitButton: {fileID: 1825467470}
-  settingsMenu: {fileID: 1405398497}
+  settingsMenu: {fileID: 1437513877}
   pauseMenu: {fileID: 182284034}
   mainMenu: {fileID: 1873982493}
   backToMenu: {fileID: 1172468360}
@@ -13059,7 +13059,6 @@ GameObject:
   - component: {fileID: 792361154}
   - component: {fileID: 792361155}
   - component: {fileID: 792361156}
-  - component: {fileID: 792361157}
   - component: {fileID: 792361158}
   m_Layer: 0
   m_Name: WhiteLight
@@ -13160,18 +13159,6 @@ MonoBehaviour:
   newLight: {fileID: 792361155}
   flashlightAudioSource: {fileID: 687202150}
   flashlightAudioClip: {fileID: 8300000, guid: da5cf87e1f085734aade1b2d5b02d382, type: 3}
---- !u!114 &792361157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 792361153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35aba7e7f2849b443a5759e362f58c4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &792361158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15071,6 +15058,7 @@ MonoBehaviour:
   sensitivitySlider: {fileID: 1892797609}
   sensitivityValueText: {fileID: 79382631}
   spotlight: {fileID: 792361154}
+  mainCamera: {fileID: 963194228}
   minX: -40
   maxX: 40
   sensY: 1
@@ -15175,8 +15163,8 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 1
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
