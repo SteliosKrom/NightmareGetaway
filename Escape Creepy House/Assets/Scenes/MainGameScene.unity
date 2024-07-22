@@ -11570,7 +11570,7 @@ MonoBehaviour:
   settingsButton: {fileID: 152314458}
   homeButton: {fileID: 279216664}
   exitButton: {fileID: 1825467470}
-  settingsMenu: {fileID: 1437513877}
+  settingsMenu: {fileID: 1405398497}
   pauseMenu: {fileID: 182284034}
   mainMenu: {fileID: 1873982493}
   backToMenu: {fileID: 1172468360}
