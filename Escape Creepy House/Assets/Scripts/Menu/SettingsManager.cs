@@ -36,8 +36,8 @@ public class SettingsManager : MonoBehaviour
         QualitySettings.antiAliasing = 0;
         antiAliasingDropdown.value = 0;
 
-        QualitySettings.SetQualityLevel(0);
-        qualityDropdown.value = 0;
+        QualitySettings.SetQualityLevel(2);
+        qualityDropdown.value = 2;
 
         if (Screen.fullScreen)
         {
