@@ -23,20 +23,21 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI masterValueText;
     [SerializeField] private TextMeshProUGUI gameMusicValueText;
     [SerializeField] private TextMeshProUGUI sfxValueText;
+    [SerializeField] private TextMeshProUGUI antiAliasingText;
+
+    [SerializeField] private TMP_Dropdown antiAliasingDropdown;
+    [SerializeField] private TMP_Dropdown qualityDropdown;
 
     private void Start()
     {
         QualitySettings.vSyncCount = 0;
         vSyncToggle.isOn = false;
 
-        if (QualitySettings.vSyncCount != 0)
-        {
-            vSyncToggle.isOn = true;
-        }
-        else
-        {
-            vSyncToggle.isOn = false;
-        }
+        QualitySettings.antiAliasing = 0;
+        antiAliasingDropdown.value = 0;
+
+        QualitySettings.SetQualityLevel(0);
+        qualityDropdown.value = 0;
 
         if (Screen.fullScreen)
         {
@@ -53,7 +54,6 @@ public class SettingsManager : MonoBehaviour
         float masterVolume = masterVolumeSlider.value;
         masterValueText.text = masterVolume.ToString("0.0");
         myAudioMixer.SetFloat(masterVol, Mathf.Log10(masterVolume) * 20);
-        PlayerPrefs.SetFloat(masterVol, masterVolume);
     }
 
     public void GameVolumeSlider()
@@ -102,14 +102,57 @@ public class SettingsManager : MonoBehaviour
         {
             QualitySettings.vSyncCount = 0;
         }
+    }
 
-        if (vSyncToggle.isOn)
+    public void SetAntiAliasing()
+    {
+        if (antiAliasingDropdown.value == 0)
         {
-            Application.targetFrameRate = Screen.currentResolution.refreshRate;
+            QualitySettings.antiAliasing = 0;
+            Debug.Log("Anti is: " + QualitySettings.antiAliasing);
         }
-        else
+        else if (antiAliasingDropdown.value == 1)
         {
-            Application.targetFrameRate = -1;
+            QualitySettings.antiAliasing = 2;
+            Debug.Log("Anti is: " + QualitySettings.antiAliasing);
+        }
+        else if (antiAliasingDropdown.value == 2)
+        {
+            QualitySettings.antiAliasing = 4;
+            Debug.Log("Anti is: " + QualitySettings.antiAliasing);
+        }
+        else if (antiAliasingDropdown.value == 3)
+        {
+            QualitySettings.antiAliasing = 8;
+            Debug.Log("Anti is: " + QualitySettings.antiAliasing);
+        }
+    }
+
+    public void SetGraphicsQuality()
+    { 
+        if (qualityDropdown.value == 0)
+        {
+            QualitySettings.SetQualityLevel(0);
+        }
+        else if (qualityDropdown.value == 1)
+        {
+            QualitySettings.SetQualityLevel(1);
+        }
+        else if (qualityDropdown.value == 2)
+        {
+            QualitySettings.SetQualityLevel(2);
+        }
+        else if (qualityDropdown.value == 3)
+        {
+            QualitySettings.SetQualityLevel(3);
+        }
+        else if (qualityDropdown.value == 4)
+        {
+            QualitySettings.SetQualityLevel(4);
+        }
+        else if (qualityDropdown.value == 5)
+        {
+            QualitySettings.SetQualityLevel(5);
         }
     }
 }
