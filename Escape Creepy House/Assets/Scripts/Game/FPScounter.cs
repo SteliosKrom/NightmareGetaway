@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Timers;
 
 public class FPScounter : MonoBehaviour
 {
@@ -17,19 +18,16 @@ public class FPScounter : MonoBehaviour
 
     public void CountFPS()
     {
-        if (RoundManager.instance.currentState != GameState.pause)
+        frameCount++;
+        elapsedTime += Time.deltaTime;
+
+        if (elapsedTime >= updateInterval)
         {
-            frameCount++;
-            elapsedTime += Time.deltaTime;
+            float fps = frameCount / elapsedTime;
+            fpsText.text = "FPS: " + Mathf.Ceil(fps).ToString();
 
-            if (elapsedTime >= updateInterval)
-            {
-                float fps = frameCount / elapsedTime;
-                fpsText.text = "FPS: " + Mathf.Ceil(fps).ToString();
-
-                frameCount = 0;
-                elapsedTime = 0f;
-            }
+            frameCount = 0;
+            elapsedTime = 0f;
         }
     }
 }
