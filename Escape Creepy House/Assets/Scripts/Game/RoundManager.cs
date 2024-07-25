@@ -15,7 +15,6 @@ class RoundManager : MonoBehaviour
     [Header("GAME STATES")]
     public GameState currentState;
 
-
     private void Awake()
     {
         if (instance == null)
