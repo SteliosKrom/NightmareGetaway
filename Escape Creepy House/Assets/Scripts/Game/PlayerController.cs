@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private CharacterController characterController;
     [SerializeField] private Animator playerAnimator;
     [SerializeField] private AudioSource mainGameAudioSource;
+    [SerializeField] private AudioSource clockAudioSource;
+    [SerializeField] private AudioClip clockAudioClip;
 
     private void Start()
     {
@@ -66,7 +68,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && RoundManager.instance.currentState == GameState.playing)
         {
             PauseGame();
-
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && RoundManager.instance.currentState == GameState.pause)
         {
@@ -79,6 +80,7 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
         mainGameAudioSource.Pause();
+        clockAudioSource.Pause();
         dot.SetActive(false);
         RoundManager.instance.currentState = GameState.pause;
     }
@@ -89,6 +91,7 @@ public class PlayerController : MonoBehaviour
         pauseMenu.SetActive(false);
         dot.SetActive(true);
         mainGameAudioSource.UnPause();
+        clockAudioSource.UnPause();
         RoundManager.instance.currentState = GameState.playing;
     }
 }
