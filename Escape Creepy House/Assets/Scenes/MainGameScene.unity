@@ -6985,6 +6985,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8895483708580297093, guid: 4073f41b7d930f94d9470df64ec12b53, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8895483708580297093, guid: 4073f41b7d930f94d9470df64ec12b53, type: 3}
+      propertyPath: MaxDistance
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8895483708580297093, guid: 4073f41b7d930f94d9470df64ec12b53, type: 3}
+      propertyPath: MinDistance
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9239,8 +9251,6 @@ MonoBehaviour:
   characterController: {fileID: 379504545}
   playerAnimator: {fileID: 370128361}
   mainGameAudioSource: {fileID: 1408077126}
-  clockAudioSource: {fileID: 1282689299}
-  clockAudioClip: {fileID: 8300000, guid: d429cedd3d8921e419693b148fbea195, type: 3}
 --- !u!114 &379504544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19366,11 +19376,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 456804, guid: 4073f41b7d930f94d9470df64ec12b53, type: 3}
   m_PrefabInstance: {fileID: 336544814}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &1282689299 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 8895483708580297093, guid: 4073f41b7d930f94d9470df64ec12b53, type: 3}
-  m_PrefabInstance: {fileID: 336544814}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1309515949
 GameObject:
   m_ObjectHideFlags: 0
@@ -22092,7 +22097,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 409cefca0141354458be6b8633a40b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clockAudioSource: {fileID: 1282689299}
   currentState: 0
 --- !u!1 &1570831851
 GameObject:
