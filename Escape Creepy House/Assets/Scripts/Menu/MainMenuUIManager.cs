@@ -12,6 +12,7 @@ public class MainMenuUIManager : MonoBehaviour
     [Header("CLASSES")]
     [SerializeField] private Button playButton;
     [SerializeField] private Button settingsButton;
+    [SerializeField] private Button creditsButton;
     [SerializeField] private Button exitButton;
     [SerializeField] private Button audioCategoryButton;
     [SerializeField] private Button videoCategoryButton;
@@ -25,6 +26,7 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private GameObject videoButton;
     [SerializeField] private GameObject graphicsButton;
     [SerializeField] private GameObject controlsButton;
+    [SerializeField] private GameObject creditsMenu;
     [SerializeField] private GameObject audioMenu;
     [SerializeField] private GameObject videoMenu;
     [SerializeField] private GameObject graphicsMenu;
@@ -49,6 +51,7 @@ public class MainMenuUIManager : MonoBehaviour
         audioMenu.SetActive(false);
         videoMenu.SetActive(false);
         graphicsMenu.SetActive(false);
+        creditsMenu.SetActive(false);
         secondaryCamera.enabled = true;
         mainCamera.enabled = false;
         mainMenuAudioSource.Play();
@@ -72,6 +75,7 @@ public class MainMenuUIManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         mainMenu.SetActive(false);
+        creditsMenu.SetActive(false);
         secondaryCamera.enabled = false;
         mainCamera.enabled = true;
         MainGameAudioSource.Play();
@@ -88,6 +92,7 @@ public class MainMenuUIManager : MonoBehaviour
         graphicsButton.SetActive(false);
         videoButton.SetActive(false);
 
+        creditsMenu.SetActive(false);
         controlsMenu.SetActive(true);
         mainMenu.SetActive(false);
         settingsMenu.SetActive(true);
@@ -108,11 +113,18 @@ public class MainMenuUIManager : MonoBehaviour
         videoMenu.SetActive(false);
         graphicsMenu.SetActive(false);
         mainMenu.SetActive(false);
+        creditsMenu.SetActive(false);
 
         backToGame.SetActive(false);
         backToMenu.SetActive(true);
 
         RoundManager.instance.currentState = GameState.onSettings;
+    }
+
+    public void CreditsButton()
+    {
+        mainMenu.SetActive(false);
+        creditsMenu.SetActive(true);
     }
 
     public void ExitButton()
@@ -130,6 +142,7 @@ public class MainMenuUIManager : MonoBehaviour
         videoButton.SetActive(false);
         graphicsButton.SetActive(false);
         controlsButton.SetActive(false);
+        creditsMenu.SetActive(false);
 
         RoundManager.instance.currentState = GameState.onMainMenu;
     }
