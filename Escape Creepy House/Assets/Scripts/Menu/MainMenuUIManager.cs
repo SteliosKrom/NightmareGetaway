@@ -39,7 +39,6 @@ public class MainMenuUIManager : MonoBehaviour
 
     [SerializeField] private AudioSource hoverAudioSource;
     [SerializeField] private AudioSource mainMenuAudioSource;
-    [SerializeField] private AudioSource MainGameAudioSource;
     [SerializeField] private AudioClip hoverAudioClip;
 
     private void Start()
@@ -55,7 +54,6 @@ public class MainMenuUIManager : MonoBehaviour
         secondaryCamera.enabled = true;
         mainCamera.enabled = false;
         mainMenuAudioSource.Play();
-        MainGameAudioSource.Stop();
         dot.SetActive(false);
         initialPos = secondaryCamera.transform.position;
     }
@@ -78,9 +76,7 @@ public class MainMenuUIManager : MonoBehaviour
         creditsMenu.SetActive(false);
         secondaryCamera.enabled = false;
         mainCamera.enabled = true;
-        MainGameAudioSource.Play();
         mainMenuAudioSource.Stop();
-        MainGameAudioSource.volume = 0.2f;
         dot.SetActive(true);
         RoundManager.instance.currentState = GameState.playing;
     }

@@ -16,7 +16,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject dot;
     [SerializeField] private CharacterController characterController;
     [SerializeField] private Animator playerAnimator;
-    [SerializeField] private AudioSource mainGameAudioSource;
 
     private void Start()
     {
@@ -77,7 +76,6 @@ public class PlayerController : MonoBehaviour
     {
         Time.timeScale = 0f;
         pauseMenu.SetActive(true);
-        mainGameAudioSource.Pause();
         dot.SetActive(false);
         RoundManager.instance.currentState = GameState.pause;
     }
@@ -87,7 +85,6 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
         dot.SetActive(true);
-        mainGameAudioSource.UnPause();
         RoundManager.instance.currentState = GameState.playing;
     }
 }

@@ -1,48 +1,56 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Crouch : MonoBehaviour
+namespace CrouchSystem
 {
-    [Header("CLASSES")]
-    [SerializeField] private Animator playerAnimator;
-    [SerializeField] private CharacterController characterController;
-    [SerializeField] private PlayerController playerController;
-
-    [Header("TYPES")]
-    private bool isCrouching = false;
-    private float originalHeight;
-    private float crouchHeight = 1f;
-    private float crouchSpeed = 1.5f;
-
-    private void Start()
+    public class Crouch : MonoBehaviour
     {
-        characterController = GetComponent<CharacterController>();
-        playerController = GetComponent<PlayerController>();
-        originalHeight = characterController.height;
-    }
+        [Header("CLASSES")]
+        [SerializeField] private Animator playerAnimator;
+        [SerializeField] private CharacterController characterController;
+        [SerializeField] private PlayerController playerController;
 
-    private void Update()
-    {
-        Crouching();
-    }
+        [SerializeField] private AudioSource crouchingAudioSourceStart;
+        [SerializeField] private AudioSource crouchingAudioSourceEnd;
 
-    public void Crouching()
-    {
-        if (RoundManager.instance.currentState == GameState.playing && Input.GetKeyDown(KeyCode.C))
+        [Header("TYPES")]
+        private bool isCrouching = false;
+        private float originalHeight;
+        private float crouchHeight = 1f;
+        private float crouchSpeed = 1.5f;
+
+        private void Start()
         {
+            characterController = GetComponent<CharacterController>();
+            playerController = GetComponent<PlayerController>();
+            originalHeight = characterController.height;
             isCrouching = !isCrouching;
+        }
 
-            if (isCrouching)
+        private void Update()
+        {
+            Crouching();
+        }
+
+        public void Crouching()
+        {
+            if (RoundManager.instance.currentState == GameState.playing && Input.GetKeyDown(KeyCode.C))
             {
-                characterController.height = originalHeight;
-                playerController.playerSpeed = 3f;
-            }
-            else
-            {
-                characterController.height = crouchHeight;
-                playerController.playerSpeed = crouchSpeed;
+                isCrouching = !isCrouching;
+
+                if (isCrouching)
+                {
+                    characterController.height = originalHeight;
+                    playerController.playerSpeed = 3f;
+                    crouchingAudioSourceEnd.Play();
+                }
+                else
+                {
+                    characterController.height = crouchHeight;
+                    playerController.playerSpeed = 1.5f;
+                    crouchingAudioSourceStart.Play();
+                }
             }
         }
     }
 }
+

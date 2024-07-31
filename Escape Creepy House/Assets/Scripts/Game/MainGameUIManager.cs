@@ -32,7 +32,6 @@ public class MainGameUIManager : MonoBehaviour
     [SerializeField] private Camera secondaryCamera;
 
     [SerializeField] private AudioSource mainMenuAudioSource;
-    [SerializeField] private AudioSource mainGameAudioSource;
 
     private void Start()
     {
@@ -44,7 +43,6 @@ public class MainGameUIManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         pauseMenu.SetActive(false);
-        mainGameAudioSource.UnPause();
         dot.SetActive(true);
         RoundManager.instance.currentState = GameState.playing;
     }
@@ -74,7 +72,6 @@ public class MainGameUIManager : MonoBehaviour
         mainCamera.enabled = false;
         secondaryCamera.enabled = true;
         mainMenuAudioSource.Play();
-        mainGameAudioSource.Stop();
         dot.SetActive(false);
         playerRespawn.Respawn();
         RoundManager.instance.currentState = GameState.onMainMenu;

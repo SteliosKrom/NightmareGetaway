@@ -7,8 +7,8 @@ public class SettingsManager : MonoBehaviour
 {
     [Header("TYPES")]
     private const string masterVol = "MasterVolume";
-    private const string gameMusicVol = "GameMusicVolume";
     private const string sfxVol = "SoundEffectsVolume";
+    private const string menuVol = "MenuVolume";
 
     [Header("CLASSES")]
     [SerializeField] private AudioMixer myAudioMixer;
@@ -18,12 +18,12 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private Toggle framesToggle;
 
     [SerializeField] private Slider masterVolumeSlider;
-    [SerializeField] private Slider mainGameVolumeSlider;
     [SerializeField] private Slider sfxVolumeSlider;
+    [SerializeField] private Slider menuVolumeSlider;
 
     [SerializeField] private TextMeshProUGUI masterValueText;
-    [SerializeField] private TextMeshProUGUI gameMusicValueText;
     [SerializeField] private TextMeshProUGUI sfxValueText;
+    [SerializeField] private TextMeshProUGUI menuValueText;
     [SerializeField] private TextMeshProUGUI antiAliasingText;
     [SerializeField] private TextMeshProUGUI framesText;
 
@@ -70,18 +70,18 @@ public class SettingsManager : MonoBehaviour
     public void LoadSettings()
     {
         float savedMasterVolume = PlayerPrefs.GetFloat("MasterVolume");
-        float savedGameVolume = PlayerPrefs.GetFloat("GameVolume");
         float savedSfxVolume = PlayerPrefs.GetFloat("sfxVolume");
+        float savedMenuVolume = PlayerPrefs.GetFloat("menuVolume");
 
         int savedQualitySettings = PlayerPrefs.GetInt("GraphicsQuality");
 
         myAudioMixer.SetFloat(masterVol, Mathf.Log10(savedMasterVolume) * 20);
-        myAudioMixer.SetFloat(gameMusicVol, Mathf.Log10(savedGameVolume) * 20);
         myAudioMixer.SetFloat(sfxVol, Mathf.Log10(savedSfxVolume) * 20);
+        myAudioMixer.SetFloat(menuVol, Mathf.Log10(savedMenuVolume) * 20);
 
         masterVolumeSlider.value = savedMasterVolume;
-        mainGameVolumeSlider.value = savedGameVolume;
         sfxVolumeSlider.value = savedSfxVolume;
+        menuVolumeSlider.value = savedMenuVolume;
         qualityDropdown.value = savedQualitySettings;
     }
 
@@ -93,20 +93,20 @@ public class SettingsManager : MonoBehaviour
         PlayerPrefs.SetFloat("MasterVolume", masterVolume);
     }
 
-    public void GameVolumeSlider()
-    {
-        float gameVolume = mainGameVolumeSlider.value;
-        gameMusicValueText.text = gameVolume.ToString("0.0");
-        myAudioMixer.SetFloat(gameMusicVol, Mathf.Log10(gameVolume) * 20);
-        PlayerPrefs.SetFloat("GameVolume", gameVolume);
-    }
-
     public void SFXVolumeSlider()
     {
         float sfxVolume = sfxVolumeSlider.value;
         sfxValueText.text = sfxVolume.ToString("0.0");
         myAudioMixer.SetFloat(sfxVol, Mathf.Log10(sfxVolume) * 20);
         PlayerPrefs.SetFloat("sfxVolume", sfxVolume);
+    }
+
+    public void MenuVolumeSlider()
+    {
+        float menuVolume = menuVolumeSlider.value;
+        menuValueText.text = menuVolume.ToString("0.0");
+        myAudioMixer.SetFloat(menuVol, Mathf.Log10(menuVolume) * 20);
+        PlayerPrefs.SetFloat("menuVolume", menuVolume);
     }
 
     public void SetFullscreen()
