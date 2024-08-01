@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,6 +34,12 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private GameObject backToMenu;
     [SerializeField] private GameObject backToGame;
     [SerializeField] private GameObject dot;
+    [SerializeField] private GameObject taskText;
+    [SerializeField] private GameObject taskFindRoomKeyText;
+    [SerializeField] private GameObject taskDrinkWaterText;
+    [SerializeField] private GameObject taskCheckForFoodText;
+    [SerializeField] private GameObject taskFindOutMobilePhoneText;
+    [SerializeField] private GameObject taskFindTheMainDoorkeyText;
 
     [SerializeField] private Camera secondaryCamera;
     [SerializeField] private Camera mainCamera;
@@ -55,6 +62,7 @@ public class MainMenuUIManager : MonoBehaviour
         mainCamera.enabled = false;
         mainMenuAudioSource.Play();
         dot.SetActive(false);
+        taskText.SetActive(false);
         initialPos = secondaryCamera.transform.position;
     }
 
@@ -71,6 +79,12 @@ public class MainMenuUIManager : MonoBehaviour
 
     public void PlayButton()
     {
+        StartCoroutine(PlayButtonDelay());
+    }
+
+    IEnumerator PlayButtonDelay()
+    {
+        yield return new WaitForSecondsRealtime(1f);
         Time.timeScale = 1f;
         mainMenu.SetActive(false);
         creditsMenu.SetActive(false);
@@ -78,6 +92,8 @@ public class MainMenuUIManager : MonoBehaviour
         mainCamera.enabled = true;
         mainMenuAudioSource.Stop();
         dot.SetActive(true);
+        taskText.SetActive(true);
+        taskFindRoomKeyText.SetActive(true);
         RoundManager.instance.currentState = GameState.playing;
     }
 
@@ -114,6 +130,12 @@ public class MainMenuUIManager : MonoBehaviour
         backToGame.SetActive(false);
         backToMenu.SetActive(true);
 
+        taskText.SetActive(false);
+        taskFindRoomKeyText.SetActive(false);
+        taskCheckForFoodText.SetActive(false);
+        taskDrinkWaterText.SetActive(false);
+        taskFindTheMainDoorkeyText.SetActive(false);
+
         RoundManager.instance.currentState = GameState.onSettings;
     }
 
@@ -121,6 +143,8 @@ public class MainMenuUIManager : MonoBehaviour
     {
         mainMenu.SetActive(false);
         creditsMenu.SetActive(true);
+
+        taskText.SetActive(false);
     }
 
     public void ExitButton()
@@ -139,6 +163,8 @@ public class MainMenuUIManager : MonoBehaviour
         graphicsButton.SetActive(false);
         controlsButton.SetActive(false);
         creditsMenu.SetActive(false);
+
+        taskText.SetActive(false);
 
         RoundManager.instance.currentState = GameState.onMainMenu;
     }

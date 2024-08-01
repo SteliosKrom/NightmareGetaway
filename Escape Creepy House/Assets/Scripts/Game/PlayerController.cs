@@ -74,7 +74,6 @@ public class PlayerController : MonoBehaviour
 
     public void PauseGame()
     {
-        Time.timeScale = 0f;
         pauseMenu.SetActive(true);
         dot.SetActive(false);
         RoundManager.instance.currentState = GameState.pause;
@@ -82,7 +81,6 @@ public class PlayerController : MonoBehaviour
 
     public void ResumeGame()
     {
-        Time.timeScale = 1f;
         pauseMenu.SetActive(false);
         dot.SetActive(true);
         RoundManager.instance.currentState = GameState.playing;

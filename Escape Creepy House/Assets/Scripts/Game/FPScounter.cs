@@ -1,14 +1,16 @@
 using UnityEngine;
 using TMPro;
 using System.Timers;
+using System;
+using UnityEngine.Rendering;
 
 public class FPScounter : MonoBehaviour
 {
     public TextMeshProUGUI fpsText;
     public GameObject fps;
 
-    private int frameCount = 0;
-    private float elapsedTime = 0f;
+    public int frameCount = 0;
+    public float elapsedTime = 0f;
     private const float updateInterval = 1f;
 
     void Update()

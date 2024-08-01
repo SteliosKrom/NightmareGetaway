@@ -1,5 +1,3 @@
-using System.Collections;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,6 +25,12 @@ public class MainGameUIManager : MonoBehaviour
     [SerializeField] private GameObject controlsButton;
     [SerializeField] private GameObject graphicsButton;
     [SerializeField] private GameObject dot;
+    [SerializeField] private GameObject taskText;
+    [SerializeField] private GameObject taskFindTheRoomKeyText;
+    [SerializeField] private GameObject taskDrinkWaterText;
+    [SerializeField] private GameObject taskCheckForFoodText;
+    [SerializeField] private GameObject taskFindMobilePhoneText;
+    [SerializeField] private GameObject taskFindMainDoorKeyText;
 
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Camera secondaryCamera;
@@ -74,6 +78,13 @@ public class MainGameUIManager : MonoBehaviour
         mainMenuAudioSource.Play();
         dot.SetActive(false);
         playerRespawn.Respawn();
+        taskText.SetActive(false);
+        taskFindMainDoorKeyText.SetActive(false);
+        taskFindMobilePhoneText.SetActive(false);
+        taskCheckForFoodText.SetActive(false);
+        taskDrinkWaterText.SetActive(false);
+        taskFindTheRoomKeyText.SetActive(false);
+
         RoundManager.instance.currentState = GameState.onMainMenu;
     }
 
