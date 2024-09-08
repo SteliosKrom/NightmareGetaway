@@ -7,25 +7,22 @@ public class Flashlight : MonoBehaviour
     [SerializeField] private AudioSource flashlightAudioSource;
     [SerializeField] private AudioClip flashlightAudioClip;
 
+    private bool isOn = false;
+
     private void Start()
     {
         newLight = GetComponent<Light>();
         newLight.enabled = false;
     }
 
-    private void Update()
+    public void Toggle()
     {
-        if (Input.GetKeyDown(KeyCode.F) && newLight.enabled == false && RoundManager.instance.currentState == GameState.playing)
+        isOn = !isOn;
+        newLight.enabled = isOn;
+
+        if (flashlightAudioSource != null && flashlightAudioClip != null)
         {
-            newLight.enabled = true;
-            AudioManager.instance.PlaySound(flashlightAudioSource, flashlightAudioClip);
-            flashlightAudioSource.volume = 1f;
-        }
-        else if (Input.GetKeyDown(KeyCode.F) && newLight.enabled == true && RoundManager.instance.currentState == GameState.playing)
-        {
-            newLight.enabled = false;
-            AudioManager.instance.PlaySound(flashlightAudioSource, flashlightAudioClip);
-            flashlightAudioSource.volume = 1f;
+            flashlightAudioSource.PlayOneShot(flashlightAudioClip);
         }
     }
 }
