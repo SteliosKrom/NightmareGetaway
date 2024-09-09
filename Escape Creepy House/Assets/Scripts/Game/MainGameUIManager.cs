@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainGameUIManager : MonoBehaviour
@@ -84,6 +85,7 @@ public class MainGameUIManager : MonoBehaviour
         taskCheckForFoodText.SetActive(false);
         taskDrinkWaterText.SetActive(false);
         taskFindTheRoomKeyText.SetActive(false);
+        SceneManager.LoadScene("MainGameScene");
 
         RoundManager.instance.currentState = GameState.onMainMenu;
     }
