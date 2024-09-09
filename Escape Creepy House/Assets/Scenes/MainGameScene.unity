@@ -10018,6 +10018,7 @@ MonoBehaviour:
   interactionUI: {fileID: 1026383370}
   flashlight: {fileID: 792361156}
   interactionRange: 3
+  hasFlashlight: 0
 --- !u!1 &379583140
 GameObject:
   m_ObjectHideFlags: 0
@@ -30777,7 +30778,7 @@ GameObject:
   - component: {fileID: 95363276996847890}
   m_Layer: 0
   m_Name: Flashlight
-  m_TagString: Untagged
+  m_TagString: Flashlight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

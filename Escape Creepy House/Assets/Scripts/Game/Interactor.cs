@@ -7,9 +7,12 @@ public class Interactor : MonoBehaviour
     public Flashlight flashlight;
 
     public float interactionRange;
+    public bool hasFlashlight = false;
 
     private void Start()
     {
+        hasFlashlight = false;
+
         if (interactionUI != null)
         {
             interactionUI.SetActive(false);
@@ -24,9 +27,10 @@ public class Interactor : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             TryInteract();
+            hasFlashlight = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (hasFlashlight && Input.GetKeyDown(KeyCode.F) && RoundManager.instance.currentState != GameState.pause && RoundManager.instance.currentState != GameState.onSettings)
         {
             flashlight.Toggle();
         }
