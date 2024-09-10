@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Security;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,11 +7,9 @@ public class MainMenuUIManager : MonoBehaviour
 {
     private readonly float movementSpeed = 1f;
     private readonly float movementRange = 0.5f;
+    private readonly float playButtonDelay = 6f;
 
-    [Header("STRUCTS")]
-    private Vector3 initialPos;
-
-    [Header("CLASSES")]
+    [Header("BUTTONS")]
     [SerializeField] private Button playButton;
     [SerializeField] private Button settingsButton;
     [SerializeField] private Button creditsButton;
@@ -19,6 +18,7 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private Button videoCategoryButton;
     [SerializeField] private Button graphicsCategoryButton;
 
+    [Header("GAME OBJECTS")]
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject controlsMenu;
     [SerializeField] private GameObject settingsMenu;
@@ -40,13 +40,15 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private GameObject taskCheckForFoodText;
     [SerializeField] private GameObject taskFindOutMobilePhoneText;
     [SerializeField] private GameObject taskFindTheMainDoorkeyText;
+    [SerializeField] private GameObject loadingPanel;
 
+    [Header("OTHER")]
     [SerializeField] private Camera secondaryCamera;
     [SerializeField] private Camera mainCamera;
-
     [SerializeField] private AudioSource hoverAudioSource;
     [SerializeField] private AudioSource mainMenuAudioSource;
     [SerializeField] private AudioClip hoverAudioClip;
+    private Vector3 initialPos;
 
     private void Start()
     {
@@ -63,6 +65,7 @@ public class MainMenuUIManager : MonoBehaviour
         mainMenuAudioSource.Play();
         dot.SetActive(false);
         taskText.SetActive(false);
+        loadingPanel.SetActive(false);
         initialPos = secondaryCamera.transform.position;
     }
 
@@ -84,7 +87,9 @@ public class MainMenuUIManager : MonoBehaviour
 
     IEnumerator PlayButtonDelay()
     {
-        yield return new WaitForSecondsRealtime(1f);
+        loadingPanel.SetActive(true);
+        mainMenuAudioSource.Stop();
+        yield return new WaitForSecondsRealtime(playButtonDelay);
         Time.timeScale = 1f;
         mainMenu.SetActive(false);
         creditsMenu.SetActive(false);
@@ -94,6 +99,7 @@ public class MainMenuUIManager : MonoBehaviour
         dot.SetActive(true);
         taskText.SetActive(true);
         taskFindRoomKeyText.SetActive(true);
+        loadingPanel.SetActive(false);
         RoundManager.instance.currentState = GameState.playing;
     }
 

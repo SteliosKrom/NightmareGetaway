@@ -57,8 +57,8 @@ public class Interactor : MonoBehaviour
                 interactable.OnInteract();
             }
         }
-        Invoke("OpenFoundItemTextDelay", 1);
-        Invoke("CloseFoundItemTextDelay", 2);
+        Invoke("OpenFoundItemTextDelay", 0.5f);
+        Invoke("CloseFoundItemTextDelay", 1.5f);
     }
 
     public void DetectInteractable()
@@ -79,7 +79,6 @@ public class Interactor : MonoBehaviour
                 interactionUI.SetActive(false);
             }
         }
-
     }
 
     void DebugRaycast()
