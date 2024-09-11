@@ -9,7 +9,6 @@ public class Interactable : MonoBehaviour
 
     public void Collect()
     {
-        Debug.Log(gameObject.name + "has been collected");
         gameObject.SetActive(false);
     }
 }

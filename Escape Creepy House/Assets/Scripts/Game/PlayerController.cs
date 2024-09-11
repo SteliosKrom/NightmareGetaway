@@ -2,15 +2,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [Header("STRUCTS")]
+    public float playerSpeed;
     public RaycastHit hit;
     private Vector3 velocity;
 
-    [Header("TYPES")]
-    public float playerSpeed;
     [SerializeField] private float gravity;
-
-    [Header("CLASSES")]
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject dot;
     [SerializeField] private CharacterController characterController;

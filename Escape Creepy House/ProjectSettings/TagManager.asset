@@ -4,7 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Flashlight
+  - RoomKey
+  - WaterGlass
+  - Pizza
+  - GarageKey
+  - MainDoorKey
+  - Phone
   layers:
   - Default
   - TransparentFX

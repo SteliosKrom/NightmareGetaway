@@ -86,7 +86,6 @@ public class MainGameUIManager : MonoBehaviour
         taskDrinkWaterText.SetActive(false);
         taskFindTheRoomKeyText.SetActive(false);
         SceneManager.LoadScene("MainGameScene");
-
         RoundManager.instance.currentState = GameState.onMainMenu;
     }
 

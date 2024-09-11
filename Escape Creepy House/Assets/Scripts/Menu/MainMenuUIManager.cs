@@ -35,11 +35,7 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private GameObject backToGame;
     [SerializeField] private GameObject dot;
     [SerializeField] private GameObject taskText;
-    [SerializeField] private GameObject taskFindRoomKeyText;
-    [SerializeField] private GameObject taskDrinkWaterText;
-    [SerializeField] private GameObject taskCheckForFoodText;
-    [SerializeField] private GameObject taskFindOutMobilePhoneText;
-    [SerializeField] private GameObject taskFindTheMainDoorkeyText;
+    [SerializeField] private GameObject taskChange;
     [SerializeField] private GameObject loadingPanel;
 
     [Header("OTHER")]
@@ -98,7 +94,6 @@ public class MainMenuUIManager : MonoBehaviour
         mainMenuAudioSource.Stop();
         dot.SetActive(true);
         taskText.SetActive(true);
-        taskFindRoomKeyText.SetActive(true);
         loadingPanel.SetActive(false);
         RoundManager.instance.currentState = GameState.playing;
     }
@@ -137,10 +132,6 @@ public class MainMenuUIManager : MonoBehaviour
         backToMenu.SetActive(true);
 
         taskText.SetActive(false);
-        taskFindRoomKeyText.SetActive(false);
-        taskCheckForFoodText.SetActive(false);
-        taskDrinkWaterText.SetActive(false);
-        taskFindTheMainDoorkeyText.SetActive(false);
 
         RoundManager.instance.currentState = GameState.onSettings;
     }

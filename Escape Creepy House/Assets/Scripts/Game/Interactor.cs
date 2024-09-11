@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Interactor : MonoBehaviour
 {
+    [SerializeField] private TaskManager taskManager;
+
     public Transform interactionSource;
     public GameObject interactionUI;
     public Flashlight flashlight;
@@ -55,10 +57,38 @@ public class Interactor : MonoBehaviour
             if (interactable != null)
             {
                 interactable.OnInteract();
+
+                if (interactable.gameObject.CompareTag("RoomKey"))
+                {
+                    taskManager.CompleteTask();
+                }
+                else if (interactable.gameObject.CompareTag("WaterGlass"))
+                {
+                    taskManager.CompleteTask();
+                }
+                else if (interactable.gameObject.CompareTag("Pizza"))
+                {
+                    taskManager.CompleteTask();
+                }
+                else if (interactable.gameObject.CompareTag("Phone"))
+                {
+                    taskManager.CompleteTask();
+                }
+                else if (interactable.gameObject.CompareTag("MainDoorKey"))
+                {
+                    taskManager.CompleteTask();
+                }
+
+                StartCoroutine(DisplayFoundItemText());
             }
         }
-        Invoke("OpenFoundItemTextDelay", 0.5f);
-        Invoke("CloseFoundItemTextDelay", 1.5f);
+    }
+
+    private IEnumerator DisplayFoundItemText()
+    {
+        foundItem.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        foundItem.SetActive(false);
     }
 
     public void DetectInteractable()
@@ -70,7 +100,7 @@ public class Interactor : MonoBehaviour
         {
             Interactable interactable = hit.collider.GetComponent<Interactable>();
 
-            if (interactable != null)
+            if (interactable != null && RoundManager.instance.currentState != GameState.pause && RoundManager.instance.currentState != GameState.onSettings)
             {
                 interactionUI.SetActive(true);
             }
