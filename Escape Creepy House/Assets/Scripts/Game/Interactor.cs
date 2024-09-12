@@ -6,23 +6,28 @@ public class Interactor : MonoBehaviour
 {
     [SerializeField] private TaskManager taskManager;
 
-    public Transform interactionSource;
+    [Header("GAME OBJECTS")]
+    public GameObject foundItem;
     public GameObject interactionUI;
+
+    [Header("OTHER")]
+    public Transform interactionSource;
     public Flashlight flashlight;
     public TextMeshProUGUI foundItemText;
-    public GameObject foundItem;
 
     public float interactionRange;
     public bool hasFlashlight = false;
+    private bool active = true;
+    private bool inactive = false;
 
     private void Start()
     {
-        hasFlashlight = false;
-        foundItem.SetActive(false);
+        hasFlashlight = inactive;
+        foundItem.SetActive(inactive);
 
         if (interactionUI != null)
         {
-            interactionUI.SetActive(false);
+            interactionUI.SetActive(inactive);
         }
     }
 
@@ -57,7 +62,6 @@ public class Interactor : MonoBehaviour
             if (interactable != null)
             {
                 interactable.OnInteract();
-
                 if (interactable.gameObject.CompareTag("RoomKey"))
                 {
                     taskManager.CompleteTask();
@@ -86,9 +90,9 @@ public class Interactor : MonoBehaviour
 
     private IEnumerator DisplayFoundItemText()
     {
-        foundItem.SetActive(true);
+        foundItem.SetActive(active);
         yield return new WaitForSeconds(1f);
-        foundItem.SetActive(false);
+        foundItem.SetActive(inactive);
     }
 
     public void DetectInteractable()
@@ -99,14 +103,13 @@ public class Interactor : MonoBehaviour
         if (Physics.Raycast(ray, out hit, interactionRange))
         {
             Interactable interactable = hit.collider.GetComponent<Interactable>();
-
             if (interactable != null && RoundManager.instance.currentState != GameState.pause && RoundManager.instance.currentState != GameState.onSettings)
             {
-                interactionUI.SetActive(true);
+                interactionUI.SetActive(active);
             }
             else
             {
-                interactionUI.SetActive(false);
+                interactionUI.SetActive(inactive);
             }
         }
     }
@@ -125,11 +128,11 @@ public class Interactor : MonoBehaviour
 
     public void OpenFoundItemTextDelay()
     {
-        foundItem.SetActive(true);
+        foundItem.SetActive(active);
     }
 
     public void CloseFoundItemTextDelay()
     {
-        foundItem.SetActive(false);
+        foundItem.SetActive(inactive);
     }
 }

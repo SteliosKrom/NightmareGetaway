@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Security;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +7,8 @@ public class MainMenuUIManager : MonoBehaviour
     private readonly float movementSpeed = 1f;
     private readonly float movementRange = 0.5f;
     private readonly float playButtonDelay = 6f;
+    private bool active = true;
+    private bool inactive = false;
 
     [Header("BUTTONS")]
     [SerializeField] private Button playButton;
@@ -49,20 +50,25 @@ public class MainMenuUIManager : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 1f;
-        mainMenu.SetActive(true);
-        controlsMenu.SetActive(false);
-        settings.SetActive(false);
-        audioMenu.SetActive(false);
-        videoMenu.SetActive(false);
-        graphicsMenu.SetActive(false);
-        creditsMenu.SetActive(false);
-        secondaryCamera.enabled = true;
-        mainCamera.enabled = false;
-        mainMenuAudioSource.Play();
-        dot.SetActive(false);
-        taskText.SetActive(false);
-        loadingPanel.SetActive(false);
+
+        mainMenu.SetActive(active);
+        controlsMenu.SetActive(inactive);
+        settings.SetActive(inactive);
+        audioMenu.SetActive(inactive);
+        videoMenu.SetActive(inactive);
+        graphicsMenu.SetActive(inactive);
+        creditsMenu.SetActive(inactive);
+
+        secondaryCamera.enabled = active;
+        mainCamera.enabled = inactive;
+
+        dot.SetActive(inactive);
+        taskText.SetActive(inactive);
+        taskChange.SetActive(inactive);
+        loadingPanel.SetActive(inactive);
+
         initialPos = secondaryCamera.transform.position;
+        mainMenuAudioSource.Play();
     }
 
     private void Update()
@@ -83,65 +89,71 @@ public class MainMenuUIManager : MonoBehaviour
 
     IEnumerator PlayButtonDelay()
     {
-        loadingPanel.SetActive(true);
+        loadingPanel.SetActive(active);
         mainMenuAudioSource.Stop();
         yield return new WaitForSecondsRealtime(playButtonDelay);
-        Time.timeScale = 1f;
-        mainMenu.SetActive(false);
-        creditsMenu.SetActive(false);
-        secondaryCamera.enabled = false;
-        mainCamera.enabled = true;
         mainMenuAudioSource.Stop();
-        dot.SetActive(true);
-        taskText.SetActive(true);
-        loadingPanel.SetActive(false);
+        Time.timeScale = 1f;
+
+        mainMenu.SetActive(inactive);
+        creditsMenu.SetActive(inactive);
+        dot.SetActive(active);
+        taskText.SetActive(active);
+        taskChange.SetActive(active);
+        loadingPanel.SetActive(inactive);
+
+        secondaryCamera.enabled = inactive;
+        mainCamera.enabled = active;
+
         RoundManager.instance.currentState = GameState.playing;
     }
 
     public void ControlsButton()
     {
-        audioButton.SetActive(false);
-        controlsButton.SetActive(false);
-        graphicsButton.SetActive(false);
-        videoButton.SetActive(false);
+        audioButton.SetActive(inactive);
+        controlsButton.SetActive(inactive);
+        graphicsButton.SetActive(inactive);
+        videoButton.SetActive(inactive);
 
-        creditsMenu.SetActive(false);
-        controlsMenu.SetActive(true);
-        mainMenu.SetActive(false);
-        settingsMenu.SetActive(true);
+        creditsMenu.SetActive(inactive);
+        controlsMenu.SetActive(active);
+        mainMenu.SetActive(inactive);
+        settingsMenu.SetActive(active);
 
         RoundManager.instance.currentState = GameState.onMainMenu;
     }
 
     public void SettingsButton()
     {
-        settings.SetActive(true);
+        settings.SetActive(active);
 
-        audioButton.SetActive(true);
-        videoButton.SetActive(true);
-        graphicsButton.SetActive(true);
-        controlsButton.SetActive(true);
+        audioButton.SetActive(active);
+        videoButton.SetActive(active);
+        graphicsButton.SetActive(active);
+        controlsButton.SetActive(active);
 
-        audioMenu.SetActive(false);
-        videoMenu.SetActive(false);
-        graphicsMenu.SetActive(false);
-        mainMenu.SetActive(false);
-        creditsMenu.SetActive(false);
+        audioMenu.SetActive(inactive);
+        videoMenu.SetActive(inactive);
+        graphicsMenu.SetActive(inactive);
+        mainMenu.SetActive(inactive);
+        creditsMenu.SetActive(inactive);
 
-        backToGame.SetActive(false);
-        backToMenu.SetActive(true);
+        backToGame.SetActive(inactive);
+        backToMenu.SetActive(active);
 
-        taskText.SetActive(false);
+        taskText.SetActive(inactive);
+        taskChange.SetActive(inactive);
 
         RoundManager.instance.currentState = GameState.onSettings;
     }
 
     public void CreditsButton()
     {
-        mainMenu.SetActive(false);
-        creditsMenu.SetActive(true);
+        mainMenu.SetActive(inactive);
+        creditsMenu.SetActive(active);
 
-        taskText.SetActive(false);
+        taskText.SetActive(inactive);
+        taskChange.SetActive(inactive);
     }
 
     public void ExitButton()
@@ -151,64 +163,65 @@ public class MainMenuUIManager : MonoBehaviour
 
     public void BackToMenu()
     {
-        controlsMenu.SetActive(false);
-        settings.SetActive(false);
-        mainMenu.SetActive(true);
+        controlsMenu.SetActive(inactive);
+        settings.SetActive(inactive);
+        mainMenu.SetActive(active);
 
-        audioButton.SetActive(false);
-        videoButton.SetActive(false);
-        graphicsButton.SetActive(false);
-        controlsButton.SetActive(false);
-        creditsMenu.SetActive(false);
+        audioButton.SetActive(inactive);
+        videoButton.SetActive(inactive);
+        graphicsButton.SetActive(inactive);
+        controlsButton.SetActive(inactive);
+        creditsMenu.SetActive(inactive);
 
-        taskText.SetActive(false);
+        taskText.SetActive(inactive);
+        taskChange.SetActive(inactive);
 
         RoundManager.instance.currentState = GameState.onMainMenu;
     }
 
     public void BackToPrevious()
     {
-        audioButton.SetActive(true);
-        videoButton.SetActive(true);
-        graphicsButton.SetActive(true);
-        controlsButton.SetActive(true);
+        audioButton.SetActive(active);
+        videoButton.SetActive(active);
+        graphicsButton.SetActive(active);
+        controlsButton.SetActive(active);
 
-        mainMenu.SetActive(false) ;
-        audioMenu.SetActive(false);
-        videoMenu.SetActive(false);
-        graphicsMenu.SetActive(false);
-        controlsMenu.SetActive(false);
-        settingsMenu.SetActive(true);
+        mainMenu.SetActive(inactive) ;
+        audioMenu.SetActive(inactive);
+        videoMenu.SetActive(inactive);
+        graphicsMenu.SetActive(inactive);
+        controlsMenu.SetActive(inactive);
+        settingsMenu.SetActive(active);
 
         RoundManager.instance.currentState = GameState.onMainMenu;
     }
 
     public void AudioCategoryButton()
     {
-        audioMenu.SetActive(true);
+        audioMenu.SetActive(active);
 
-        audioButton.SetActive(false);
-        videoButton.SetActive(false);
-        graphicsButton.SetActive(false);
-        controlsButton.SetActive(false);
+        audioButton.SetActive(inactive);
+        videoButton.SetActive(inactive);
+        graphicsButton.SetActive(inactive);
+        controlsButton.SetActive(inactive);
     }
 
     public void VideoCategoryButton()
     {
-        videoMenu.SetActive(true);
-        videoButton.SetActive(false);
-        graphicsButton.SetActive(false);
-        audioButton.SetActive(false);
-        controlsButton.SetActive(false);
+        videoMenu.SetActive(active);
+        videoButton.SetActive(inactive);
+        graphicsButton.SetActive(inactive);
+        audioButton.SetActive(inactive);
+        controlsButton.SetActive(inactive);
     }
 
     public void GraphicsCategoryButton()
     {
-        graphicsMenu.SetActive(true);
-        graphicsButton.SetActive(false);
-        videoButton.SetActive(false);
-        audioButton.SetActive(false);
-        controlsButton.SetActive(false);
+        graphicsMenu.SetActive(active);
+        graphicsButton.SetActive(inactive);
+        videoButton.SetActive(inactive);
+        audioButton.SetActive(inactive);
+        controlsButton.SetActive(inactive);
     }
 
     public void HoverSoundEffect()

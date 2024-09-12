@@ -3,14 +3,21 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float playerSpeed;
-    public RaycastHit hit;
-    private Vector3 velocity;
+    private float gravity;
+    private bool active = true;
+    private bool inactive = false;
 
-    [SerializeField] private float gravity;
+    [Header("GAME OBJECTS")]
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject dot;
+    [SerializeField] private GameObject taskText;
+    [SerializeField] private GameObject taskChange;
+
+    [Header("OTHER")]
     [SerializeField] private CharacterController characterController;
     [SerializeField] private Animator playerAnimator;
+    public RaycastHit hit;
+    private Vector3 velocity;
 
     private void Start()
     {
@@ -46,11 +53,11 @@ public class PlayerController : MonoBehaviour
 
             if (moveDirection != Vector3.zero)
             {
-                playerAnimator.SetBool("isMoving", true);
+                playerAnimator.SetBool("isMoving", active);
             }
             else
             {
-                playerAnimator.SetBool("isMoving", false);
+                playerAnimator.SetBool("isMoving", inactive);
             }
         }
     }
@@ -69,15 +76,19 @@ public class PlayerController : MonoBehaviour
 
     public void PauseGame()
     {
-        pauseMenu.SetActive(true);
-        dot.SetActive(false);
+        pauseMenu.SetActive(active);
+        dot.SetActive(inactive);
+        taskText.SetActive(inactive);
+        taskChange.SetActive(inactive);
         RoundManager.instance.currentState = GameState.pause;
     }
 
     public void ResumeGame()
     {
-        pauseMenu.SetActive(false);
-        dot.SetActive(true);
+        pauseMenu.SetActive(inactive);
+        dot.SetActive(active);
+        taskText.SetActive(active);
+        taskChange.SetActive(active);
         RoundManager.instance.currentState = GameState.playing;
     }
 }

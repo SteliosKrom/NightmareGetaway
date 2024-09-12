@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class SettingsManager : MonoBehaviour
 {
-    [Header("TYPES")]
     private const string masterVol = "MasterVolume";
     private const string sfxVol = "SoundEffectsVolume";
     private const string menuVol = "MenuVolume";
+    private bool active = true;
+    private bool inactive = false;
 
-    [Header("CLASSES")]
+    [Header("OTHER")]
     [SerializeField] private AudioMixer myAudioMixer;
 
     [SerializeField] private Toggle fullscreenToggle;
@@ -42,26 +43,26 @@ public class SettingsManager : MonoBehaviour
 
     public void InitializeFPS()
     {
-        framesToggle.isOn = false;
-        displayFPS.SetActive(false);
+        framesToggle.isOn = inactive;
+        displayFPS.SetActive(inactive);
     }
 
     public void InitialiazeFullscreen()
     {
         if (Screen.fullScreen)
         {
-            fullscreenToggle.isOn = true;
+            fullscreenToggle.isOn = active;
         }
         else
         {
-            fullscreenToggle.isOn = false;
+            fullscreenToggle.isOn = inactive;
         }
     }
 
     public void InitializeVsyncAndAA()
     {
         QualitySettings.vSyncCount = 0;
-        vSyncToggle.isOn = false;
+        vSyncToggle.isOn = inactive;
 
         QualitySettings.antiAliasing = 0;
         antiAliasingDropdown.value = 0;
@@ -174,11 +175,11 @@ public class SettingsManager : MonoBehaviour
     {
         if (!framesToggle.isOn)
         {
-            displayFPS.SetActive(false);
+            displayFPS.SetActive(inactive);
         }
         else
         {
-            displayFPS.SetActive(true);
+            displayFPS.SetActive(active);
         }
     }
 }

@@ -4,15 +4,16 @@ using UnityEngine.UI;
 
 public class MainGameUIManager : MonoBehaviour
 {
+    private bool active = true;
+    private bool inactive = false;
 
-    [Header("CLASSES")]
-    public PlayerRespawn playerRespawn;
-
+    [Header("BUTTONS")]
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button settingsButton;
     [SerializeField] private Button homeButton;
     [SerializeField] private Button exitButton;
 
+    [Header("GAME OBJECTS")]
     [SerializeField] private GameObject settingsMenu;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject mainMenu;
@@ -27,64 +28,66 @@ public class MainGameUIManager : MonoBehaviour
     [SerializeField] private GameObject graphicsButton;
     [SerializeField] private GameObject dot;
     [SerializeField] private GameObject taskText;
-    [SerializeField] private GameObject taskFindTheRoomKeyText;
-    [SerializeField] private GameObject taskDrinkWaterText;
-    [SerializeField] private GameObject taskCheckForFoodText;
-    [SerializeField] private GameObject taskFindMobilePhoneText;
-    [SerializeField] private GameObject taskFindMainDoorKeyText;
+    [SerializeField] private GameObject taskChange;
 
+    [Header("OTHER")]
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Camera secondaryCamera;
-
     [SerializeField] private AudioSource mainMenuAudioSource;
+    [SerializeField] private PlayerRespawn playerRespawn;
 
     private void Start()
     {
-        settingsMenu.SetActive(false);
-        pauseMenu.SetActive(false);
+        settingsMenu.SetActive(inactive);
+        pauseMenu.SetActive(inactive);
     }
 
     public void ResumeButton()
     {
         Time.timeScale = 1.0f;
-        pauseMenu.SetActive(false);
-        dot.SetActive(true);
+
+        pauseMenu.SetActive(inactive);
+        dot.SetActive(active);
+        taskText.SetActive(active);
+        taskChange.SetActive(active);
+
         RoundManager.instance.currentState = GameState.playing;
     }
 
     public void SettingsButton()
     {
-        pauseMenu.SetActive(false);
-        settingsMenu.SetActive(true);
-        audioButton.SetActive(true);
-        videoButton.SetActive(true);
-        graphicsButton.SetActive(true);
-        controlsButton.SetActive(true);
-        audioMenu.SetActive(false);
-        videoMenu.SetActive(false);
-        graphicsMenu.SetActive(false);
-        backToMenu.SetActive(false);
-        backToGame.SetActive(true);
+        pauseMenu.SetActive(inactive);
+        settingsMenu.SetActive(active);
+        audioMenu.SetActive(inactive);
+        videoMenu.SetActive(inactive);
+        graphicsMenu.SetActive(inactive);
+        backToMenu.SetActive(inactive);
+
+        audioButton.SetActive(active);
+        videoButton.SetActive(active);
+        graphicsButton.SetActive(active);
+        controlsButton.SetActive(active);
+
+        backToGame.SetActive(active);
+        taskText.SetActive(inactive);
+        taskChange.SetActive(inactive);
+
         RoundManager.instance.currentState = GameState.onSettings;
     }
 
     public void HomeButton()
     {
         Time.timeScale = 1f;
-        pauseMenu.SetActive(false);
-        mainMenu.SetActive(true);
-        settingsMenu.SetActive(false);
-        mainCamera.enabled = false;
-        secondaryCamera.enabled = true;
+        pauseMenu.SetActive(inactive);
+        mainMenu.SetActive(active);
+        settingsMenu.SetActive(inactive);
+        mainCamera.enabled = inactive;
+        secondaryCamera.enabled = active;
         mainMenuAudioSource.Play();
-        dot.SetActive(false);
+        dot.SetActive(inactive);
         playerRespawn.Respawn();
-        taskText.SetActive(false);
-        taskFindMainDoorKeyText.SetActive(false);
-        taskFindMobilePhoneText.SetActive(false);
-        taskCheckForFoodText.SetActive(false);
-        taskDrinkWaterText.SetActive(false);
-        taskFindTheRoomKeyText.SetActive(false);
+        taskText.SetActive(inactive);
+        taskChange.SetActive(inactive);
         SceneManager.LoadScene("MainGameScene");
         RoundManager.instance.currentState = GameState.onMainMenu;
     }
@@ -97,8 +100,10 @@ public class MainGameUIManager : MonoBehaviour
     public void BackToGameButton()
     {
         Time.timeScale = 0f;
-        pauseMenu.SetActive(true);
-        settingsMenu.SetActive(false);
+        pauseMenu.SetActive(active);
+        settingsMenu.SetActive(inactive);
+        taskChange.SetActive(inactive);
+        taskText.SetActive(inactive);
         RoundManager.instance.currentState = GameState.pause;
     }
 }
