@@ -10,6 +10,7 @@ TagManager:
   - MainDoorKey
   - Phone
   - Food
+  - Flashlight
   layers:
   - Default
   - TransparentFX

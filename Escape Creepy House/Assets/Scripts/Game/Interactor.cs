@@ -6,14 +6,21 @@ public class Interactor : MonoBehaviour
 {
     [SerializeField] private TaskManager taskManager;
 
-    [Header("GAME OBJECTS")]
-    public GameObject foundItem;
-    public GameObject interactionUI;
+    [Header("AUDIO")]
+    public AudioSource equipKeysAudioSource;
+    public AudioSource drinkAudioSource;
+    public AudioSource eatAudioSource;
+
+    public AudioClip drinkAudioclip;
+    public AudioClip eatAudioClip;
+    public AudioClip equipKeysAudioClip;
 
     [Header("OTHER")]
     public Transform interactionSource;
     public Flashlight flashlight;
     public TextMeshProUGUI foundItemText;
+    public GameObject foundItem;
+    public GameObject interactionUI;
 
     public float interactionRange;
     public bool hasFlashlight = false;
@@ -65,30 +72,45 @@ public class Interactor : MonoBehaviour
                 if (interactable.gameObject.CompareTag("RoomKey"))
                 {
                     taskManager.CompleteTask();
+                    StartCoroutine(DisplayFoundItemText());
+                    AudioManager.instance.PlaySound(equipKeysAudioSource, equipKeysAudioClip);
                 }
                 else if (interactable.gameObject.CompareTag("WaterGlass"))
                 {
                     taskManager.CompleteTask();
+                    AudioManager.instance.PlaySound(drinkAudioSource, drinkAudioclip);
                 }
-                else if (interactable.gameObject.CompareTag("Pizza"))
-                {
+                else if (interactable.gameObject.CompareTag("Food"))
+                {   
                     taskManager.CompleteTask();
+                    AudioManager.instance.PlaySound(eatAudioSource, eatAudioClip);
                 }
                 else if (interactable.gameObject.CompareTag("Phone"))
                 {
                     taskManager.CompleteTask();
+                    StartCoroutine(DisplayFoundItemText());
+                }
+                else if (interactable.gameObject.CompareTag("Flashlight"))
+                {
+                    StartCoroutine(DisplayFoundItemText());
+                    hasFlashlight = true;
+                }
+                else if (interactable.gameObject.CompareTag("GarageKey"))
+                {
+                    StartCoroutine(DisplayFoundItemText());
+                    AudioManager.instance.PlaySound(equipKeysAudioSource, equipKeysAudioClip);
                 }
                 else if (interactable.gameObject.CompareTag("MainDoorKey"))
                 {
                     taskManager.CompleteTask();
+                    StartCoroutine(DisplayFoundItemText());
+                    AudioManager.instance.PlaySound(equipKeysAudioSource, equipKeysAudioClip);
                 }
-
-                StartCoroutine(DisplayFoundItemText());
             }
         }
     }
 
-    private IEnumerator DisplayFoundItemText()
+    public IEnumerator DisplayFoundItemText()
     {
         foundItem.SetActive(active);
         yield return new WaitForSeconds(1f);

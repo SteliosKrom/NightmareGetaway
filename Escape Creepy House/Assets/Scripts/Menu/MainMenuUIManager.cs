@@ -6,7 +6,7 @@ public class MainMenuUIManager : MonoBehaviour
 {
     private readonly float movementSpeed = 1f;
     private readonly float movementRange = 0.5f;
-    private readonly float playButtonDelay = 6f;
+    private readonly float playButtonDelay = 1f;
     private bool active = true;
     private bool inactive = false;
 
