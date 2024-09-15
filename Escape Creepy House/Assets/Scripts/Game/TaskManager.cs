@@ -10,7 +10,7 @@ public class TaskManager : MonoBehaviour
         "Find the room key!",
         "Go to the kitchen and drink water!",
         "Search for food in the kitchen!",
-        "Find out your mobile phone! First, look for the garage key outdoors.",
+        "Find out your mobile phone to call for help!",
         "Search for the main door key!",
         "Escape the house!",
     };

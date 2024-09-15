@@ -18,8 +18,12 @@ public class Interactor : MonoBehaviour
     [Header("OTHER")]
     public Transform interactionSource;
     public Flashlight flashlight;
-    public TextMeshProUGUI foundItemText;
-    public GameObject foundItem;
+
+    public GameObject foundGarageKey;
+    public GameObject foundFlashlight;
+    public GameObject foundMainDoorKey;
+    public GameObject foundRoomKey;
+    public GameObject foundPhone;
     public GameObject interactionUI;
 
     public float interactionRange;
@@ -30,12 +34,12 @@ public class Interactor : MonoBehaviour
     private void Start()
     {
         hasFlashlight = inactive;
-        foundItem.SetActive(inactive);
-
-        if (interactionUI != null)
-        {
-            interactionUI.SetActive(inactive);
-        }
+        foundFlashlight.SetActive(inactive);
+        foundRoomKey.SetActive(inactive);
+        foundMainDoorKey.SetActive(inactive);
+        foundGarageKey.SetActive(inactive);
+        foundPhone.SetActive(inactive);
+        interactionUI.SetActive(inactive);
     }
 
     void Update()
@@ -55,7 +59,7 @@ public class Interactor : MonoBehaviour
                 flashlight.Toggle();
             }
         }
-    }
+    }    
 
     public void TryInteract()
     {
@@ -72,49 +76,42 @@ public class Interactor : MonoBehaviour
                 if (interactable.gameObject.CompareTag("RoomKey"))
                 {
                     taskManager.CompleteTask();
-                    StartCoroutine(DisplayFoundItemText());
+                    StartCoroutine(DisplayFoundRoomkeyText());
                     AudioManager.instance.PlaySound(equipKeysAudioSource, equipKeysAudioClip);
                 }
-                else if (interactable.gameObject.CompareTag("WaterGlass"))
+                if (interactable.gameObject.CompareTag("WaterGlass"))
                 {
                     taskManager.CompleteTask();
                     AudioManager.instance.PlaySound(drinkAudioSource, drinkAudioclip);
                 }
-                else if (interactable.gameObject.CompareTag("Food"))
+                if (interactable.gameObject.CompareTag("Food"))
                 {   
                     taskManager.CompleteTask();
                     AudioManager.instance.PlaySound(eatAudioSource, eatAudioClip);
                 }
-                else if (interactable.gameObject.CompareTag("Phone"))
+                if (interactable.gameObject.CompareTag("Phone"))
                 {
                     taskManager.CompleteTask();
-                    StartCoroutine(DisplayFoundItemText());
+                    StartCoroutine(DisplayFoundPhoneText());
                 }
-                else if (interactable.gameObject.CompareTag("Flashlight"))
+                if (interactable.gameObject.CompareTag("Flashlight"))
                 {
-                    StartCoroutine(DisplayFoundItemText());
                     hasFlashlight = true;
+                    StartCoroutine(DisplayFoundFlashlightText());
                 }
-                else if (interactable.gameObject.CompareTag("GarageKey"))
+                if (interactable.gameObject.CompareTag("GarageKey"))
                 {
-                    StartCoroutine(DisplayFoundItemText());
+                    StartCoroutine(DisplayFoundGarageKeyText());
                     AudioManager.instance.PlaySound(equipKeysAudioSource, equipKeysAudioClip);
                 }
-                else if (interactable.gameObject.CompareTag("MainDoorKey"))
+                if (interactable.gameObject.CompareTag("MainDoorKey"))
                 {
                     taskManager.CompleteTask();
-                    StartCoroutine(DisplayFoundItemText());
+                    StartCoroutine(DisplayFoundMainDoorKeyText());
                     AudioManager.instance.PlaySound(equipKeysAudioSource, equipKeysAudioClip);
                 }
             }
         }
-    }
-
-    public IEnumerator DisplayFoundItemText()
-    {
-        foundItem.SetActive(active);
-        yield return new WaitForSeconds(1f);
-        foundItem.SetActive(inactive);
     }
 
     public void DetectInteractable()
@@ -148,13 +145,38 @@ public class Interactor : MonoBehaviour
         }
     }
 
-    public void OpenFoundItemTextDelay()
+    public IEnumerator DisplayFoundFlashlightText()
     {
-        foundItem.SetActive(active);
+        foundFlashlight.SetActive(active);
+        yield return new WaitForSeconds(1f);
+        foundFlashlight.SetActive(inactive);
     }
 
-    public void CloseFoundItemTextDelay()
+    public IEnumerator DisplayFoundGarageKeyText()
     {
-        foundItem.SetActive(inactive);
+        foundGarageKey.SetActive(active);
+        yield return new WaitForSeconds(1f);
+        foundGarageKey.SetActive(inactive);
+    }
+
+    public IEnumerator DisplayFoundMainDoorKeyText()
+    {
+        foundMainDoorKey.SetActive(active);
+        yield return new WaitForSeconds(1f);
+        foundMainDoorKey.SetActive(inactive);
+    }
+
+    public IEnumerator DisplayFoundRoomkeyText()
+    {
+        foundRoomKey.SetActive(active);
+        yield return new WaitForSeconds(1f);
+        foundRoomKey.SetActive(inactive);
+    }
+
+    public IEnumerator DisplayFoundPhoneText()
+    {
+        foundPhone.SetActive(active);
+        yield return new WaitForSeconds(1f);
+        foundPhone.SetActive(inactive);
     }
 }
