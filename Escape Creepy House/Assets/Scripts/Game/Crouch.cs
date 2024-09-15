@@ -16,7 +16,6 @@ namespace CrouchSystem
         private bool isCrouching = false;
         private float originalHeight;
         private float crouchHeight = 1f;
-        private float crouchSpeed = 1.5f;
 
         private void Start()
         {

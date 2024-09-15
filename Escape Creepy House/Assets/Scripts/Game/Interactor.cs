@@ -79,32 +79,32 @@ public class Interactor : MonoBehaviour
                     StartCoroutine(DisplayFoundRoomkeyText());
                     AudioManager.instance.PlaySound(equipKeysAudioSource, equipKeysAudioClip);
                 }
-                if (interactable.gameObject.CompareTag("WaterGlass"))
+                else if (interactable.gameObject.CompareTag("WaterGlass"))
                 {
                     taskManager.CompleteTask();
                     AudioManager.instance.PlaySound(drinkAudioSource, drinkAudioclip);
                 }
-                if (interactable.gameObject.CompareTag("Food"))
+                else if (interactable.gameObject.CompareTag("Food"))
                 {   
                     taskManager.CompleteTask();
                     AudioManager.instance.PlaySound(eatAudioSource, eatAudioClip);
                 }
-                if (interactable.gameObject.CompareTag("Phone"))
+                else if (interactable.gameObject.CompareTag("Phone"))
                 {
                     taskManager.CompleteTask();
                     StartCoroutine(DisplayFoundPhoneText());
                 }
-                if (interactable.gameObject.CompareTag("Flashlight"))
+                else if (interactable.gameObject.CompareTag("Flashlight"))
                 {
                     hasFlashlight = true;
                     StartCoroutine(DisplayFoundFlashlightText());
                 }
-                if (interactable.gameObject.CompareTag("GarageKey"))
+                else if (interactable.gameObject.CompareTag("GarageKey"))
                 {
                     StartCoroutine(DisplayFoundGarageKeyText());
                     AudioManager.instance.PlaySound(equipKeysAudioSource, equipKeysAudioClip);
                 }
-                if (interactable.gameObject.CompareTag("MainDoorKey"))
+                else if (interactable.gameObject.CompareTag("MainDoorKey"))
                 {
                     taskManager.CompleteTask();
                     StartCoroutine(DisplayFoundMainDoorKeyText());
@@ -130,6 +130,10 @@ public class Interactor : MonoBehaviour
             {
                 interactionUI.SetActive(inactive);
             }
+        }
+        else
+        {
+            interactionUI.SetActive(inactive);
         }
     }
 
