@@ -18,13 +18,18 @@ public class Interactor : MonoBehaviour
     [Header("OTHER")]
     public Transform interactionSource;
     public Flashlight flashlight;
-
     public GameObject foundGarageKey;
     public GameObject foundFlashlight;
     public GameObject foundMainDoorKey;
     public GameObject foundRoomKey;
     public GameObject foundPhone;
     public GameObject interactionUI;
+    public GameObject roomKey;
+    public GameObject mainDoorKey;
+    public GameObject garageKey;
+    public GameObject waterGlass;
+    public GameObject food;
+    public GameObject phone;
 
     public float interactionRange;
     public bool hasFlashlight = false;
@@ -40,18 +45,24 @@ public class Interactor : MonoBehaviour
         foundGarageKey.SetActive(inactive);
         foundPhone.SetActive(inactive);
         interactionUI.SetActive(inactive);
+        roomKey.SetActive(active);
+        mainDoorKey.SetActive(inactive);
+        food.SetActive(inactive);
+        phone.SetActive(inactive);
+        waterGlass.SetActive(inactive);
+        garageKey.SetActive(inactive);
     }
 
     void Update()
     {
         DetectInteractable();
         DebugRaycast();
+        InputForInteraction();
+        InputForFlashlight();
+    } 
 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            TryInteract();
-        }
-
+    public void InputForFlashlight()
+    {
         if (hasFlashlight && Input.GetKeyDown(KeyCode.F))
         {
             if (RoundManager.instance.currentState != GameState.pause && RoundManager.instance.currentState != GameState.onSettings && RoundManager.instance.currentState != GameState.onMainMenu)
@@ -59,7 +70,15 @@ public class Interactor : MonoBehaviour
                 flashlight.Toggle();
             }
         }
-    }    
+    }
+
+    public void InputForInteraction()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            TryInteract();
+        }
+    }
 
     public void TryInteract()
     {
@@ -69,47 +88,61 @@ public class Interactor : MonoBehaviour
         if (Physics.Raycast(ray, out hit, interactionRange))
         {
             Interactable interactable = hit.collider.GetComponent<Interactable>();
+            Door door = hit.collider.GetComponent<Door>();
+            HandleInteractableGameObject(interactable, door);
+        }
+    }
 
-            if (interactable != null)
+    public void HandleInteractableGameObject(Interactable interactable, Door door)
+    {
+        if (interactable != null)
+        {
+            interactable.OnInteract();
+            if (interactable.gameObject.CompareTag("RoomKey"))
             {
-                interactable.OnInteract();
-                if (interactable.gameObject.CompareTag("RoomKey"))
-                {
-                    taskManager.CompleteTask();
-                    StartCoroutine(DisplayFoundRoomkeyText());
-                    AudioManager.instance.PlaySound(equipKeysAudioSource, equipKeysAudioClip);
-                }
-                else if (interactable.gameObject.CompareTag("WaterGlass"))
-                {
-                    taskManager.CompleteTask();
-                    AudioManager.instance.PlaySound(drinkAudioSource, drinkAudioclip);
-                }
-                else if (interactable.gameObject.CompareTag("Food"))
-                {   
-                    taskManager.CompleteTask();
-                    AudioManager.instance.PlaySound(eatAudioSource, eatAudioClip);
-                }
-                else if (interactable.gameObject.CompareTag("Phone"))
-                {
-                    taskManager.CompleteTask();
-                    StartCoroutine(DisplayFoundPhoneText());
-                }
-                else if (interactable.gameObject.CompareTag("Flashlight"))
-                {
-                    hasFlashlight = true;
-                    StartCoroutine(DisplayFoundFlashlightText());
-                }
-                else if (interactable.gameObject.CompareTag("GarageKey"))
-                {
-                    StartCoroutine(DisplayFoundGarageKeyText());
-                    AudioManager.instance.PlaySound(equipKeysAudioSource, equipKeysAudioClip);
-                }
-                else if (interactable.gameObject.CompareTag("MainDoorKey"))
-                {
-                    taskManager.CompleteTask();
-                    StartCoroutine(DisplayFoundMainDoorKeyText());
-                    AudioManager.instance.PlaySound(equipKeysAudioSource, equipKeysAudioClip);
-                }
+                taskManager.CompleteTask();
+                StartCoroutine(DisplayFoundRoomkeyText());
+                waterGlass.SetActive(active);
+                AudioManager.instance.PlaySound(equipKeysAudioSource, equipKeysAudioClip);
+            }
+            else if (interactable.gameObject.CompareTag("WaterGlass"))
+            {
+                taskManager.CompleteTask();
+                food.SetActive(active);
+                AudioManager.instance.PlaySound(drinkAudioSource, drinkAudioclip);
+            }
+            else if (interactable.gameObject.CompareTag("Food"))
+            {
+                taskManager.CompleteTask();
+                garageKey.SetActive(active);
+                AudioManager.instance.PlaySound(eatAudioSource, eatAudioClip);
+            }
+            else if (interactable.gameObject.CompareTag("Phone"))
+            {
+                taskManager.CompleteTask();
+                mainDoorKey.SetActive(active);
+                StartCoroutine(DisplayFoundPhoneText());
+            }
+            else if (interactable.gameObject.CompareTag("Flashlight"))
+            {
+                hasFlashlight = true;
+                StartCoroutine(DisplayFoundFlashlightText());
+            }
+            else if (interactable.gameObject.CompareTag("GarageKey"))
+            {
+                StartCoroutine(DisplayFoundGarageKeyText());
+                phone.SetActive(active);
+                AudioManager.instance.PlaySound(equipKeysAudioSource, equipKeysAudioClip);
+            }
+            else if (interactable.gameObject.CompareTag("MainDoorKey"))
+            {
+                taskManager.CompleteTask();
+                StartCoroutine(DisplayFoundMainDoorKeyText());
+                AudioManager.instance.PlaySound(equipKeysAudioSource, equipKeysAudioClip);
+            }
+            else if (door.gameObject.CompareTag("KidsRoomDoor"))
+            {
+                door.SetTheDoorRotation();
             }
         }
     }
@@ -122,7 +155,17 @@ public class Interactor : MonoBehaviour
         if (Physics.Raycast(ray, out hit, interactionRange))
         {
             Interactable interactable = hit.collider.GetComponent<Interactable>();
+            Door door = hit.collider.GetComponent<Door>();
             if (interactable != null && RoundManager.instance.currentState != GameState.pause && RoundManager.instance.currentState != GameState.onSettings)
+            {
+                interactionUI.SetActive(active);
+            }
+            else
+            {
+                interactionUI.SetActive(inactive);
+            }
+
+            if (door != null && RoundManager.instance.currentState != GameState.pause && RoundManager.instance.currentState != GameState.onSettings)
             {
                 interactionUI.SetActive(active);
             }

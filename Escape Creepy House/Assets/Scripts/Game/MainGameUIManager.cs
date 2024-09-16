@@ -27,7 +27,6 @@ public class MainGameUIManager : MonoBehaviour
     [SerializeField] private GameObject controlsButton;
     [SerializeField] private GameObject graphicsButton;
     [SerializeField] private GameObject dot;
-    [SerializeField] private GameObject taskText;
     [SerializeField] private GameObject taskChange;
 
     [Header("OTHER")]
@@ -48,7 +47,6 @@ public class MainGameUIManager : MonoBehaviour
 
         pauseMenu.SetActive(inactive);
         dot.SetActive(active);
-        taskText.SetActive(active);
         taskChange.SetActive(active);
 
         RoundManager.instance.currentState = GameState.playing;
@@ -69,7 +67,6 @@ public class MainGameUIManager : MonoBehaviour
         controlsButton.SetActive(active);
 
         backToGame.SetActive(active);
-        taskText.SetActive(inactive);
         taskChange.SetActive(inactive);
 
         RoundManager.instance.currentState = GameState.onSettings;
@@ -86,7 +83,6 @@ public class MainGameUIManager : MonoBehaviour
         mainMenuAudioSource.Play();
         dot.SetActive(inactive);
         playerRespawn.Respawn();
-        taskText.SetActive(inactive);
         taskChange.SetActive(inactive);
         SceneManager.LoadScene("MainGameScene");
         RoundManager.instance.currentState = GameState.onMainMenu;
@@ -103,7 +99,6 @@ public class MainGameUIManager : MonoBehaviour
         pauseMenu.SetActive(active);
         settingsMenu.SetActive(inactive);
         taskChange.SetActive(inactive);
-        taskText.SetActive(inactive);
         RoundManager.instance.currentState = GameState.pause;
     }
 }

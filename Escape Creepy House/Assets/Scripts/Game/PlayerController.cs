@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     [Header("GAME OBJECTS")]
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject dot;
-    [SerializeField] private GameObject taskText;
     [SerializeField] private GameObject taskChange;
     [SerializeField] private GameObject foundItemMessage;
 
@@ -79,7 +78,6 @@ public class PlayerController : MonoBehaviour
     {
         pauseMenu.SetActive(active);
         dot.SetActive(inactive);
-        taskText.SetActive(inactive);
         taskChange.SetActive(inactive);
         foundItemMessage.SetActive(inactive);
         Time.timeScale = 0f;
@@ -90,7 +88,6 @@ public class PlayerController : MonoBehaviour
     {
         pauseMenu.SetActive(inactive);
         dot.SetActive(active);
-        taskText.SetActive(active);
         taskChange.SetActive(active);
         Time.timeScale = 1f;
         RoundManager.instance.currentState = GameState.playing;

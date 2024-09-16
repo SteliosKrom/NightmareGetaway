@@ -35,7 +35,6 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private GameObject backToMenu;
     [SerializeField] private GameObject backToGame;
     [SerializeField] private GameObject dot;
-    [SerializeField] private GameObject taskText;
     [SerializeField] private GameObject taskChange;
     [SerializeField] private GameObject loadingPanel;
 
@@ -63,7 +62,6 @@ public class MainMenuUIManager : MonoBehaviour
         mainCamera.enabled = inactive;
 
         dot.SetActive(inactive);
-        taskText.SetActive(inactive);
         taskChange.SetActive(inactive);
         loadingPanel.SetActive(inactive);
 
@@ -98,7 +96,6 @@ public class MainMenuUIManager : MonoBehaviour
         mainMenu.SetActive(inactive);
         creditsMenu.SetActive(inactive);
         dot.SetActive(active);
-        taskText.SetActive(active);
         taskChange.SetActive(active);
         loadingPanel.SetActive(inactive);
 
@@ -141,7 +138,6 @@ public class MainMenuUIManager : MonoBehaviour
         backToGame.SetActive(inactive);
         backToMenu.SetActive(active);
 
-        taskText.SetActive(inactive);
         taskChange.SetActive(inactive);
 
         RoundManager.instance.currentState = GameState.onSettings;
@@ -152,7 +148,6 @@ public class MainMenuUIManager : MonoBehaviour
         mainMenu.SetActive(inactive);
         creditsMenu.SetActive(active);
 
-        taskText.SetActive(inactive);
         taskChange.SetActive(inactive);
     }
 
@@ -173,7 +168,6 @@ public class MainMenuUIManager : MonoBehaviour
         controlsButton.SetActive(inactive);
         creditsMenu.SetActive(inactive);
 
-        taskText.SetActive(inactive);
         taskChange.SetActive(inactive);
 
         RoundManager.instance.currentState = GameState.onMainMenu;

@@ -11,6 +11,10 @@ TagManager:
   - Phone
   - Food
   - Flashlight
+  - KidsRoomDoor
+  - GarageDoor
+  - MainDoor
+  - OtherDoor
   layers:
   - Default
   - TransparentFX
