@@ -88,12 +88,11 @@ public class Interactor : MonoBehaviour
         if (Physics.Raycast(ray, out hit, interactionRange))
         {
             Interactable interactable = hit.collider.GetComponent<Interactable>();
-            Door door = hit.collider.GetComponent<Door>();
-            HandleInteractableGameObject(interactable, door);
+            HandleInteractableGameObject(interactable);
         }
     }
 
-    public void HandleInteractableGameObject(Interactable interactable, Door door)
+    public void HandleInteractableGameObject(Interactable interactable)
     {
         if (interactable != null)
         {
@@ -140,10 +139,6 @@ public class Interactor : MonoBehaviour
                 StartCoroutine(DisplayFoundMainDoorKeyText());
                 AudioManager.instance.PlaySound(equipKeysAudioSource, equipKeysAudioClip);
             }
-            else if (door.gameObject.CompareTag("KidsRoomDoor"))
-            {
-                door.SetTheDoorRotation();
-            }
         }
     }
 
@@ -156,6 +151,7 @@ public class Interactor : MonoBehaviour
         {
             Interactable interactable = hit.collider.GetComponent<Interactable>();
             Door door = hit.collider.GetComponent<Door>();
+
             if (interactable != null && RoundManager.instance.currentState != GameState.pause && RoundManager.instance.currentState != GameState.onSettings)
             {
                 interactionUI.SetActive(active);
