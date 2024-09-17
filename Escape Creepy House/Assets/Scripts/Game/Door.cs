@@ -1,18 +1,49 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Animator doorAnimator;
+
+    private bool isOpen;
+    private bool active = true;
+    private bool inactive = false;
+
+    private void Start()
     {
-        
+        isOpen = inactive;
+        doorAnimator.SetBool("IsOpen", inactive);
+        doorAnimator.SetBool("IsClosed", inactive);
+        doorAnimator.SetBool("IsIdle", active);
     }
 
-    // Update is called once per frame
-    void Update()
+    public virtual void OnInteract()
     {
-        
+        DoorInteraction();
+    }
+
+    public void DoorInteraction()
+    {
+        if (isOpen == inactive)
+        {
+            DoorOpens();
+        }
+        else if (isOpen == active)
+        {
+            DoorCloses();
+        }
+    }
+
+    public void DoorOpens()
+    {
+        doorAnimator.SetBool("IsOpen", active);
+        doorAnimator.SetBool("IsClosed", inactive);
+        isOpen = active;
+    }
+
+    public void DoorCloses()
+    {
+        doorAnimator.SetBool("IsOpen", inactive);
+        doorAnimator.SetBool("IsClosed", active);
+        isOpen = inactive;
     }
 }

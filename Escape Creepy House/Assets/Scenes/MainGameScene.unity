@@ -23793,6 +23793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fa0aec8de271b34db80709c52ed6b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorAnimator: {fileID: 0}
 --- !u!23 &1591783672
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -27331,6 +27332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fa0aec8de271b34db80709c52ed6b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorAnimator: {fileID: 0}
 --- !u!65 &1958977546
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31107,6 +31109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fa0aec8de271b34db80709c52ed6b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorAnimator: {fileID: 0}
 --- !u!33 &98772035486915361
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -46032,6 +46035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fa0aec8de271b34db80709c52ed6b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorAnimator: {fileID: 0}
 --- !u!65 &2757747773523388629
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -48209,6 +48213,7 @@ GameObject:
   - component: {fileID: 459030148759973040}
   - component: {fileID: 7281349015246573689}
   - component: {fileID: 7500702359889987371}
+  - component: {fileID: 7500702359889987373}
   - component: {fileID: 7500702359889987372}
   m_Layer: 0
   m_Name: KidsRoomDoor
@@ -64065,6 +64070,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fa0aec8de271b34db80709c52ed6b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorAnimator: {fileID: 0}
 --- !u!65 &5875958992161219314
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -75540,13 +75546,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3187674417498401385}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalRotation: {x: -0.7069834, y: 0, z: 0, w: 0.7072302}
   m_LocalPosition: {x: 60.952442, y: 45.0906, z: 69.419624}
   m_LocalScale: {x: 250.25, y: 250.25, z: 250.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 434200977}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 0}
 --- !u!65 &7500702359889987371
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -75566,8 +75572,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0055, y: 0.00273845, z: 0.0069999998}
-  m_Center: {x: 0.006455832, y: 0.00010924311, z: -0.0013898431}
+  m_Size: {x: 0.0055413162, y: 0.00273845, z: 0.0069999998}
+  m_Center: {x: 0.0064351605, y: 0.00010924311, z: -0.0013898431}
 --- !u!114 &7500702359889987372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75580,6 +75586,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b3fc17fbc37b574a9d68b6ed1d84e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorAnimator: {fileID: 7500702359889987373}
+--- !u!95 &7500702359889987373
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3187674417498401385}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bd6b8a4e76196c04090d834805de8328, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7508164618550325118
 GameObject:
   m_ObjectHideFlags: 0
@@ -78908,6 +78936,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fa0aec8de271b34db80709c52ed6b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorAnimator: {fileID: 0}
 --- !u!65 &7969529964354917788
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -79706,8 +79735,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0055, y: 0.0023418348, z: 0.0069999998}
-  m_Center: {x: 0.006770157, y: -0.00002452984, z: -0.00082588097}
+  m_Size: {x: 0.0054467535, y: 0.0023418348, z: 0.0069999998}
+  m_Center: {x: 0.006796774, y: -0.000024529842, z: -0.00082588097}
 --- !u!33 &8022840924046610867
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -81574,8 +81603,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0054876218, y: 0.0020424207, z: 0.0075087235}
-  m_Center: {x: 0.0064945607, y: 0.00016761599, z: -0.0012373448}
+  m_Size: {x: 0.0053223497, y: 0.0020424207, z: 0.0075087235}
+  m_Center: {x: 0.0065771947, y: 0.00016761599, z: -0.0012373448}
 --- !u!4 &8206953490821858057
 Transform:
   m_ObjectHideFlags: 0
@@ -83520,8 +83549,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0054999953, y: 0.0024937391, z: 0.0070149526}
-  m_Center: {x: 0.006636343, y: 0.000103381964, z: -0.0011316213}
+  m_Size: {x: 0.0056805117, y: 0.0024937391, z: 0.007014948}
+  m_Center: {x: 0.006546079, y: 0.000103381964, z: -0.0011316218}
 --- !u!4 &8524764018967819712
 Transform:
   m_ObjectHideFlags: 0
@@ -85564,8 +85593,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0055023786, y: 0.0025113134, z: 0.0073683844}
-  m_Center: {x: 0.0065157735, y: 0.00018236758, z: -0.001272986}
+  m_Size: {x: 0.0055063455, y: 0.0025113134, z: 0.0073683844}
+  m_Center: {x: 0.0065137744, y: 0.00018236758, z: -0.001272986}
 --- !u!4 &8783091060557956093
 Transform:
   m_ObjectHideFlags: 0
@@ -87716,8 +87745,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0058185277, y: 0.0028500399, z: 0.0073134718}
-  m_Center: {x: 0.006442068, y: 0.00013623324, z: -0.00095511007}
+  m_Size: {x: 0.0057543516, y: 0.0028500399, z: 0.0073134718}
+  m_Center: {x: 0.006474143, y: 0.00013623324, z: -0.00095511007}
 --- !u!33 &9051536816755775004
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -87745,8 +87774,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0055, y: 0.0026839615, z: 0.007}
-  m_Center: {x: 0.0064862543, y: 0.00009078472, z: -0.0011361688}
+  m_Size: {x: 0.0053770174, y: 0.0026839615, z: 0.007}
+  m_Center: {x: 0.00654774, y: 0.00009078472, z: -0.001136169}
 --- !u!4 &9051787039996695276
 Transform:
   m_ObjectHideFlags: 0
@@ -88451,6 +88480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fa0aec8de271b34db80709c52ed6b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorAnimator: {fileID: 0}
 --- !u!65 &9182066677834488772
 BoxCollider:
   m_ObjectHideFlags: 0
