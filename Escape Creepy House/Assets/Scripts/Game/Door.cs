@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    public Animator doorAnimator;
+    public Animator KidsDoorAnimator;
+    public Animator bathroomAnimator;
 
     private bool isOpen;
     private bool active = true;
@@ -11,39 +12,73 @@ public class Door : MonoBehaviour
     private void Start()
     {
         isOpen = inactive;
-        doorAnimator.SetBool("IsOpen", inactive);
-        doorAnimator.SetBool("IsClosed", inactive);
-        doorAnimator.SetBool("IsIdle", active);
+        KidsDoorAnimator.SetBool("IsOpen", inactive);
+        KidsDoorAnimator.SetBool("IsClosed", inactive);
+        KidsDoorAnimator.SetBool("IsIdle", active);
+        bathroomAnimator.SetBool("Opened", inactive);
+        bathroomAnimator.SetBool("Closed", inactive);
+        bathroomAnimator.SetBool("Idle", active);
     }
 
-    public virtual void OnInteract()
+    public virtual void OnKidsDoorInteract()
     {
-        DoorInteraction();
+        KidsDoorInteraction();
     }
 
-    public void DoorInteraction()
+    public virtual void OnBathroomDoorInteract()
+    {
+        BathroomDoorInteraction();
+    }
+
+    public void BathroomDoorInteraction()
     {
         if (isOpen == inactive)
         {
-            DoorOpens();
+            BathroomDoorOpens();
         }
-        else if (isOpen == active)
+        else
         {
-            DoorCloses();
+            BathroomDoorCloses();
         }
     }
 
-    public void DoorOpens()
+    public void BathroomDoorOpens()
     {
-        doorAnimator.SetBool("IsOpen", active);
-        doorAnimator.SetBool("IsClosed", inactive);
+        bathroomAnimator.SetBool("Opened", active);
+        bathroomAnimator.SetBool("Closed", inactive);
         isOpen = active;
     }
 
-    public void DoorCloses()
+    public void BathroomDoorCloses()
     {
-        doorAnimator.SetBool("IsOpen", inactive);
-        doorAnimator.SetBool("IsClosed", active);
+        bathroomAnimator.SetBool("Opened", inactive);
+        bathroomAnimator.SetBool("Closed", active);
+        isOpen = inactive;
+    }
+
+    public void KidsDoorInteraction()
+    {
+        if (isOpen == inactive)
+        {
+            KidsDoorOpens();
+        }
+        else
+        {
+            KidsDoorCloses();
+        }
+    }
+
+    public void KidsDoorOpens()
+    {
+        KidsDoorAnimator.SetBool("IsOpen", active);
+        KidsDoorAnimator.SetBool("IsClosed", inactive);
+        isOpen = active;
+    }
+
+    public void KidsDoorCloses()
+    {
+        KidsDoorAnimator.SetBool("IsOpen", inactive);
+        KidsDoorAnimator.SetBool("IsClosed", active);
         isOpen = inactive;
     }
 }

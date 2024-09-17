@@ -147,7 +147,11 @@ public class Interactor : MonoBehaviour
         {
             if (door.gameObject.CompareTag("KidsRoomDoor"))
             {
-                door.OnInteract();
+                door.OnKidsDoorInteract();
+            }
+            else if (door.gameObject.CompareTag("BathroomDoor"))
+            {
+                door.OnBathroomDoorInteract();
             }
         }
     }
@@ -162,16 +166,7 @@ public class Interactor : MonoBehaviour
             Interactable interactable = hit.collider.GetComponent<Interactable>();
             Door door = hit.collider.GetComponent<Door>();
 
-            if (interactable != null && RoundManager.instance.currentState != GameState.pause && RoundManager.instance.currentState != GameState.onSettings)
-            {
-                interactionUI.SetActive(active);
-            }
-            else
-            {
-                interactionUI.SetActive(inactive);
-            }
-
-            if (door != null && RoundManager.instance.currentState != GameState.pause && RoundManager.instance.currentState != GameState.onSettings)
+            if (interactable != null || door != null && RoundManager.instance.currentState != GameState.pause && RoundManager.instance.currentState != GameState.onSettings)
             {
                 interactionUI.SetActive(active);
             }
