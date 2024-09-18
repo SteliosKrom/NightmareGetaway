@@ -88,12 +88,14 @@ public class Interactor : MonoBehaviour
         if (Physics.Raycast(ray, out hit, interactionRange))
         {
             Interactable interactable = hit.collider.GetComponent<Interactable>();
-            Door door = hit.collider.GetComponent<Door>();
-            HandleInteractableGameObject(interactable, door);
+            KidsDoor kidsDoor = hit.collider.GetComponent<KidsDoor>();
+            BathroomDoor bathroomDoor = hit.collider.gameObject.GetComponent<BathroomDoor>();
+            BedroomDoor bedroomDoor = hit.collider.gameObject.gameObject.GetComponent<BedroomDoor>();
+            HandleInteractableGameObject(interactable, kidsDoor, bathroomDoor, bedroomDoor);
         }
     }
 
-    public void HandleInteractableGameObject(Interactable interactable, Door door)
+    public void HandleInteractableGameObject(Interactable interactable, KidsDoor kidsDoor, BathroomDoor bathroomDoor, BedroomDoor bedroomDoor)
     {
         if (interactable != null)
         {
@@ -143,16 +145,17 @@ public class Interactor : MonoBehaviour
             }
         }
 
-        if (door != null)
+        if (kidsDoor != null)
         {
-            if (door.gameObject.CompareTag("KidsRoomDoor"))
-            {
-                door.OnKidsDoorInteract();
-            }
-            else if (door.gameObject.CompareTag("BathroomDoor"))
-            {
-                door.OnBathroomDoorInteract();
-            }
+            kidsDoor.OnKidsDoorInteract();
+        }
+        else if (bathroomDoor != null)
+        {
+            bathroomDoor.OnBathroomDoorInteract();
+        }
+        else if (bedroomDoor != null)
+        {
+            bedroomDoor.OnBedroomDoorInteract();
         }
     }
 
@@ -164,9 +167,11 @@ public class Interactor : MonoBehaviour
         if (Physics.Raycast(ray, out hit, interactionRange))
         {
             Interactable interactable = hit.collider.GetComponent<Interactable>();
-            Door door = hit.collider.GetComponent<Door>();
+            KidsDoor kidsDoor = hit.collider.GetComponent<KidsDoor>();
+            BathroomDoor bathroomDoor = hit.collider.GetComponent<BathroomDoor>();
+            BedroomDoor bedroomDoor = hit.collider.GetComponent<BedroomDoor>();
 
-            if (interactable != null || door != null && RoundManager.instance.currentState != GameState.pause && RoundManager.instance.currentState != GameState.onSettings)
+            if (interactable != null || kidsDoor != null || bathroomDoor != null || bedroomDoor != null && RoundManager.instance.currentState != GameState.pause && RoundManager.instance.currentState != GameState.onSettings)
             {
                 interactionUI.SetActive(active);
             }
