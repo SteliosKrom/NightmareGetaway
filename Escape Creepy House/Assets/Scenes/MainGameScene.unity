@@ -30813,10 +30813,10 @@ GameObject:
   - component: {fileID: 8520435736535158423}
   - component: {fileID: 8520435736535158424}
   - component: {fileID: 8520435736535158426}
-  - component: {fileID: 8520435736535158425}
+  - component: {fileID: 8520435736535158427}
   m_Layer: 0
   m_Name: BedroomDoor
-  m_TagString: Untagged
+  m_TagString: BedroomDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37116,10 +37116,10 @@ GameObject:
   - component: {fileID: 549615121450542395}
   - component: {fileID: 9051536816755775005}
   - component: {fileID: 9051536816755775007}
-  - component: {fileID: 9051536816755775006}
+  - component: {fileID: 9051536816755775008}
   m_Layer: 0
   m_Name: SecondBedroomDoor
-  m_TagString: Untagged
+  m_TagString: KidsDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -39022,10 +39022,10 @@ GameObject:
   - component: {fileID: 9048873471715702433}
   - component: {fileID: 9048873471715702434}
   - component: {fileID: 9048873471715702436}
-  - component: {fileID: 9048873471715702435}
+  - component: {fileID: 9048873471715702437}
   m_Layer: 0
   m_Name: ClothingsDoor
-  m_TagString: Untagged
+  m_TagString: KidsDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42373,9 +42373,11 @@ GameObject:
   - component: {fileID: 7937028521114221648}
   - component: {fileID: 8206306265329168609}
   - component: {fileID: 8206306265329168610}
+  - component: {fileID: 8206306265329168611}
+  - component: {fileID: 8206306265329168612}
   m_Layer: 0
   m_Name: GarageDoor
-  m_TagString: Untagged
+  m_TagString: GarageDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48219,7 +48221,7 @@ GameObject:
   - component: {fileID: 7500702359889987373}
   m_Layer: 0
   m_Name: KidsRoomDoor
-  m_TagString: Untagged
+  m_TagString: KidsDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57529,7 +57531,7 @@ GameObject:
   - component: {fileID: 8022282029072176207}
   m_Layer: 0
   m_Name: SecondBathroomDoor
-  m_TagString: Untagged
+  m_TagString: BathroomDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58984,9 +58986,11 @@ GameObject:
   - component: {fileID: 2679307196675234529}
   - component: {fileID: 3358783158736431196}
   - component: {fileID: 4994670281682319470}
+  - component: {fileID: 4994670281682319472}
+  - component: {fileID: 4994670281682319473}
   m_Layer: 0
   m_Name: MainDoor
-  m_TagString: Untagged
+  m_TagString: KidsDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59012,6 +59016,43 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0067998064, y: 0.001604722, z: 0.006685454}
   m_Center: {x: 0.0042595323, y: 0.0003712294, z: -0.0010695682}
+--- !u!95 &4994670281682319472
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4994670281682319469}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bd6b8a4e76196c04090d834805de8328, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4994670281682319473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4994670281682319469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc24e0a4bac58d4aad4abe3e01e4f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorAnimator: {fileID: 4994670281682319472}
+  openParameter: IsOpened
+  closeParameter: IsClosed
+  idleParameter: IsIdle
 --- !u!1 &4999672308342718753
 GameObject:
   m_ObjectHideFlags: 0
@@ -66594,10 +66635,10 @@ GameObject:
   - component: {fileID: 8781165241623197787}
   - component: {fileID: 8781165241623197788}
   - component: {fileID: 8781165241623197790}
-  - component: {fileID: 8781165241623197789}
+  - component: {fileID: 8781165241623197791}
   m_Layer: 0
   m_Name: BathroomDoor
-  m_TagString: Untagged
+  m_TagString: KidsDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75609,10 +75650,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3187674417498401385}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb04401130931144b934b3790428732, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cc24e0a4bac58d4aad4abe3e01e4f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kidsDoorAnimator: {fileID: 7500702359889987372}
+  doorAnimator: {fileID: 7500702359889987372}
+  openParameter: IsOpened
+  closeParameter: IsClosed
+  idleParameter: IsIdle
 --- !u!1 &7508164618550325118
 GameObject:
   m_ObjectHideFlags: 0
@@ -79771,10 +79815,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4735150461990046926}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9969773ae2799144ba775671129427d5, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cc24e0a4bac58d4aad4abe3e01e4f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bathroomAnimator: {fileID: 8022282029072176206}
+  doorAnimator: {fileID: 8022282029072176206}
+  openParameter: Opened
+  closeParameter: Closed
+  idleParameter: Idle
 --- !u!33 &8022840924046610867
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -81641,8 +81688,45 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.00813867, y: 0.0020424207, z: 0.0075087235}
-  m_Center: {x: 0.0054186126, y: 0.000167616, z: -0.0012373447}
+  m_Size: {x: 0.009561582, y: 0.0020424207, z: 0.0075087235}
+  m_Center: {x: 0.0047071483, y: 0.000167616, z: -0.0012373447}
+--- !u!95 &8206306265329168611
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015441644280327679}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a2eb6172f34f6524d8222bc2a0c42498, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8206306265329168612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2015441644280327679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc24e0a4bac58d4aad4abe3e01e4f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorAnimator: {fileID: 8206306265329168611}
+  openParameter: Opened
+  closeParameter: Closed
+  idleParameter: Idle
 --- !u!4 &8206953490821858057
 Transform:
   m_ObjectHideFlags: 0
@@ -83589,19 +83673,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0090992525, y: 0.0024937391, z: 0.007014948}
   m_Center: {x: 0.004504409, y: 0.000103381964, z: -0.0011316217}
---- !u!114 &8520435736535158425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 63198415403064327}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f7219d671c1b5a43aafb6395a9d2484, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bedroomAnimator: {fileID: 8520435736535158426}
 --- !u!95 &8520435736535158426
 Animator:
   serializedVersion: 5
@@ -83623,6 +83694,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8520435736535158427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63198415403064327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc24e0a4bac58d4aad4abe3e01e4f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorAnimator: {fileID: 8520435736535158426}
+  openParameter: Opened
+  closeParameter: Closed
+  idleParameter: Idle
 --- !u!4 &8524764018967819712
 Transform:
   m_ObjectHideFlags: 0
@@ -85667,19 +85754,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.009225935, y: 0.0025113134, z: 0.0073683844}
   m_Center: {x: 0.004585544, y: 0.00018236758, z: -0.001272986}
---- !u!114 &8781165241623197789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6182864487544594314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb04401130931144b934b3790428732, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  kidsDoorAnimator: {fileID: 8781165241623197790}
 --- !u!95 &8781165241623197790
 Animator:
   serializedVersion: 5
@@ -85701,6 +85775,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8781165241623197791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6182864487544594314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc24e0a4bac58d4aad4abe3e01e4f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorAnimator: {fileID: 8781165241623197790}
+  openParameter: IsOpened
+  closeParameter: IsClosed
+  idleParameter: IsIdle
 --- !u!4 &8783091060557956093
 Transform:
   m_ObjectHideFlags: 0
@@ -87853,19 +87943,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.009005535, y: 0.0028500399, z: 0.0073134718}
   m_Center: {x: 0.0046309014, y: 0.00013623324, z: -0.00095511007}
---- !u!114 &9048873471715702435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1361658670159583359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb04401130931144b934b3790428732, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  kidsDoorAnimator: {fileID: 9048873471715702436}
 --- !u!95 &9048873471715702436
 Animator:
   serializedVersion: 5
@@ -87887,6 +87964,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &9048873471715702437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361658670159583359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc24e0a4bac58d4aad4abe3e01e4f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorAnimator: {fileID: 9048873471715702436}
+  openParameter: IsOpened
+  closeParameter: IsClosed
+  idleParameter: IsIdle
 --- !u!33 &9051536816755775004
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -87916,19 +88009,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.009037736, y: 0.0026839615, z: 0.007}
   m_Center: {x: 0.004555155, y: 0.00009078472, z: -0.001136169}
---- !u!114 &9051536816755775006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1032399951403973514}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb04401130931144b934b3790428732, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  kidsDoorAnimator: {fileID: 9051536816755775007}
 --- !u!95 &9051536816755775007
 Animator:
   serializedVersion: 5
@@ -87950,6 +88030,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &9051536816755775008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032399951403973514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc24e0a4bac58d4aad4abe3e01e4f69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorAnimator: {fileID: 9051536816755775007}
+  openParameter: IsOpened
+  closeParameter: IsClosed
+  idleParameter: IsIdle
 --- !u!4 &9051787039996695276
 Transform:
   m_ObjectHideFlags: 0

@@ -32,6 +32,8 @@ public class Interactor : MonoBehaviour
     public GameObject phone;
 
     public float interactionRange;
+    private float displayTextDelay = 1f;
+    private float interactionDelay = 0.3f;
     public bool hasFlashlight = false;
     private bool active = true;
     private bool inactive = false;
@@ -88,19 +90,16 @@ public class Interactor : MonoBehaviour
         if (Physics.Raycast(ray, out hit, interactionRange))
         {
             Interactable interactable = hit.collider.GetComponent<Interactable>();
-            KidsDoor kidsDoor = hit.collider.GetComponent<KidsDoor>();
-            BathroomDoor bathroomDoor = hit.collider.gameObject.GetComponent<BathroomDoor>();
-            BedroomDoor bedroomDoor = hit.collider.gameObject.gameObject.GetComponent<BedroomDoor>();
-            HandleInteractableGameObject(interactable, kidsDoor, bathroomDoor, bedroomDoor);
+            DoorBase doorBase = hit.collider.GetComponent<DoorBase>();
+            HandleInteractableGameObject(interactable, doorBase);
         }
     }
 
-    public void HandleInteractableGameObject(Interactable interactable, KidsDoor kidsDoor, BathroomDoor bathroomDoor, BedroomDoor bedroomDoor)
+    public void HandleInteractableGameObject(Interactable interactable, DoorBase doorBase)
     {
         if (interactable != null)
         {
             interactable.OnInteract();
-
             if (interactable.gameObject.CompareTag("RoomKey"))
             {
                 taskManager.CompleteTask();
@@ -145,17 +144,24 @@ public class Interactor : MonoBehaviour
             }
         }
 
-        if (kidsDoor != null)
+        if (doorBase != null)
         {
-            kidsDoor.OnKidsDoorInteract();
-        }
-        else if (bathroomDoor != null)
-        {
-            bathroomDoor.OnBathroomDoorInteract();
-        }
-        else if (bedroomDoor != null)
-        {
-            bedroomDoor.OnBedroomDoorInteract();
+            if (doorBase.gameObject.CompareTag("KidsDoor"))
+            {
+                doorBase.OnDoorInteract();
+            }
+            else if (doorBase.gameObject.CompareTag("BathroomDoor"))
+            {
+                doorBase.OnDoorInteract();
+            }
+            else if (doorBase.gameObject.CompareTag("BedroomDoor"))
+            {
+                doorBase.OnDoorInteract();
+            }
+            else if (doorBase.gameObject.CompareTag("GarageDoor"))
+            {
+                doorBase.OnDoorInteract();
+            }
         }
     }
 
@@ -167,11 +173,9 @@ public class Interactor : MonoBehaviour
         if (Physics.Raycast(ray, out hit, interactionRange))
         {
             Interactable interactable = hit.collider.GetComponent<Interactable>();
-            KidsDoor kidsDoor = hit.collider.GetComponent<KidsDoor>();
-            BathroomDoor bathroomDoor = hit.collider.GetComponent<BathroomDoor>();
-            BedroomDoor bedroomDoor = hit.collider.GetComponent<BedroomDoor>();
+            DoorBase doorBase = hit.collider.GetComponent<DoorBase>();
 
-            if (interactable != null || kidsDoor != null || bathroomDoor != null || bedroomDoor != null && RoundManager.instance.currentState != GameState.pause && RoundManager.instance.currentState != GameState.onSettings)
+            if (interactable != null || doorBase != null && RoundManager.instance.currentState != GameState.pause && RoundManager.instance.currentState != GameState.onSettings)
             {
                 interactionUI.SetActive(active);
             }
@@ -201,35 +205,35 @@ public class Interactor : MonoBehaviour
     public IEnumerator DisplayFoundFlashlightText()
     {
         foundFlashlight.SetActive(active);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(displayTextDelay);
         foundFlashlight.SetActive(inactive);
     }
 
     public IEnumerator DisplayFoundGarageKeyText()
     {
         foundGarageKey.SetActive(active);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(displayTextDelay);
         foundGarageKey.SetActive(inactive);
     }
 
     public IEnumerator DisplayFoundMainDoorKeyText()
     {
         foundMainDoorKey.SetActive(active);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(displayTextDelay);
         foundMainDoorKey.SetActive(inactive);
     }
 
     public IEnumerator DisplayFoundRoomkeyText()
     {
         foundRoomKey.SetActive(active);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(displayTextDelay);
         foundRoomKey.SetActive(inactive);
     }
 
     public IEnumerator DisplayFoundPhoneText()
     {
         foundPhone.SetActive(active);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(displayTextDelay);
         foundPhone.SetActive(inactive);
     }
 }
