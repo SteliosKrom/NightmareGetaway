@@ -1,19 +1,28 @@
+using System.Collections;
 using UnityEngine;
+
+public enum DoorStates
+{
+    isOpened, 
+    isClosed,
+}
 
 public class DoorBase : MonoBehaviour
 {
     public Animator doorAnimator;
+    private DoorStates currentState;
 
     public string openParameter;
     public string closeParameter;
     public string idleParameter;
-    protected bool isOpen;
-    protected bool active = true;
-    protected bool inactive = false;
-
+    private bool active = true;
+    private bool inactive = false;
+    private bool canInteract = true;
+    private float interactioDelay = 1f;
+    
     public void Start()
     {
-        isOpen = inactive;
+        currentState = DoorStates.isClosed;
         doorAnimator.SetBool(openParameter, inactive);
         doorAnimator.SetBool(closeParameter, inactive);
         doorAnimator.SetBool(idleParameter, active);
@@ -21,7 +30,12 @@ public class DoorBase : MonoBehaviour
 
     public virtual void OnDoorInteract()
     {
-        if (isOpen == inactive)
+        if (canInteract == false)
+        {
+            return;
+        }
+        canInteract = false;
+        if (currentState == DoorStates.isClosed)
         {
             OpenDoor();
         }
@@ -29,6 +43,13 @@ public class DoorBase : MonoBehaviour
         {
             CloseDoor();
         }
+        StartCoroutine(InteractionDelay());
+    }
+
+    private IEnumerator InteractionDelay()
+    {
+        yield return new WaitForSeconds(interactioDelay);
+        canInteract = true;
     }
 
     public void OpenDoor()
@@ -36,7 +57,7 @@ public class DoorBase : MonoBehaviour
         doorAnimator.SetBool(openParameter, active);
         doorAnimator.SetBool(closeParameter, inactive);
         doorAnimator.SetBool(idleParameter, inactive);
-        isOpen = active;
+        currentState = DoorStates.isOpened;
     }
 
     public void CloseDoor()
@@ -44,6 +65,6 @@ public class DoorBase : MonoBehaviour
         doorAnimator.SetBool(openParameter, inactive);
         doorAnimator.SetBool(closeParameter, active);
         doorAnimator.SetBool(idleParameter, inactive);
-        isOpen = inactive;
+        currentState = DoorStates.isClosed;
     }
 }

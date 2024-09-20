@@ -33,7 +33,6 @@ public class Interactor : MonoBehaviour
 
     public float interactionRange;
     private float displayTextDelay = 1f;
-    private float interactionDelay = 0.3f;
     public bool hasFlashlight = false;
     private bool active = true;
     private bool inactive = false;

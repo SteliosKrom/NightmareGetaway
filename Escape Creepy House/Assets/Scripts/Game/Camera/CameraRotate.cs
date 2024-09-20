@@ -18,8 +18,8 @@ public class CameraRotate : MonoBehaviour
     [SerializeField] private float sensX;
 
     private float defaultSensitivity = 1f;
-    private float spotlightRotationSpeed = 6f;
-    private float mainCameraRotationSpeed = 2.5f;
+    private float spotlightRotationSpeed = 10f;
+    private float mainCameraRotationSpeed = 3f;
 
     private float xRotation;
     private float yRotation;
