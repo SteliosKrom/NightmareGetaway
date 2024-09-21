@@ -1,7 +1,9 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PlayerController : MonoBehaviour
 {
+    public DoorBase doorBase;
     public float playerSpeed;
     private float gravity;
     private bool active = true;
@@ -18,6 +20,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator playerAnimator;
     public RaycastHit hit;
     private Vector3 velocity;
+
+    [Header("AUDIO")]
+    public AudioSource doorClosedAudioSource;
+    public AudioSource doorOpenedAudioSource;
 
     private void Start()
     {

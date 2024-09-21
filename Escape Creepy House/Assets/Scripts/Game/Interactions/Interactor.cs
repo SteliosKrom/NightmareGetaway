@@ -1,5 +1,4 @@
 using System.Collections;
-using TMPro;
 using UnityEngine;
 
 public class Interactor : MonoBehaviour
@@ -30,6 +29,8 @@ public class Interactor : MonoBehaviour
     public GameObject waterGlass;
     public GameObject food;
     public GameObject phone;
+    public GameObject doorBoxCollider;
+    public BoxCollider fridgeCollider;
 
     public float interactionRange;
     private float displayTextDelay = 1f;
@@ -110,12 +111,14 @@ public class Interactor : MonoBehaviour
             {
                 taskManager.CompleteTask();
                 food.SetActive(active);
+                fridgeCollider.enabled = true;
                 AudioManager.instance.PlaySound(drinkAudioSource, drinkAudioclip);
             }
             else if (interactable.gameObject.CompareTag("Food"))
             {
                 taskManager.CompleteTask();
                 garageKey.SetActive(active);
+                doorBoxCollider.SetActive(inactive);
                 AudioManager.instance.PlaySound(eatAudioSource, eatAudioClip);
             }
             else if (interactable.gameObject.CompareTag("Phone"))
@@ -158,6 +161,10 @@ public class Interactor : MonoBehaviour
                 doorBase.OnDoorInteract();
             }
             else if (doorBase.gameObject.CompareTag("GarageDoor"))
+            {
+                doorBase.OnDoorInteract();
+            }
+            else if (doorBase.gameObject.CompareTag("FridgeDoor"))
             {
                 doorBase.OnDoorInteract();
             }

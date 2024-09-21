@@ -32,8 +32,11 @@ public class MainGameUIManager : MonoBehaviour
     [Header("OTHER")]
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Camera secondaryCamera;
-    [SerializeField] private AudioSource mainMenuAudioSource;
     [SerializeField] private PlayerRespawn playerRespawn;
+
+    [Header("AUDIO")]
+    [SerializeField] private AudioSource mainMenuAudioSource;
+
 
     private void Start()
     {
@@ -44,11 +47,9 @@ public class MainGameUIManager : MonoBehaviour
     public void ResumeButton()
     {
         Time.timeScale = 1.0f;
-
         pauseMenu.SetActive(inactive);
         dot.SetActive(active);
         taskChange.SetActive(active);
-
         RoundManager.instance.currentState = GameState.playing;
     }
 

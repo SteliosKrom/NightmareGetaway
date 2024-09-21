@@ -5,12 +5,13 @@ public enum DoorStates
 {
     isOpened, 
     isClosed,
+    isIdle
 }
 
 public class DoorBase : MonoBehaviour
 {
     public Animator doorAnimator;
-    private DoorStates currentState;
+    public DoorStates currentState;
 
     public string openParameter;
     public string closeParameter;
@@ -19,10 +20,17 @@ public class DoorBase : MonoBehaviour
     private bool inactive = false;
     private bool canInteract = true;
     private float interactioDelay = 1f;
+
+    [Header("AUDIO")]
+    public AudioSource doorOpenedAudioSource;
+    public AudioSource doorClosedAudioSource;
+
+    public AudioClip doorOpenedAudioClip;
+    public AudioClip doorClosedAudioClip;
     
     public void Start()
     {
-        currentState = DoorStates.isClosed;
+        currentState = DoorStates.isIdle;
         doorAnimator.SetBool(openParameter, inactive);
         doorAnimator.SetBool(closeParameter, inactive);
         doorAnimator.SetBool(idleParameter, active);
@@ -35,13 +43,15 @@ public class DoorBase : MonoBehaviour
             return;
         }
         canInteract = false;
-        if (currentState == DoorStates.isClosed)
+        if (currentState == DoorStates.isIdle)
         {
             OpenDoor();
+            AudioManager.instance.PlaySound(doorOpenedAudioSource, doorOpenedAudioClip);
         }
-        else
+        else if (currentState == DoorStates.isOpened)
         {
             CloseDoor();
+            AudioManager.instance.PlaySound(doorClosedAudioSource, doorClosedAudioClip);
         }
         StartCoroutine(InteractionDelay());
     }

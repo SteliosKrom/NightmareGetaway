@@ -15,6 +15,7 @@ TagManager:
   - BedroomDoor
   - KidsDoor
   - GarageDoor
+  - FridgeDoor
   layers:
   - Default
   - TransparentFX
