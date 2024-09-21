@@ -5585,6 +5585,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5967949597718367595}
+  - {fileID: 1378331463}
   - {fileID: 434200977}
   - {fileID: 921240066}
   - {fileID: 1291028309973624694}
@@ -14865,16 +14866,16 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 8
-  m_Range: 25
+  m_Intensity: 10
+  m_Range: 30
   m_SpotAngle: 70
   m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.5
     m_Bias: 2
     m_NormalBias: 0.4
     m_NearPlane: 10
@@ -22255,6 +22256,52 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1378331462
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1378331463}
+  m_Layer: 0
+  m_Name: HouseLights
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1378331463
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378331462}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8100101979610768813}
+  - {fileID: 3943640058031567923}
+  - {fileID: 432586202894118324}
+  - {fileID: 8907874671096370633}
+  - {fileID: 6947702802160572543}
+  - {fileID: 5113321744625927353}
+  - {fileID: 2482934358321591916}
+  - {fileID: 2740241858504435543}
+  - {fileID: 2396045033848564607}
+  - {fileID: 7824537620585974901}
+  - {fileID: 6092505195402545785}
+  - {fileID: 8603574086172902344}
+  - {fileID: 8394691157528303344}
+  - {fileID: 785828705764446655}
+  - {fileID: 4317980399729196050}
+  m_Father: {fileID: 195872784}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1396038613
 GameObject:
   m_ObjectHideFlags: 0
@@ -31259,7 +31306,7 @@ GameObject:
   - component: {fileID: 8394691157528303345}
   - component: {fileID: 8394691157528303346}
   m_Layer: 0
-  m_Name: Focus_01.004
+  m_Name: HouseLights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33604,11 +33651,11 @@ Transform:
   m_GameObject: {fileID: 8066892140698167623}
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000030908616, y: 0.7071069, z: 0.70710665, w: 0.000000030908627}
-  m_LocalPosition: {x: 1.0361068, y: 33.67901, z: -6.614467}
-  m_LocalScale: {x: -59.879326, y: -59.879326, z: -59.879333}
+  m_LocalPosition: {x: 78.2174, y: 49.509384, z: 64.50726}
+  m_LocalScale: {x: -149.84802, y: -149.84799, z: -149.848}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5967949597718367595}
+  m_Father: {fileID: 1378331463}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &432695745765301662
 MeshRenderer:
@@ -35265,7 +35312,7 @@ GameObject:
   - component: {fileID: 7824537620585974902}
   - component: {fileID: 7824537620585974903}
   m_Layer: 0
-  m_Name: Focus_02.002
+  m_Name: HouseLights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36024,11 +36071,11 @@ Transform:
   m_GameObject: {fileID: 7112115302336774032}
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000030908616, y: 0.7071069, z: 0.70710665, w: 0.000000030908627}
-  m_LocalPosition: {x: 1.3297927, y: 30.40612, z: -10.087201}
-  m_LocalScale: {x: -95.79528, y: -95.79528, z: -95.79528}
+  m_LocalPosition: {x: 78.95235, y: 41.318977, z: 55.816746}
+  m_LocalScale: {x: -239.72769, y: -239.72769, z: -239.72769}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5967949597718367595}
+  m_Father: {fileID: 1378331463}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &788442119878018572
 GameObject:
@@ -41608,7 +41655,7 @@ GameObject:
   - component: {fileID: 5005055323332120151}
   - component: {fileID: 5005055323332120152}
   m_Layer: 0
-  m_Name: Focus_02.010
+  m_Name: HouseLights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42028,7 +42075,7 @@ GameObject:
   - component: {fileID: 7982146914027928546}
   - component: {fileID: 7982146914027928547}
   m_Layer: 0
-  m_Name: Focus_02.007
+  m_Name: HouseLights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44484,11 +44531,11 @@ Transform:
   m_GameObject: {fileID: 5542324322458130365}
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000030908616, y: 0.7071069, z: 0.70710665, w: 0.000000030908627}
-  m_LocalPosition: {x: -7.1549535, y: 30.338867, z: -10.405266}
-  m_LocalScale: {x: -59.879326, y: -59.879326, z: -59.879333}
+  m_LocalPosition: {x: 57.71927, y: 41.15068, z: 55.02079}
+  m_LocalScale: {x: -149.84802, y: -149.84799, z: -149.848}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5967949597718367595}
+  m_Father: {fileID: 1378331463}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &2400724140381797542
 MeshRenderer:
@@ -44844,11 +44891,11 @@ Transform:
   m_GameObject: {fileID: 2718628836983304501}
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000030908616, y: 0.7071069, z: 0.70710665, w: 0.000000030908627}
-  m_LocalPosition: {x: -3.1319275, y: 30.338867, z: -11.064594}
-  m_LocalScale: {x: -59.879326, y: -59.879326, z: -59.879333}
+  m_LocalPosition: {x: 67.786896, y: 41.15068, z: 53.37082}
+  m_LocalScale: {x: -149.84802, y: -149.84799, z: -149.848}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5967949597718367595}
+  m_Father: {fileID: 1378331463}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2485023378825210104
 Transform:
@@ -46268,7 +46315,7 @@ GameObject:
   - component: {fileID: 3330615530562596201}
   - component: {fileID: 3330615530562596202}
   m_Layer: 0
-  m_Name: Focus_02.005
+  m_Name: HouseLights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46411,11 +46458,11 @@ Transform:
   m_GameObject: {fileID: 4948408105234181392}
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000030908616, y: 0.7071069, z: 0.70710665, w: 0.000000030908627}
-  m_LocalPosition: {x: -5.664935, y: 30.338867, z: -6.706319}
-  m_LocalScale: {x: -59.879326, y: -59.879326, z: -59.879333}
+  m_LocalPosition: {x: 61.448044, y: 41.15068, z: 64.277405}
+  m_LocalScale: {x: -149.84802, y: -149.84799, z: -149.848}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5967949597718367595}
+  m_Father: {fileID: 1378331463}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2740695169578091419
 Transform:
@@ -48667,7 +48714,7 @@ GameObject:
   - component: {fileID: 8302866583473333628}
   - component: {fileID: 8302866583473333629}
   m_Layer: 0
-  m_Name: Focus_02.006
+  m_Name: HouseLights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49600,15 +49647,15 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 15
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.5
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -53311,7 +53358,7 @@ GameObject:
   - component: {fileID: 8907874671096370634}
   - component: {fileID: 8907874671096370635}
   m_Layer: 0
-  m_Name: Focus_02.008
+  m_Name: HouseLights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53621,11 +53668,11 @@ Transform:
   m_GameObject: {fileID: 1740916716111874002}
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000030908616, y: 0.7071069, z: 0.70710665, w: 0.000000030908627}
-  m_LocalPosition: {x: 1.9268955, y: 33.67901, z: -9.316743}
-  m_LocalScale: {x: -59.879326, y: -59.879326, z: -59.879333}
+  m_LocalPosition: {x: 80.4466, y: 49.509384, z: 57.74482}
+  m_LocalScale: {x: -149.84802, y: -149.84799, z: -149.848}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5967949597718367595}
+  m_Father: {fileID: 1378331463}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &3945152026211642555
 MeshRenderer:
@@ -55878,11 +55925,11 @@ Transform:
   m_GameObject: {fileID: 6774102442693782044}
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000030908616, y: 0.7071069, z: 0.70710665, w: 0.000000030908627}
-  m_LocalPosition: {x: 1.3297927, y: 30.40612, z: -4.59936}
-  m_LocalScale: {x: -95.79528, y: -95.79528, z: -95.79528}
+  m_LocalPosition: {x: 78.95235, y: 41.318977, z: 69.55007}
+  m_LocalScale: {x: -239.72769, y: -239.72769, z: -239.72769}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5967949597718367595}
+  m_Father: {fileID: 1378331463}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4318101276434136239
 MeshFilter:
@@ -59096,7 +59143,7 @@ GameObject:
   - component: {fileID: 8623155450264039715}
   - component: {fileID: 8623155450264039716}
   m_Layer: 0
-  m_Name: Focus_02.004
+  m_Name: HouseLights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59615,15 +59662,15 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 15
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.5
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -59846,7 +59893,7 @@ GameObject:
   - component: {fileID: 8603574086172902345}
   - component: {fileID: 8603574086172902346}
   m_Layer: 0
-  m_Name: Focus_01.005
+  m_Name: HouseLights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60336,11 +60383,11 @@ Transform:
   m_GameObject: {fileID: 3188735715777726745}
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000030908616, y: 0.7071069, z: 0.70710665, w: 0.000000030908627}
-  m_LocalPosition: {x: -3.5279305, y: 33.67901, z: -6.1398335}
-  m_LocalScale: {x: -59.879326, y: -59.879326, z: -59.879333}
+  m_LocalPosition: {x: 66.7959, y: 49.509384, z: 65.69503}
+  m_LocalScale: {x: -149.84802, y: -149.84799, z: -149.848}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5967949597718367595}
+  m_Father: {fileID: 1378331463}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5118547092053959958
 GameObject:
@@ -62680,7 +62727,7 @@ GameObject:
   - component: {fileID: 6150930537474663117}
   - component: {fileID: 6150930537474663118}
   m_Layer: 0
-  m_Name: Focus_02.003
+  m_Name: HouseLights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65217,23 +65264,8 @@ Transform:
   - {fileID: 8634410825697812280}
   - {fileID: 8547787202769418554}
   - {fileID: 8155444565587932467}
-  - {fileID: 4317980399729196050}
   - {fileID: 8581310924518506681}
-  - {fileID: 785828705764446655}
-  - {fileID: 8394691157528303344}
-  - {fileID: 8603574086172902344}
-  - {fileID: 6092505195402545785}
-  - {fileID: 7824537620585974901}
-  - {fileID: 2396045033848564607}
-  - {fileID: 2740241858504435543}
-  - {fileID: 2482934358321591916}
-  - {fileID: 5113321744625927353}
-  - {fileID: 6947702802160572543}
-  - {fileID: 8907874671096370633}
-  - {fileID: 432586202894118324}
-  - {fileID: 3943640058031567923}
   - {fileID: 118562373623063671}
-  - {fileID: 8100101979610768813}
   - {fileID: 8799751879550225835}
   - {fileID: 7798415987404591726}
   - {fileID: 5697907567069656288}
@@ -66322,11 +66354,11 @@ Transform:
   m_GameObject: {fileID: 7988761745410221967}
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000030908616, y: 0.7071069, z: 0.70710665, w: 0.000000030908627}
-  m_LocalPosition: {x: -7.3081517, y: 30.338867, z: -2.1884465}
-  m_LocalScale: {x: -59.879326, y: -59.879326, z: -59.879333}
+  m_LocalPosition: {x: 57.33589, y: 41.15068, z: 75.58338}
+  m_LocalScale: {x: -149.84802, y: -149.84799, z: -149.848}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5967949597718367595}
+  m_Father: {fileID: 1378331463}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &6094049716193171138
 Transform:
@@ -66887,15 +66919,15 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 15
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.5
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -71205,7 +71237,7 @@ GameObject:
   - component: {fileID: 7815463162202978786}
   - component: {fileID: 7815463162202978787}
   m_Layer: 0
-  m_Name: Focus_01
+  m_Name: HouseLights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72377,11 +72409,11 @@ Transform:
   m_GameObject: {fileID: 1849463404814377106}
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000030908616, y: 0.7071069, z: 0.70710665, w: 0.000000030908627}
-  m_LocalPosition: {x: -5.4462023, y: 33.67901, z: -11.437534}
-  m_LocalScale: {x: -59.879326, y: -59.879326, z: -59.879333}
+  m_LocalPosition: {x: 61.995422, y: 49.509384, z: 52.43754}
+  m_LocalScale: {x: -149.84802, y: -149.84799, z: -149.848}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5967949597718367595}
+  m_Father: {fileID: 1378331463}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &6948152735499839077
 MeshRenderer:
@@ -73206,7 +73238,7 @@ GameObject:
   - component: {fileID: 7112115302336774033}
   - component: {fileID: 7112115302336774034}
   m_Layer: 0
-  m_Name: Focus_01.002
+  m_Name: HouseLights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73224,16 +73256,16 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
-  m_Range: 15
+  m_Intensity: 1
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.5
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -74101,7 +74133,7 @@ GameObject:
   - component: {fileID: 8100101979610768814}
   - component: {fileID: 8100101979610768815}
   m_Layer: 0
-  m_Name: Focus_02.012
+  m_Name: HouseLights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78233,16 +78265,16 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
-  m_Range: 15
+  m_Intensity: 1
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.5
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -78331,11 +78363,11 @@ Transform:
   m_GameObject: {fileID: 682877575564171599}
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000030908616, y: 0.7071069, z: 0.70710665, w: 0.000000030908627}
-  m_LocalPosition: {x: -2.2424746, y: 30.338867, z: -2.8274288}
-  m_LocalScale: {x: -59.879326, y: -59.879326, z: -59.879333}
+  m_LocalPosition: {x: 70.01275, y: 41.15068, z: 73.98433}
+  m_LocalScale: {x: -149.84802, y: -149.84799, z: -149.848}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5967949597718367595}
+  m_Father: {fileID: 1378331463}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &7824537620585974902
 Light:
@@ -78350,15 +78382,15 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 15
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.5
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -79477,15 +79509,15 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 15
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.5
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -79620,7 +79652,7 @@ GameObject:
   - component: {fileID: 7988761745410221968}
   - component: {fileID: 7988761745410221969}
   m_Layer: 0
-  m_Name: Focus_02
+  m_Name: HouseLights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79639,15 +79671,15 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 15
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.5
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -80575,7 +80607,7 @@ GameObject:
   - component: {fileID: 8066892140698167624}
   - component: {fileID: 8066892140698167625}
   m_Layer: 0
-  m_Name: Focus_02.009
+  m_Name: HouseLights
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80594,15 +80626,15 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 15
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.5
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -81062,11 +81094,11 @@ Transform:
   m_GameObject: {fileID: 7222256419199841120}
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000030908616, y: 0.7071069, z: 0.70710665, w: 0.000000030908627}
-  m_LocalPosition: {x: -7.8696713, y: 33.67901, z: -6.1398335}
-  m_LocalScale: {x: -59.879326, y: -59.879326, z: -59.879333}
+  m_LocalPosition: {x: 55.930687, y: 49.509384, z: 65.69503}
+  m_LocalScale: {x: -149.84802, y: -149.84799, z: -149.848}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5967949597718367595}
+  m_Father: {fileID: 1378331463}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &8100101979610768814
 Light:
@@ -81081,15 +81113,15 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 15
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.5
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -82666,15 +82698,15 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 15
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.5
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -83366,12 +83398,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64229072435888362}
   serializedVersion: 2
-  m_LocalRotation: {x: 1, y: 0, z: -0, w: 0.0000000754979}
-  m_LocalPosition: {x: -0.37143588, y: 29.717186, z: -13.87461}
-  m_LocalScale: {x: 95.79528, y: 95.79528, z: 95.79528}
+  m_LocalRotation: {x: 1, y: -0, z: -0, w: 0.0000000754979}
+  m_LocalPosition: {x: 74.69502, y: 39.594917, z: 46.338757}
+  m_LocalScale: {x: 239.72769, y: 239.72769, z: 239.72769}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5967949597718367595}
+  m_Father: {fileID: 1378331463}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &8394691157528303345
 Light:
@@ -83386,15 +83418,15 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 15
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.5
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -84783,12 +84815,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5029451654703181158}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.6550692, y: 0, z: -0, w: 0.755569}
-  m_LocalPosition: {x: -5.6641526, y: 30.416908, z: -16.0418}
-  m_LocalScale: {x: 95.79528, y: 95.79528, z: 95.79528}
+  m_LocalRotation: {x: 0.6550692, y: -0, z: -0, w: 0.755569}
+  m_LocalPosition: {x: 61.45, y: 41.345978, z: 40.915363}
+  m_LocalScale: {x: 239.72769, y: 239.72769, z: 239.72769}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5967949597718367595}
+  m_Father: {fileID: 1378331463}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &8603574086172902345
 Light:
@@ -84803,15 +84835,15 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 15
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.5
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -85065,15 +85097,15 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 15
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.5
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -87244,11 +87276,11 @@ Transform:
   m_GameObject: {fileID: 3863755690858224545}
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000030908616, y: 0.7071069, z: 0.70710665, w: 0.000000030908627}
-  m_LocalPosition: {x: -1.6558491, y: 33.67901, z: -9.361554}
-  m_LocalScale: {x: -59.879326, y: -59.879326, z: -59.879333}
+  m_LocalPosition: {x: 71.48078, y: 49.509384, z: 57.632675}
+  m_LocalScale: {x: -149.84802, y: -149.84799, z: -149.848}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5967949597718367595}
+  m_Father: {fileID: 1378331463}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &8907874671096370634
 Light:
@@ -87263,15 +87295,15 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 15
+  m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.5
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
