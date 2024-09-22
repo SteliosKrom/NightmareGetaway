@@ -10155,8 +10155,6 @@ MonoBehaviour:
   foundItemMessage: {fileID: 7897116}
   characterController: {fileID: 379504545}
   playerAnimator: {fileID: 370128361}
-  doorClosedAudioSource: {fileID: 2101123096}
-  doorOpenedAudioSource: {fileID: 282683330}
 --- !u!114 &379504544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83736,10 +83734,10 @@ MonoBehaviour:
   openParameter: Opened
   closeParameter: Closed
   idleParameter: Idle
-  doorOpenedAudioSource: {fileID: 0}
-  doorClosedAudioSource: {fileID: 0}
-  doorOpenedAudioClip: {fileID: 0}
-  doorClosedAudioClip: {fileID: 0}
+  doorOpenedAudioSource: {fileID: 282683330}
+  doorClosedAudioSource: {fileID: 2101123096}
+  doorOpenedAudioClip: {fileID: 8300000, guid: 6cc4537865ae1479b9e7ac12ab172909, type: 3}
+  doorClosedAudioClip: {fileID: 8300000, guid: b88eb643c13ba4470b51a26e2823b565, type: 3}
 --- !u!95 &8386798335186017359
 Animator:
   serializedVersion: 5

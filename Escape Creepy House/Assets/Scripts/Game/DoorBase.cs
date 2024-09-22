@@ -5,7 +5,6 @@ public enum DoorStates
 {
     isOpened, 
     isClosed,
-    isIdle
 }
 
 public class DoorBase : MonoBehaviour
@@ -30,7 +29,7 @@ public class DoorBase : MonoBehaviour
     
     public void Start()
     {
-        currentState = DoorStates.isIdle;
+        currentState = DoorStates.isClosed;
         doorAnimator.SetBool(openParameter, inactive);
         doorAnimator.SetBool(closeParameter, inactive);
         doorAnimator.SetBool(idleParameter, active);
@@ -43,7 +42,7 @@ public class DoorBase : MonoBehaviour
             return;
         }
         canInteract = false;
-        if (currentState == DoorStates.isIdle)
+        if (currentState == DoorStates.isClosed)
         {
             OpenDoor();
             AudioManager.instance.PlaySound(doorOpenedAudioSource, doorOpenedAudioClip);
