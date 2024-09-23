@@ -83,9 +83,9 @@ public class PlayerController : MonoBehaviour
         pauseMenu.SetActive(active);
         dot.SetActive(inactive);
         taskChange.SetActive(inactive);
-        foundItemMessage.SetActive(inactive);
-        CheckDoorStateOnPause();
+        foundItemMessage.SetActive(inactive);    
         Time.timeScale = 0f;
+        CheckDoorStateOnPause();
         RoundManager.instance.currentState = GameState.pause;
     }
 
@@ -94,8 +94,8 @@ public class PlayerController : MonoBehaviour
         pauseMenu.SetActive(inactive);
         dot.SetActive(active);
         taskChange.SetActive(active);
-        CheckDoorStateOnResume();
         Time.timeScale = 1f;
+        CheckDoorStateOnResume();
         RoundManager.instance.currentState = GameState.playing;
     }
 
@@ -106,7 +106,6 @@ public class PlayerController : MonoBehaviour
             doorBase.doorOpenedAudioSource.Pause();
             isDoorOpenedSoundPaused = true;
         }
-
         else if (doorBase.doorClosedAudioSource.isPlaying)
         {
             doorBase.doorClosedAudioSource.Pause();
@@ -123,7 +122,7 @@ public class PlayerController : MonoBehaviour
         }
         if (isDoorClosedSoundPaused)
         {
-            doorBase.doorOpenedAudioSource.UnPause();
+            doorBase.doorClosedAudioSource.UnPause();
             isDoorClosedSoundPaused = false;
         }
     }
