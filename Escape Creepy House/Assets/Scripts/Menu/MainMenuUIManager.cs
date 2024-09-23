@@ -43,6 +43,8 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private AudioSource hoverAudioSource;
     [SerializeField] private AudioSource mainMenuAudioSource;
+    [SerializeField] private AudioSource rainAudioSource;
+    [SerializeField] private AudioClip rainAudioClip;
     [SerializeField] private AudioClip hoverAudioClip;
     private Vector3 initialPos;
 
@@ -67,6 +69,7 @@ public class MainMenuUIManager : MonoBehaviour
 
         initialPos = secondaryCamera.transform.position;
         mainMenuAudioSource.Play();
+        rainAudioSource.Play();
     }
 
     private void Update()
@@ -90,7 +93,7 @@ public class MainMenuUIManager : MonoBehaviour
         loadingPanel.SetActive(active);
         mainMenuAudioSource.Stop();
         yield return new WaitForSecondsRealtime(playButtonDelay);
-        mainMenuAudioSource.Stop();
+        rainAudioSource.Stop();
         Time.timeScale = 1f;
 
         mainMenu.SetActive(inactive);

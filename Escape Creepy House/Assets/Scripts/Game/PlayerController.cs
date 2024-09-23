@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public RaycastHit hit;
     private Vector3 velocity;
 
+
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -33,6 +34,7 @@ public class PlayerController : MonoBehaviour
     {
         PauseAndResume();
         MovePlayer();
+
     }
 
     public void MovePlayer()
@@ -83,7 +85,7 @@ public class PlayerController : MonoBehaviour
         pauseMenu.SetActive(active);
         dot.SetActive(inactive);
         taskChange.SetActive(inactive);
-        foundItemMessage.SetActive(inactive);    
+        foundItemMessage.SetActive(inactive);
         Time.timeScale = 0f;
         CheckDoorStateOnPause();
         RoundManager.instance.currentState = GameState.pause;

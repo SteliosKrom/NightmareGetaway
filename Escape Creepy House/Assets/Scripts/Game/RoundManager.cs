@@ -5,7 +5,7 @@ public enum GameState
     playing,
     pause,
     onSettings,
-    onMainMenu
+    onMainMenu,
 }
 
 class RoundManager : MonoBehaviour
