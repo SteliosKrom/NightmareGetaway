@@ -8,12 +8,29 @@ public enum GameState
     onMainMenu,
 }
 
+public enum EnvironmentState
+{
+    outdoors,
+    indoors,
+    none
+}
+
+public enum KeyState
+{
+    kidsRoomKey,
+    garageKey,
+    mainDoorKey,
+    none
+}
+
 class RoundManager : MonoBehaviour
 {
     public static RoundManager instance;
 
     [Header("GAME STATES")]
-    public GameState currentState;
+    public GameState currentGameState;
+    public EnvironmentState currentEnvironmentState;
+    public KeyState currentKeyState;
 
     private void Awake()
     {
@@ -30,7 +47,9 @@ class RoundManager : MonoBehaviour
 
     private void Start()
     {
-        currentState = GameState.onMainMenu;
+        currentGameState = GameState.onMainMenu;
+        currentEnvironmentState = EnvironmentState.none;
+        currentKeyState = KeyState.none;
     }
 }
 

@@ -13,10 +13,13 @@ TagManager:
   - Flashlight
   - BathroomDoor
   - BedroomDoor
-  - KidsDoor
   - GarageDoor
   - FridgeDoor
-  - Trigger
+  - Indoor
+  - Outdoor
+  - Door
+  - KidsDoor
+  - MainDoor
   layers:
   - Default
   - TransparentFX

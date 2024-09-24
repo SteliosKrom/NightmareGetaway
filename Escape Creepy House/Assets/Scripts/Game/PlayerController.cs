@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
 
     public void MovePlayer()
     {
-        if (RoundManager.instance.currentState == GameState.playing)
+        if (RoundManager.instance.currentGameState == GameState.playing)
         {
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
@@ -70,11 +70,11 @@ public class PlayerController : MonoBehaviour
 
     public void PauseAndResume()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && RoundManager.instance.currentState == GameState.playing)
+        if (Input.GetKeyDown(KeyCode.Escape) && RoundManager.instance.currentGameState == GameState.playing)
         {
             PauseGame();
         }
-        else if (Input.GetKeyDown(KeyCode.Escape) && RoundManager.instance.currentState == GameState.pause)
+        else if (Input.GetKeyDown(KeyCode.Escape) && RoundManager.instance.currentGameState == GameState.pause)
         {
             ResumeGame();
         }
@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
         foundItemMessage.SetActive(inactive);
         Time.timeScale = 0f;
         CheckDoorStateOnPause();
-        RoundManager.instance.currentState = GameState.pause;
+        RoundManager.instance.currentGameState = GameState.pause;
     }
 
     public void ResumeGame()
@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
         taskChange.SetActive(active);
         Time.timeScale = 1f;
         CheckDoorStateOnResume();
-        RoundManager.instance.currentState = GameState.playing;
+        RoundManager.instance.currentGameState = GameState.playing;
     }
 
     public void CheckDoorStateOnPause()

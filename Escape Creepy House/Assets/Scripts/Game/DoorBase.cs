@@ -15,10 +15,14 @@ public class DoorBase : MonoBehaviour
     public string openParameter;
     public string closeParameter;
     public string idleParameter;
+
     private bool active = true;
     private bool inactive = false;
-    private bool canInteract = true;
+    private bool canInteract = false;
+    private bool isLockedUI = false;
+
     private float interactioDelay = 1f;
+    private float lockedUIDelay = 3f;
 
     [Header("AUDIO")]
     public AudioSource doorOpenedAudioSource;
@@ -37,28 +41,28 @@ public class DoorBase : MonoBehaviour
 
     public virtual void OnDoorInteract()
     {
-        if (canInteract == false)
+        if (canInteract == inactive)
         {
             return;
         }
-        canInteract = false;
-        if (currentState == DoorStates.isClosed)
+
+        canInteract = inactive;
+        if (currentState == DoorStates.isClosed && RoundManager.instance.currentKeyState != KeyState.none)
         {
             OpenDoor();
             AudioManager.instance.PlaySound(doorOpenedAudioSource, doorOpenedAudioClip);
         }
-        else if (currentState == DoorStates.isOpened)
+        else if (currentState == DoorStates.isOpened && RoundManager.instance.currentKeyState != KeyState.none)
         {
             CloseDoor();
             AudioManager.instance.PlaySound(doorClosedAudioSource, doorClosedAudioClip);
         }
         StartCoroutine(InteractionDelay());
-    }
 
-    private IEnumerator InteractionDelay()
-    {
-        yield return new WaitForSeconds(interactioDelay);
-        canInteract = true;
+        if (!isLockedUI)
+        {
+            StartCoroutine(LockedUIDelay());
+        }
     }
 
     public void OpenDoor()
@@ -75,5 +79,19 @@ public class DoorBase : MonoBehaviour
         doorAnimator.SetBool(closeParameter, active);
         doorAnimator.SetBool(idleParameter, inactive);
         currentState = DoorStates.isClosed;
+    }
+
+    private IEnumerator InteractionDelay()
+    {
+        canInteract = inactive;
+        yield return new WaitForSeconds(interactioDelay);
+        canInteract = active;
+    }
+
+    private IEnumerator LockedUIDelay()
+    {
+        isLockedUI = inactive;
+        yield return new WaitForSeconds(lockedUIDelay);
+        isLockedUI = active;
     }
 }

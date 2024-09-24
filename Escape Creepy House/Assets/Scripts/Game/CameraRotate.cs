@@ -49,7 +49,7 @@ public class CameraRotate : MonoBehaviour
 
     private void Update()
     {
-        if (RoundManager.instance.currentState == GameState.onMainMenu || RoundManager.instance.currentState == GameState.onSettings || RoundManager.instance.currentState == GameState.pause)
+        if (RoundManager.instance.currentGameState == GameState.onMainMenu || RoundManager.instance.currentGameState == GameState.onSettings || RoundManager.instance.currentGameState == GameState.pause)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -60,7 +60,7 @@ public class CameraRotate : MonoBehaviour
             Cursor.visible = false;
         }
 
-        if (RoundManager.instance.currentState == GameState.playing)
+        if (RoundManager.instance.currentGameState == GameState.playing)
         {
             float mouseY = Input.GetAxis("Mouse Y") * sensY;
             float mouseX = Input.GetAxis("Mouse X") * sensX;

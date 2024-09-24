@@ -23,6 +23,7 @@ public class Interactor : MonoBehaviour
     public GameObject foundRoomKey;
     public GameObject foundPhone;
     public GameObject interactionUI;
+    public GameObject lockedUI;
     public GameObject roomKey;
     public GameObject mainDoorKey;
     public GameObject garageKey;
@@ -33,26 +34,36 @@ public class Interactor : MonoBehaviour
     public BoxCollider fridgeCollider;
 
     public float interactionRange;
-    private float displayTextDelay = 1f;
+    private float displayTextDelay = 1.5f;
     public bool hasFlashlight = false;
     private bool active = true;
     private bool inactive = false;
 
     private void Start()
     {
-        hasFlashlight = inactive;
-        foundFlashlight.SetActive(inactive);
-        foundRoomKey.SetActive(inactive);
-        foundMainDoorKey.SetActive(inactive);
-        foundGarageKey.SetActive(inactive);
-        foundPhone.SetActive(inactive);
-        interactionUI.SetActive(inactive);
+        DisplayItems(roomKey, mainDoorKey, food, phone, waterGlass, garageKey);
+        DisplayUI(foundFlashlight, foundRoomKey, foundMainDoorKey, foundGarageKey, lockedUI, foundPhone, interactionUI);
+    }
+
+    public void DisplayItems(GameObject roomKey, GameObject mainDoorKey, GameObject food, GameObject phone, GameObject waterGlass, GameObject garageKey)
+    {
         roomKey.SetActive(active);
         mainDoorKey.SetActive(inactive);
         food.SetActive(inactive);
         phone.SetActive(inactive);
         waterGlass.SetActive(inactive);
         garageKey.SetActive(inactive);
+    }
+
+    public void DisplayUI(GameObject foundFlashlight, GameObject foundRoomKey, GameObject foundMainDoorKey, GameObject foundGarageKey, GameObject lockedUI, GameObject foundPhone, GameObject interactionUI)
+    {
+        foundFlashlight.SetActive(inactive);
+        foundRoomKey.SetActive(inactive);
+        foundMainDoorKey.SetActive(inactive);
+        foundGarageKey.SetActive(inactive);
+        lockedUI.SetActive(inactive);
+        foundPhone.SetActive(inactive);
+        interactionUI.SetActive(inactive);
     }
 
     void Update()
@@ -67,7 +78,7 @@ public class Interactor : MonoBehaviour
     {
         if (hasFlashlight && Input.GetKeyDown(KeyCode.F))
         {
-            if (RoundManager.instance.currentState != GameState.pause && RoundManager.instance.currentState != GameState.onSettings && RoundManager.instance.currentState != GameState.onMainMenu)
+            if (RoundManager.instance.currentGameState != GameState.pause && RoundManager.instance.currentGameState != GameState.onSettings && RoundManager.instance.currentGameState != GameState.onMainMenu)
             {
                 flashlight.Toggle();
             }
@@ -106,6 +117,7 @@ public class Interactor : MonoBehaviour
                 StartCoroutine(DisplayFoundRoomkeyText());
                 waterGlass.SetActive(active);
                 AudioManager.instance.PlaySound(equipKeysAudioSource, equipKeysAudioClip);
+                RoundManager.instance.currentKeyState = KeyState.kidsRoomKey;
             }
             else if (interactable.gameObject.CompareTag("WaterGlass"))
             {
@@ -119,6 +131,7 @@ public class Interactor : MonoBehaviour
                 taskManager.CompleteTask();
                 garageKey.SetActive(active);
                 doorBoxCollider.SetActive(inactive);
+                fridgeCollider.enabled = inactive;
                 AudioManager.instance.PlaySound(eatAudioSource, eatAudioClip);
             }
             else if (interactable.gameObject.CompareTag("Phone"))
@@ -137,36 +150,83 @@ public class Interactor : MonoBehaviour
                 StartCoroutine(DisplayFoundGarageKeyText());
                 phone.SetActive(active);
                 AudioManager.instance.PlaySound(equipKeysAudioSource, equipKeysAudioClip);
+                RoundManager.instance.currentKeyState = KeyState.garageKey;
             }
             else if (interactable.gameObject.CompareTag("MainDoorKey"))
             {
                 taskManager.CompleteTask();
                 StartCoroutine(DisplayFoundMainDoorKeyText());
                 AudioManager.instance.PlaySound(equipKeysAudioSource, equipKeysAudioClip);
+                RoundManager.instance.currentKeyState = KeyState.mainDoorKey;
             }
         }
 
         if (doorBase != null)
         {
+            HandleLockedDoors(doorBase);
+            HandleUnlockedDoors(doorBase);
+        }
+    }
+
+    public void HandleUnlockedDoors(DoorBase doorBase)
+    {
+        if (doorBase.gameObject.CompareTag("BathroomDoor"))
+        {
+            doorBase.OnDoorInteract();
+        }
+
+        if (doorBase.gameObject.CompareTag("BedroomDoor"))
+        {
+            doorBase.OnDoorInteract();
+        }
+
+        if (doorBase.gameObject.CompareTag("FridgeDoor"))
+        {
+            doorBase.OnDoorInteract();
+        }
+    }
+
+    public void HandleLockedDoors(DoorBase doorBase)
+    {
+        if (RoundManager.instance.currentKeyState == KeyState.none)
+        {
             if (doorBase.gameObject.CompareTag("KidsDoor"))
             {
-                doorBase.OnDoorInteract();
+                StartCoroutine(DisplayLockedUI());
+                lockedUI.SetActive(active);
             }
-            else if (doorBase.gameObject.CompareTag("BathroomDoor"))
+            else
             {
                 doorBase.OnDoorInteract();
+                RoundManager.instance.currentKeyState = KeyState.none;
             }
-            else if (doorBase.gameObject.CompareTag("BedroomDoor"))
+        }
+
+        if (RoundManager.instance.currentKeyState == KeyState.none)
+        {
+            if (doorBase.gameObject.CompareTag("GarageDoor"))
+            {
+                StartCoroutine(DisplayLockedUI());
+                lockedUI.SetActive(active);
+            }
+            else
             {
                 doorBase.OnDoorInteract();
+                RoundManager.instance.currentKeyState = KeyState.none;
             }
-            else if (doorBase.gameObject.CompareTag("GarageDoor"))
+        }
+
+        if (RoundManager.instance.currentKeyState == KeyState.none)
+        {
+            if (doorBase.gameObject.CompareTag("MainDoor"))
+            {
+                StartCoroutine(DisplayLockedUI());
+                lockedUI.SetActive(active);
+            }
+            else
             {
                 doorBase.OnDoorInteract();
-            }
-            else if (doorBase.gameObject.CompareTag("FridgeDoor"))
-            {
-                doorBase.OnDoorInteract();
+                RoundManager.instance.currentKeyState = KeyState.none;
             }
         }
     }
@@ -181,7 +241,7 @@ public class Interactor : MonoBehaviour
             Interactable interactable = hit.collider.GetComponent<Interactable>();
             DoorBase doorBase = hit.collider.GetComponent<DoorBase>();
 
-            if (interactable != null || doorBase != null && RoundManager.instance.currentState != GameState.pause && RoundManager.instance.currentState != GameState.onSettings)
+            if (interactable != null || doorBase != null && RoundManager.instance.currentGameState != GameState.pause && RoundManager.instance.currentGameState != GameState.onSettings)
             {
                 interactionUI.SetActive(active);
             }
@@ -241,5 +301,12 @@ public class Interactor : MonoBehaviour
         foundPhone.SetActive(active);
         yield return new WaitForSeconds(displayTextDelay);
         foundPhone.SetActive(inactive);
+    }
+    
+    public IEnumerator DisplayLockedUI()
+    {
+        lockedUI.SetActive(active);
+        yield return new WaitForSeconds(displayTextDelay);
+        lockedUI.SetActive(inactive);
     }
 }

@@ -92,8 +92,8 @@ public class MainMenuUIManager : MonoBehaviour
     {
         loadingPanel.SetActive(active);
         mainMenuAudioSource.Stop();
+        rainAudioSource.Pause();
         yield return new WaitForSecondsRealtime(playButtonDelay);
-        rainAudioSource.Stop();
         Time.timeScale = 1f;
 
         mainMenu.SetActive(inactive);
@@ -105,7 +105,7 @@ public class MainMenuUIManager : MonoBehaviour
         secondaryCamera.enabled = inactive;
         mainCamera.enabled = active;
 
-        RoundManager.instance.currentState = GameState.playing;
+        RoundManager.instance.currentGameState = GameState.playing;
     }
 
     public void ControlsButton()
@@ -120,7 +120,7 @@ public class MainMenuUIManager : MonoBehaviour
         mainMenu.SetActive(inactive);
         settingsMenu.SetActive(active);
 
-        RoundManager.instance.currentState = GameState.onMainMenu;
+        RoundManager.instance.currentGameState = GameState.onMainMenu;
     }
 
     public void SettingsButton()
@@ -143,7 +143,7 @@ public class MainMenuUIManager : MonoBehaviour
 
         taskChange.SetActive(inactive);
 
-        RoundManager.instance.currentState = GameState.onSettings;
+        RoundManager.instance.currentGameState = GameState.onSettings;
     }
 
     public void CreditsButton()
@@ -173,7 +173,7 @@ public class MainMenuUIManager : MonoBehaviour
 
         taskChange.SetActive(inactive);
 
-        RoundManager.instance.currentState = GameState.onMainMenu;
+        RoundManager.instance.currentGameState = GameState.onMainMenu;
     }
 
     public void BackToPrevious()
@@ -190,7 +190,7 @@ public class MainMenuUIManager : MonoBehaviour
         controlsMenu.SetActive(inactive);
         settingsMenu.SetActive(active);
 
-        RoundManager.instance.currentState = GameState.onMainMenu;
+        RoundManager.instance.currentGameState = GameState.onMainMenu;
     }
 
     public void AudioCategoryButton()

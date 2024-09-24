@@ -50,7 +50,7 @@ public class MainGameUIManager : MonoBehaviour
         pauseMenu.SetActive(inactive);
         dot.SetActive(active);
         taskChange.SetActive(active);
-        RoundManager.instance.currentState = GameState.playing;
+        RoundManager.instance.currentGameState = GameState.playing;
     }
 
     public void SettingsButton()
@@ -70,7 +70,7 @@ public class MainGameUIManager : MonoBehaviour
         backToGame.SetActive(active);
         taskChange.SetActive(inactive);
 
-        RoundManager.instance.currentState = GameState.onSettings;
+        RoundManager.instance.currentGameState = GameState.onSettings;
     }
 
     public void HomeButton()
@@ -86,7 +86,7 @@ public class MainGameUIManager : MonoBehaviour
         playerRespawn.Respawn();
         taskChange.SetActive(inactive);
         SceneManager.LoadScene("MainGameScene");
-        RoundManager.instance.currentState = GameState.onMainMenu;
+        RoundManager.instance.currentGameState = GameState.onMainMenu;
     }
 
     public void ExitButton()
@@ -100,6 +100,6 @@ public class MainGameUIManager : MonoBehaviour
         pauseMenu.SetActive(active);
         settingsMenu.SetActive(inactive);
         taskChange.SetActive(inactive);
-        RoundManager.instance.currentState = GameState.pause;
+        RoundManager.instance.currentGameState = GameState.pause;
     }
 }

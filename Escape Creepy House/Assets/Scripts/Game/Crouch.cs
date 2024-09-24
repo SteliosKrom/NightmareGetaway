@@ -32,7 +32,7 @@ namespace CrouchSystem
 
         public void Crouching()
         {
-            if (RoundManager.instance.currentState == GameState.playing && Input.GetKeyDown(KeyCode.C))
+            if (RoundManager.instance.currentGameState == GameState.playing && Input.GetKeyDown(KeyCode.C))
             {
                 isCrouching = !isCrouching;
 
