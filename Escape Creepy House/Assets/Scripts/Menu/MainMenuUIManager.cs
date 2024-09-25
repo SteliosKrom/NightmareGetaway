@@ -13,7 +13,6 @@ public class MainMenuUIManager : MonoBehaviour
     private readonly float playButtonDelay = 1f;
     private bool active = true;
     private bool inactive = false;
-    private bool isHovered = false;
 
     [Header("BUTTONS")]
     [SerializeField] private Button playButton;
@@ -55,6 +54,11 @@ public class MainMenuUIManager : MonoBehaviour
 
     private void Start()
     {
+        AttachButtonHoverEvents(playButton);
+        AttachButtonHoverEvents(settingsButton);
+        AttachButtonHoverEvents(creditsButton);
+        AttachButtonHoverEvents(exitButton);
+
         Time.timeScale = 1f;
 
         mainMenu.SetActive(active);
@@ -226,8 +230,29 @@ public class MainMenuUIManager : MonoBehaviour
         controlsButton.SetActive(inactive);
     }
 
-    public void EnterHoverSoundEffect()
-    { 
+    public void EnterHoverSoundEffect(Transform buttonTransform)
+    {
+        buttonTransform.DOScale(1.2f, 0.2f);
         AudioManager.instance.PlaySound(hoverAudioSource, hoverAudioClip);
+    }
+
+    public void ExitHoverSoundEffect(Transform buttonTransform)
+    {
+        buttonTransform.DOScale(1f, 0.2f);
+    }
+
+    private void AttachButtonHoverEvents(Button button)
+    {
+        EventTrigger trigger = button.gameObject.AddComponent<EventTrigger>();
+
+        EventTrigger.Entry entryEnter = new EventTrigger.Entry();
+        entryEnter.eventID = EventTriggerType.PointerEnter;
+        entryEnter.callback.AddListener((data) => { EnterHoverSoundEffect(button.transform); });
+        trigger.triggers.Add(entryEnter);
+
+        EventTrigger.Entry entryExit = new EventTrigger.Entry();
+        entryExit.eventID = EventTriggerType.PointerExit;
+        entryExit.callback.AddListener((data) => { ExitHoverSoundEffect(button.transform); });
+        trigger.triggers.Add(entryExit);
     }
 }
