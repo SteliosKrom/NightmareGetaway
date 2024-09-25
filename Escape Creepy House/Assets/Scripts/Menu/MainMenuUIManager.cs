@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class MainMenuUIManager : MonoBehaviour
 {
@@ -47,6 +48,7 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private AudioClip rainAudioClip;
     [SerializeField] private AudioClip hoverAudioClip;
     private Vector3 initialPos;
+    public RectTransform[] buttonTransform;
 
     private void Start()
     {
@@ -221,8 +223,13 @@ public class MainMenuUIManager : MonoBehaviour
         controlsButton.SetActive(inactive);
     }
 
-    public void HoverSoundEffect()
+    public void EnterHoverSoundEffect()
     {
         AudioManager.instance.PlaySound(hoverAudioSource, hoverAudioClip);
+    }
+
+    public void ExitHoverSoundEffect()
+    {
+
     }
 }

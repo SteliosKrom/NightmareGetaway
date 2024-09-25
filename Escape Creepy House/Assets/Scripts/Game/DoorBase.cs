@@ -19,10 +19,8 @@ public class DoorBase : MonoBehaviour
     private bool active = true;
     private bool inactive = false;
     private bool canInteract = false;
-    private bool isLockedUI = false;
 
     private float interactioDelay = 1f;
-    private float lockedUIDelay = 3f;
 
     [Header("AUDIO")]
     public AudioSource doorOpenedAudioSource;
@@ -58,11 +56,6 @@ public class DoorBase : MonoBehaviour
             AudioManager.instance.PlaySound(doorClosedAudioSource, doorClosedAudioClip);
         }
         StartCoroutine(InteractionDelay());
-
-        if (!isLockedUI)
-        {
-            StartCoroutine(LockedUIDelay());
-        }
     }
 
     public void OpenDoor()
@@ -86,12 +79,5 @@ public class DoorBase : MonoBehaviour
         canInteract = inactive;
         yield return new WaitForSeconds(interactioDelay);
         canInteract = active;
-    }
-
-    private IEnumerator LockedUIDelay()
-    {
-        isLockedUI = inactive;
-        yield return new WaitForSeconds(lockedUIDelay);
-        isLockedUI = active;
     }
 }
