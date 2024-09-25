@@ -2,6 +2,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using System.ComponentModel;
+using Unity.VisualScripting;
+using UnityEngine.EventSystems;
 
 public class MainMenuUIManager : MonoBehaviour
 {
@@ -10,6 +13,7 @@ public class MainMenuUIManager : MonoBehaviour
     private readonly float playButtonDelay = 1f;
     private bool active = true;
     private bool inactive = false;
+    private bool isHovered = false;
 
     [Header("BUTTONS")]
     [SerializeField] private Button playButton;
@@ -48,7 +52,6 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private AudioClip rainAudioClip;
     [SerializeField] private AudioClip hoverAudioClip;
     private Vector3 initialPos;
-    public RectTransform[] buttonTransform;
 
     private void Start()
     {
@@ -224,12 +227,7 @@ public class MainMenuUIManager : MonoBehaviour
     }
 
     public void EnterHoverSoundEffect()
-    {
+    { 
         AudioManager.instance.PlaySound(hoverAudioSource, hoverAudioClip);
-    }
-
-    public void ExitHoverSoundEffect()
-    {
-
     }
 }

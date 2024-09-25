@@ -1237,11 +1237,6 @@ MonoBehaviour:
   rainAudioSource: {fileID: 429594847}
   rainAudioClip: {fileID: 8300000, guid: df47a1f8564802d4eb35d58a21aaef9d, type: 3}
   hoverAudioClip: {fileID: 8300000, guid: 307d84975c8c7f543842e311e1a709dc, type: 3}
-  buttonTransform:
-  - {fileID: 998161089}
-  - {fileID: 929470049}
-  - {fileID: 744182967}
-  - {fileID: 94827346}
 --- !u!1 &68912768
 GameObject:
   m_ObjectHideFlags: 0
