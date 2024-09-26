@@ -2,8 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-using System.ComponentModel;
-using Unity.VisualScripting;
 using UnityEngine.EventSystems;
 
 public class MainMenuUIManager : MonoBehaviour
@@ -22,6 +20,10 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private Button audioCategoryButton;
     [SerializeField] private Button videoCategoryButton;
     [SerializeField] private Button graphicsCategoryButton;
+    [SerializeField] private Button controlsCategoryButon;
+    [SerializeField] private Button backToMenuButton;
+    [SerializeField] private Button backToPreviousButton;
+    [SerializeField] private Button bakcToGameButton;
 
     [Header("GAME OBJECTS")]
     [SerializeField] private GameObject mainMenu;
@@ -38,6 +40,7 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private GameObject graphicsMenu;
     [SerializeField] private GameObject backToMenu;
     [SerializeField] private GameObject backToGame;
+    [SerializeField] private GameObject backToPrevious;
     [SerializeField] private GameObject dot;
     [SerializeField] private GameObject taskChange;
     [SerializeField] private GameObject loadingPanel;
@@ -54,11 +57,6 @@ public class MainMenuUIManager : MonoBehaviour
 
     private void Start()
     {
-        AttachButtonHoverEvents(playButton);
-        AttachButtonHoverEvents(settingsButton);
-        AttachButtonHoverEvents(creditsButton);
-        AttachButtonHoverEvents(exitButton);
-
         Time.timeScale = 1f;
 
         mainMenu.SetActive(active);
@@ -79,6 +77,16 @@ public class MainMenuUIManager : MonoBehaviour
         initialPos = secondaryCamera.transform.position;
         mainMenuAudioSource.Play();
         rainAudioSource.Play();
+
+        AttachButtonHoverEventsMenu(playButton);
+        AttachButtonHoverEventsMenu(settingsButton);
+        AttachButtonHoverEventsMenu(creditsButton);
+        AttachButtonHoverEventsMenu(exitButton);
+
+        AttachButtonHoverEventsSettings(audioCategoryButton);
+        AttachButtonHoverEventsSettings(videoCategoryButton);
+        AttachButtonHoverEventsSettings(graphicsCategoryButton);
+        AttachButtonHoverEventsSettings(controlsCategoryButon);
     }
 
     private void Update()
@@ -114,6 +122,7 @@ public class MainMenuUIManager : MonoBehaviour
         secondaryCamera.enabled = inactive;
         mainCamera.enabled = active;
 
+        playButton.transform.DOScale(1f, 0.2f);
         RoundManager.instance.currentGameState = GameState.playing;
     }
 
@@ -129,6 +138,7 @@ public class MainMenuUIManager : MonoBehaviour
         mainMenu.SetActive(inactive);
         settingsMenu.SetActive(active);
 
+        controlsButton.transform.DOScale(4f, 0.2f);
         RoundManager.instance.currentGameState = GameState.onMainMenu;
     }
 
@@ -149,9 +159,11 @@ public class MainMenuUIManager : MonoBehaviour
 
         backToGame.SetActive(inactive);
         backToMenu.SetActive(active);
+        backToPrevious.SetActive(active);
 
         taskChange.SetActive(inactive);
 
+        settingsButton.transform.DOScale(1f, 0.2f);
         RoundManager.instance.currentGameState = GameState.onSettings;
     }
 
@@ -159,12 +171,13 @@ public class MainMenuUIManager : MonoBehaviour
     {
         mainMenu.SetActive(inactive);
         creditsMenu.SetActive(active);
-
         taskChange.SetActive(inactive);
+        creditsButton.transform.DOScale(1f, 0.2f);
     }
 
     public void ExitButton()
     {
+        exitButton.transform.DOScale(1f, 0.2f);
         Application.Quit();
     }
 
@@ -173,7 +186,6 @@ public class MainMenuUIManager : MonoBehaviour
         controlsMenu.SetActive(inactive);
         settings.SetActive(inactive);
         mainMenu.SetActive(active);
-
         audioButton.SetActive(inactive);
         videoButton.SetActive(inactive);
         graphicsButton.SetActive(inactive);
@@ -210,6 +222,7 @@ public class MainMenuUIManager : MonoBehaviour
         videoButton.SetActive(inactive);
         graphicsButton.SetActive(inactive);
         controlsButton.SetActive(inactive);
+        audioCategoryButton.transform.DOScale(4f, 0.2f);
     }
 
     public void VideoCategoryButton()
@@ -219,6 +232,7 @@ public class MainMenuUIManager : MonoBehaviour
         graphicsButton.SetActive(inactive);
         audioButton.SetActive(inactive);
         controlsButton.SetActive(inactive);
+        videoCategoryButton.transform.DOScale(4f, 0.2f);
     }
 
     public void GraphicsCategoryButton()
@@ -228,31 +242,63 @@ public class MainMenuUIManager : MonoBehaviour
         videoButton.SetActive(inactive);
         audioButton.SetActive(inactive);
         controlsButton.SetActive(inactive);
+        graphicsCategoryButton.transform.DOScale(4f, 0.2f);
     }
 
-    public void EnterHoverSoundEffect(Transform buttonTransform)
+    public void EnterHoverSoundEffect()
+    {
+        AudioManager.instance.PlaySound(hoverAudioSource, hoverAudioClip);
+    }
+
+    public void EnterHoverSoundEffectMenu(Transform buttonTransform)
     {
         buttonTransform.DOScale(1.2f, 0.2f);
         AudioManager.instance.PlaySound(hoverAudioSource, hoverAudioClip);
     }
 
-    public void ExitHoverSoundEffect(Transform buttonTransform)
+    public void ExitHoverSoundEffectMenu(Transform buttonTransform)
     {
         buttonTransform.DOScale(1f, 0.2f);
     }
 
-    private void AttachButtonHoverEvents(Button button)
+    public void EnterHoverSoundEffectSettings(Transform buttonTransform)
     {
-        EventTrigger trigger = button.gameObject.AddComponent<EventTrigger>();
+        buttonTransform.DOScale(4.5f, 0.2f);
+        AudioManager.instance.PlaySound(hoverAudioSource, hoverAudioClip);
+    }
 
-        EventTrigger.Entry entryEnter = new EventTrigger.Entry();
-        entryEnter.eventID = EventTriggerType.PointerEnter;
-        entryEnter.callback.AddListener((data) => { EnterHoverSoundEffect(button.transform); });
-        trigger.triggers.Add(entryEnter);
+    public void ExitHoverSoundEffectSettings(Transform buttonTransform)
+    {
+        buttonTransform.DOScale(4f, 0.2f);
+    }
+
+    private void AttachButtonHoverEventsMenu(Button menuButtons)
+    {
+        EventTrigger menuTrigger = menuButtons.gameObject.AddComponent<EventTrigger>();
+
+        EventTrigger.Entry menuEntryEnter = new EventTrigger.Entry();
+        menuEntryEnter.eventID = EventTriggerType.PointerEnter;
+        menuEntryEnter.callback.AddListener((data) => { EnterHoverSoundEffectMenu(menuButtons.transform); });
+        menuTrigger.triggers.Add(menuEntryEnter);
 
         EventTrigger.Entry entryExit = new EventTrigger.Entry();
         entryExit.eventID = EventTriggerType.PointerExit;
-        entryExit.callback.AddListener((data) => { ExitHoverSoundEffect(button.transform); });
-        trigger.triggers.Add(entryExit);
+        entryExit.callback.AddListener((data) => { ExitHoverSoundEffectMenu(menuButtons.transform); });
+        menuTrigger.triggers.Add(entryExit);
+    }
+
+    private void AttachButtonHoverEventsSettings(Button settingsButtons)
+    {
+        EventTrigger settingsTrigger = settingsButtons.gameObject.AddComponent<EventTrigger>();
+
+        EventTrigger.Entry settingsEntryEnter = new EventTrigger.Entry();
+        settingsEntryEnter.eventID = EventTriggerType.PointerEnter;
+        settingsEntryEnter.callback.AddListener((data) => { EnterHoverSoundEffectSettings(settingsButtons.transform); });
+        settingsTrigger.triggers.Add(settingsEntryEnter);
+
+        EventTrigger.Entry settingsEntryExit = new EventTrigger.Entry();
+        settingsEntryExit.eventID = EventTriggerType.PointerExit;
+        settingsEntryExit.callback.AddListener((data) => { ExitHoverSoundEffectSettings(settingsButtons.transform); });
+        settingsTrigger.triggers.Add(settingsEntryExit);
     }
 }
