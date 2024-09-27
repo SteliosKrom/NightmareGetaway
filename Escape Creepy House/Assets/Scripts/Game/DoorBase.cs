@@ -5,6 +5,7 @@ public enum DoorStates
 {
     isOpened, 
     isClosed,
+    isIdle
 }
 
 public class DoorBase : MonoBehaviour
@@ -18,7 +19,8 @@ public class DoorBase : MonoBehaviour
 
     private bool active = true;
     private bool inactive = false;
-    private bool canInteract = false;
+    private bool canInteract = true;
+    private bool isLocked = false;
 
     private float interactioDelay = 1f;
 
@@ -28,10 +30,10 @@ public class DoorBase : MonoBehaviour
 
     public AudioClip doorOpenedAudioClip;
     public AudioClip doorClosedAudioClip;
-    
+
     public void Start()
     {
-        currentState = DoorStates.isClosed;
+        currentState = DoorStates.isIdle;
         doorAnimator.SetBool(openParameter, inactive);
         doorAnimator.SetBool(closeParameter, inactive);
         doorAnimator.SetBool(idleParameter, active);
@@ -39,18 +41,24 @@ public class DoorBase : MonoBehaviour
 
     public virtual void OnDoorInteract()
     {
-        if (canInteract == inactive)
+        if (!canInteract)
+        {
+            return;
+        }
+        
+        if (isLocked)
         {
             return;
         }
 
         canInteract = inactive;
-        if (currentState == DoorStates.isClosed && RoundManager.instance.currentKeyState != KeyState.none)
+
+        if (currentState == DoorStates.isIdle || currentState == DoorStates.isClosed)
         {
             OpenDoor();
             AudioManager.instance.PlaySound(doorOpenedAudioSource, doorOpenedAudioClip);
         }
-        else if (currentState == DoorStates.isOpened && RoundManager.instance.currentKeyState != KeyState.none)
+        else if (currentState == DoorStates.isOpened)
         {
             CloseDoor();
             AudioManager.instance.PlaySound(doorClosedAudioSource, doorClosedAudioClip);
@@ -76,8 +84,8 @@ public class DoorBase : MonoBehaviour
 
     private IEnumerator InteractionDelay()
     {
-        canInteract = inactive;
         yield return new WaitForSeconds(interactioDelay);
         canInteract = active;
+        Debug.Log("Can interact again.");
     }
 }

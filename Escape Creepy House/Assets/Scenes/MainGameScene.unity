@@ -10008,7 +10008,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &182284035
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15046,9 +15046,11 @@ MonoBehaviour:
   equipKeysAudioSource: {fileID: 1321917434}
   drinkAudioSource: {fileID: 890562420}
   eatAudioSource: {fileID: 1331450122}
+  lockedAudioSource: {fileID: 1403184476}
   drinkAudioclip: {fileID: 8300000, guid: 869a000734761b143b5ea944c51634bc, type: 3}
   eatAudioClip: {fileID: 8300000, guid: 12716cf956cfcce4b8d10a0554fb6865, type: 3}
   equipKeysAudioClip: {fileID: 8300000, guid: 3c926fceff45f654a942ef45694a9ed6, type: 3}
+  lockedAudioClip: {fileID: 8300000, guid: ba0dd6d8b717e403ca0fa3bdebe97dad, type: 3}
   interactionSource: {fileID: 963194228}
   flashlight: {fileID: 792361156}
   foundGarageKey: {fileID: 220954208}
@@ -18144,6 +18146,7 @@ Transform:
   - {fileID: 282683329}
   - {fileID: 2101123095}
   - {fileID: 429594846}
+  - {fileID: 1403184475}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &667508248
@@ -35537,7 +35540,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Door is locked!
+  m_text: You need a key!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
   m_sharedMaterial: {fileID: 7855358897793652092, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
@@ -37347,6 +37350,134 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1398708927}
   m_CullTransparentMesh: 1
+--- !u!1 &1403184474
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1403184475}
+  - component: {fileID: 1403184476}
+  m_Layer: 0
+  m_Name: LockedAudioSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1403184475
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403184474}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 654463484}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1403184476
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403184474}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 5667486173312248149, guid: ab31cbc55cac0aa4db2a64e1763fe7cc, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1405363641
 GameObject:
   m_ObjectHideFlags: 0
@@ -42115,7 +42246,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1873982494
 RectTransform:
   m_ObjectHideFlags: 0
@@ -51223,7 +51354,7 @@ GameObject:
   - component: {fileID: 8520435736535158427}
   m_Layer: 0
   m_Name: BedroomDoorHandle
-  m_TagString: BedroomDoor
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77704,7 +77835,7 @@ GameObject:
   - component: {fileID: 8386798335186017358}
   m_Layer: 0
   m_Name: FridgeDoor
-  m_TagString: FridgeDoor
+  m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
