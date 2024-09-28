@@ -1,9 +1,10 @@
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class PlayerController : MonoBehaviour
 {
     public DoorBase doorBase;
+    public Interactor interactor;
+    public ClockAudio clockAudio;
     public float playerSpeed;
     private float gravity;
     private bool active = true;
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject dot;
     [SerializeField] private GameObject taskChange;
     [SerializeField] private GameObject foundItemMessage;
+    [SerializeField] private GameObject lockedText;
 
     [Header("OTHER")]
     [SerializeField] private CharacterController characterController;
@@ -34,7 +36,6 @@ public class PlayerController : MonoBehaviour
     {
         PauseAndResume();
         MovePlayer();
-
     }
 
     public void MovePlayer()
@@ -86,6 +87,9 @@ public class PlayerController : MonoBehaviour
         dot.SetActive(inactive);
         taskChange.SetActive(inactive);
         foundItemMessage.SetActive(inactive);
+        lockedText.SetActive(inactive);
+        interactor.lockedAudioSource.Pause();
+        clockAudio.clockAudioSource.Pause();
         Time.timeScale = 0f;
         CheckDoorStateOnPause();
         RoundManager.instance.currentGameState = GameState.pause;
@@ -96,6 +100,8 @@ public class PlayerController : MonoBehaviour
         pauseMenu.SetActive(inactive);
         dot.SetActive(active);
         taskChange.SetActive(active);
+        interactor.lockedAudioSource.UnPause();
+        clockAudio.clockAudioSource.UnPause();
         Time.timeScale = 1f;
         CheckDoorStateOnResume();
         RoundManager.instance.currentGameState = GameState.playing;

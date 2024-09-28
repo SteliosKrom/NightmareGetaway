@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace CrouchSystem
@@ -14,6 +16,8 @@ namespace CrouchSystem
 
         [Header("TYPES")]
         private bool isCrouching = false;
+        private bool canCrouch = true;
+        private float crouchingDelay = 1f;
         private float originalHeight;
         private float crouchHeight = 1f;
 
@@ -27,12 +31,16 @@ namespace CrouchSystem
 
         private void Update()
         {
-            Crouching();
+            if (canCrouch && RoundManager.instance.currentGameState == GameState.playing)
+            {
+                Crouching();
+            }
+
         }
 
         public void Crouching()
         {
-            if (RoundManager.instance.currentGameState == GameState.playing && Input.GetKeyDown(KeyCode.C))
+            if (Input.GetKeyDown(KeyCode.C))
             {
                 isCrouching = !isCrouching;
 
@@ -48,7 +56,15 @@ namespace CrouchSystem
                     playerController.playerSpeed = 1.5f;
                     crouchingAudioSourceStart.Play();
                 }
+                StartCoroutine(CrouchingDelay());
             }
+        }
+
+        public IEnumerator CrouchingDelay()
+        {
+            canCrouch = false;
+            yield return new WaitForSeconds(crouchingDelay);
+            canCrouch = true;
         }
     }
 }

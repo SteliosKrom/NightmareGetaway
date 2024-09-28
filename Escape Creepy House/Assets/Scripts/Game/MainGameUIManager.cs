@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class MainGameUIManager : MonoBehaviour
 {
+    public Interactor interactor;
+    public ClockAudio clockAudio;
     private bool active = true;
     private bool inactive = false;
 
@@ -67,6 +69,8 @@ public class MainGameUIManager : MonoBehaviour
         pauseMenu.SetActive(inactive);
         dot.SetActive(active);
         taskChange.SetActive(active);
+        interactor.lockedAudioSource.UnPause();
+        clockAudio.clockAudioSource.UnPause();
         resumeButton.transform.DOScale(0.8f, 0.2f);
         RoundManager.instance.currentGameState = GameState.playing;
     }

@@ -92,7 +92,7 @@ public class Interactor : MonoBehaviour
 
     public void InputForInteraction()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && RoundManager.instance.currentGameState != GameState.pause)
         {
             TryInteract();
         }

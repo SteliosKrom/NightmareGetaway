@@ -12,6 +12,8 @@ public enum EnvironmentState
 {
     outdoors,
     indoors,
+    inRoom,
+    outRoom,
     none
 }
 
