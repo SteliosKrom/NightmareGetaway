@@ -50,6 +50,7 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private Camera mainCamera;
     [SerializeField] private AudioSource hoverAudioSource;
     [SerializeField] private AudioSource mainMenuAudioSource;
+    [SerializeField] private AudioSource mainGameAudioSource;
     [SerializeField] private AudioSource rainAudioSource;
     [SerializeField] private AudioClip rainAudioClip;
     [SerializeField] private AudioClip hoverAudioClip;
@@ -76,6 +77,7 @@ public class MainMenuUIManager : MonoBehaviour
 
         initialPos = secondaryCamera.transform.position;
         mainMenuAudioSource.Play();
+        mainGameAudioSource.Stop();
         rainAudioSource.Play();
 
         AttachButtonHoverEventsMenu(playButton);
@@ -108,9 +110,10 @@ public class MainMenuUIManager : MonoBehaviour
     IEnumerator PlayButtonDelay()
     {
         loadingPanel.SetActive(active);
-        mainMenuAudioSource.Stop();
         rainAudioSource.Pause();
+        mainMenuAudioSource.Stop();
         yield return new WaitForSecondsRealtime(playButtonDelay);
+        mainGameAudioSource.Play();
         Time.timeScale = 1f;
 
         mainMenu.SetActive(inactive);

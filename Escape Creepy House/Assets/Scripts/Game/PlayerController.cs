@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public DoorBase doorBase;
-    public Interactor interactor;
-    public ClockAudio clockAudio;
     public float playerSpeed;
     private float gravity;
     private bool active = true;
@@ -20,11 +17,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject lockedText;
 
     [Header("OTHER")]
+    [SerializeField] DoorBase doorBase;
+    [SerializeField] Interactor interactor;
+    [SerializeField] ClockAudio clockAudio;
+    [SerializeField] RainAudio rainAudio;
     [SerializeField] private CharacterController characterController;
     [SerializeField] private Animator playerAnimator;
     public RaycastHit hit;
     private Vector3 velocity;
 
+    [Header("AUDIO")]
+    [SerializeField] private AudioSource mainGameAudioSource;
 
     private void Start()
     {
@@ -90,6 +93,8 @@ public class PlayerController : MonoBehaviour
         lockedText.SetActive(inactive);
         interactor.lockedAudioSource.Pause();
         clockAudio.clockAudioSource.Pause();
+        rainAudio.rainAudioSource.Pause();
+        mainGameAudioSource.Pause();
         Time.timeScale = 0f;
         CheckDoorStateOnPause();
         RoundManager.instance.currentGameState = GameState.pause;
@@ -102,6 +107,7 @@ public class PlayerController : MonoBehaviour
         taskChange.SetActive(active);
         interactor.lockedAudioSource.UnPause();
         clockAudio.clockAudioSource.UnPause();
+        mainGameAudioSource.UnPause();
         Time.timeScale = 1f;
         CheckDoorStateOnResume();
         RoundManager.instance.currentGameState = GameState.playing;

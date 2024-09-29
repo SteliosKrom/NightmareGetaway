@@ -18,7 +18,7 @@ public class RainAudio : MonoBehaviour
         {
             if (rainAudioSource.isPlaying)
             {
-                rainAudioSource.Pause();
+                rainAudioSource.Stop();
             }
         }
     }
