@@ -8,7 +8,8 @@ public class MainMenuUIManager : MonoBehaviour
 {
     private readonly float movementSpeed = 1f;
     private readonly float movementRange = 0.5f;
-    private readonly float playButtonDelay = 1f;
+    private readonly float playButtonDelay = 15f;
+    private readonly float gameIntroDelay = 30f;
     private bool active = true;
     private bool inactive = false;
 
@@ -23,7 +24,7 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private Button controlsCategoryButon;
     [SerializeField] private Button backToMenuButton;
     [SerializeField] private Button backToPreviousButton;
-    [SerializeField] private Button bakcToGameButton;
+    [SerializeField] private Button backToGameButton;
 
     [Header("GAME OBJECTS")]
     [SerializeField] private GameObject mainMenu;
@@ -44,6 +45,7 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private GameObject dot;
     [SerializeField] private GameObject taskChange;
     [SerializeField] private GameObject loadingPanel;
+    [SerializeField] private GameObject gameIntroPanel;
 
     [Header("OTHER")]
     [SerializeField] private Camera secondaryCamera;
@@ -74,6 +76,7 @@ public class MainMenuUIManager : MonoBehaviour
         dot.SetActive(inactive);
         taskChange.SetActive(inactive);
         loadingPanel.SetActive(inactive);
+        gameIntroPanel.SetActive(inactive);
 
         initialPos = secondaryCamera.transform.position;
         mainMenuAudioSource.Play();
@@ -102,6 +105,27 @@ public class MainMenuUIManager : MonoBehaviour
         }
     }
 
+    public IEnumerator GameIntroDelay()
+    {
+        if (RoundManager.instance.currentGameState == GameState.inIntro)
+        {
+            gameIntroPanel.SetActive(active);
+            loadingPanel.SetActive(inactive);
+            yield return new WaitForSeconds(gameIntroDelay);
+            gameIntroPanel.SetActive(inactive);
+            mainGameAudioSource.Play();
+            mainMenu.SetActive(inactive);
+            creditsMenu.SetActive(inactive);
+            dot.SetActive(active);
+            taskChange.SetActive(active);
+            Time.timeScale = 1f;
+            secondaryCamera.enabled = inactive;
+            mainCamera.enabled = active;
+            playButton.transform.DOScale(1f, 0.2f);
+            RoundManager.instance.currentGameState = GameState.playing;
+        }
+    }
+
     public void PlayButton()
     {
         StartCoroutine(PlayButtonDelay());
@@ -112,21 +136,10 @@ public class MainMenuUIManager : MonoBehaviour
         loadingPanel.SetActive(active);
         rainAudioSource.Pause();
         mainMenuAudioSource.Stop();
+        RoundManager.instance.currentGameState = GameState.inLoading;
         yield return new WaitForSecondsRealtime(playButtonDelay);
-        mainGameAudioSource.Play();
-        Time.timeScale = 1f;
-
-        mainMenu.SetActive(inactive);
-        creditsMenu.SetActive(inactive);
-        dot.SetActive(active);
-        taskChange.SetActive(active);
-        loadingPanel.SetActive(inactive);
-
-        secondaryCamera.enabled = inactive;
-        mainCamera.enabled = active;
-
-        playButton.transform.DOScale(1f, 0.2f);
-        RoundManager.instance.currentGameState = GameState.playing;
+        RoundManager.instance.currentGameState = GameState.inIntro;
+        StartCoroutine(GameIntroDelay());
     }
 
     public void ControlsButton()

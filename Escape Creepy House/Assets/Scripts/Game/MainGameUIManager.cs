@@ -48,6 +48,7 @@ public class MainGameUIManager : MonoBehaviour
 
     [Header("AUDIO")]
     [SerializeField] private AudioSource mainMenuAudioSource;
+    [SerializeField] private AudioSource mainGameAudioSource;
     [SerializeField] private AudioSource hoverAudioSource;
     [SerializeField] private AudioClip hoverAudioClip;
 
@@ -71,6 +72,7 @@ public class MainGameUIManager : MonoBehaviour
         taskChange.SetActive(active);
         interactor.lockedAudioSource.UnPause();
         clockAudio.clockAudioSource.UnPause();
+        mainGameAudioSource.UnPause();
         resumeButton.transform.DOScale(0.8f, 0.2f);
         RoundManager.instance.currentGameState = GameState.playing;
     }

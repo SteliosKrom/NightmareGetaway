@@ -6,6 +6,8 @@ public enum GameState
     pause,
     onSettings,
     onMainMenu,
+    inLoading,
+    inIntro
 }
 
 public enum EnvironmentState
