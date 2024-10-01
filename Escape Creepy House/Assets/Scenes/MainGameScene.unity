@@ -1189,9 +1189,10 @@ MonoBehaviour:
   videoCategoryButton: {fileID: 1309515951}
   graphicsCategoryButton: {fileID: 51739753}
   controlsCategoryButon: {fileID: 358003506}
-  backToMenuButton: {fileID: 1172468362}
+  backToMenuButtonSettings: {fileID: 1172468362}
   backToPreviousButton: {fileID: 130000393}
   backToGameButton: {fileID: 111163248}
+  backToMenuButtonCredits: {fileID: 1725678372}
   mainMenu: {fileID: 1873982493}
   controlsMenu: {fileID: 314201201}
   settingsMenu: {fileID: 1437513877}
@@ -1217,7 +1218,6 @@ MonoBehaviour:
   mainMenuAudioSource: {fileID: 1977907783}
   mainGameAudioSource: {fileID: 462325584}
   rainAudioSource: {fileID: 429594847}
-  rainAudioClip: {fileID: 8300000, guid: df47a1f8564802d4eb35d58a21aaef9d, type: 3}
   hoverAudioClip: {fileID: 8300000, guid: 307d84975c8c7f543842e311e1a709dc, type: 3}
 --- !u!1 &68912768
 GameObject:
@@ -3766,7 +3766,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -413, y: 429}
+  m_AnchoredPosition: {x: -431, y: 429}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &81902626
@@ -4434,14 +4434,13 @@ GameObject:
   - component: {fileID: 111163250}
   - component: {fileID: 111163249}
   - component: {fileID: 111163248}
-  - component: {fileID: 111163251}
   m_Layer: 0
   m_Name: BackToGameButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &111163247
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4531,7 +4530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.078431375}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4556,35 +4555,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 111163246}
   m_CullTransparentMesh: 1
---- !u!114 &111163251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 111163246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 61872562}
-          m_TargetAssemblyTypeName: MainMenuUIManager, Assembly-CSharp
-          m_MethodName: EnterHoverSoundEffect
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &115790443
 GameObject:
   m_ObjectHideFlags: 0
@@ -4650,14 +4620,13 @@ GameObject:
   - component: {fileID: 130000395}
   - component: {fileID: 130000394}
   - component: {fileID: 130000393}
-  - component: {fileID: 130000396}
   m_Layer: 0
   m_Name: BackToPreviousButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &130000392
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4747,7 +4716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.078431375}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4772,35 +4741,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 130000391}
   m_CullTransparentMesh: 1
---- !u!114 &130000396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 130000391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 61872562}
-          m_TargetAssemblyTypeName: MainMenuUIManager, Assembly-CSharp
-          m_MethodName: EnterHoverSoundEffect
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!4 &135975395
 Transform:
   m_ObjectHideFlags: 0
@@ -23514,9 +23454,9 @@ MonoBehaviour:
   videoCategoryButton: {fileID: 1309515951}
   graphicsCategoryButton: {fileID: 51739753}
   controlsCategoryButon: {fileID: 358003506}
-  backToMenuButton: {fileID: 1172468362}
+  backToMenuButton: {fileID: 0}
   backToPreviousButton: {fileID: 130000393}
-  backToGameButon: {fileID: 111163248}
+  backToGameButton: {fileID: 0}
   settingsMenu: {fileID: 1405398497}
   pauseMenu: {fileID: 182284034}
   mainMenu: {fileID: 1873982493}
@@ -29625,7 +29565,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &765461143
 RectTransform:
   m_ObjectHideFlags: 0
@@ -39810,14 +39750,13 @@ GameObject:
   - component: {fileID: 1172468364}
   - component: {fileID: 1172468363}
   - component: {fileID: 1172468362}
-  - component: {fileID: 1172468365}
   m_Layer: 0
-  m_Name: BackToMenuButton
+  m_Name: BackToMenuButtonSettings
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1172468361
 RectTransform:
   m_ObjectHideFlags: 0
@@ -39884,7 +39823,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 61872562}
         m_TargetAssemblyTypeName: MainMenuUIManager, Assembly-CSharp
-        m_MethodName: BackToMenu
+        m_MethodName: BackToMenuSettings
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -39907,7 +39846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.078431375}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -39932,35 +39871,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1172468360}
   m_CullTransparentMesh: 1
---- !u!114 &1172468365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1172468360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 61872562}
-          m_TargetAssemblyTypeName: MainMenuUIManager, Assembly-CSharp
-          m_MethodName: EnterHoverSoundEffect
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &1190420506
 GameObject:
   m_ObjectHideFlags: 0
@@ -46917,6 +46827,7 @@ Transform:
   m_Children:
   - {fileID: 1440800476}
   - {fileID: 1991336467}
+  - {fileID: 1810667848}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1342430550
@@ -50575,11 +50486,12 @@ MonoBehaviour:
       m_Calls: []
   m_text: "my name is stelios and I am an indie game developer. this is my first
     horror game, that i have been developing in over 5 months on my own, and I have
-    been responsible in making, game design, ui design, audio design, programming,
-    lighting, game testing, importing assets, marketing and more.\n\n \n\nspecial
-    thanks to my family, friends and community that have played this game, it really
-    matters to me and I am so excited to hear feedback from you. this journey was
-    tough and challenging for me and i really appreciate your support!\n\n\n\t\t "
+    been responsible in making game design, ui design, audio design, programming,
+    lighting, game testing, importing assets, marketing and more.\n\n \n\nAlso, I
+    want to give special thanks to my family, friends and community that have played
+    this game, it's really important for debugging purposes and I am awaiting to
+    hear your feedback. the development process was tough and challenging for me,
+    and i am here to appreciate your support. thank you very much!\n\n\n\t\t "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
   m_sharedMaterial: {fileID: 7855358897793652092, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
@@ -50863,9 +50775,8 @@ GameObject:
   - component: {fileID: 1725678374}
   - component: {fileID: 1725678373}
   - component: {fileID: 1725678372}
-  - component: {fileID: 1725678371}
   m_Layer: 0
-  m_Name: BackToMenu
+  m_Name: BackToMenuCredits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50888,38 +50799,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -925, y: -645}
+  m_AnchoredPosition: {x: -913, y: -648}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1725678371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1725678369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 61872562}
-          m_TargetAssemblyTypeName: MainMenuUIManager, Assembly-CSharp
-          m_MethodName: EnterHoverSoundEffect
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!114 &1725678372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50966,7 +50848,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 61872562}
         m_TargetAssemblyTypeName: MainMenuUIManager, Assembly-CSharp
-        m_MethodName: BackToMenu
+        m_MethodName: BackToMenuCredits
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -50989,7 +50871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.078431375}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -51991,6 +51873,68 @@ Tree:
   m_GameObject: {fileID: 1802005981}
   m_SpeedTreeWindAsset: {fileID: 0}
   m_TreeData: {fileID: 11451600, guid: 8b2d47fdc2e25ac4f9721480a68bbefa, type: 3}
+--- !u!1 &1810667847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1810667848}
+  - component: {fileID: 1810667849}
+  m_Layer: 0
+  m_Name: EventTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1810667848
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810667847}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1336587791}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1810667849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810667847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73cdaefae88d1af4f97ff6d0183cd16a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playButton: {fileID: 998161090}
+  settingsButton: {fileID: 929470050}
+  creditsButton: {fileID: 744182969}
+  exitButton: {fileID: 94827347}
+  audioCategoryButton: {fileID: 316657283}
+  videoCategoryButton: {fileID: 1309515951}
+  graphicsCategoryButton: {fileID: 51739753}
+  controlsCategoryButon: {fileID: 358003506}
+  backToMenuButtonSettings: {fileID: 1172468362}
+  backToPreviousButton: {fileID: 130000393}
+  backToGameButton: {fileID: 111163248}
+  backToMenuButtonCredits: {fileID: 1725678372}
+  resumeButton: {fileID: 2084806073}
+  pauseSettingsButton: {fileID: 152314458}
+  homeButton: {fileID: 279216664}
+  pauseExitButton: {fileID: 1825467470}
+  hoverAudioSource: {fileID: 1738958847}
+  hoverAudioClip: {fileID: 8300000, guid: 307d84975c8c7f543842e311e1a709dc, type: 3}
 --- !u!1 &1824538826
 GameObject:
   m_ObjectHideFlags: 0

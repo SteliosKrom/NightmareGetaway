@@ -22,7 +22,7 @@ public class MainGameUIManager : MonoBehaviour
     [SerializeField] private Button controlsCategoryButon;
     [SerializeField] private Button backToMenuButton;
     [SerializeField] private Button backToPreviousButton;
-    [SerializeField] private Button backToGameButon;
+    [SerializeField] private Button backToGameButton;
 
     [Header("GAME OBJECTS")]
     [SerializeField] private GameObject settingsMenu;
@@ -57,11 +57,6 @@ public class MainGameUIManager : MonoBehaviour
     {
         settingsMenu.SetActive(inactive);
         pauseMenu.SetActive(inactive);
-
-        AttachButtonHoverEventsPause(resumeButton);
-        AttachButtonHoverEventsPause(settingsButton);
-        AttachButtonHoverEventsPause(homeButton);
-        AttachButtonHoverEventsPause(exitButton);
     }
 
     public void ResumeButton()
@@ -117,7 +112,6 @@ public class MainGameUIManager : MonoBehaviour
 
     public void ExitButton()
     {
-        exitButton.transform.DOScale(0.8f, 0.2f);
         Application.Quit();
     }
 
@@ -127,67 +121,8 @@ public class MainGameUIManager : MonoBehaviour
         pauseMenu.SetActive(active);
         settingsMenu.SetActive(inactive);
         taskChange.SetActive(inactive);
+
+        backToGameButton.transform.DOScale(3.2f, 0.2f);
         RoundManager.instance.currentGameState = GameState.pause;
-    }
-
-    public void EnterHoverSoundEffect()
-    {
-        AudioManager.instance.PlaySound(hoverAudioSource, hoverAudioClip);
-    }
-
-    public void EnterHoverSoundEffectPause(Transform buttonTransform)
-    {
-        buttonTransform.DOScale(1f, 0.2f);
-        Time.timeScale = 1f;
-        AudioManager.instance.PlaySound(hoverAudioSource, hoverAudioClip);
-    }
-
-    public void ExitHoverSoundEffectPause(Transform buttonTransform)
-    {
-        buttonTransform.DOScale(0.8f, 0.2f);
-        Time.timeScale = 1f;
-    }
-
-    public void EnterHoverSoundEffectSettings(Transform buttonTransform)
-    {
-        buttonTransform.DOScale(4.5f, 0.2f);
-        Time.timeScale = 1f;
-        AudioManager.instance.PlaySound(hoverAudioSource, hoverAudioClip);
-    }
-
-    public void ExitHoverSoundEffectSettings(Transform buttonTransform)
-    {
-        buttonTransform.DOScale(4f, 0.2f);
-        Time.timeScale = 1f;
-    }
-
-    private void AttachButtonHoverEventsPause(Button pauseButtons)
-    {
-        EventTrigger pauseTrigger = pauseButtons.gameObject.AddComponent<EventTrigger>();
-
-        EventTrigger.Entry pauseEntryEnter = new EventTrigger.Entry();
-        pauseEntryEnter.eventID = EventTriggerType.PointerEnter;
-        pauseEntryEnter.callback.AddListener((data) => { EnterHoverSoundEffectPause(pauseButtons.transform); });
-        pauseTrigger.triggers.Add(pauseEntryEnter);
-
-        EventTrigger.Entry entryExit = new EventTrigger.Entry();
-        entryExit.eventID = EventTriggerType.PointerExit;
-        entryExit.callback.AddListener((data) => { ExitHoverSoundEffectPause(pauseButtons.transform); });
-        pauseTrigger.triggers.Add(entryExit);
-    }
-
-    private void AttachButtonHoverEventsSettings(Button settingsButtons)
-    {
-        EventTrigger settingsTrigger = settingsButtons.gameObject.AddComponent<EventTrigger>();
-
-        EventTrigger.Entry settingsEntryEnter = new EventTrigger.Entry();
-        settingsEntryEnter.eventID = EventTriggerType.PointerEnter;
-        settingsEntryEnter.callback.AddListener((data) => { EnterHoverSoundEffectSettings(settingsButtons.transform); });
-        settingsTrigger.triggers.Add(settingsEntryEnter);
-
-        EventTrigger.Entry settingsEntryExit = new EventTrigger.Entry();
-        settingsEntryExit.eventID = EventTriggerType.PointerExit;
-        settingsEntryExit.callback.AddListener((data) => { ExitHoverSoundEffectSettings(settingsButtons.transform); });
-        settingsTrigger.triggers.Add(settingsEntryExit);
     }
 }

@@ -2,13 +2,12 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-using UnityEngine.EventSystems;
 
 public class MainMenuUIManager : MonoBehaviour
 {
     private readonly float movementSpeed = 1f;
     private readonly float movementRange = 0.5f;
-    private readonly float playButtonDelay = 15f;
+    private readonly float playButtonDelay = 10f;
     private readonly float gameIntroDelay = 30f;
     private bool active = true;
     private bool inactive = false;
@@ -22,9 +21,10 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private Button videoCategoryButton;
     [SerializeField] private Button graphicsCategoryButton;
     [SerializeField] private Button controlsCategoryButon;
-    [SerializeField] private Button backToMenuButton;
+    [SerializeField] private Button backToMenuButtonSettings;
     [SerializeField] private Button backToPreviousButton;
     [SerializeField] private Button backToGameButton;
+    [SerializeField] private Button backToMenuButtonCredits;
 
     [Header("GAME OBJECTS")]
     [SerializeField] private GameObject mainMenu;
@@ -54,7 +54,6 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private AudioSource mainMenuAudioSource;
     [SerializeField] private AudioSource mainGameAudioSource;
     [SerializeField] private AudioSource rainAudioSource;
-    [SerializeField] private AudioClip rainAudioClip;
     [SerializeField] private AudioClip hoverAudioClip;
     private Vector3 initialPos;
 
@@ -82,16 +81,6 @@ public class MainMenuUIManager : MonoBehaviour
         mainMenuAudioSource.Play();
         mainGameAudioSource.Stop();
         rainAudioSource.Play();
-
-        AttachButtonHoverEventsMenu(playButton);
-        AttachButtonHoverEventsMenu(settingsButton);
-        AttachButtonHoverEventsMenu(creditsButton);
-        AttachButtonHoverEventsMenu(exitButton);
-
-        AttachButtonHoverEventsSettings(audioCategoryButton);
-        AttachButtonHoverEventsSettings(videoCategoryButton);
-        AttachButtonHoverEventsSettings(graphicsCategoryButton);
-        AttachButtonHoverEventsSettings(controlsCategoryButon);
     }
 
     private void Update()
@@ -193,11 +182,10 @@ public class MainMenuUIManager : MonoBehaviour
 
     public void ExitButton()
     {
-        exitButton.transform.DOScale(1f, 0.2f);
         Application.Quit();
     }
 
-    public void BackToMenu()
+    public void BackToMenuSettings()
     {
         controlsMenu.SetActive(inactive);
         settings.SetActive(inactive);
@@ -210,6 +198,23 @@ public class MainMenuUIManager : MonoBehaviour
 
         taskChange.SetActive(inactive);
 
+        backToMenuButtonSettings.transform.DOScale(3.2f, 0.2f);
+        RoundManager.instance.currentGameState = GameState.onMainMenu;
+    }
+
+    public void BackToMenuCredits()
+    {
+        controlsMenu.SetActive(inactive);
+        settings.SetActive(inactive);
+        mainMenu.SetActive(active);
+        audioButton.SetActive(inactive);
+        videoButton.SetActive(inactive);
+        graphicsButton.SetActive(inactive);
+        controlsButton.SetActive(inactive);
+        creditsMenu.SetActive(inactive);
+        taskChange.SetActive(inactive);
+
+        backToMenuButtonCredits.transform.DOScale(3.2f, 0.2f);
         RoundManager.instance.currentGameState = GameState.onMainMenu;
     }
 
@@ -227,6 +232,7 @@ public class MainMenuUIManager : MonoBehaviour
         controlsMenu.SetActive(inactive);
         settingsMenu.SetActive(active);
 
+        backToPreviousButton.transform.DOScale(3.2f, 0.2f);
         RoundManager.instance.currentGameState = GameState.onMainMenu;
     }
 
@@ -259,62 +265,5 @@ public class MainMenuUIManager : MonoBehaviour
         audioButton.SetActive(inactive);
         controlsButton.SetActive(inactive);
         graphicsCategoryButton.transform.DOScale(4f, 0.2f);
-    }
-
-    public void EnterHoverSoundEffect()
-    {
-        AudioManager.instance.PlaySound(hoverAudioSource, hoverAudioClip);
-    }
-
-    public void EnterHoverSoundEffectMenu(Transform buttonTransform)
-    {
-        buttonTransform.DOScale(1.2f, 0.2f);
-        AudioManager.instance.PlaySound(hoverAudioSource, hoverAudioClip);
-    }
-
-    public void ExitHoverSoundEffectMenu(Transform buttonTransform)
-    {
-        buttonTransform.DOScale(1f, 0.2f);
-    }
-
-    public void EnterHoverSoundEffectSettings(Transform buttonTransform)
-    {
-        buttonTransform.DOScale(4.5f, 0.2f);
-        AudioManager.instance.PlaySound(hoverAudioSource, hoverAudioClip);
-    }
-
-    public void ExitHoverSoundEffectSettings(Transform buttonTransform)
-    {
-        buttonTransform.DOScale(4f, 0.2f);
-    }
-
-    private void AttachButtonHoverEventsMenu(Button menuButtons)
-    {
-        EventTrigger menuTrigger = menuButtons.gameObject.AddComponent<EventTrigger>();
-
-        EventTrigger.Entry menuEntryEnter = new EventTrigger.Entry();
-        menuEntryEnter.eventID = EventTriggerType.PointerEnter;
-        menuEntryEnter.callback.AddListener((data) => { EnterHoverSoundEffectMenu(menuButtons.transform); });
-        menuTrigger.triggers.Add(menuEntryEnter);
-
-        EventTrigger.Entry entryExit = new EventTrigger.Entry();
-        entryExit.eventID = EventTriggerType.PointerExit;
-        entryExit.callback.AddListener((data) => { ExitHoverSoundEffectMenu(menuButtons.transform); });
-        menuTrigger.triggers.Add(entryExit);
-    }
-
-    private void AttachButtonHoverEventsSettings(Button settingsButtons)
-    {
-        EventTrigger settingsTrigger = settingsButtons.gameObject.AddComponent<EventTrigger>();
-
-        EventTrigger.Entry settingsEntryEnter = new EventTrigger.Entry();
-        settingsEntryEnter.eventID = EventTriggerType.PointerEnter;
-        settingsEntryEnter.callback.AddListener((data) => { EnterHoverSoundEffectSettings(settingsButtons.transform); });
-        settingsTrigger.triggers.Add(settingsEntryEnter);
-
-        EventTrigger.Entry settingsEntryExit = new EventTrigger.Entry();
-        settingsEntryExit.eventID = EventTriggerType.PointerExit;
-        settingsEntryExit.callback.AddListener((data) => { ExitHoverSoundEffectSettings(settingsButtons.transform); });
-        settingsTrigger.triggers.Add(settingsEntryExit);
     }
 }

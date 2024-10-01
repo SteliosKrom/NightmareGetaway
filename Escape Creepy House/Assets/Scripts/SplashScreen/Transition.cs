@@ -3,22 +3,25 @@ using UnityEngine.SceneManagement;
 
 public class Transition : MonoBehaviour
 {
-    [Header("CLASSES")]
-    public GameObject logoText;
+    private bool active = true;
+    private bool inactive = false;
 
+    [Header("GAME OBJECTS")]
+    public GameObject introPanel;
+    public GameObject theLegendKnightPanel;
+    public GameObject headsetPanel;
+
+    [Header("AUDIO")]
     public AudioSource secondSplashAudioSource;
     public AudioClip secondSplashAudioClip;
 
-    private void Awake()
-    {
-        logoText.SetActive(false);
-    }
-
     private void Start()
     {
-        Invoke("LoadText", 6f);
-        Invoke("LoadMainGameScene", 12f);
-
+        LoadIntroPanel();
+        Invoke("LoadIntroPanel", 7f);
+        Invoke("LoadTheLegendKnightPanel", 7f);
+        Invoke("LoadHeadsetPanel", 14f);
+        Invoke("LoadMainGameScene", 21f);
     }
 
     public void LoadMainGameScene()
@@ -26,9 +29,25 @@ public class Transition : MonoBehaviour
         SceneManager.LoadScene("MainGameScene");
     }
 
-    public void LoadText()
+    public void LoadIntroPanel()
     {
-        logoText.SetActive(true);
+        introPanel.SetActive(active);
+        theLegendKnightPanel.SetActive(inactive);
+        headsetPanel.SetActive(inactive);
+    }
+
+    public void LoadTheLegendKnightPanel()
+    {
+        theLegendKnightPanel.SetActive(active);
+        headsetPanel.SetActive(inactive);
+        introPanel.SetActive(inactive);
         AudioManager.instance.PlaySound(secondSplashAudioSource, secondSplashAudioClip);
+    }
+
+    public void LoadHeadsetPanel()
+    {
+        headsetPanel.SetActive(active);
+        introPanel.SetActive(inactive);
+        theLegendKnightPanel.SetActive(inactive);
     }
 }
