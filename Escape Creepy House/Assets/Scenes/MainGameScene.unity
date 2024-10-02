@@ -20148,6 +20148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   taskManager: {fileID: 1347558210}
+  flashlight: {fileID: 792361156}
   equipKeysAudioSource: {fileID: 1321917434}
   drinkAudioSource: {fileID: 890562420}
   eatAudioSource: {fileID: 1331450122}
@@ -20157,7 +20158,6 @@ MonoBehaviour:
   equipKeysAudioClip: {fileID: 8300000, guid: 3c926fceff45f654a942ef45694a9ed6, type: 3}
   lockedAudioClip: {fileID: 8300000, guid: ba0dd6d8b717e403ca0fa3bdebe97dad, type: 3}
   interactionSource: {fileID: 963194228}
-  flashlight: {fileID: 792361156}
   foundGarageKey: {fileID: 220954208}
   foundFlashlight: {fileID: 7897116}
   foundMainDoorKey: {fileID: 1254537102}
@@ -23456,7 +23456,7 @@ MonoBehaviour:
   controlsCategoryButon: {fileID: 358003506}
   backToMenuButton: {fileID: 0}
   backToPreviousButton: {fileID: 130000393}
-  backToGameButton: {fileID: 0}
+  backToGameButton: {fileID: 111163248}
   settingsMenu: {fileID: 1405398497}
   pauseMenu: {fileID: 182284034}
   mainMenu: {fileID: 1873982493}
@@ -29993,6 +29993,7 @@ GameObject:
   - component: {fileID: 792361155}
   - component: {fileID: 792361156}
   - component: {fileID: 792361158}
+  - component: {fileID: 792361159}
   m_Layer: 0
   m_Name: WhiteLight
   m_TagString: Untagged
@@ -30089,9 +30090,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01f3e2a2367cc7448bae170964f78918, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newLight: {fileID: 792361155}
+  interactor: {fileID: 379504550}
+  shouldFlicker: 0
   flashlightAudioSource: {fileID: 687202150}
   flashlightAudioClip: {fileID: 8300000, guid: da5cf87e1f085734aade1b2d5b02d382, type: 3}
+  newLight: {fileID: 792361155}
 --- !u!114 &792361158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30115,6 +30118,27 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!95 &792361159
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792361153}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8b688b261b92c9c439402aeb34b6e908, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &804547076
 GameObject:
   m_ObjectHideFlags: 0
@@ -52791,7 +52815,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1873982494
 RectTransform:
   m_ObjectHideFlags: 0
@@ -78643,8 +78667,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.078064404, y: 0.045755956, z: 0.006366869}
-  m_Center: {x: -0.011021299, y: 0.0001566525, z: 0.0031834643}
+  m_Size: {x: 0.078064404, y: 0.045755956, z: 0.017349258}
+  m_Center: {x: -0.011021299, y: 0.0001566525, z: 0.008674657}
 --- !u!23 &3039396956261373446
 MeshRenderer:
   m_ObjectHideFlags: 0

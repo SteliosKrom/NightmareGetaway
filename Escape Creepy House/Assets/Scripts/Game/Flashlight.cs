@@ -1,13 +1,17 @@
+using System.Collections;
 using UnityEngine;
 
 public class Flashlight : MonoBehaviour
 {
-    [Header("CLASSES")]
-    [SerializeField] private Light newLight;
+    private bool isOn = false;
+    private bool active = true;
+
+    [Header("AUDIO")]
     [SerializeField] private AudioSource flashlightAudioSource;
     [SerializeField] private AudioClip flashlightAudioClip;
 
-    private bool isOn = false;
+    [Header("OTHER")]
+    [SerializeField] private Light newLight;
 
     private void Start()
     {

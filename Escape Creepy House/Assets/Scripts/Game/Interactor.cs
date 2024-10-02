@@ -5,6 +5,7 @@ using UnityEngine;
 public class Interactor : MonoBehaviour
 {
     [SerializeField] private TaskManager taskManager;
+    [SerializeField] private Flashlight flashlight;
 
     [Header("AUDIO")]
     public AudioSource equipKeysAudioSource;
@@ -19,7 +20,7 @@ public class Interactor : MonoBehaviour
 
     [Header("OTHER")]
     public Transform interactionSource;
-    public Flashlight flashlight;
+
     public GameObject foundGarageKey;
     public GameObject foundFlashlight;
     public GameObject foundMainDoorKey;
