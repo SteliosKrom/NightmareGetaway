@@ -131,7 +131,7 @@ public class SettingsManager : MonoBehaviour
         }
     }
 
-    [System.Obsolete]
+
     public void SetVSync()
     {
         if (vSyncToggle.isOn)
