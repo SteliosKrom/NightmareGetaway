@@ -1,11 +1,21 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
 public class Interactor : MonoBehaviour
 {
+    public float interactionRange;
+    private float displayTextDelay = 1.5f;
+    private float lockedUIDelay = 1f;
+
+    private bool isLocked = false;
+    public bool hasFlashlight = false;
+    private bool active = true;
+    private bool inactive = false;
+
+    [Header("SCRIPT REFERENCES")]
     [SerializeField] private TaskManager taskManager;
     [SerializeField] private Flashlight flashlight;
+    [SerializeField] private FlashlightFlickering flashlightFlickering;
 
     [Header("AUDIO")]
     public AudioSource equipKeysAudioSource;
@@ -20,7 +30,6 @@ public class Interactor : MonoBehaviour
 
     [Header("OTHER")]
     public Transform interactionSource;
-
     public GameObject foundGarageKey;
     public GameObject foundFlashlight;
     public GameObject foundMainDoorKey;
@@ -36,14 +45,6 @@ public class Interactor : MonoBehaviour
     public GameObject phone;
     public GameObject doorBoxCollider;
     public BoxCollider fridgeCollider;
-
-    public float interactionRange;
-    private float displayTextDelay = 1.5f;
-    private float lockedUIDelay = 1f;
-    private bool isLocked = false;
-    public bool hasFlashlight = false;
-    private bool active = true;
-    private bool inactive = false;
 
     private void Start()
     {

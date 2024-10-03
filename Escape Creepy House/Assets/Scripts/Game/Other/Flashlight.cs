@@ -1,9 +1,8 @@
-using System.Collections;
 using UnityEngine;
 
 public class Flashlight : MonoBehaviour
 {
-    private bool isOn = false;
+    public bool isOn = false;
     private bool active = true;
 
     [Header("AUDIO")]
@@ -23,10 +22,12 @@ public class Flashlight : MonoBehaviour
     {
         isOn = !isOn;
         newLight.enabled = isOn;
+        flashlightAudioSource.PlayOneShot(flashlightAudioClip);
+    }
 
-        if (flashlightAudioSource != null && flashlightAudioClip != null)
-        {
-            flashlightAudioSource.PlayOneShot(flashlightAudioClip);
-        }
+    public void ToggleFlicker()
+    {
+        isOn = !isOn;
+        newLight.enabled = isOn;
     }
 }
