@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Interactor : MonoBehaviour
@@ -45,6 +46,7 @@ public class Interactor : MonoBehaviour
     public GameObject phone;
     public GameObject doorBoxCollider;
     public BoxCollider fridgeCollider;
+    public BoxCollider[] doorColliders;
 
     private void Start()
     {
@@ -142,7 +144,7 @@ public class Interactor : MonoBehaviour
         {
             taskManager.CompleteTask();
             food.SetActive(active);
-            fridgeCollider.enabled = true;
+            fridgeCollider.enabled = active;
             AudioManager.instance.PlaySound(drinkAudioSource, drinkAudioclip);
         }
         else if (interactable.gameObject.CompareTag("Food"))
@@ -161,7 +163,7 @@ public class Interactor : MonoBehaviour
         }
         else if (interactable.gameObject.CompareTag("Flashlight"))
         {
-            hasFlashlight = true;
+            hasFlashlight = active;
             StartCoroutine(DisplayFoundFlashlightText());
         }
         else if (interactable.gameObject.CompareTag("GarageKey"))
@@ -237,9 +239,16 @@ public class Interactor : MonoBehaviour
             Interactable interactable = hit.collider.GetComponent<Interactable>();
             DoorBase doorBase = hit.collider.GetComponent<DoorBase>();
 
-            if (interactable != null || doorBase != null && RoundManager.instance.currentGameState != GameState.pause && RoundManager.instance.currentGameState != GameState.onSettings)
+            if (interactable != null || doorBase != null)
             {
-                interactionUI.SetActive(active);
+                if (RoundManager.instance.currentGameState == GameState.playing)
+                {
+                    interactionUI.SetActive(active);
+                }
+                else if (RoundManager.instance.currentGameState != GameState.playing)
+                {
+                    interactionUI.SetActive(inactive);
+                }
             }
             else
             {

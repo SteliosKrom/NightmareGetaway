@@ -9,25 +9,33 @@ public class PlayerController : MonoBehaviour
     private bool isDoorOpenedSoundPaused = false;
     private bool isDoorClosedSoundPaused = false;
 
+    [Header("SCRIPT REFERENCES")]
+    [SerializeField] DoorBase doorBase;
+    [SerializeField] Interactor interactor;
+    [SerializeField] ClockAudio clockAudio;
+
     [Header("GAME OBJECTS")]
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject dot;
     [SerializeField] private GameObject taskChange;
     [SerializeField] private GameObject foundItemMessage;
     [SerializeField] private GameObject lockedText;
+    [SerializeField] private GameObject foundRoomKey;
+    [SerializeField] private GameObject foundMainDoorKey;
+    [SerializeField] private GameObject foundGarageDoorKey;
 
     [Header("OTHER")]
-    [SerializeField] DoorBase doorBase;
-    [SerializeField] Interactor interactor;
-    [SerializeField] ClockAudio clockAudio;
-    [SerializeField] RainAudio rainAudio;
-    [SerializeField] private CharacterController characterController;
-    [SerializeField] private Animator playerAnimator;
+    [SerializeField] CharacterController characterController;
+    [SerializeField] Animator playerAnimator;
     public RaycastHit hit;
     private Vector3 velocity;
 
     [Header("AUDIO")]
     [SerializeField] private AudioSource mainGameAudioSource;
+    [SerializeField] private AudioSource rainAudioSource;
+    [SerializeField] private AudioSource keysAudioSource;
+    [SerializeField] private AudioSource eatAudioSource;
+    [SerializeField] private AudioSource drinkAudioSource;
 
     private void Start()
     {
@@ -87,14 +95,22 @@ public class PlayerController : MonoBehaviour
     public void PauseGame()
     {
         pauseMenu.SetActive(active);
-        dot.SetActive(inactive);
         taskChange.SetActive(inactive);
         foundItemMessage.SetActive(inactive);
         lockedText.SetActive(inactive);
+        dot.SetActive(inactive);
+        foundGarageDoorKey.SetActive(inactive);
+        foundMainDoorKey.SetActive(inactive);
+        foundRoomKey.SetActive(inactive);
+
         interactor.lockedAudioSource.Pause();
         clockAudio.clockAudioSource.Pause();
-        rainAudio.rainAudioSource.Pause();
+        eatAudioSource.Pause();
+        drinkAudioSource.Pause();
+        keysAudioSource.Pause();
+        rainAudioSource.Pause();
         mainGameAudioSource.Pause();
+
         Time.timeScale = 0f;
         CheckDoorStateOnPause();
         RoundManager.instance.currentGameState = GameState.pause;
@@ -105,9 +121,14 @@ public class PlayerController : MonoBehaviour
         pauseMenu.SetActive(inactive);
         dot.SetActive(active);
         taskChange.SetActive(active);
+
         interactor.lockedAudioSource.UnPause();
         clockAudio.clockAudioSource.UnPause();
         mainGameAudioSource.UnPause();
+        eatAudioSource.UnPause();
+        drinkAudioSource.UnPause();
+        keysAudioSource.UnPause();
+
         Time.timeScale = 1f;
         CheckDoorStateOnResume();
         RoundManager.instance.currentGameState = GameState.playing;

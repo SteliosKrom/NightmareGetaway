@@ -19,7 +19,6 @@ public class MainGameUIManager : MonoBehaviour
     [SerializeField] private Button videoCategoryButton;
     [SerializeField] private Button graphicsCategoryButton;
     [SerializeField] private Button controlsCategoryButon;
-    [SerializeField] private Button backToMenuButton;
     [SerializeField] private Button backToPreviousButton;
     [SerializeField] private Button backToGameButton;
 

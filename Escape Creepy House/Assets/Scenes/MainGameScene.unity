@@ -19944,18 +19944,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 3
+  doorBase: {fileID: 4994670281682319473}
+  interactor: {fileID: 379504550}
+  clockAudio: {fileID: 379504551}
   pauseMenu: {fileID: 182284034}
   dot: {fileID: 480800219}
   taskChange: {fileID: 1682272802}
   foundItemMessage: {fileID: 7897116}
   lockedText: {fileID: 1271235275}
-  doorBase: {fileID: 4994670281682319473}
-  interactor: {fileID: 379504550}
-  clockAudio: {fileID: 379504551}
-  rainAudio: {fileID: 1356941523}
+  foundRoomKey: {fileID: 1798832667}
+  foundMainDoorKey: {fileID: 1254537102}
+  foundGarageDoorKey: {fileID: 220954208}
   characterController: {fileID: 379504545}
   playerAnimator: {fileID: 370128361}
   mainGameAudioSource: {fileID: 462325584}
+  rainAudioSource: {fileID: 429594847}
+  keysAudioSource: {fileID: 1321917434}
+  eatAudioSource: {fileID: 1331450122}
+  drinkAudioSource: {fileID: 890562420}
 --- !u!114 &379504544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20177,6 +20183,8 @@ MonoBehaviour:
   phone: {fileID: 5560905292141916821}
   doorBoxCollider: {fileID: 1752394301}
   fridgeCollider: {fileID: 8386798335186017357}
+  doorColliders:
+  - {fileID: 1874971635}
 --- !u!114 &379504551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23457,7 +23465,6 @@ MonoBehaviour:
   videoCategoryButton: {fileID: 1309515951}
   graphicsCategoryButton: {fileID: 51739753}
   controlsCategoryButon: {fileID: 358003506}
-  backToMenuButton: {fileID: 0}
   backToPreviousButton: {fileID: 130000393}
   backToGameButton: {fileID: 111163248}
   settingsMenu: {fileID: 1405398497}
@@ -47512,6 +47519,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rainAudioSource: {fileID: 429594847}
+  mainGameAudioSource: {fileID: 462325584}
 --- !u!65 &1356941524
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -50661,7 +50669,7 @@ MonoBehaviour:
     want to give special thanks to my family, friends and community that have played
     this game, it's really important for debugging purposes and I am awaiting to
     hear your feedback. the development process was tough and challenging for me,
-    and i am here to appreciate your support. thank you very much!\n\n\n\t\t "
+    and i want to thank you very much for your support!\n\n\n\t\t "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
   m_sharedMaterial: {fileID: 7855358897793652092, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
@@ -50724,7 +50732,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -1016.0801, w: -85.75313}
+  m_margin: {x: 0, y: 0, z: -1016.0801, w: -479.86597}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -54310,6 +54318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rainAudioSource: {fileID: 429594847}
+  mainGameAudioSource: {fileID: 462325584}
 --- !u!1 &2009375548
 GameObject:
   m_ObjectHideFlags: 0
@@ -90432,11 +90441,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc24e0a4bac58d4aad4abe3e01e4f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorAnimator: {fileID: 4994670281682319472}
-  currentState: 0
   openParameter: IsOpened
   closeParameter: IsClosed
   idleParameter: IsIdle
+  doorAnimator: {fileID: 4994670281682319472}
+  currentState: 0
   doorOpenedAudioSource: {fileID: 282683330}
   doorClosedAudioSource: {fileID: 2101123096}
   doorOpenedAudioClip: {fileID: 8300000, guid: a200ceb3276a64815ba89e6db4488604, type: 3}
@@ -107042,11 +107051,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc24e0a4bac58d4aad4abe3e01e4f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorAnimator: {fileID: 7500702359889987372}
-  currentState: 0
   openParameter: IsOpened
   closeParameter: IsClosed
   idleParameter: IsIdle
+  doorAnimator: {fileID: 7500702359889987372}
+  currentState: 0
   doorOpenedAudioSource: {fileID: 282683330}
   doorClosedAudioSource: {fileID: 2101123096}
   doorOpenedAudioClip: {fileID: 8300000, guid: a200ceb3276a64815ba89e6db4488604, type: 3}
@@ -111213,11 +111222,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc24e0a4bac58d4aad4abe3e01e4f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorAnimator: {fileID: 8022282029072176206}
-  currentState: 0
   openParameter: Opened
   closeParameter: Closed
   idleParameter: Idle
+  doorAnimator: {fileID: 8022282029072176206}
+  currentState: 0
   doorOpenedAudioSource: {fileID: 282683330}
   doorClosedAudioSource: {fileID: 2101123096}
   doorOpenedAudioClip: {fileID: 8300000, guid: a200ceb3276a64815ba89e6db4488604, type: 3}
@@ -113123,11 +113132,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc24e0a4bac58d4aad4abe3e01e4f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorAnimator: {fileID: 8206306265329168611}
-  currentState: 0
   openParameter: Opened
   closeParameter: Closed
   idleParameter: Idle
+  doorAnimator: {fileID: 8206306265329168611}
+  currentState: 0
   doorOpenedAudioSource: {fileID: 282683330}
   doorClosedAudioSource: {fileID: 2101123096}
   doorOpenedAudioClip: {fileID: 8300000, guid: a200ceb3276a64815ba89e6db4488604, type: 3}
@@ -114364,11 +114373,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc24e0a4bac58d4aad4abe3e01e4f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorAnimator: {fileID: 8386798335186017359}
-  currentState: 0
   openParameter: Opened
   closeParameter: Closed
   idleParameter: Idle
+  doorAnimator: {fileID: 8386798335186017359}
+  currentState: 0
   doorOpenedAudioSource: {fileID: 282683330}
   doorClosedAudioSource: {fileID: 2101123096}
   doorOpenedAudioClip: {fileID: 8300000, guid: 6cc4537865ae1479b9e7ac12ab172909, type: 3}
@@ -115174,11 +115183,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc24e0a4bac58d4aad4abe3e01e4f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorAnimator: {fileID: 8520435736535158426}
-  currentState: 0
   openParameter: Opened
   closeParameter: Closed
   idleParameter: Idle
+  doorAnimator: {fileID: 8520435736535158426}
+  currentState: 0
   doorOpenedAudioSource: {fileID: 282683330}
   doorClosedAudioSource: {fileID: 2101123096}
   doorOpenedAudioClip: {fileID: 8300000, guid: a200ceb3276a64815ba89e6db4488604, type: 3}
@@ -116307,8 +116316,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.047759276, y: 0.051069733, z: 0.0022504854}
-  m_Center: {x: -0.02450723, y: -0.050541732, z: -0.00089883077}
+  m_Size: {x: 0.047759276, y: 0.05106973, z: 0.004492353}
+  m_Center: {x: -0.02450723, y: -0.050542064, z: -0.0020197765}
 --- !u!1 &8638539771355484889
 GameObject:
   m_ObjectHideFlags: 0
@@ -117260,11 +117269,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc24e0a4bac58d4aad4abe3e01e4f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorAnimator: {fileID: 8781165241623197790}
-  currentState: 0
   openParameter: IsOpened
   closeParameter: IsClosed
   idleParameter: IsIdle
+  doorAnimator: {fileID: 8781165241623197790}
+  currentState: 0
   doorOpenedAudioSource: {fileID: 282683330}
   doorClosedAudioSource: {fileID: 2101123096}
   doorOpenedAudioClip: {fileID: 8300000, guid: a200ceb3276a64815ba89e6db4488604, type: 3}
@@ -119454,11 +119463,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc24e0a4bac58d4aad4abe3e01e4f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorAnimator: {fileID: 9048873471715702436}
-  currentState: 0
   openParameter: IsOpened
   closeParameter: IsClosed
   idleParameter: IsIdle
+  doorAnimator: {fileID: 9048873471715702436}
+  currentState: 0
   doorOpenedAudioSource: {fileID: 282683330}
   doorClosedAudioSource: {fileID: 2101123096}
   doorOpenedAudioClip: {fileID: 8300000, guid: a200ceb3276a64815ba89e6db4488604, type: 3}
@@ -119525,11 +119534,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc24e0a4bac58d4aad4abe3e01e4f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorAnimator: {fileID: 9051536816755775007}
-  currentState: 0
   openParameter: IsOpened
   closeParameter: IsClosed
   idleParameter: IsIdle
+  doorAnimator: {fileID: 9051536816755775007}
+  currentState: 0
   doorOpenedAudioSource: {fileID: 282683330}
   doorClosedAudioSource: {fileID: 2101123096}
   doorOpenedAudioClip: {fileID: 8300000, guid: a200ceb3276a64815ba89e6db4488604, type: 3}

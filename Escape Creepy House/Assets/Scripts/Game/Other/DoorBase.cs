@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum DoorStates
@@ -10,9 +11,6 @@ public enum DoorStates
 
 public class DoorBase : MonoBehaviour
 {
-    public Animator doorAnimator;
-    public DoorStates currentState;
-
     public string openParameter;
     public string closeParameter;
     public string idleParameter;
@@ -23,6 +21,10 @@ public class DoorBase : MonoBehaviour
     private bool isLocked = false;
 
     private float interactioDelay = 1f;
+
+    [Header("OTHER")]
+    public Animator doorAnimator;
+    public DoorStates currentState;
 
     [Header("AUDIO")]
     public AudioSource doorOpenedAudioSource;
@@ -50,7 +52,6 @@ public class DoorBase : MonoBehaviour
         {
             return;
         }
-
         canInteract = inactive;
 
         if (currentState == DoorStates.isIdle || currentState == DoorStates.isClosed)
