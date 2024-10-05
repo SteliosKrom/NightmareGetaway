@@ -20,4 +20,24 @@ public class AudioManager : MonoBehaviour
     {
         source.PlayOneShot(clip);
     }
+
+    public void Play(AudioSource source)
+    {
+        source.Play();
+    }
+
+    public void StopSound(AudioSource source)
+    {
+        source.Stop();
+    }
+
+    public void PauseSound(AudioSource source)
+    {
+        source.Pause();
+    }
+
+    public void UnPauseSound(AudioSource source)
+    {
+        source.UnPause();
+    }
 }

@@ -10,7 +10,7 @@ public class FlashlightFlickering : MonoBehaviour
     [SerializeField] private Flashlight flashlight;
 
     [Header("AUDIO")]
-    [SerializeField] private AudioSource flickeringAudioSrouce;
+    [SerializeField] private AudioSource flickeringAudioSource;
     [SerializeField] private AudioClip flickeringAudioClip;
 
     private void Start()
@@ -20,8 +20,16 @@ public class FlashlightFlickering : MonoBehaviour
 
     public void TriggerFlicker()
     {
-        StartCoroutine(FlickerLight());
-        AudioManager.instance.PlaySound(flickeringAudioSrouce, flickeringAudioClip);
+        if (RoundManager.instance.currentGameState == GameState.playing)
+        {
+            StartCoroutine(FlickerLight());
+            AudioManager.instance.PlaySound(flickeringAudioSource, flickeringAudioClip);
+        }
+        else
+        {
+            Time.timeScale = 0f;
+            AudioManager.instance.StopSound(flickeringAudioSource);
+        }
     }
 
     public IEnumerator FlickerLight()

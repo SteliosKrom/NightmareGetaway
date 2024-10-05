@@ -49,7 +49,7 @@ public class CameraRotate : MonoBehaviour
 
     private void Update()
     {
-        if (RoundManager.instance.currentGameState == GameState.onMainMenu || RoundManager.instance.currentGameState == GameState.onSettings || RoundManager.instance.currentGameState == GameState.pause)
+        if (RoundManager.instance.currentGameState == GameState.onMainMenu || RoundManager.instance.currentGameState == GameState.onSettingsGame ||RoundManager.instance.currentGameState == GameState.onSettingsMenu || RoundManager.instance.currentGameState == GameState.pause)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;

@@ -87,7 +87,7 @@ public class Interactor : MonoBehaviour
     {
         if (hasFlashlight && Input.GetKeyDown(KeyCode.F))
         {
-            if (RoundManager.instance.currentGameState != GameState.pause && RoundManager.instance.currentGameState != GameState.onSettings && RoundManager.instance.currentGameState != GameState.onMainMenu)
+            if (RoundManager.instance.currentGameState != GameState.pause && RoundManager.instance.currentGameState != GameState.onSettingsGame && RoundManager.instance.currentGameState != GameState.onMainMenu)
             {
                 flashlight.Toggle();
             }

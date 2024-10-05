@@ -12,7 +12,7 @@ public class ClockAudio : MonoBehaviour
 
     private void Start()
     {
-        clockAudioSource.Stop();
+        AudioManager.instance.StopSound(clockAudioSource);
     }
 
     private void Update()
@@ -36,7 +36,7 @@ public class ClockAudio : MonoBehaviour
             {
                 if (clockAudioSource.isPlaying)
                 {
-                    clockAudioSource.Stop();
+                    AudioManager.instance.StopSound(clockAudioSource);
                 }
                 clockTimer = 0f;
             }

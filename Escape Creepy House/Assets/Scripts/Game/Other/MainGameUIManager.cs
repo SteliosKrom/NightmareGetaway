@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class MainGameUIManager : MonoBehaviour
 {
-    public Interactor interactor;
-    public ClockAudio clockAudio;
     private bool active = true;
     private bool inactive = false;
 
@@ -47,6 +45,8 @@ public class MainGameUIManager : MonoBehaviour
     [Header("AUDIO")]
     [SerializeField] private AudioSource mainMenuAudioSource;
     [SerializeField] private AudioSource mainGameAudioSource;
+    [SerializeField] private AudioSource lockedAudioSource;
+    [SerializeField] private AudioSource clockAudioSource;
     [SerializeField] private AudioSource hoverAudioSource;
     [SerializeField] private AudioClip hoverAudioClip;
 
@@ -63,8 +63,8 @@ public class MainGameUIManager : MonoBehaviour
         pauseMenu.SetActive(inactive);
         dot.SetActive(active);
         taskChange.SetActive(active);
-        interactor.lockedAudioSource.UnPause();
-        clockAudio.clockAudioSource.UnPause();
+        lockedAudioSource.UnPause();
+        clockAudioSource.UnPause();
         mainGameAudioSource.UnPause();
         resumeButton.transform.DOScale(0.8f, 0.2f);
         RoundManager.instance.currentGameState = GameState.playing;
@@ -89,7 +89,7 @@ public class MainGameUIManager : MonoBehaviour
         taskChange.SetActive(inactive);
 
         settingsButton.transform.DOScale(0.8f, 0.2f);
-        RoundManager.instance.currentGameState = GameState.onSettings;
+        RoundManager.instance.currentGameState = GameState.onSettingsGame;
     }
 
     public void HomeButton()

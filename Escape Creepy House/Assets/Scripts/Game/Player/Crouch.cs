@@ -13,6 +13,8 @@ namespace CrouchSystem
 
         [SerializeField] private AudioSource crouchingAudioSourceStart;
         [SerializeField] private AudioSource crouchingAudioSourceEnd;
+        [SerializeField] private AudioClip crouchingAudioClipStart;
+        [SerializeField] private AudioClip crouchingAudioClipEnd;
 
         [Header("TYPES")]
         private bool isCrouching = false;
@@ -35,7 +37,6 @@ namespace CrouchSystem
             {
                 Crouching();
             }
-
         }
 
         public void Crouching()
@@ -48,13 +49,13 @@ namespace CrouchSystem
                 {
                     characterController.height = originalHeight;
                     playerController.playerSpeed = 3f;
-                    crouchingAudioSourceEnd.Play();
+                    AudioManager.instance.PlaySound(crouchingAudioSourceEnd, crouchingAudioClipEnd);
                 }
                 else
                 {
                     characterController.height = crouchHeight;
                     playerController.playerSpeed = 1.5f;
-                    crouchingAudioSourceStart.Play();
+                    AudioManager.instance.PlaySound(crouchingAudioSourceStart, crouchingAudioClipStart);
                 }
                 StartCoroutine(CrouchingDelay());
             }

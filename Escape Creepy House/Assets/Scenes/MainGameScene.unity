@@ -1220,6 +1220,7 @@ MonoBehaviour:
   mainGameAudioSource: {fileID: 462325584}
   rainAudioSource: {fileID: 429594847}
   hoverAudioClip: {fileID: 8300000, guid: 307d84975c8c7f543842e311e1a709dc, type: 3}
+  rainAudioClip: {fileID: 8300000, guid: 1b9811af34efb9a499b18e1ee0ccbd47, type: 3}
 --- !u!1 &68912768
 GameObject:
   m_ObjectHideFlags: 0
@@ -17136,7 +17137,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 5667486173312248149, guid: ab31cbc55cac0aa4db2a64e1763fe7cc, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 9b910aa79c186384cb17f28fad642b0a, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -19947,7 +19948,10 @@ MonoBehaviour:
   doorBase: {fileID: 4994670281682319473}
   interactor: {fileID: 379504550}
   clockAudio: {fileID: 379504551}
+  flashlightFlickering: {fileID: 792361160}
+  addEventTrigger: {fileID: 1810667849}
   pauseMenu: {fileID: 182284034}
+  settingsMenu: {fileID: 1405398497}
   dot: {fileID: 480800219}
   taskChange: {fileID: 1682272802}
   foundItemMessage: {fileID: 7897116}
@@ -19962,6 +19966,8 @@ MonoBehaviour:
   keysAudioSource: {fileID: 1321917434}
   eatAudioSource: {fileID: 1331450122}
   drinkAudioSource: {fileID: 890562420}
+  lockedAudioSource: {fileID: 1403184476}
+  clockAudioSource: {fileID: 1221405377}
 --- !u!114 &379504544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20017,6 +20023,8 @@ MonoBehaviour:
   playerController: {fileID: 379504538}
   crouchingAudioSourceStart: {fileID: 306673218}
   crouchingAudioSourceEnd: {fileID: 1208830657}
+  crouchingAudioClipStart: {fileID: 8300000, guid: 9b910aa79c186384cb17f28fad642b0a, type: 3}
+  crouchingAudioClipEnd: {fileID: 8300000, guid: aac7fe48a39af6e46a2d48c5d2655976, type: 3}
 --- !u!82 &379504547
 AudioSource:
   m_ObjectHideFlags: 0
@@ -20712,7 +20720,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 5667486173312248149, guid: ab31cbc55cac0aa4db2a64e1763fe7cc, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 1b9811af34efb9a499b18e1ee0ccbd47, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
@@ -23455,8 +23463,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7f31d0a9e5bc594fa858f7421079ebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactor: {fileID: 379504550}
-  clockAudio: {fileID: 379504551}
   resumeButton: {fileID: 2084806073}
   settingsButton: {fileID: 152314458}
   homeButton: {fileID: 279216664}
@@ -23487,6 +23493,8 @@ MonoBehaviour:
   playerRespawn: {fileID: 379504549}
   mainMenuAudioSource: {fileID: 1977907783}
   mainGameAudioSource: {fileID: 462325584}
+  lockedAudioSource: {fileID: 1403184476}
+  clockAudioSource: {fileID: 1221405377}
   hoverAudioSource: {fileID: 1738958847}
   hoverAudioClip: {fileID: 8300000, guid: 307d84975c8c7f543842e311e1a709dc, type: 3}
 --- !u!1 &667829798
@@ -24073,7 +24081,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.05660379, g: 0.05660379, b: 0.05660379, a: 1}
+  m_Color: {r: 0.047169805, g: 0.047169805, b: 0.047169805, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -30162,7 +30170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashlight: {fileID: 792361156}
-  flickeringAudioSrouce: {fileID: 858029684}
+  flickeringAudioSource: {fileID: 858029684}
   flickeringAudioClip: {fileID: 8300000, guid: 468299f409f63ba49a4960a63cd7662f, type: 3}
 --- !u!1 &804547076
 GameObject:
@@ -44921,7 +44929,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 5667486173312248149, guid: ab31cbc55cac0aa4db2a64e1763fe7cc, type: 2}
-  m_audioClip: {fileID: 8300000, guid: aac7fe48a39af6e46a2d48c5d2655976, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -51890,6 +51898,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   flashlightFlickering: {fileID: 792361160}
+  interactor: {fileID: 379504550}
   onTrigger: {fileID: 1790531745}
 --- !u!1 &1798832667
 GameObject:
@@ -56312,7 +56321,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 5667486173312248149, guid: ab31cbc55cac0aa4db2a64e1763fe7cc, type: 2}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

@@ -50,11 +50,14 @@ public class MainMenuUIManager : MonoBehaviour
     [Header("OTHER")]
     [SerializeField] private Camera secondaryCamera;
     [SerializeField] private Camera mainCamera;
+
+    [Header("AUDIO")]
     [SerializeField] private AudioSource hoverAudioSource;
     [SerializeField] private AudioSource mainMenuAudioSource;
     [SerializeField] private AudioSource mainGameAudioSource;
     [SerializeField] private AudioSource rainAudioSource;
     [SerializeField] private AudioClip hoverAudioClip;
+    [SerializeField] private AudioClip rainAudioClip;
     private Vector3 initialPos;
 
     private void Start()
@@ -78,9 +81,9 @@ public class MainMenuUIManager : MonoBehaviour
         gameIntroPanel.SetActive(inactive);
 
         initialPos = secondaryCamera.transform.position;
-        mainMenuAudioSource.Play();
-        mainGameAudioSource.Stop();
-        rainAudioSource.Play();
+        AudioManager.instance.Play(mainMenuAudioSource);
+        AudioManager.instance.StopSound(mainGameAudioSource);
+        AudioManager.instance.PlaySound(rainAudioSource, rainAudioClip);
     }
 
     private void Update()
@@ -102,7 +105,7 @@ public class MainMenuUIManager : MonoBehaviour
             loadingPanel.SetActive(inactive);
             yield return new WaitForSeconds(gameIntroDelay);
             gameIntroPanel.SetActive(inactive);
-            mainGameAudioSource.Play();
+            AudioManager.instance.Play(mainGameAudioSource);
             mainMenu.SetActive(inactive);
             creditsMenu.SetActive(inactive);
             dot.SetActive(active);
@@ -123,8 +126,8 @@ public class MainMenuUIManager : MonoBehaviour
     IEnumerator PlayButtonDelay()
     {
         loadingPanel.SetActive(active);
-        rainAudioSource.Pause();
-        mainMenuAudioSource.Stop();
+        AudioManager.instance.PauseSound(rainAudioSource);
+        AudioManager.instance.StopSound(mainMenuAudioSource);
         RoundManager.instance.currentGameState = GameState.inLoading;
         yield return new WaitForSecondsRealtime(playButtonDelay);
         RoundManager.instance.currentGameState = GameState.inIntro;
@@ -169,7 +172,7 @@ public class MainMenuUIManager : MonoBehaviour
         taskChange.SetActive(inactive);
 
         settingsButton.transform.DOScale(1f, 0.2f);
-        RoundManager.instance.currentGameState = GameState.onSettings;
+        RoundManager.instance.currentGameState = GameState.onSettingsMenu;
     }
 
     public void CreditsButton()

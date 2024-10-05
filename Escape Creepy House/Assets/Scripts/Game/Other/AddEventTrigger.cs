@@ -66,34 +66,40 @@ public class AddEventTrigger : MonoBehaviour
     public void EnterHoverSoundEffectOther(Transform buttonTransform)
     {
         buttonTransform.DOScale(3.5f, 0.2f);
+        Time.timeScale = 1f;
         AudioManager.instance.PlaySound(hoverAudioSource, hoverAudioClip);
     }
 
     public void ExitHoverSoundEffectOther(Transform buttonTransform)
     {
         buttonTransform.DOScale(3.2f, 0.2f);
+        Time.timeScale = 1f;
     }
 
     public void EnterHoverSoundEffectMenu(Transform buttonTransform)
     {
         buttonTransform.DOScale(1.2f, 0.2f);
+        Time.timeScale = 1f;
         AudioManager.instance.PlaySound(hoverAudioSource, hoverAudioClip);
     }
 
     public void ExitHoverSoundEffectMenu(Transform buttonTransform)
     {
         buttonTransform.DOScale(1f, 0.2f);
+        Time.timeScale = 1f;
     }
 
     public void EnterHoverSoundEffectSettings(Transform buttonTransform)
     {
         buttonTransform.DOScale(4.5f, 0.2f);
+        Time.timeScale = 1f;
         AudioManager.instance.PlaySound(hoverAudioSource, hoverAudioClip);
     }
 
     public void ExitHoverSoundEffectSettings(Transform buttonTransform)
     {
         buttonTransform.DOScale(4f, 0.2f);
+        Time.timeScale = 1f;
     }
 
     private void AttachButtonHoverEventsMenu(Button menuButtons)

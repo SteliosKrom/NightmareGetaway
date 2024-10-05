@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -10,12 +11,15 @@ public class PlayerController : MonoBehaviour
     private bool isDoorClosedSoundPaused = false;
 
     [Header("SCRIPT REFERENCES")]
-    [SerializeField] DoorBase doorBase;
-    [SerializeField] Interactor interactor;
-    [SerializeField] ClockAudio clockAudio;
+    [SerializeField] private DoorBase doorBase;
+    [SerializeField] private Interactor interactor;
+    [SerializeField] private ClockAudio clockAudio;
+    [SerializeField] private FlashlightFlickering flashlightFlickering;
+    [SerializeField] private AddEventTrigger addEventTrigger;
 
     [Header("GAME OBJECTS")]
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject settingsMenu;
     [SerializeField] private GameObject dot;
     [SerializeField] private GameObject taskChange;
     [SerializeField] private GameObject foundItemMessage;
@@ -36,6 +40,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioSource keysAudioSource;
     [SerializeField] private AudioSource eatAudioSource;
     [SerializeField] private AudioSource drinkAudioSource;
+    [SerializeField] private AudioSource lockedAudioSource;
+    [SerializeField] private AudioSource clockAudioSource;
 
     private void Start()
     {
@@ -88,7 +94,11 @@ public class PlayerController : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && RoundManager.instance.currentGameState == GameState.pause)
         {
-            ResumeGame();
+            ResumeGameFromPauseMenu();
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape) && RoundManager.instance.currentGameState == GameState.onSettingsGame)
+        {
+            ResumeGameFromGameSettings();
         }
     }
 
@@ -103,31 +113,40 @@ public class PlayerController : MonoBehaviour
         foundMainDoorKey.SetActive(inactive);
         foundRoomKey.SetActive(inactive);
 
-        interactor.lockedAudioSource.Pause();
-        clockAudio.clockAudioSource.Pause();
-        eatAudioSource.Pause();
-        drinkAudioSource.Pause();
-        keysAudioSource.Pause();
-        rainAudioSource.Pause();
-        mainGameAudioSource.Pause();
+        AudioManager.instance.PauseSound(lockedAudioSource);
+        AudioManager.instance.PauseSound(eatAudioSource);
+        AudioManager.instance.PauseSound(drinkAudioSource);
+        AudioManager.instance.PauseSound(keysAudioSource);
+        AudioManager.instance.PauseSound(rainAudioSource);
+        AudioManager.instance.PauseSound(mainGameAudioSource);
+        AudioManager.instance.PauseSound(clockAudioSource);
 
         Time.timeScale = 0f;
         CheckDoorStateOnPause();
         RoundManager.instance.currentGameState = GameState.pause;
     }
 
-    public void ResumeGame()
+    public void ResumeGameFromGameSettings()
+    {
+        settingsMenu.SetActive(inactive);
+        pauseMenu.SetActive(inactive);
+        Time.timeScale = 1f;
+        addEventTrigger.ExitHoverSoundEffectPause(transform);
+        RoundManager.instance.currentGameState = GameState.playing;
+    }
+
+    public void ResumeGameFromPauseMenu()
     {
         pauseMenu.SetActive(inactive);
         dot.SetActive(active);
         taskChange.SetActive(active);
 
-        interactor.lockedAudioSource.UnPause();
-        clockAudio.clockAudioSource.UnPause();
-        mainGameAudioSource.UnPause();
-        eatAudioSource.UnPause();
-        drinkAudioSource.UnPause();
-        keysAudioSource.UnPause();
+        AudioManager.instance.UnPauseSound(lockedAudioSource);
+        AudioManager.instance.UnPauseSound(drinkAudioSource);
+        AudioManager.instance.UnPauseSound(eatAudioSource);
+        AudioManager.instance.UnPauseSound(clockAudioSource);
+        AudioManager.instance.UnPauseSound(keysAudioSource);
+        AudioManager.instance.UnPauseSound(mainGameAudioSource);
 
         Time.timeScale = 1f;
         CheckDoorStateOnResume();
@@ -138,13 +157,13 @@ public class PlayerController : MonoBehaviour
     {
         if (doorBase.doorOpenedAudioSource.isPlaying)
         {
-            doorBase.doorOpenedAudioSource.Pause();
-            isDoorOpenedSoundPaused = true;
+            AudioManager.instance.PauseSound(doorBase.doorOpenedAudioSource);
+            isDoorOpenedSoundPaused = active;
         }
         else if (doorBase.doorClosedAudioSource.isPlaying)
         {
-            doorBase.doorClosedAudioSource.Pause();
-            isDoorClosedSoundPaused = true;
+            AudioManager.instance.PauseSound(doorBase.doorClosedAudioSource);
+            isDoorClosedSoundPaused = active;
         }
     }
 
@@ -152,13 +171,13 @@ public class PlayerController : MonoBehaviour
     {
         if (isDoorOpenedSoundPaused)
         {
-            doorBase.doorOpenedAudioSource.UnPause();
-            isDoorOpenedSoundPaused = false;
+            AudioManager.instance.UnPauseSound(doorBase.doorClosedAudioSource);
+            isDoorOpenedSoundPaused = inactive;
         }
         if (isDoorClosedSoundPaused)
         {
-            doorBase.doorClosedAudioSource.UnPause();
-            isDoorClosedSoundPaused = false;
+            AudioManager.instance.UnPauseSound(doorBase.doorClosedAudioSource);
+            isDoorClosedSoundPaused = inactive;
         }
     }
 }
