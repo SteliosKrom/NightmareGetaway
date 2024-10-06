@@ -20,7 +20,7 @@ public class AddEventTrigger : MonoBehaviour
     [SerializeField] private Button backToMenuButtonCredits;
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button pauseSettingsButton;
-    [SerializeField] private Button homeButton;
+    [SerializeField] private Button pauseHomeButton;
     [SerializeField] private Button pauseExitButton;
 
     [Header("AUDIO")]
@@ -46,7 +46,7 @@ public class AddEventTrigger : MonoBehaviour
 
         AttachButtonHoverEventsPause(resumeButton);
         AttachButtonHoverEventsPause(pauseSettingsButton);
-        AttachButtonHoverEventsPause(homeButton);
+        AttachButtonHoverEventsPause(pauseHomeButton);
         AttachButtonHoverEventsPause(pauseExitButton);
     }
 
@@ -102,7 +102,7 @@ public class AddEventTrigger : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    private void AttachButtonHoverEventsMenu(Button menuButtons)
+    public void AttachButtonHoverEventsMenu(Button menuButtons)
     {
         EventTrigger menuTrigger = menuButtons.gameObject.AddComponent<EventTrigger>();
 
@@ -117,7 +117,7 @@ public class AddEventTrigger : MonoBehaviour
         menuTrigger.triggers.Add(entryExit);
     }
 
-    private void AttachButtonHoverEventsSettings(Button settingsButtons)
+    public void AttachButtonHoverEventsSettings(Button settingsButtons)
     {
         EventTrigger settingsTrigger = settingsButtons.gameObject.AddComponent<EventTrigger>();
 
@@ -132,7 +132,7 @@ public class AddEventTrigger : MonoBehaviour
         settingsTrigger.triggers.Add(settingsEntryExit);
     }
 
-    private void AttachButtonHoverEventsOther(Button otherButtons)
+    public void AttachButtonHoverEventsOther(Button otherButtons)
     {
         EventTrigger otherTrigger = otherButtons.gameObject.AddComponent<EventTrigger>();
 
@@ -147,7 +147,7 @@ public class AddEventTrigger : MonoBehaviour
         otherTrigger.triggers.Add(otherEntryExit);
     }
 
-    private void AttachButtonHoverEventsPause(Button pauseButtons)
+    public void AttachButtonHoverEventsPause(Button pauseButtons)
     {
         EventTrigger pauseTrigger = pauseButtons.gameObject.AddComponent<EventTrigger>();
 

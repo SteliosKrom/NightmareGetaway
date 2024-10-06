@@ -30,6 +30,7 @@ public class MainGameUIManager : MonoBehaviour
     [SerializeField] private GameObject audioMenu;
     [SerializeField] private GameObject videoMenu;
     [SerializeField] private GameObject graphicsMenu;
+    [SerializeField] private GameObject controlsMenu;
     [SerializeField] private GameObject audioButton;
     [SerializeField] private GameObject videoButton;
     [SerializeField] private GameObject controlsButton;
@@ -46,10 +47,12 @@ public class MainGameUIManager : MonoBehaviour
     [SerializeField] private AudioSource mainMenuAudioSource;
     [SerializeField] private AudioSource mainGameAudioSource;
     [SerializeField] private AudioSource lockedAudioSource;
+    [SerializeField] private AudioSource keysAudioSource;
+    [SerializeField] private AudioSource drinkAudioSource;
+    [SerializeField] private AudioSource eatAudioSource;
     [SerializeField] private AudioSource clockAudioSource;
     [SerializeField] private AudioSource hoverAudioSource;
     [SerializeField] private AudioClip hoverAudioClip;
-
 
     private void Start()
     {
@@ -63,9 +66,14 @@ public class MainGameUIManager : MonoBehaviour
         pauseMenu.SetActive(inactive);
         dot.SetActive(active);
         taskChange.SetActive(active);
-        lockedAudioSource.UnPause();
-        clockAudioSource.UnPause();
-        mainGameAudioSource.UnPause();
+
+        AudioManager.instance.UnPauseSound(lockedAudioSource);
+        AudioManager.instance.UnPauseSound(clockAudioSource);
+        AudioManager.instance.UnPauseSound(mainGameAudioSource);
+        AudioManager.instance.UnPauseSound(keysAudioSource);
+        AudioManager.instance.UnPauseSound(eatAudioSource);
+        AudioManager.instance.UnPauseSound(drinkAudioSource);
+
         resumeButton.transform.DOScale(0.8f, 0.2f);
         RoundManager.instance.currentGameState = GameState.playing;
     }
@@ -115,10 +123,10 @@ public class MainGameUIManager : MonoBehaviour
 
     public void BackToGameButton()
     {
-        Time.timeScale = 0f;
         pauseMenu.SetActive(active);
         settingsMenu.SetActive(inactive);
         taskChange.SetActive(inactive);
+        controlsMenu.SetActive(inactive);
 
         backToGameButton.transform.DOScale(3.2f, 0.2f);
         RoundManager.instance.currentGameState = GameState.pause;

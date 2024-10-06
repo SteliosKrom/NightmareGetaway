@@ -615,6 +615,8 @@ Transform:
   - {fileID: 366460643}
   - {fileID: 1324612476}
   - {fileID: 1790531746}
+  - {fileID: 1258318066}
+  - {fileID: 1663274718}
   m_Father: {fileID: 195872784}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &17818289
@@ -1220,7 +1222,6 @@ MonoBehaviour:
   mainGameAudioSource: {fileID: 462325584}
   rainAudioSource: {fileID: 429594847}
   hoverAudioClip: {fileID: 8300000, guid: 307d84975c8c7f543842e311e1a709dc, type: 3}
-  rainAudioClip: {fileID: 8300000, guid: 1b9811af34efb9a499b18e1ee0ccbd47, type: 3}
 --- !u!1 &68912768
 GameObject:
   m_ObjectHideFlags: 0
@@ -19950,6 +19951,16 @@ MonoBehaviour:
   clockAudio: {fileID: 379504551}
   flashlightFlickering: {fileID: 792361160}
   addEventTrigger: {fileID: 1810667849}
+  resumeButton: {fileID: 2084806073}
+  settingsButton: {fileID: 152314458}
+  homeButton: {fileID: 279216664}
+  exitButton: {fileID: 1825467470}
+  audioCategoryButton: {fileID: 316657283}
+  videoCategoryButton: {fileID: 1309515951}
+  graphicsCategoryButton: {fileID: 51739753}
+  controlsCategoryButon: {fileID: 358003506}
+  backToPreviousButton: {fileID: 130000393}
+  backToGameButton: {fileID: 111163248}
   pauseMenu: {fileID: 182284034}
   settingsMenu: {fileID: 1405398497}
   dot: {fileID: 480800219}
@@ -20720,7 +20731,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 5667486173312248149, guid: ab31cbc55cac0aa4db2a64e1763fe7cc, type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 1b9811af34efb9a499b18e1ee0ccbd47, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
@@ -23482,6 +23493,7 @@ MonoBehaviour:
   audioMenu: {fileID: 1089141708}
   videoMenu: {fileID: 186060432}
   graphicsMenu: {fileID: 1829775377}
+  controlsMenu: {fileID: 314201201}
   audioButton: {fileID: 316657281}
   videoButton: {fileID: 1309515949}
   controlsButton: {fileID: 358003503}
@@ -23494,6 +23506,9 @@ MonoBehaviour:
   mainMenuAudioSource: {fileID: 1977907783}
   mainGameAudioSource: {fileID: 462325584}
   lockedAudioSource: {fileID: 1403184476}
+  keysAudioSource: {fileID: 1321917434}
+  drinkAudioSource: {fileID: 890562420}
+  eatAudioSource: {fileID: 1331450122}
   clockAudioSource: {fileID: 1221405377}
   hoverAudioSource: {fileID: 1738958847}
   hoverAudioClip: {fileID: 8300000, guid: 307d84975c8c7f543842e311e1a709dc, type: 3}
@@ -32783,7 +32798,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
@@ -35119,7 +35134,7 @@ Transform:
   m_GameObject: {fileID: 1165603550}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16, y: 5.1, z: -116.96}
+  m_LocalPosition: {x: -16, y: 26.1, z: -116.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -35839,7 +35854,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 100, y: 0, z: 50}
+    m_Scale: {x: 100, y: 100, z: 50}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -45775,6 +45790,59 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.1487103, y: 0.73277533, z: 5.986484}
   m_Center: {x: 4.7901087, y: -0.3930838, z: 4.083085}
+--- !u!1 &1258318065
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1258318066}
+  - component: {fileID: 1258318067}
+  m_Layer: 0
+  m_Name: LakeWallCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1258318066
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258318065}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 26.61, y: 0, z: -59.66}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 17818288}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1258318067
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258318065}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 20.959002, y: 3.9587326, z: 1}
+  m_Center: {x: -5.962409, y: -1.4793663, z: 0}
 --- !u!1 &1261864127
 GameObject:
   m_ObjectHideFlags: 0
@@ -50162,6 +50230,59 @@ Transform:
   m_Children: []
   m_Father: {fileID: 921240066}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1663274717
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1663274718}
+  - component: {fileID: 1663274719}
+  m_Layer: 0
+  m_Name: LakeWallCollider2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1663274718
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663274717}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 10.75, y: 0, z: -63.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 17818288}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!65 &1663274719
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1663274717}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 12.267276, y: 3.9587326, z: 1}
+  m_Center: {x: 1.5257149, y: -1.4793663, z: 6.7399902e-15}
 --- !u!23 &1663293420
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -50647,7 +50768,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -753, y: 208}
+  m_AnchoredPosition: {x: -753, y: 247}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1696050466
@@ -50673,11 +50794,13 @@ MonoBehaviour:
   m_text: "my name is stelios and I am an indie game developer. this is my first
     horror game, that i have been developing in over 5 months on my own, and I have
     been responsible in making game design, ui design, audio design, programming,
-    lighting, game testing, importing assets, marketing and more.\n\n \n\nAlso, I
-    want to give special thanks to my family, friends and community that have played
-    this game, it's really important for debugging purposes and I am awaiting to
-    hear your feedback. the development process was tough and challenging for me,
-    and i want to thank you very much for your support!\n\n\n\t\t "
+    lighting, game testing, importing assets, marketing and more.\n\n \n\nA huge
+    thanks to my family, friends and everyone in the community who has played the
+    game. Honestly, the development process took me a lot of time and effort, and
+    i really want to hear your feedback in order to help me fix any issues that will
+    arise. once again, i really want to thank you, because without you, my passion
+    and motivation for making video games wouldn't be as strong as they are right
+    now.\n\n\n\t\t "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
   m_sharedMaterial: {fileID: 7855358897793652092, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
@@ -52186,7 +52309,7 @@ MonoBehaviour:
   backToMenuButtonCredits: {fileID: 1725678372}
   resumeButton: {fileID: 2084806073}
   pauseSettingsButton: {fileID: 152314458}
-  homeButton: {fileID: 279216664}
+  pauseHomeButton: {fileID: 279216664}
   pauseExitButton: {fileID: 1825467470}
   hoverAudioSource: {fileID: 1738958847}
   hoverAudioClip: {fileID: 8300000, guid: 307d84975c8c7f543842e311e1a709dc, type: 3}
@@ -78899,8 +79022,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.078064404, y: 0.045755956, z: 0.017349258}
-  m_Center: {x: -0.011021299, y: 0.0001566525, z: 0.008674657}
+  m_Size: {x: 0.078064404, y: 0.045755956, z: 0}
+  m_Center: {x: -0.011021299, y: 0.00015665252, z: 0.000000027413236}
 --- !u!23 &3039396956261373446
 MeshRenderer:
   m_ObjectHideFlags: 0

@@ -1,14 +1,19 @@
 using DG.Tweening;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     public float playerSpeed;
     private float gravity;
+    private float cooldown = 1f;
+
     private bool active = true;
     private bool inactive = false;
     private bool isDoorOpenedSoundPaused = false;
     private bool isDoorClosedSoundPaused = false;
+    private bool canPause = true;
 
     [Header("SCRIPT REFERENCES")]
     [SerializeField] private DoorBase doorBase;
@@ -16,6 +21,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private ClockAudio clockAudio;
     [SerializeField] private FlashlightFlickering flashlightFlickering;
     [SerializeField] private AddEventTrigger addEventTrigger;
+
+    [Header("BUTTONS")]
+    [SerializeField] private Button resumeButton;
+    [SerializeField] private Button settingsButton;
+    [SerializeField] private Button homeButton;
+    [SerializeField] private Button exitButton;
+    [SerializeField] private Button audioCategoryButton;
+    [SerializeField] private Button videoCategoryButton;
+    [SerializeField] private Button graphicsCategoryButton;
+    [SerializeField] private Button controlsCategoryButon;
+    [SerializeField] private Button backToPreviousButton;
+    [SerializeField] private Button backToGameButton;
 
     [Header("GAME OBJECTS")]
     [SerializeField] private GameObject pauseMenu;
@@ -88,18 +105,23 @@ public class PlayerController : MonoBehaviour
 
     public void PauseAndResume()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && RoundManager.instance.currentGameState == GameState.playing)
+        if (canPause && Input.GetKeyDown(KeyCode.Escape))
         {
-            PauseGame();
-        }
-        else if (Input.GetKeyDown(KeyCode.Escape) && RoundManager.instance.currentGameState == GameState.pause)
-        {
-            ResumeGameFromPauseMenu();
-        }
-        else if (Input.GetKeyDown(KeyCode.Escape) && RoundManager.instance.currentGameState == GameState.onSettingsGame)
-        {
-            ResumeGameFromGameSettings();
-        }
+            canPause = inactive;
+            if (RoundManager.instance.currentGameState == GameState.playing)
+            {
+                PauseGame();
+            }
+            else if (RoundManager.instance.currentGameState == GameState.pause)
+            {
+                ResumeGameFromPauseMenu();
+            }
+            else if (RoundManager.instance.currentGameState == GameState.onSettingsGame)
+            {
+                ResumeGameFromGameSettings();
+            }
+            StartCoroutine(HandleCooldown());
+        }   
     }
 
     public void PauseGame()
@@ -129,10 +151,25 @@ public class PlayerController : MonoBehaviour
     public void ResumeGameFromGameSettings()
     {
         settingsMenu.SetActive(inactive);
-        pauseMenu.SetActive(inactive);
+        pauseMenu.SetActive(active);
+        dot.SetActive(inactive);
+        taskChange.SetActive(inactive);
+
+        AudioManager.instance.UnPauseSound(lockedAudioSource);
+        AudioManager.instance.UnPauseSound(eatAudioSource);
+        AudioManager.instance.UnPauseSound(drinkAudioSource);
+        AudioManager.instance.UnPauseSound(keysAudioSource);
+        AudioManager.instance.UnPauseSound(clockAudioSource);
+
+        addEventTrigger.ExitHoverSoundEffectSettings(audioCategoryButton.transform);
+        addEventTrigger.ExitHoverSoundEffectSettings(videoCategoryButton.transform);
+        addEventTrigger.ExitHoverSoundEffectSettings(graphicsCategoryButton.transform);
+        addEventTrigger.ExitHoverSoundEffectSettings(controlsCategoryButon.transform);
+        addEventTrigger.ExitHoverSoundEffectOther(backToGameButton.transform);
+        addEventTrigger.ExitHoverSoundEffectOther(backToPreviousButton.transform);
+
         Time.timeScale = 1f;
-        addEventTrigger.ExitHoverSoundEffectPause(transform);
-        RoundManager.instance.currentGameState = GameState.playing;
+        RoundManager.instance.currentGameState = GameState.pause;
     }
 
     public void ResumeGameFromPauseMenu()
@@ -147,6 +184,11 @@ public class PlayerController : MonoBehaviour
         AudioManager.instance.UnPauseSound(clockAudioSource);
         AudioManager.instance.UnPauseSound(keysAudioSource);
         AudioManager.instance.UnPauseSound(mainGameAudioSource);
+
+        addEventTrigger.ExitHoverSoundEffectPause(resumeButton.transform);
+        addEventTrigger.ExitHoverSoundEffectPause(settingsButton.transform);
+        addEventTrigger.ExitHoverSoundEffectPause(homeButton.transform);
+        addEventTrigger.ExitHoverSoundEffectPause(exitButton.transform);
 
         Time.timeScale = 1f;
         CheckDoorStateOnResume();
@@ -180,4 +222,12 @@ public class PlayerController : MonoBehaviour
             isDoorClosedSoundPaused = inactive;
         }
     }
+
+    public IEnumerator HandleCooldown()
+    {
+        yield return new WaitForSecondsRealtime(cooldown);
+        canPause = active;
+    }
+
+
 }

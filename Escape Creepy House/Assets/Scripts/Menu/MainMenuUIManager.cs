@@ -57,7 +57,6 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private AudioSource mainGameAudioSource;
     [SerializeField] private AudioSource rainAudioSource;
     [SerializeField] private AudioClip hoverAudioClip;
-    [SerializeField] private AudioClip rainAudioClip;
     private Vector3 initialPos;
 
     private void Start()
@@ -83,7 +82,7 @@ public class MainMenuUIManager : MonoBehaviour
         initialPos = secondaryCamera.transform.position;
         AudioManager.instance.Play(mainMenuAudioSource);
         AudioManager.instance.StopSound(mainGameAudioSource);
-        AudioManager.instance.PlaySound(rainAudioSource, rainAudioClip);
+        AudioManager.instance.Play(rainAudioSource);
     }
 
     private void Update()
@@ -147,7 +146,7 @@ public class MainMenuUIManager : MonoBehaviour
         settingsMenu.SetActive(active);
 
         controlsButton.transform.DOScale(4f, 0.2f);
-        RoundManager.instance.currentGameState = GameState.onMainMenu;
+        RoundManager.instance.currentGameState = GameState.onSettingsMenu;
     }
 
     public void SettingsButton()
@@ -236,7 +235,7 @@ public class MainMenuUIManager : MonoBehaviour
         settingsMenu.SetActive(active);
 
         backToPreviousButton.transform.DOScale(3.2f, 0.2f);
-        RoundManager.instance.currentGameState = GameState.onMainMenu;
+        RoundManager.instance.currentGameState = GameState.onSettingsMenu;
     }
 
     public void AudioCategoryButton()
