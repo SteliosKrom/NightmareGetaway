@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
     [Header("GAME OBJECTS")]
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject settingsMenu;
+    [SerializeField] private GameObject controlsMenu;
     [SerializeField] private GameObject dot;
     [SerializeField] private GameObject taskChange;
     [SerializeField] private GameObject foundItemMessage;
@@ -152,6 +153,7 @@ public class PlayerController : MonoBehaviour
     {
         settingsMenu.SetActive(inactive);
         pauseMenu.SetActive(active);
+        controlsMenu.SetActive(inactive);
         dot.SetActive(inactive);
         taskChange.SetActive(inactive);
 

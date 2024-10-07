@@ -146,7 +146,6 @@ public class MainMenuUIManager : MonoBehaviour
         settingsMenu.SetActive(active);
 
         controlsButton.transform.DOScale(4f, 0.2f);
-        RoundManager.instance.currentGameState = GameState.onSettingsMenu;
     }
 
     public void SettingsButton()
@@ -235,7 +234,6 @@ public class MainMenuUIManager : MonoBehaviour
         settingsMenu.SetActive(active);
 
         backToPreviousButton.transform.DOScale(3.2f, 0.2f);
-        RoundManager.instance.currentGameState = GameState.onSettingsMenu;
     }
 
     public void AudioCategoryButton()

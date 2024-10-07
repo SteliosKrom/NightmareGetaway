@@ -10,6 +10,7 @@ public class Transition : MonoBehaviour
     public GameObject introPanel;
     public GameObject theLegendKnightPanel;
     public GameObject headsetPanel;
+    public GameObject seizurePanel;
 
     [Header("AUDIO")]
     public AudioSource secondSplashAudioSource;
@@ -21,7 +22,8 @@ public class Transition : MonoBehaviour
         Invoke("LoadIntroPanel", 7f);
         Invoke("LoadTheLegendKnightPanel", 7f);
         Invoke("LoadHeadsetPanel", 14f);
-        Invoke("LoadMainGameScene", 21f);
+        Invoke("LoadSeizureWarningPanel", 21f);
+        Invoke("LoadMainGameScene", 28f);
     }
 
     public void LoadMainGameScene()
@@ -34,6 +36,7 @@ public class Transition : MonoBehaviour
         introPanel.SetActive(active);
         theLegendKnightPanel.SetActive(inactive);
         headsetPanel.SetActive(inactive);
+        seizurePanel.SetActive(inactive);
     }
 
     public void LoadTheLegendKnightPanel()
@@ -41,6 +44,7 @@ public class Transition : MonoBehaviour
         theLegendKnightPanel.SetActive(active);
         headsetPanel.SetActive(inactive);
         introPanel.SetActive(inactive);
+        seizurePanel.SetActive(inactive);
         AudioManager.instance.PlaySound(secondSplashAudioSource, secondSplashAudioClip);
     }
 
@@ -49,5 +53,14 @@ public class Transition : MonoBehaviour
         headsetPanel.SetActive(active);
         introPanel.SetActive(inactive);
         theLegendKnightPanel.SetActive(inactive);
+        seizurePanel.SetActive(inactive);
+    }
+
+    public void LoadSeizureWarningPanel()
+    {
+        introPanel.SetActive(inactive);
+        headsetPanel.SetActive(inactive);
+        theLegendKnightPanel.SetActive(inactive);
+        seizurePanel.SetActive(active);
     }
 }
