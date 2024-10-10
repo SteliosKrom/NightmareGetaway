@@ -7,6 +7,7 @@ public class Interactor : MonoBehaviour
     public float interactionRange;
     private float displayTextDelay = 1.5f;
     private float lockedUIDelay = 1f;
+    private float doorCollidersDelay = 1f;
 
     private bool isLocked = false;
     public bool hasFlashlight = false;
@@ -46,7 +47,6 @@ public class Interactor : MonoBehaviour
     public GameObject phone;
     public GameObject doorBoxCollider;
     public BoxCollider fridgeCollider;
-    public BoxCollider[] doorColliders;
 
     private void Start()
     {
@@ -192,6 +192,7 @@ public class Interactor : MonoBehaviour
 
     public void HandleLockedDoors(DoorBase doorBase)
     {
+
         if (doorBase.gameObject.CompareTag("KidsDoor") && RoundManager.instance.currentKeyState != KeyState.kidsRoomKey && !isLocked)
         {
             StartCoroutine(LockedUIDelay());
@@ -315,5 +316,12 @@ public class Interactor : MonoBehaviour
         yield return new WaitForSeconds(lockedUIDelay);
         lockedUI.SetActive(inactive);
         isLocked = inactive;
+    }
+
+    public IEnumerator DoorColliderDelay(BoxCollider doorCollider)
+    {
+        doorCollider.enabled = inactive;
+        yield return new WaitForSeconds(doorCollidersDelay);
+        doorCollider.enabled = active;
     }
 }

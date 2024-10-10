@@ -18,6 +18,11 @@ TagManager:
   - KidsDoor
   - MainDoor
   - Floor
+  - ClothingsDoorCollider
+  - BathroomDoorCollider
+  - BedroomDoorCollider
+  - SecondBathroomDoorCollider
+  - SecondBedroomDoorCollider
   layers:
   - Default
   - TransparentFX

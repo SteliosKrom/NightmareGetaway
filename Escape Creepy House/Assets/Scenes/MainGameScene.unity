@@ -17730,8 +17730,8 @@ GameObject:
   - component: {fileID: 350469614}
   - component: {fileID: 350469615}
   m_Layer: 0
-  m_Name: DoorCollider
-  m_TagString: Untagged
+  m_Name: SecondBathroomDoorCollider
+  m_TagString: SecondBathroomDoorCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20318,6 +20318,12 @@ MonoBehaviour:
   fridgeCollider: {fileID: 8386798335186017357}
   doorColliders:
   - {fileID: 1874971635}
+  - {fileID: 590819360}
+  - {fileID: 844613084}
+  - {fileID: 848634438}
+  - {fileID: 350469615}
+  - {fileID: 922138713}
+  - {fileID: 1212862378}
 --- !u!114 &379504551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22247,7 +22253,7 @@ GameObject:
   - component: {fileID: 536870960}
   - component: {fileID: 536870961}
   m_Layer: 0
-  m_Name: DoorCollider
+  m_Name: MainDoorCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22819,8 +22825,8 @@ GameObject:
   - component: {fileID: 590819359}
   - component: {fileID: 590819360}
   m_Layer: 0
-  m_Name: DoorCollider
-  m_TagString: Untagged
+  m_Name: ClothingsDoorCollider
+  m_TagString: ClothingsDoorCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30889,8 +30895,8 @@ GameObject:
   - component: {fileID: 844613083}
   - component: {fileID: 844613084}
   m_Layer: 0
-  m_Name: DoorCollider
-  m_TagString: Untagged
+  m_Name: BathroomDoorCollider
+  m_TagString: BathroomDoorCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30942,8 +30948,8 @@ GameObject:
   - component: {fileID: 848634437}
   - component: {fileID: 848634438}
   m_Layer: 0
-  m_Name: DoorCollider
-  m_TagString: Untagged
+  m_Name: BedroomDoorCollider
+  m_TagString: BedroomDoorCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32341,8 +32347,8 @@ GameObject:
   - component: {fileID: 922138712}
   - component: {fileID: 922138713}
   m_Layer: 0
-  m_Name: DoorCollider
-  m_TagString: Untagged
+  m_Name: SecondBedroomDoorCollider
+  m_TagString: SecondBedroomDoorCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45314,8 +45320,8 @@ GameObject:
   - component: {fileID: 1212862377}
   - component: {fileID: 1212862378}
   m_Layer: 0
-  m_Name: DoorCollider
-  m_TagString: Untagged
+  m_Name: GarageDoorCollider
+  m_TagString: GarageDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53681,8 +53687,8 @@ GameObject:
   - component: {fileID: 1874971634}
   - component: {fileID: 1874971635}
   m_Layer: 0
-  m_Name: DoorCollider
-  m_TagString: Untagged
+  m_Name: KidsDoorCollider
+  m_TagString: KidsDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
