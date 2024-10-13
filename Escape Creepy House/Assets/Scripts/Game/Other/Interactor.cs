@@ -31,22 +31,24 @@ public class Interactor : MonoBehaviour
     public AudioClip lockedAudioClip;
 
     [Header("OTHER")]
-    public Transform interactionSource;
-    public GameObject foundGarageKey;
-    public GameObject foundFlashlight;
-    public GameObject foundMainDoorKey;
-    public GameObject foundRoomKey;
-    public GameObject foundPhone;
-    public GameObject interactionUI;
-    public GameObject lockedUI;
-    public GameObject roomKey;
-    public GameObject mainDoorKey;
-    public GameObject garageKey;
-    public GameObject waterGlass;
-    public GameObject food;
-    public GameObject phone;
-    public GameObject doorBoxCollider;
-    public BoxCollider fridgeCollider;
+    [SerializeField] private Transform interactionSource;
+    [SerializeField] private GameObject foundGarageKey;
+    [SerializeField] private GameObject foundFlashlight;
+    [SerializeField] private GameObject foundMainDoorKey;
+    [SerializeField] private GameObject foundRoomKey;
+    [SerializeField] private GameObject foundPhone;
+    [SerializeField] private GameObject interactionUI;
+    [SerializeField] private GameObject lockedUI;
+    [SerializeField] private GameObject roomKey;
+    [SerializeField] private GameObject mainDoorKey;
+    [SerializeField] private GameObject garageKey;
+    [SerializeField] private GameObject waterGlass;
+    [SerializeField] private GameObject food;
+    [SerializeField] private GameObject phone;
+    [SerializeField] private GameObject doorBoxCollider;
+    [SerializeField] private BoxCollider fridgeCollider;
+    [SerializeField] private BoxCollider[] doorColliders;
+    [SerializeField] private BoxCollider[] doorHandleColliders;
 
     private void Start()
     {
@@ -184,15 +186,45 @@ public class Interactor : MonoBehaviour
 
     public void HandleUnlockedDoors(DoorBase doorBase)
     {
-        if (doorBase.gameObject.CompareTag("Door"))
+        if (doorBase.gameObject.CompareTag("SecondBedroomDoor"))
         {
             doorBase.OnDoorInteract();
+            StartCoroutine(DoorCollidersDelay(doorColliders[4]));
+            StartCoroutine(doorHandleCollidersDelay(doorHandleColliders[4]));
+        }
+        else if (doorBase.gameObject.CompareTag("SecondBathroomDoor"))
+        {
+            doorBase.OnDoorInteract();
+            StartCoroutine(DoorCollidersDelay(doorColliders[3]));
+            StartCoroutine(doorHandleCollidersDelay(doorHandleColliders[3]));
+        }
+        else if (doorBase.gameObject.CompareTag("ClothingsDoor"))
+        {
+            doorBase.OnDoorInteract();
+            StartCoroutine(DoorCollidersDelay(doorColliders[1]));
+            StartCoroutine(doorHandleCollidersDelay(doorHandleColliders[1]));
+        }
+        else if (doorBase.gameObject.CompareTag("BedroomDoor"))
+        {
+            doorBase.OnDoorInteract();
+            StartCoroutine(DoorCollidersDelay(doorColliders[2]));
+            StartCoroutine(doorHandleCollidersDelay(doorHandleColliders[2]));
+        }
+        else if (doorBase.gameObject.CompareTag("BathroomDoor"))
+        {
+            doorBase.OnDoorInteract();
+            StartCoroutine(DoorCollidersDelay(doorColliders[6]));
+            StartCoroutine(doorHandleCollidersDelay(doorHandleColliders[6]));
+        }
+        else if (doorBase.gameObject.CompareTag("FridgeDoor"))
+        {
+            doorBase.OnDoorInteract();
+            StartCoroutine(DoorCollidersDelay(doorColliders[7]));
         }
     }
 
     public void HandleLockedDoors(DoorBase doorBase)
     {
-
         if (doorBase.gameObject.CompareTag("KidsDoor") && RoundManager.instance.currentKeyState != KeyState.kidsRoomKey && !isLocked)
         {
             StartCoroutine(LockedUIDelay());
@@ -201,6 +233,8 @@ public class Interactor : MonoBehaviour
         else if (doorBase.gameObject.CompareTag("KidsDoor") && RoundManager.instance.currentKeyState == KeyState.kidsRoomKey && !isLocked)
         {
             doorBase.OnDoorInteract();
+            StartCoroutine(DoorCollidersDelay(doorColliders[0]));
+            StartCoroutine(doorHandleCollidersDelay(doorHandleColliders[0]));
             isLocked = inactive;
             RoundManager.instance.currentKeyState = KeyState.kidsRoomKey;
         }
@@ -213,6 +247,8 @@ public class Interactor : MonoBehaviour
         else if (doorBase.gameObject.CompareTag("GarageDoor") && RoundManager.instance.currentKeyState == KeyState.garageKey && !isLocked)
         {
             doorBase.OnDoorInteract();
+            StartCoroutine(DoorCollidersDelay(doorColliders[5]));
+            StartCoroutine(doorHandleCollidersDelay(doorHandleColliders[5]));
             isLocked = inactive;
             RoundManager.instance.currentKeyState = KeyState.garageKey;
         }
@@ -318,10 +354,101 @@ public class Interactor : MonoBehaviour
         isLocked = inactive;
     }
 
-    public IEnumerator DoorColliderDelay(BoxCollider doorCollider)
+    public IEnumerator DoorCollidersDelay(BoxCollider collider)
     {
-        doorCollider.enabled = inactive;
-        yield return new WaitForSeconds(doorCollidersDelay);
-        doorCollider.enabled = active;
+        if (collider.CompareTag("KidsDoor"))
+        {
+            collider.enabled = inactive;
+            yield return new WaitForSeconds(doorCollidersDelay);
+            collider.enabled = active;
+        }
+        else if (collider.CompareTag("BathroomDoor"))
+        {
+            collider.enabled = inactive;
+            yield return new WaitForSeconds(doorCollidersDelay);
+            collider.enabled = active;
+        }
+        else if (collider.CompareTag("SecondBathroomDoor"))
+        {
+            collider.enabled = inactive;
+            yield return new WaitForSeconds(doorCollidersDelay);
+            collider.enabled = active;
+        }
+        else if (collider.CompareTag("SecondBedroomDoor"))
+        {
+            collider.enabled = inactive;
+            yield return new WaitForSeconds(doorCollidersDelay);
+            collider.enabled = active;
+        }
+        else if (collider.CompareTag("GarageDoor"))
+        {
+            collider.enabled = inactive;
+            yield return new WaitForSeconds(doorCollidersDelay);
+            collider.enabled = active;
+        }
+        else if (collider.CompareTag("BedroomDoor"))
+        {
+            collider.enabled = inactive;
+            yield return new WaitForSeconds(doorCollidersDelay);
+            collider.enabled = active;
+        }
+        else if (collider.CompareTag("ClothingsDoor"))
+        {
+            collider.enabled = inactive;
+            yield return new WaitForSeconds(doorCollidersDelay);
+            collider.enabled = active;
+        }
+        else if (collider.CompareTag("FridgeDoor"))
+        {
+            collider.enabled = inactive;
+            yield return new WaitForSeconds(doorCollidersDelay);
+            collider.enabled = active;
+        }
+    }
+
+    public IEnumerator doorHandleCollidersDelay(BoxCollider collider)
+    {
+        if (collider.CompareTag("KidsDoor"))
+        {
+            collider.enabled = inactive;
+            yield return new WaitForSeconds(doorCollidersDelay);
+            collider.enabled = active;
+        }
+        else if (collider.CompareTag("BathroomDoor"))
+        {
+            collider.enabled = inactive;
+            yield return new WaitForSeconds(doorCollidersDelay);
+            collider.enabled = active;
+        }
+        else if (collider.CompareTag("SecondBathroomDoor"))
+        {
+            collider.enabled = inactive;
+            yield return new WaitForSeconds(doorCollidersDelay);
+            collider.enabled = active;
+        }
+        else if (collider.CompareTag("SecondBedroomDoor"))
+        {
+            collider.enabled = inactive;
+            yield return new WaitForSeconds(doorCollidersDelay);
+            collider.enabled = active;
+        }
+        else if (collider.CompareTag("GarageDoor"))
+        {
+            collider.enabled = inactive;
+            yield return new WaitForSeconds(doorCollidersDelay);
+            collider.enabled = active;
+        }
+        else if (collider.CompareTag("BedroomDoor"))
+        {
+            collider.enabled = inactive;
+            yield return new WaitForSeconds(doorCollidersDelay);
+            collider.enabled = active;
+        }
+        else if (collider.CompareTag("ClothingsDoor"))
+        {
+            collider.enabled = inactive;
+            yield return new WaitForSeconds(doorCollidersDelay);
+            collider.enabled = active;
+        }
     }
 }

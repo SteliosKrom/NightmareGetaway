@@ -14,15 +14,14 @@ TagManager:
   - GarageDoor
   - Indoor
   - Outdoor
-  - Door
   - KidsDoor
+  - FridgeDoor
+  - SecondBathroomDoor
+  - SecondBedroomDoor
+  - ClothingsDoor
+  - BathroomDoor
   - MainDoor
-  - Floor
-  - ClothingsDoorCollider
-  - BathroomDoorCollider
-  - BedroomDoorCollider
-  - SecondBathroomDoorCollider
-  - SecondBedroomDoorCollider
+  - BedroomDoor
   layers:
   - Default
   - TransparentFX
