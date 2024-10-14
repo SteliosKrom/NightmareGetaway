@@ -60,6 +60,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioSource drinkAudioSource;
     [SerializeField] private AudioSource lockedAudioSource;
     [SerializeField] private AudioSource clockAudioSource;
+    [SerializeField] private AudioSource ceilingFanAudioSource;
 
     private void Start()
     {
@@ -143,6 +144,7 @@ public class PlayerController : MonoBehaviour
         AudioManager.instance.PauseSound(rainAudioSource);
         AudioManager.instance.PauseSound(mainGameAudioSource);
         AudioManager.instance.PauseSound(clockAudioSource);
+        AudioManager.instance.PauseSound(ceilingFanAudioSource);
 
         Time.timeScale = 0f;
         CheckDoorStateOnPause();
@@ -162,6 +164,7 @@ public class PlayerController : MonoBehaviour
         AudioManager.instance.UnPauseSound(drinkAudioSource);
         AudioManager.instance.UnPauseSound(keysAudioSource);
         AudioManager.instance.UnPauseSound(clockAudioSource);
+        AudioManager.instance.UnPauseSound(ceilingFanAudioSource);
 
         addEventTrigger.ExitHoverSoundEffectSettings(audioCategoryButton.transform);
         addEventTrigger.ExitHoverSoundEffectSettings(videoCategoryButton.transform);

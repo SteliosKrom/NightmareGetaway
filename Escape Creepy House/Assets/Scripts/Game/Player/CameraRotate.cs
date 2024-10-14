@@ -19,7 +19,7 @@ public class CameraRotate : MonoBehaviour
 
     private float defaultSensitivity = 1f;
     private float spotlightRotationSpeed = 10f;
-    private float mainCameraRotationSpeed = 3f;
+    private float mainCameraRotationSpeed = 4f;
 
     private float xRotation;
     private float yRotation;

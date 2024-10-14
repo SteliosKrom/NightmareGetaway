@@ -154,7 +154,6 @@ public class Interactor : MonoBehaviour
             taskManager.CompleteTask();
             garageKey.SetActive(active);
             doorBoxCollider.SetActive(inactive);
-            fridgeCollider.enabled = inactive;
             AudioManager.instance.PlaySound(eatAudioSource, eatAudioClip);
         }
         else if (interactable.gameObject.CompareTag("Phone"))
@@ -356,49 +355,13 @@ public class Interactor : MonoBehaviour
 
     public IEnumerator DoorCollidersDelay(BoxCollider collider)
     {
-        if (collider.CompareTag("KidsDoor"))
+        if (collider.CompareTag("KidsDoor") || collider.CompareTag("BathroomDoor") || collider.CompareTag("SecondBathroomDoor") || collider.CompareTag("SecondBedroomDoor") || collider.CompareTag("GarageDoor"))
         {
             collider.enabled = inactive;
             yield return new WaitForSeconds(doorCollidersDelay);
             collider.enabled = active;
         }
-        else if (collider.CompareTag("BathroomDoor"))
-        {
-            collider.enabled = inactive;
-            yield return new WaitForSeconds(doorCollidersDelay);
-            collider.enabled = active;
-        }
-        else if (collider.CompareTag("SecondBathroomDoor"))
-        {
-            collider.enabled = inactive;
-            yield return new WaitForSeconds(doorCollidersDelay);
-            collider.enabled = active;
-        }
-        else if (collider.CompareTag("SecondBedroomDoor"))
-        {
-            collider.enabled = inactive;
-            yield return new WaitForSeconds(doorCollidersDelay);
-            collider.enabled = active;
-        }
-        else if (collider.CompareTag("GarageDoor"))
-        {
-            collider.enabled = inactive;
-            yield return new WaitForSeconds(doorCollidersDelay);
-            collider.enabled = active;
-        }
-        else if (collider.CompareTag("BedroomDoor"))
-        {
-            collider.enabled = inactive;
-            yield return new WaitForSeconds(doorCollidersDelay);
-            collider.enabled = active;
-        }
-        else if (collider.CompareTag("ClothingsDoor"))
-        {
-            collider.enabled = inactive;
-            yield return new WaitForSeconds(doorCollidersDelay);
-            collider.enabled = active;
-        }
-        else if (collider.CompareTag("FridgeDoor"))
+        else if (collider.CompareTag("BedroomDoor") || collider.CompareTag("ClothingsDoor") || collider.CompareTag("FridgeDoor"))
         {
             collider.enabled = inactive;
             yield return new WaitForSeconds(doorCollidersDelay);
@@ -408,43 +371,14 @@ public class Interactor : MonoBehaviour
 
     public IEnumerator doorHandleCollidersDelay(BoxCollider collider)
     {
-        if (collider.CompareTag("KidsDoor"))
+
+        if (collider.CompareTag("KidsDoor") || collider.CompareTag("BathroomDoor") || collider.CompareTag("SecondBathroomDoor") || collider.CompareTag("SecondBedroomDoor") || collider.CompareTag("GarageDoor"))
         {
             collider.enabled = inactive;
             yield return new WaitForSeconds(doorCollidersDelay);
             collider.enabled = active;
         }
-        else if (collider.CompareTag("BathroomDoor"))
-        {
-            collider.enabled = inactive;
-            yield return new WaitForSeconds(doorCollidersDelay);
-            collider.enabled = active;
-        }
-        else if (collider.CompareTag("SecondBathroomDoor"))
-        {
-            collider.enabled = inactive;
-            yield return new WaitForSeconds(doorCollidersDelay);
-            collider.enabled = active;
-        }
-        else if (collider.CompareTag("SecondBedroomDoor"))
-        {
-            collider.enabled = inactive;
-            yield return new WaitForSeconds(doorCollidersDelay);
-            collider.enabled = active;
-        }
-        else if (collider.CompareTag("GarageDoor"))
-        {
-            collider.enabled = inactive;
-            yield return new WaitForSeconds(doorCollidersDelay);
-            collider.enabled = active;
-        }
-        else if (collider.CompareTag("BedroomDoor"))
-        {
-            collider.enabled = inactive;
-            yield return new WaitForSeconds(doorCollidersDelay);
-            collider.enabled = active;
-        }
-        else if (collider.CompareTag("ClothingsDoor"))
+        else if (collider.CompareTag("BedroomDoor") || collider.CompareTag("ClothingsDoor"))
         {
             collider.enabled = inactive;
             yield return new WaitForSeconds(doorCollidersDelay);
