@@ -8,6 +8,10 @@ public class MainGameUIManager : MonoBehaviour
     private bool active = true;
     private bool inactive = false;
 
+    [Header("SCRIPT REFERENCES")]
+    [SerializeField] private PlayerRespawn playerRespawn;
+    [SerializeField] private KidsRoomLight kidsRoomLight;
+
     [Header("BUTTONS")]
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button settingsButton;
@@ -41,7 +45,6 @@ public class MainGameUIManager : MonoBehaviour
     [Header("OTHER")]
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Camera secondaryCamera;
-    [SerializeField] private PlayerRespawn playerRespawn;
 
     [Header("AUDIO")]
     [SerializeField] private AudioSource mainMenuAudioSource;
@@ -113,6 +116,7 @@ public class MainGameUIManager : MonoBehaviour
         playerRespawn.Respawn();
         taskChange.SetActive(inactive);
         SceneManager.LoadScene("MainGameScene");
+        kidsRoomLight.enabled = inactive;
         RoundManager.instance.currentGameState = GameState.onMainMenu;
     }
 

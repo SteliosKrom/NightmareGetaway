@@ -36,6 +36,7 @@ public class SettingsManager : MonoBehaviour
     private void Start()
     {
         LoadSettings();
+        InitializeQualitySettings();
         InitializeFPS();
         InitializeVsyncAndAA();
         InitialiazeFullscreen();
@@ -66,6 +67,12 @@ public class SettingsManager : MonoBehaviour
 
         QualitySettings.antiAliasing = 0;
         antiAliasingDropdown.value = 0;
+    }
+
+    public void InitializeQualitySettings()
+    {
+        QualitySettings.SetQualityLevel(4);
+        qualityDropdown.value = 4;
     }
 
     public void LoadSettings()
