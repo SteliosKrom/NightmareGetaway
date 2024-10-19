@@ -59,16 +59,18 @@ public class MainGameUIManager : MonoBehaviour
 
     private void Start()
     {
-        settingsMenu.SetActive(inactive);
-        pauseMenu.SetActive(inactive);
+        DeactivateGameObject.instance.DeactivateObject(settingsMenu);
+        DeactivateGameObject.instance.DeactivateObject(pauseMenu);
     }
 
     public void ResumeButton()
     {
         Time.timeScale = 1.0f;
-        pauseMenu.SetActive(inactive);
-        dot.SetActive(active);
-        taskChange.SetActive(active);
+
+        DeactivateGameObject.instance.DeactivateObject(pauseMenu);
+
+        ActivateGameObject.instance.ActivateObject(dot);
+        ActivateGameObject.instance.ActivateObject(taskChange);
 
         AudioManager.instance.UnPauseSound(lockedAudioSource);
         AudioManager.instance.UnPauseSound(clockAudioSource);
@@ -83,21 +85,20 @@ public class MainGameUIManager : MonoBehaviour
 
     public void SettingsButton()
     {
-        pauseMenu.SetActive(inactive);
-        settingsMenu.SetActive(active);
-        audioMenu.SetActive(inactive);
-        videoMenu.SetActive(inactive);
-        graphicsMenu.SetActive(inactive);
-        backToMenu.SetActive(inactive);
+        DeactivateGameObject.instance.DeactivateObject(pauseMenu);
+        DeactivateGameObject.instance.DeactivateObject(audioMenu);
+        DeactivateGameObject.instance.DeactivateObject(videoMenu);
+        DeactivateGameObject.instance.DeactivateObject(graphicsMenu);
+        DeactivateGameObject.instance.DeactivateObject(backToMenu);
+        DeactivateGameObject.instance.DeactivateObject(taskChange);
 
-        audioButton.SetActive(active);
-        videoButton.SetActive(active);
-        graphicsButton.SetActive(active);
-        controlsButton.SetActive(active);
-
-        backToGame.SetActive(active);
-        backToPrevious.SetActive(active);
-        taskChange.SetActive(inactive);
+        ActivateGameObject.instance.ActivateObject(audioButton);
+        ActivateGameObject.instance.ActivateObject(videoButton);
+        ActivateGameObject.instance.ActivateObject(graphicsButton);
+        ActivateGameObject.instance.ActivateObject(controlsButton);
+        ActivateGameObject.instance.ActivateObject(settingsMenu);
+        ActivateGameObject.instance.ActivateObject(backToGame);
+        ActivateGameObject.instance.ActivateObject(backToPrevious);
 
         settingsButton.transform.DOScale(0.8f, 0.2f);
         RoundManager.instance.currentGameState = GameState.onSettingsGame;
@@ -106,15 +107,19 @@ public class MainGameUIManager : MonoBehaviour
     public void HomeButton()
     {
         Time.timeScale = 1f;
-        pauseMenu.SetActive(inactive);
-        mainMenu.SetActive(active);
-        settingsMenu.SetActive(inactive);
+
+        ActivateGameObject.instance.ActivateObject(mainMenu);
+
+        DeactivateGameObject.instance.DeactivateObject(dot);
+        DeactivateGameObject.instance.DeactivateObject(taskChange);
+        DeactivateGameObject.instance.DeactivateObject(settingsMenu);
+        DeactivateGameObject.instance.DeactivateObject(pauseMenu);
+
+        AudioManager.instance.Play(mainMenuAudioSource);
         mainCamera.enabled = inactive;
         secondaryCamera.enabled = active;
-        mainMenuAudioSource.Play();
-        dot.SetActive(inactive);
         playerRespawn.Respawn();
-        taskChange.SetActive(inactive);
+
         SceneManager.LoadScene("MainGameScene");
         kidsRoomLight.enabled = inactive;
         RoundManager.instance.currentGameState = GameState.onMainMenu;
@@ -127,10 +132,11 @@ public class MainGameUIManager : MonoBehaviour
 
     public void BackToGameButton()
     {
-        pauseMenu.SetActive(active);
-        settingsMenu.SetActive(inactive);
-        taskChange.SetActive(inactive);
-        controlsMenu.SetActive(inactive);
+        ActivateGameObject.instance.ActivateObject(pauseMenu);
+
+        DeactivateGameObject.instance.DeactivateObject(settingsMenu);
+        DeactivateGameObject.instance.DeactivateObject(taskChange);
+        DeactivateGameObject.instance.DeactivateObject(controlsMenu);
 
         backToGameButton.transform.DOScale(3.2f, 0.2f);
         RoundManager.instance.currentGameState = GameState.pause;

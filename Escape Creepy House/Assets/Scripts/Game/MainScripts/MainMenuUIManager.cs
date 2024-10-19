@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class MainMenuUIManager : MonoBehaviour
 {
+    private Vector3 initialPos;
     private readonly float movementSpeed = 1f;
     private readonly float movementRange = 0.5f;
     private readonly float playButtonDelay = 5f; //10
@@ -59,7 +60,7 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private AudioSource mainGameAudioSource;
     [SerializeField] private AudioSource rainAudioSource;
     [SerializeField] private AudioClip hoverAudioClip;
-    private Vector3 initialPos;
+
 
     private void Start()
     {
@@ -108,9 +109,13 @@ public class MainMenuUIManager : MonoBehaviour
 
     public void EndGameIntro()
     {
+        if (!mainGameAudioSource.isPlaying)
+        {
+            AudioManager.instance.Play(mainGameAudioSource);
+        }
+
         gameIntroPanel.SetActive(inactive);
         loadingPanel.SetActive(inactive);
-        AudioManager.instance.Play(mainGameAudioSource);
         mainMenu.SetActive(inactive);
         creditsMenu.SetActive(inactive);
         dot.SetActive(active);

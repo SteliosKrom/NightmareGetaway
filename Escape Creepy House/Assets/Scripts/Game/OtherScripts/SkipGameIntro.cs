@@ -7,6 +7,9 @@ public class SkipGameIntro : MonoBehaviour
     private bool active = true;
     private bool inactive = false;
 
+    [Header("AUDIO")]
+    [SerializeField] private AudioSource mainGameAudioSource;
+
     [Header("OTHER")]
     [SerializeField] private GameObject gameIntroPanel;
     [SerializeField] private GameObject loadingPanel;
