@@ -7,7 +7,6 @@ public enum GameState
     onSettingsMenu,
     onSettingsGame,
     onMainMenu,
-    inLoading,
     inIntro
 }
 

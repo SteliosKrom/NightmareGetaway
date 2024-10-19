@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -7,8 +7,9 @@ public class MainMenuUIManager : MonoBehaviour
 {
     private readonly float movementSpeed = 1f;
     private readonly float movementRange = 0.5f;
-    private readonly float playButtonDelay = 1f; //10
-    private readonly float gameIntroDelay = 5f; //23
+    private readonly float playButtonDelay = 5f; //10
+    private readonly float gameIntroDelay = 10f; //23
+    private readonly float skipTextDelay = 5f;
     private bool active = true;
     private bool inactive = false;
 
@@ -46,6 +47,7 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private GameObject taskChange;
     [SerializeField] private GameObject loadingPanel;
     [SerializeField] private GameObject gameIntroPanel;
+    [SerializeField] private GameObject skipText;
 
     [Header("OTHER")]
     [SerializeField] private Camera secondaryCamera;
@@ -98,23 +100,33 @@ public class MainMenuUIManager : MonoBehaviour
 
     public IEnumerator GameIntroDelay()
     {
-        if (RoundManager.instance.currentGameState == GameState.inIntro)
-        {
-            gameIntroPanel.SetActive(active);
-            loadingPanel.SetActive(inactive);
-            yield return new WaitForSeconds(gameIntroDelay);
-            gameIntroPanel.SetActive(inactive);
-            AudioManager.instance.Play(mainGameAudioSource);
-            mainMenu.SetActive(inactive);
-            creditsMenu.SetActive(inactive);
-            dot.SetActive(active);
-            taskChange.SetActive(active);
-            Time.timeScale = 1f;
-            secondaryCamera.enabled = inactive;
-            mainCamera.enabled = active;
-            playButton.transform.DOScale(1f, 0.2f);
-            RoundManager.instance.currentGameState = GameState.playing;
-        }
+        gameIntroPanel.SetActive(active);
+        loadingPanel.SetActive(inactive);
+        yield return new WaitForSeconds(gameIntroDelay);
+        EndGameIntro();
+    }
+
+    public void EndGameIntro()
+    {
+        gameIntroPanel.SetActive(inactive);
+        loadingPanel.SetActive(inactive);
+        AudioManager.instance.Play(mainGameAudioSource);
+        mainMenu.SetActive(inactive);
+        creditsMenu.SetActive(inactive);
+        dot.SetActive(active);
+        taskChange.SetActive(active);
+        Time.timeScale = 1f;
+        secondaryCamera.enabled = inactive;
+        mainCamera.enabled = active;
+        playButton.transform.DOScale(1f, 0.2f);
+        RoundManager.instance.currentGameState = GameState.playing;
+    }
+
+    public IEnumerator SkipTextDelay()
+    {
+        skipText.SetActive(inactive);
+        yield return new WaitForSeconds(skipTextDelay);
+        skipText.SetActive(active);
     }
 
     public void PlayButton()
@@ -127,10 +139,14 @@ public class MainMenuUIManager : MonoBehaviour
         loadingPanel.SetActive(active);
         AudioManager.instance.PauseSound(rainAudioSource);
         AudioManager.instance.StopSound(mainMenuAudioSource);
-        RoundManager.instance.currentGameState = GameState.inLoading;
         yield return new WaitForSecondsRealtime(playButtonDelay);
-        RoundManager.instance.currentGameState = GameState.inIntro;
-        StartCoroutine(GameIntroDelay());
+
+        if (RoundManager.instance.currentGameState != GameState.playing) 
+        {
+            RoundManager.instance.currentGameState = GameState.inIntro;
+            StartCoroutine(GameIntroDelay());
+            StartCoroutine(SkipTextDelay());
+        }
     }
 
     public void ControlsButton()
