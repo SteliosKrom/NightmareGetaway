@@ -99,29 +99,17 @@ public class MainMenuUIManager : MonoBehaviour
         }
     }
 
-    public IEnumerator GameIntroDelay()
-    {
-        gameIntroPanel.SetActive(active);
-        loadingPanel.SetActive(inactive);
-        yield return new WaitForSeconds(gameIntroDelay);
-        EndGameIntro();
-    }
-
     public void EndGameIntro()
     {
-        if (!mainGameAudioSource.isPlaying)
-        {
-            AudioManager.instance.Play(mainGameAudioSource);
-        }
-
         gameIntroPanel.SetActive(inactive);
         loadingPanel.SetActive(inactive);
         mainMenu.SetActive(inactive);
         creditsMenu.SetActive(inactive);
         dot.SetActive(active);
+        AudioManager.instance.Play(mainGameAudioSource);
         taskChange.SetActive(active);
-        Time.timeScale = 1f;
         secondaryCamera.enabled = inactive;
+        Time.timeScale = 1f;
         mainCamera.enabled = active;
         playButton.transform.DOScale(1f, 0.2f);
         RoundManager.instance.currentGameState = GameState.playing;
@@ -139,19 +127,18 @@ public class MainMenuUIManager : MonoBehaviour
         StartCoroutine(PlayButtonDelay());
     }
 
-    IEnumerator PlayButtonDelay()
+    public IEnumerator PlayButtonDelay()
     {
         loadingPanel.SetActive(active);
         AudioManager.instance.PauseSound(rainAudioSource);
         AudioManager.instance.StopSound(mainMenuAudioSource);
-        yield return new WaitForSecondsRealtime(playButtonDelay);
-
-        if (RoundManager.instance.currentGameState != GameState.playing) 
-        {
-            RoundManager.instance.currentGameState = GameState.inIntro;
-            StartCoroutine(GameIntroDelay());
-            StartCoroutine(SkipTextDelay());
-        }
+        yield return new WaitForSeconds(playButtonDelay);
+        gameIntroPanel.SetActive(active);
+        loadingPanel.SetActive(inactive);
+        RoundManager.instance.currentGameState = GameState.inIntro;
+        yield return new WaitForSeconds(gameIntroDelay);
+        EndGameIntro();
+        StartCoroutine(SkipTextDelay());
     }
 
     public void ControlsButton()
@@ -248,7 +235,7 @@ public class MainMenuUIManager : MonoBehaviour
         graphicsButton.SetActive(active);
         controlsButton.SetActive(active);
 
-        mainMenu.SetActive(inactive) ;
+        mainMenu.SetActive(inactive);
         audioMenu.SetActive(inactive);
         videoMenu.SetActive(inactive);
         graphicsMenu.SetActive(inactive);

@@ -24832,6 +24832,7 @@ MonoBehaviour:
   backToPreviousButton: {fileID: 130000393}
   backToGameButton: {fileID: 111163248}
   pauseMenu: {fileID: 182284034}
+  gameIntroPanel: {fileID: 765461142}
   settingsMenu: {fileID: 1405398497}
   controlsMenu: {fileID: 314201201}
   dot: {fileID: 480800219}
@@ -28392,7 +28393,8 @@ MonoBehaviour:
   controlsCategoryButon: {fileID: 358003506}
   backToPreviousButton: {fileID: 130000393}
   backToGameButton: {fileID: 111163248}
-  settingsMenu: {fileID: 1405398497}
+  settings: {fileID: 1405398497}
+  settingsMenu: {fileID: 1437513877}
   pauseMenu: {fileID: 182284034}
   mainMenu: {fileID: 1873982493}
   backToMenu: {fileID: 1172468360}

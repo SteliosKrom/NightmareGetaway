@@ -25,6 +25,7 @@ public class MainGameUIManager : MonoBehaviour
     [SerializeField] private Button backToGameButton;
 
     [Header("GAME OBJECTS")]
+    [SerializeField] private GameObject settings;
     [SerializeField] private GameObject settingsMenu;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject mainMenu;
@@ -56,12 +57,6 @@ public class MainGameUIManager : MonoBehaviour
     [SerializeField] private AudioSource clockAudioSource;
     [SerializeField] private AudioSource hoverAudioSource;
     [SerializeField] private AudioClip hoverAudioClip;
-
-    private void Start()
-    {
-        DeactivateGameObject.instance.DeactivateObject(settingsMenu);
-        DeactivateGameObject.instance.DeactivateObject(pauseMenu);
-    }
 
     public void ResumeButton()
     {
@@ -96,6 +91,7 @@ public class MainGameUIManager : MonoBehaviour
         ActivateGameObject.instance.ActivateObject(videoButton);
         ActivateGameObject.instance.ActivateObject(graphicsButton);
         ActivateGameObject.instance.ActivateObject(controlsButton);
+        ActivateGameObject.instance.ActivateObject(settings);
         ActivateGameObject.instance.ActivateObject(settingsMenu);
         ActivateGameObject.instance.ActivateObject(backToGame);
         ActivateGameObject.instance.ActivateObject(backToPrevious);
@@ -112,7 +108,7 @@ public class MainGameUIManager : MonoBehaviour
 
         DeactivateGameObject.instance.DeactivateObject(dot);
         DeactivateGameObject.instance.DeactivateObject(taskChange);
-        DeactivateGameObject.instance.DeactivateObject(settingsMenu);
+        DeactivateGameObject.instance.DeactivateObject(settings);
         DeactivateGameObject.instance.DeactivateObject(pauseMenu);
 
         AudioManager.instance.Play(mainMenuAudioSource);
@@ -134,7 +130,7 @@ public class MainGameUIManager : MonoBehaviour
     {
         ActivateGameObject.instance.ActivateObject(pauseMenu);
 
-        DeactivateGameObject.instance.DeactivateObject(settingsMenu);
+        DeactivateGameObject.instance.DeactivateObject(settings);
         DeactivateGameObject.instance.DeactivateObject(taskChange);
         DeactivateGameObject.instance.DeactivateObject(controlsMenu);
 

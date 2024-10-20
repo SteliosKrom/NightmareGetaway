@@ -20,7 +20,7 @@ public class SkipGameIntro : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && RoundManager.instance.currentGameState == GameState.inIntro)
         {
-            mainMenuUIManager.EndGameIntro();
+
         }
     }
 }
