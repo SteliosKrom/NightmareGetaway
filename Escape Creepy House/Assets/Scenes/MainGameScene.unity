@@ -942,7 +942,7 @@ GameObject:
   m_Component:
   - component: {fileID: 45205889}
   m_Layer: 0
-  m_Name: MANAGERS
+  m_Name: ----- MANAGERS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10055,7 +10055,7 @@ GameObject:
   m_Component:
   - component: {fileID: 153884828}
   m_Layer: 0
-  m_Name: PARTICLES
+  m_Name: ----- PARTICLES
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15354,7 +15354,7 @@ GameObject:
   m_Component:
   - component: {fileID: 195872784}
   m_Layer: 0
-  m_Name: ENVIRONMENT
+  m_Name: ----- ENVIRONMENT
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28300,7 +28300,7 @@ GameObject:
   m_Component:
   - component: {fileID: 654463484}
   m_Layer: 0
-  m_Name: AUDIO
+  m_Name: ----- AUDIO
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52466,7 +52466,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1336587791}
   m_Layer: 0
-  m_Name: UI
+  m_Name: ----- UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54581,7 +54581,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1499798710}
   m_Layer: 0
-  m_Name: GENERAL
+  m_Name: ----- GENERAL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
