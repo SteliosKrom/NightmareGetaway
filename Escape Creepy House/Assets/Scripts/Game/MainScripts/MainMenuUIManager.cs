@@ -5,12 +5,11 @@ using DG.Tweening;
 
 public class MainMenuUIManager : MonoBehaviour
 {
-    private Vector3 initialPos;
     private readonly float movementSpeed = 1f;
     private readonly float movementRange = 0.5f;
-    private readonly float playButtonDelay = 5f; //10
-    private readonly float gameIntroDelay = 10f; //23
-    private readonly float skipTextDelay = 5f;
+    private readonly float playButtonDelay = 8f; 
+    private readonly float gameIntroDelay = 18f; 
+
     private bool active = true;
     private bool inactive = false;
 
@@ -53,6 +52,7 @@ public class MainMenuUIManager : MonoBehaviour
     [Header("OTHER")]
     [SerializeField] private Camera secondaryCamera;
     [SerializeField] private Camera mainCamera;
+    private Vector3 initialPos;
 
     [Header("AUDIO")]
     [SerializeField] private AudioSource hoverAudioSource;
@@ -115,13 +115,6 @@ public class MainMenuUIManager : MonoBehaviour
         RoundManager.instance.currentGameState = GameState.playing;
     }
 
-    public IEnumerator SkipTextDelay()
-    {
-        skipText.SetActive(inactive);
-        yield return new WaitForSeconds(skipTextDelay);
-        skipText.SetActive(active);
-    }
-
     public void PlayButton()
     {
         StartCoroutine(PlayButtonDelay());
@@ -138,7 +131,6 @@ public class MainMenuUIManager : MonoBehaviour
         RoundManager.instance.currentGameState = GameState.inIntro;
         yield return new WaitForSeconds(gameIntroDelay);
         EndGameIntro();
-        StartCoroutine(SkipTextDelay());
     }
 
     public void ControlsButton()
