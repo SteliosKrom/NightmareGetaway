@@ -1222,7 +1222,6 @@ MonoBehaviour:
   taskChange: {fileID: 1682272802}
   loadingPanel: {fileID: 1054444096}
   gameIntroPanel: {fileID: 765461142}
-  skipText: {fileID: 0}
   secondaryCamera: {fileID: 366118862}
   mainCamera: {fileID: 963194227}
   hoverAudioSource: {fileID: 1738958847}
@@ -34559,7 +34558,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &765461143
 RectTransform:
   m_ObjectHideFlags: 0
@@ -36947,7 +36946,7 @@ GameObject:
   - component: {fileID: 894325471}
   - component: {fileID: 894325472}
   m_Layer: 0
-  m_Name: DeactivateGameObject
+  m_Name: DeactivateObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54538,7 +54537,7 @@ GameObject:
   - component: {fileID: 1537686628}
   - component: {fileID: 1537686629}
   m_Layer: 0
-  m_Name: ActivateGameObject
+  m_Name: ActivateObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56069,15 +56068,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "My name is stelios and I am an indie game developer. This is my first
-    horror game, that I have been developing for almost one year on my own, and I
-    have been responsible in making game design, ui design, audio design, programming,
-    lighting, game testing, marketing and more.\n\n \n\nMassive thanks to my family,
-    friends, and everyone in the community who has played the game. Honestly, the
-    development process took a lot of time and effort from my daily life, and I would
-    really appreciate your feedback to help me address any issues that may arise.
-    once again, I want to thank you all, because without your support, my passion
-    and motivation for making video games wouldn't be as strong as they are today.\n\n\n\t\t "
+  m_text: "My name is Stelios, and I\u2019m an indie game developer. After nearly
+    a year of hard work, I\u2019m excited to share my very first horror game with
+    you all. As a solo developer, I\u2019ve taken on a lot of roles\u2014handling
+    everything from game design, UI, audio, and programming to lighting, testing,
+    marketing, and more.\n\nA lot of thanks to my family, friends, and the amazing
+    community who have supported and played the game so far. The development process
+    has been challenging and time-consuming, but your support has made it all worthwhile.
+    I truly appreciate your feedback to help me improve the game and tackle any issues
+    that come up.\n\nOnce again, thank you all. Your encouragement fuels my passion
+    and drives my motivation to create more games. I couldn\u2019t have come this
+    far without you."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -58552,7 +58553,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1873982494
 RectTransform:
   m_ObjectHideFlags: 0

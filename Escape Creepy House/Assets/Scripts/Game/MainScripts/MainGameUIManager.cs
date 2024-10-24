@@ -62,10 +62,10 @@ public class MainGameUIManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
 
-        DeactivateGameObject.instance.DeactivateObject(pauseMenu);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(pauseMenu);
 
-        ActivateGameObject.instance.ActivateObject(dot);
-        ActivateGameObject.instance.ActivateObject(taskChange);
+        ActivateGameObject.activateInstance.ActivateObject(dot);
+        ActivateGameObject.activateInstance.ActivateObject(taskChange);
 
         AudioManager.instance.UnPauseSound(lockedAudioSource);
         AudioManager.instance.UnPauseSound(clockAudioSource);
@@ -80,21 +80,23 @@ public class MainGameUIManager : MonoBehaviour
 
     public void SettingsButton()
     {
-        DeactivateGameObject.instance.DeactivateObject(pauseMenu);
-        DeactivateGameObject.instance.DeactivateObject(audioMenu);
-        DeactivateGameObject.instance.DeactivateObject(videoMenu);
-        DeactivateGameObject.instance.DeactivateObject(graphicsMenu);
-        DeactivateGameObject.instance.DeactivateObject(backToMenu);
-        DeactivateGameObject.instance.DeactivateObject(taskChange);
+        // Make a method for this
+        DeactivateGameObject.deactivateInstance.DeactivateObject(pauseMenu);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(audioMenu);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(videoMenu);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(graphicsMenu);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(backToMenu);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(taskChange);
 
-        ActivateGameObject.instance.ActivateObject(audioButton);
-        ActivateGameObject.instance.ActivateObject(videoButton);
-        ActivateGameObject.instance.ActivateObject(graphicsButton);
-        ActivateGameObject.instance.ActivateObject(controlsButton);
-        ActivateGameObject.instance.ActivateObject(settings);
-        ActivateGameObject.instance.ActivateObject(settingsMenu);
-        ActivateGameObject.instance.ActivateObject(backToGame);
-        ActivateGameObject.instance.ActivateObject(backToPrevious);
+        // Make a method for this
+        ActivateGameObject.activateInstance.ActivateObject(audioButton);
+        ActivateGameObject.activateInstance.ActivateObject(videoButton);
+        ActivateGameObject.activateInstance.ActivateObject(graphicsButton);
+        ActivateGameObject.activateInstance.ActivateObject(controlsButton);
+        ActivateGameObject.activateInstance.ActivateObject(settings);
+        ActivateGameObject.activateInstance.ActivateObject(settingsMenu);
+        ActivateGameObject.activateInstance.ActivateObject(backToGame);
+        ActivateGameObject.activateInstance.ActivateObject(backToPrevious);
 
         settingsButton.transform.DOScale(0.8f, 0.2f);
         RoundManager.instance.currentGameState = GameState.onSettingsGame;
@@ -104,12 +106,11 @@ public class MainGameUIManager : MonoBehaviour
     {
         Time.timeScale = 1f;
 
-        ActivateGameObject.instance.ActivateObject(mainMenu);
-
-        DeactivateGameObject.instance.DeactivateObject(dot);
-        DeactivateGameObject.instance.DeactivateObject(taskChange);
-        DeactivateGameObject.instance.DeactivateObject(settings);
-        DeactivateGameObject.instance.DeactivateObject(pauseMenu);
+        ActivateGameObject.activateInstance.ActivateObject(mainMenu);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(dot);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(taskChange);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(settings);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(pauseMenu);
 
         AudioManager.instance.Play(mainMenuAudioSource);
         mainCamera.enabled = inactive;
@@ -128,11 +129,10 @@ public class MainGameUIManager : MonoBehaviour
 
     public void BackToGameButton()
     {
-        ActivateGameObject.instance.ActivateObject(pauseMenu);
-
-        DeactivateGameObject.instance.DeactivateObject(settings);
-        DeactivateGameObject.instance.DeactivateObject(taskChange);
-        DeactivateGameObject.instance.DeactivateObject(controlsMenu);
+        ActivateGameObject.activateInstance.ActivateObject(pauseMenu);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(settings);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(taskChange);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(controlsMenu);
 
         backToGameButton.transform.DOScale(3.2f, 0.2f);
         RoundManager.instance.currentGameState = GameState.pause;

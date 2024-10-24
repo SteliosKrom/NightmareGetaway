@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class DeactivateGameObject : MonoBehaviour
 {
-    public static DeactivateGameObject instance;
+    public static DeactivateGameObject deactivateInstance;
     private bool inactive = false;
 
     private void Start()
     {
-        if (instance == null)
+        if (deactivateInstance == null)
         {
-            instance = this;
+            deactivateInstance = this;
         }
         else
         {

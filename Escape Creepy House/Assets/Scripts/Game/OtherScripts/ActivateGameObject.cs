@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class ActivateGameObject : MonoBehaviour
 {
-    public static ActivateGameObject instance;
+    public static ActivateGameObject activateInstance;
     private bool active = true;
 
     private void Start()
     {
-        if (instance == null)
+        if (activateInstance == null)
         {
-            instance = this;
+            activateInstance = this;
         }
         else
         {

@@ -128,15 +128,18 @@ public class PlayerController : MonoBehaviour
 
     public void PauseGame()
     {
-        pauseMenu.SetActive(active);
-        taskChange.SetActive(inactive);
-        foundItemMessage.SetActive(inactive);
-        lockedText.SetActive(inactive);
-        dot.SetActive(inactive);
-        foundGarageDoorKey.SetActive(inactive);
-        foundMainDoorKey.SetActive(inactive);
-        foundRoomKey.SetActive(inactive);
+        ActivateGameObject.activateInstance.ActivateObject(pauseMenu);
 
+        //Make a method for this
+        DeactivateGameObject.deactivateInstance.DeactivateObject(taskChange);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(foundItemMessage);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(lockedText);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(dot);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(foundGarageDoorKey);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(foundMainDoorKey);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(foundRoomKey);
+
+        // Make a method for this
         AudioManager.instance.PauseSound(lockedAudioSource);
         AudioManager.instance.PauseSound(eatAudioSource);
         AudioManager.instance.PauseSound(drinkAudioSource);
@@ -153,12 +156,14 @@ public class PlayerController : MonoBehaviour
 
     public void ResumeGameFromGameSettings()
     {
-        settingsMenu.SetActive(inactive);
-        pauseMenu.SetActive(active);
-        controlsMenu.SetActive(inactive);
-        dot.SetActive(inactive);
-        taskChange.SetActive(inactive);
+        ActivateGameObject.activateInstance.ActivateObject(pauseMenu);
 
+        DeactivateGameObject.deactivateInstance.DeactivateObject(settingsMenu);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(controlsMenu);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(dot);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(taskChange);
+
+        // Make a method for this
         AudioManager.instance.UnPauseSound(lockedAudioSource);
         AudioManager.instance.UnPauseSound(eatAudioSource);
         AudioManager.instance.UnPauseSound(drinkAudioSource);
@@ -166,6 +171,7 @@ public class PlayerController : MonoBehaviour
         AudioManager.instance.UnPauseSound(clockAudioSource);
         AudioManager.instance.UnPauseSound(ceilingFanAudioSource);
 
+        // Make a method for this
         addEventTrigger.ExitHoverSoundEffectSettings(audioCategoryButton.transform);
         addEventTrigger.ExitHoverSoundEffectSettings(videoCategoryButton.transform);
         addEventTrigger.ExitHoverSoundEffectSettings(graphicsCategoryButton.transform);
@@ -179,10 +185,12 @@ public class PlayerController : MonoBehaviour
 
     public void ResumeGameFromPauseMenu()
     {
-        pauseMenu.SetActive(inactive);
-        dot.SetActive(active);
-        taskChange.SetActive(active);
+        ActivateGameObject.activateInstance.ActivateObject(dot);
+        ActivateGameObject.activateInstance.ActivateObject(taskChange);
 
+        DeactivateGameObject.deactivateInstance.DeactivateObject(pauseMenu);
+
+        // Make a method for this
         AudioManager.instance.UnPauseSound(lockedAudioSource);
         AudioManager.instance.UnPauseSound(drinkAudioSource);
         AudioManager.instance.UnPauseSound(eatAudioSource);
@@ -233,6 +241,4 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSecondsRealtime(cooldown);
         canPause = active;
     }
-
-
 }
