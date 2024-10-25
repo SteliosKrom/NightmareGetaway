@@ -1191,6 +1191,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4077f3aac1038d544b1799ac1cdf6568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deactivateGameObject: {fileID: 894325472}
+  activateGameObject: {fileID: 1537686629}
   playButton: {fileID: 998161090}
   settingsButton: {fileID: 929470050}
   creditsButton: {fileID: 744182969}
@@ -24820,6 +24822,8 @@ MonoBehaviour:
   clockAudio: {fileID: 379504551}
   flashlightFlickering: {fileID: 792361160}
   addEventTrigger: {fileID: 1810667849}
+  deactivateGameObject: {fileID: 894325472}
+  activateGameObject: {fileID: 1537686629}
   resumeButton: {fileID: 2084806073}
   settingsButton: {fileID: 152314458}
   homeButton: {fileID: 279216664}
@@ -28381,6 +28385,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRespawn: {fileID: 379504549}
   kidsRoomLight: {fileID: 2587337042884884402}
+  deactivateGameObject: {fileID: 894325472}
+  activateGameObject: {fileID: 1537686629}
   resumeButton: {fileID: 2084806073}
   settingsButton: {fileID: 152314458}
   homeButton: {fileID: 279216664}
@@ -36979,6 +36985,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfe5963bace0979479679936da3b0a09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objects:
+  - {fileID: 316657281}
+  - {fileID: 358003503}
+  - {fileID: 51739751}
+  - {fileID: 1309515949}
+  - {fileID: 1869765278}
+  - {fileID: 1873982493}
 --- !u!1 &909760290
 GameObject:
   m_ObjectHideFlags: 0
