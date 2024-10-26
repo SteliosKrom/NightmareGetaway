@@ -65,18 +65,14 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private AudioSource rainAudioSource;
     [SerializeField] private AudioClip hoverAudioClip;
 
-
     private void Start()
     {
         Time.timeScale = 1f;
-
         activateGameObject.ActivateObject(mainMenu);
         deactivateGameObject.DeactivateObject(taskChange);
-
         secondaryCamera.enabled = active;
         mainCamera.enabled = inactive;
         initialPos = secondaryCamera.transform.position;
-
         AudioManager.instance.Play(mainMenuAudioSource);
         AudioManager.instance.StopSound(mainGameAudioSource);
         AudioManager.instance.Play(rainAudioSource);
@@ -95,14 +91,9 @@ public class MainMenuUIManager : MonoBehaviour
 
     public void EndGameIntro()
     {
-        deactivateGameObject.DeactivateObject(gameIntroPanel);
-        deactivateGameObject.DeactivateObject(loadingPanel);
-        deactivateGameObject.DeactivateObject(mainMenu);
-        deactivateGameObject.DeactivateObject(creditsMenu);
-
+        deactivateGameObject.DeactivateObjectsInEndGameIntro();
         activateGameObject.ActivateObject(dot);
         activateGameObject.ActivateObject(taskChange);
-
         Time.timeScale = 1f;
         secondaryCamera.enabled = inactive;
         mainCamera.enabled = active;
@@ -136,35 +127,15 @@ public class MainMenuUIManager : MonoBehaviour
     public void ControlsButton()
     {
         deactivateGameObject.DeactivateObjectsInControls();
-
         activateGameObject.ActivateObject(controlsMenu);
         activateGameObject.ActivateObject(settingsMenu);
-
         controlsButton.transform.DOScale(4f, 0.2f);
     }
 
     public void SettingsButton()
     {
-        // Make a method for this
-        activateGameObject.ActivateObject(settings);
-        activateGameObject.ActivateObject(settingsMenu);
-        activateGameObject.ActivateObject(settings);
-        activateGameObject.ActivateObject(audioButton);
-        activateGameObject.ActivateObject(videoButton);
-        activateGameObject.ActivateObject(graphicsButton);
-        activateGameObject.ActivateObject(controlsButton);
-        activateGameObject.ActivateObject(backToMenu);
-        activateGameObject.ActivateObject(backToPrevious);
-
-        // Make a method for this
-        deactivateGameObject.DeactivateObject(audioMenu);
-        deactivateGameObject.DeactivateObject(videoMenu);
-        deactivateGameObject.DeactivateObject(graphicsMenu);
-        deactivateGameObject.DeactivateObject(mainMenu);
-        deactivateGameObject.DeactivateObject(creditsMenu);
-        deactivateGameObject.DeactivateObject(backToGame);
-        deactivateGameObject.DeactivateObject(taskChange);
-
+        activateGameObject.ActivateObjectsInSettings();
+        deactivateGameObject.DeactivateObjectsInSettings();
         settingsButton.transform.DOScale(1f, 0.2f);
         RoundManager.instance.currentGameState = GameState.onSettingsMenu;
     }
@@ -184,93 +155,46 @@ public class MainMenuUIManager : MonoBehaviour
 
     public void BackToMenuSettings()
     {
-        // Make a method for this
         activateGameObject.ActivateObject(mainMenu);
-        deactivateGameObject.DeactivateObject(controlsMenu);
-        deactivateGameObject.DeactivateObject(settings);
-        deactivateGameObject.DeactivateObject(audioButton);
-        deactivateGameObject.DeactivateObject(videoButton);
-        deactivateGameObject.DeactivateObject(graphicsButton);
-        deactivateGameObject.DeactivateObject(controlsButton);
-        deactivateGameObject.DeactivateObject(creditsMenu);
-        deactivateGameObject.DeactivateObject(taskChange);
-
+        deactivateGameObject.DeactivateObjectsInBackToMenu();
         backToMenuButtonSettings.transform.DOScale(3.2f, 0.2f);
         RoundManager.instance.currentGameState = GameState.onMainMenu;
     }
 
     public void BackToMenuCredits()
     {
-        // Make a method for this
         activateGameObject.ActivateObject(mainMenu);
-        deactivateGameObject.DeactivateObject(controlsMenu);
         deactivateGameObject.DeactivateObject(settings);
-        deactivateGameObject.DeactivateObject(audioButton);
-        deactivateGameObject.DeactivateObject(videoButton);
-        deactivateGameObject.DeactivateObject(graphicsButton);
-        deactivateGameObject.DeactivateObject(controlsButton);
-        deactivateGameObject.DeactivateObject(creditsMenu);
-        deactivateGameObject.DeactivateObject(taskChange);
-
+        deactivateGameObject.DeactivateObjectsInBackToMenu();
         backToMenuButtonCredits.transform.DOScale(3.2f, 0.2f);
         RoundManager.instance.currentGameState = GameState.onMainMenu;
     }
 
     public void BackToPrevious()
     {
-        // Make a method for this
-        deactivateGameObject.DeactivateObject(mainMenu);
-        deactivateGameObject.DeactivateObject(audioMenu);
-        deactivateGameObject.DeactivateObject(videoMenu);
-        deactivateGameObject.DeactivateObject(graphicsMenu);
-        deactivateGameObject.DeactivateObject(controlsMenu);
-
-        // Make a method for this
-        activateGameObject.ActivateObject(audioButton);
-        activateGameObject.ActivateObject(videoButton);
-        activateGameObject.ActivateObject(graphicsButton);
-        activateGameObject.ActivateObject(controlsButton);
-        activateGameObject.ActivateObject(settingsMenu);
-
+        deactivateGameObject.DeactivateObjectsInBackToPrevious();
+        activateGameObject.ActivateObjectsInBackToPrevious();
         backToPreviousButton.transform.DOScale(3.2f, 0.2f);
     }
 
     public void AudioCategoryButton()
     {
         activateGameObject.ActivateObject(audioMenu);
-
-        // Make a method for this
-        deactivateGameObject.DeactivateObject(audioButton);
-        deactivateGameObject.DeactivateObject(videoButton);
-        deactivateGameObject.DeactivateObject(graphicsButton);
-        deactivateGameObject.DeactivateObject(controlsButton);
-
+        deactivateGameObject.DeactivateObjectsInCategoryButtons();
         audioCategoryButton.transform.DOScale(4f, 0.2f);
     }
 
     public void VideoCategoryButton()
     {
         activateGameObject.ActivateObject(videoMenu);
-
-        // Make a method for this
-        deactivateGameObject.DeactivateObject(audioButton);
-        deactivateGameObject.DeactivateObject(videoButton);
-        deactivateGameObject.DeactivateObject(graphicsButton);
-        deactivateGameObject.DeactivateObject(controlsButton);
-
+        deactivateGameObject.DeactivateObjectsInCategoryButtons();
         videoCategoryButton.transform.DOScale(4f, 0.2f);
     }
 
     public void GraphicsCategoryButton()
     {
         activateGameObject.ActivateObject(graphicsMenu);
-
-        // Make a method for this
-        deactivateGameObject.DeactivateObject(audioButton);
-        deactivateGameObject.DeactivateObject(videoButton);
-        deactivateGameObject.DeactivateObject(graphicsButton);
-        deactivateGameObject.DeactivateObject(controlsButton);
-
+        deactivateGameObject.DeactivateObjectsInCategoryButtons();
         graphicsCategoryButton.transform.DOScale(4f, 0.2f);
     }
 }

@@ -65,7 +65,6 @@ public class MainGameUIManager : MonoBehaviour
         Time.timeScale = 1.0f;
 
         deactivateGameObject.DeactivateObject(pauseMenu);
-
         activateGameObject.ActivateObject(dot);
         activateGameObject.ActivateObject(taskChange);
 
@@ -82,24 +81,8 @@ public class MainGameUIManager : MonoBehaviour
 
     public void SettingsButton()
     {
-        // Make a method for this
-        deactivateGameObject.DeactivateObject(pauseMenu);
-        deactivateGameObject.DeactivateObject(audioMenu);
-        deactivateGameObject.DeactivateObject(videoMenu);
-        deactivateGameObject.DeactivateObject(graphicsMenu);
-        deactivateGameObject.DeactivateObject(backToMenu);
-        deactivateGameObject.DeactivateObject(taskChange);
-
-        // Make a method for this
-        activateGameObject.ActivateObject(audioButton);
-        activateGameObject.ActivateObject(videoButton);
-        activateGameObject.ActivateObject(graphicsButton);
-        activateGameObject.ActivateObject(controlsButton);
-        activateGameObject.ActivateObject(settings);
-        activateGameObject.ActivateObject(settingsMenu);
-        activateGameObject.ActivateObject(backToGame);
-        activateGameObject.ActivateObject(backToPrevious);
-
+        deactivateGameObject.DeactivateObjectsInGameSettings();
+        activateGameObject.ActivateObjectsInGameSettings();
         settingsButton.transform.DOScale(0.8f, 0.2f);
         RoundManager.instance.currentGameState = GameState.onSettingsGame;
     }
@@ -109,10 +92,7 @@ public class MainGameUIManager : MonoBehaviour
         Time.timeScale = 1f;
 
         activateGameObject.ActivateObject(mainMenu);
-        deactivateGameObject.DeactivateObject(dot);
-        deactivateGameObject.DeactivateObject(taskChange);
-        deactivateGameObject.DeactivateObject(settings);
-        deactivateGameObject.DeactivateObject(pauseMenu);
+        deactivateGameObject.DeactivateObjectsInHome();
 
         AudioManager.instance.Play(mainMenuAudioSource);
         mainCamera.enabled = inactive;
