@@ -36,10 +36,26 @@ public class SettingsManager : MonoBehaviour
     private void Start()
     {
         LoadSettings();
+        InitializeMusicVolume();
         InitializeQualitySettings();
         InitializeFPS();
         InitializeVsyncAndAA();
         InitialiazeFullscreen();
+    }
+
+    public void InitializeMusicVolume()
+    {
+        float masterVolume = masterVolumeSlider.value;
+        masterValueText.text = masterVolume.ToString();
+        myAudioMixer.SetFloat(masterVol, Mathf.Log10(masterVolume) * 20);
+
+        float menuVolume = menuVolumeSlider.value;
+        menuValueText.text = menuVolume.ToString();
+        myAudioMixer.SetFloat(menuVol, Mathf.Log10(menuVolume) * 20);
+
+        float sfxVolume = sfxVolumeSlider.value;
+        sfxValueText.text = sfxVolume.ToString();
+        myAudioMixer.SetFloat(menuVol, Mathf.Log10(sfxVolume) * 20);
     }
 
     public void InitializeFPS()
