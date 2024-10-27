@@ -21,8 +21,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private ClockAudio clockAudio;
     [SerializeField] private FlashlightFlickering flashlightFlickering;
     [SerializeField] private AddEventTrigger addEventTrigger;
-    [SerializeField] private DeactivateGameObject deactivateGameObject;
-    [SerializeField] private ActivateGameObject activateGameObject;
 
     [Header("BUTTONS")]
     [SerializeField] private Button resumeButton;
@@ -130,27 +128,9 @@ public class PlayerController : MonoBehaviour
 
     public void PauseGame()
     {
-        activateGameObject.ActivateObject(pauseMenu);
-
-        //Make a method for this
-        deactivateGameObject.DeactivateObject(taskChange);
-        deactivateGameObject.DeactivateObject(foundItemMessage);
-        deactivateGameObject.DeactivateObject(lockedText);
-        deactivateGameObject.DeactivateObject(dot);
-        deactivateGameObject.DeactivateObject(foundGarageDoorKey);
-        deactivateGameObject.DeactivateObject(foundMainDoorKey);
-        deactivateGameObject.DeactivateObject(foundRoomKey);
-
-        // Make a method for this
-        AudioManager.instance.PauseSound(lockedAudioSource);
-        AudioManager.instance.PauseSound(eatAudioSource);
-        AudioManager.instance.PauseSound(drinkAudioSource);
-        AudioManager.instance.PauseSound(keysAudioSource);
-        AudioManager.instance.PauseSound(rainAudioSource);
-        AudioManager.instance.PauseSound(mainGameAudioSource);
-        AudioManager.instance.PauseSound(clockAudioSource);
-        AudioManager.instance.PauseSound(ceilingFanAudioSource);
-
+        ActivateGameObject.activateInstance.ActivateObject(pauseMenu);
+        DeactivateGameObject.deactivateInstance.DeactivateObjectsInPause();
+        AudioManager.instance.PauseSoundInPause();
         Time.timeScale = 0f;
         CheckDoorStateOnPause();
         RoundManager.instance.currentGameState = GameState.pause;
@@ -158,20 +138,12 @@ public class PlayerController : MonoBehaviour
 
     public void ResumeGameFromGameSettings()
     {
-        activateGameObject.ActivateObject(pauseMenu);
-
-        deactivateGameObject.DeactivateObject(settingsMenu);
-        deactivateGameObject.DeactivateObject(controlsMenu);
-        deactivateGameObject.DeactivateObject(dot);
-        deactivateGameObject.DeactivateObject(taskChange);
-
-        // Make a method for this
-        AudioManager.instance.UnPauseSound(lockedAudioSource);
-        AudioManager.instance.UnPauseSound(eatAudioSource);
-        AudioManager.instance.UnPauseSound(drinkAudioSource);
-        AudioManager.instance.UnPauseSound(keysAudioSource);
-        AudioManager.instance.UnPauseSound(clockAudioSource);
-        AudioManager.instance.UnPauseSound(ceilingFanAudioSource);
+        ActivateGameObject.activateInstance.ActivateObject(pauseMenu);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(settingsMenu);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(controlsMenu);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(dot);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(taskChange);
+        AudioManager.instance.UnpauseSoundInResumeGameFromSettings();
 
         // Make a method for this
         addEventTrigger.ExitHoverSoundEffectSettings(audioCategoryButton.transform);
@@ -187,18 +159,11 @@ public class PlayerController : MonoBehaviour
 
     public void ResumeGameFromPauseMenu()
     {
-        activateGameObject.ActivateObject(dot);
-        activateGameObject.ActivateObject(taskChange);
+        ActivateGameObject.activateInstance.ActivateObject(dot);
+        ActivateGameObject.activateInstance.ActivateObject(taskChange);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(pauseMenu);
 
-        deactivateGameObject.DeactivateObject(pauseMenu);
-
-        // Make a method for this
-        AudioManager.instance.UnPauseSound(lockedAudioSource);
-        AudioManager.instance.UnPauseSound(drinkAudioSource);
-        AudioManager.instance.UnPauseSound(eatAudioSource);
-        AudioManager.instance.UnPauseSound(clockAudioSource);
-        AudioManager.instance.UnPauseSound(keysAudioSource);
-        AudioManager.instance.UnPauseSound(mainGameAudioSource);
+        AudioManager.instance.UnpauseSoundInResumeGameFromPause();
 
         addEventTrigger.ExitHoverSoundEffectPause(resumeButton.transform);
         addEventTrigger.ExitHoverSoundEffectPause(settingsButton.transform);

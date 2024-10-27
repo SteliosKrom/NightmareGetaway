@@ -2,12 +2,25 @@ using UnityEngine;
 
 public class ActivateGameObject : MonoBehaviour
 {
+    public static ActivateGameObject activateInstance;
     private bool active = true;
 
     [Header("GAME OBJECTS")]
     [SerializeField] private GameObject[] objects1;
     [SerializeField] private GameObject[] objects2;
     [SerializeField] private GameObject[] objects3;
+
+    private void Awake()
+    {
+        if (activateInstance == null)
+        {
+            activateInstance = this;
+        }
+        else
+        {
+            Debug.Log("The instance of the object already exists");
+        }
+    }
 
     public void ActivateObject(GameObject obj)
     {

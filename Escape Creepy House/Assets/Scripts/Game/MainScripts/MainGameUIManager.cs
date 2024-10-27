@@ -11,8 +11,6 @@ public class MainGameUIManager : MonoBehaviour
     [Header("SCRIPT REFERENCES")]
     [SerializeField] private PlayerRespawn playerRespawn;
     [SerializeField] private KidsRoomLight kidsRoomLight;
-    [SerializeField] private DeactivateGameObject deactivateGameObject;
-    [SerializeField] private ActivateGameObject activateGameObject;
 
     [Header("BUTTONS")]
     [SerializeField] private Button resumeButton;
@@ -63,17 +61,11 @@ public class MainGameUIManager : MonoBehaviour
     public void ResumeButton()
     {
         Time.timeScale = 1.0f;
+        DeactivateGameObject.deactivateInstance.DeactivateObject(pauseMenu);
+        ActivateGameObject.activateInstance.ActivateObject(dot);
+        ActivateGameObject.activateInstance.ActivateObject(taskChange);
 
-        deactivateGameObject.DeactivateObject(pauseMenu);
-        activateGameObject.ActivateObject(dot);
-        activateGameObject.ActivateObject(taskChange);
-
-        AudioManager.instance.UnPauseSound(lockedAudioSource);
-        AudioManager.instance.UnPauseSound(clockAudioSource);
-        AudioManager.instance.UnPauseSound(mainGameAudioSource);
-        AudioManager.instance.UnPauseSound(keysAudioSource);
-        AudioManager.instance.UnPauseSound(eatAudioSource);
-        AudioManager.instance.UnPauseSound(drinkAudioSource);
+        AudioManager.instance.UnpauseSoundInResumeGameFromPause();
 
         resumeButton.transform.DOScale(0.8f, 0.2f);
         RoundManager.instance.currentGameState = GameState.playing;
@@ -81,8 +73,8 @@ public class MainGameUIManager : MonoBehaviour
 
     public void SettingsButton()
     {
-        deactivateGameObject.DeactivateObjectsInGameSettings();
-        activateGameObject.ActivateObjectsInGameSettings();
+        DeactivateGameObject.deactivateInstance.DeactivateObjectsInGameSettings();
+        ActivateGameObject.activateInstance.ActivateObjectsInGameSettings();
         settingsButton.transform.DOScale(0.8f, 0.2f);
         RoundManager.instance.currentGameState = GameState.onSettingsGame;
     }
@@ -90,9 +82,8 @@ public class MainGameUIManager : MonoBehaviour
     public void HomeButton()
     {
         Time.timeScale = 1f;
-
-        activateGameObject.ActivateObject(mainMenu);
-        deactivateGameObject.DeactivateObjectsInHome();
+        ActivateGameObject.activateInstance.ActivateObject(mainMenu);
+        DeactivateGameObject.deactivateInstance.DeactivateObjectsInHome();
 
         AudioManager.instance.Play(mainMenuAudioSource);
         mainCamera.enabled = inactive;
@@ -111,11 +102,10 @@ public class MainGameUIManager : MonoBehaviour
 
     public void BackToGameButton()
     {
-        activateGameObject.ActivateObject(pauseMenu);
-        deactivateGameObject.DeactivateObject(settings);
-        deactivateGameObject.DeactivateObject(taskChange);
-        deactivateGameObject.DeactivateObject(controlsMenu);
-
+        ActivateGameObject.activateInstance.ActivateObject(pauseMenu);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(settings);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(taskChange);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(controlsMenu);
         backToGameButton.transform.DOScale(3.2f, 0.2f);
         RoundManager.instance.currentGameState = GameState.pause;
     }

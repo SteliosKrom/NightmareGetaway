@@ -1191,8 +1191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4077f3aac1038d544b1799ac1cdf6568, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deactivateGameObject: {fileID: 894325472}
-  activateGameObject: {fileID: 1537686629}
   playButton: {fileID: 998161090}
   settingsButton: {fileID: 929470050}
   creditsButton: {fileID: 744182969}
@@ -15606,6 +15604,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cb494c8e17569e48ab4710cabb65961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objects1:
+  - {fileID: 1403184476}
+  - {fileID: 1331450122}
+  - {fileID: 890562420}
+  - {fileID: 1321917434}
+  - {fileID: 429594847}
+  - {fileID: 462325584}
+  - {fileID: 1221405377}
+  - {fileID: 7441240194846976226}
+  objects2:
+  - {fileID: 1403184476}
+  - {fileID: 890562420}
+  - {fileID: 1331450122}
+  - {fileID: 1321917434}
+  - {fileID: 1221405377}
+  - {fileID: 7441240194846976226}
+  objects3:
+  - {fileID: 1221405377}
+  - {fileID: 1403184476}
+  - {fileID: 462325584}
+  - {fileID: 1321917434}
+  - {fileID: 890562420}
+  - {fileID: 1331450122}
 --- !u!1 &211976828
 GameObject:
   m_ObjectHideFlags: 0
@@ -24822,8 +24843,6 @@ MonoBehaviour:
   clockAudio: {fileID: 379504551}
   flashlightFlickering: {fileID: 792361160}
   addEventTrigger: {fileID: 1810667849}
-  deactivateGameObject: {fileID: 894325472}
-  activateGameObject: {fileID: 1537686629}
   resumeButton: {fileID: 2084806073}
   settingsButton: {fileID: 152314458}
   homeButton: {fileID: 279216664}
@@ -28385,8 +28404,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRespawn: {fileID: 379504549}
   kidsRoomLight: {fileID: 2587337042884884402}
-  deactivateGameObject: {fileID: 894325472}
-  activateGameObject: {fileID: 1537686629}
   resumeButton: {fileID: 2084806073}
   settingsButton: {fileID: 152314458}
   homeButton: {fileID: 279216664}
@@ -37040,6 +37057,14 @@ MonoBehaviour:
   - {fileID: 1869765278}
   - {fileID: 765461142}
   - {fileID: 1054444096}
+  objects9:
+  - {fileID: 1682272802}
+  - {fileID: 7897116}
+  - {fileID: 1798832667}
+  - {fileID: 220954208}
+  - {fileID: 1254537102}
+  - {fileID: 480800219}
+  - {fileID: 1271235275}
 --- !u!1 &909760290
 GameObject:
   m_ObjectHideFlags: 0
@@ -37903,7 +37928,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 

@@ -4,6 +4,11 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
 
+    [Header("GAME OBJECTS")]
+    [SerializeField] private AudioSource[] objects1;
+    [SerializeField] private AudioSource[] objects2;
+    [SerializeField] private AudioSource[] objects3;
+
     private void Awake()
     {
         if (instance == null)
@@ -12,7 +17,7 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("There is not instance of an audio manager");
+            Debug.Log("The instance of the object already exists");
         }
     }
 
@@ -39,5 +44,29 @@ public class AudioManager : MonoBehaviour
     public void UnPauseSound(AudioSource source)
     {
         source.UnPause();
+    }
+
+    public void PauseSoundInPause()
+    {
+        foreach (AudioSource source in objects1)
+        {
+            source.Pause();
+        }
+    }
+
+    public void UnpauseSoundInResumeGameFromSettings()
+    {
+        foreach (AudioSource source in objects2)
+        {
+            source.UnPause();
+        }
+    }
+
+    public void UnpauseSoundInResumeGameFromPause()
+    {
+        foreach (AudioSource source in objects3)
+        {
+            source.UnPause();
+        }
     }
 }

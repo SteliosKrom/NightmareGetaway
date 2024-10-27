@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class DeactivateGameObject : MonoBehaviour
 {
+    public static DeactivateGameObject deactivateInstance;
     private bool inactive = false;
 
     [Header("GAME OBJECTS")]
@@ -13,6 +14,20 @@ public class DeactivateGameObject : MonoBehaviour
     [SerializeField] private GameObject[] objects6;
     [SerializeField] private GameObject[] objects7;
     [SerializeField] private GameObject[] objects8;
+    [SerializeField] private GameObject[] objects9;
+
+    private void Awake()
+    {
+        if (deactivateInstance == null)
+        {
+            deactivateInstance = this;
+        }
+        else
+        {
+            Debug.Log("The instance of the object already exists");
+        }
+    }
+
     public void DeactivateObject(GameObject obj)
     {
         obj.SetActive(inactive);
@@ -77,6 +92,14 @@ public class DeactivateGameObject : MonoBehaviour
     public void DeactivateObjectsInEndGameIntro()
     {
         foreach (GameObject obj in objects8)
+        {
+            obj.SetActive(inactive);
+        }
+    }
+
+    public void DeactivateObjectsInPause()
+    {
+        foreach (GameObject obj in objects9)
         {
             obj.SetActive(inactive);
         }
