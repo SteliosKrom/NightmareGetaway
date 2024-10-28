@@ -18,6 +18,7 @@ public class Interactor : MonoBehaviour
     [SerializeField] private TaskManager taskManager;
     [SerializeField] private Flashlight flashlight;
     [SerializeField] private FlashlightFlickering flashlightFlickering;
+    [SerializeField] private PlayerController playerController;
 
     [Header("AUDIO")]
     public AudioSource equipKeysAudioSource;

@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     private bool inactive = false;
     private bool isDoorOpenedSoundPaused = false;
     private bool isDoorClosedSoundPaused = false;
-    private bool canPause = true;
+    public bool canPause = true;
 
     [Header("SCRIPT REFERENCES")]
     [SerializeField] private DoorBase doorBase;
@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
 
     public void PauseAndResume()
     {
-        if (canPause && Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && canPause)
         {
             canPause = inactive;
             if (RoundManager.instance.currentGameState == GameState.playing)
@@ -143,7 +143,6 @@ public class PlayerController : MonoBehaviour
         DeactivateGameObject.deactivateInstance.DeactivateObject(controlsMenu);
         DeactivateGameObject.deactivateInstance.DeactivateObject(dot);
         DeactivateGameObject.deactivateInstance.DeactivateObject(taskChange);
-        AudioManager.instance.UnpauseSoundInResumeGameFromSettings();
 
         // Make a method for this
         addEventTrigger.ExitHoverSoundEffectSettings(audioCategoryButton.transform);
@@ -153,7 +152,7 @@ public class PlayerController : MonoBehaviour
         addEventTrigger.ExitHoverSoundEffectOther(backToGameButton.transform);
         addEventTrigger.ExitHoverSoundEffectOther(backToPreviousButton.transform);
 
-        Time.timeScale = 1f;
+        Time.timeScale = 0f;
         RoundManager.instance.currentGameState = GameState.pause;
     }
 
@@ -162,7 +161,6 @@ public class PlayerController : MonoBehaviour
         ActivateGameObject.activateInstance.ActivateObject(dot);
         ActivateGameObject.activateInstance.ActivateObject(taskChange);
         DeactivateGameObject.deactivateInstance.DeactivateObject(pauseMenu);
-
         AudioManager.instance.UnpauseSoundInResumeGameFromPause();
 
         addEventTrigger.ExitHoverSoundEffectPause(resumeButton.transform);

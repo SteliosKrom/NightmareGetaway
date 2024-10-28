@@ -8,8 +8,8 @@ public class MainMenuUIManager : MonoBehaviour
 {
     private readonly float movementSpeed = 1f;
     private readonly float movementRange = 0.5f;
-    private readonly float playButtonDelay = 8f; 
-    private readonly float gameIntroDelay = 18f; 
+    private readonly float playButtonDelay = 1f; //8
+    private readonly float gameIntroDelay = 1f;  //18
 
     private bool active = true;
     private bool inactive = false;
