@@ -131,8 +131,8 @@ public class PlayerController : MonoBehaviour
         ActivateGameObject.activateInstance.ActivateObject(pauseMenu);
         DeactivateGameObject.deactivateInstance.DeactivateObjectsInPause();
         AudioManager.instance.PauseSoundInPause();
-        Time.timeScale = 0f;
         CheckDoorStateOnPause();
+        Time.timeScale = 0f;
         RoundManager.instance.currentGameState = GameState.pause;
     }
 
@@ -144,7 +144,6 @@ public class PlayerController : MonoBehaviour
         DeactivateGameObject.deactivateInstance.DeactivateObject(dot);
         DeactivateGameObject.deactivateInstance.DeactivateObject(taskChange);
 
-        // Make a method for this
         addEventTrigger.ExitHoverSoundEffectSettings(audioCategoryButton.transform);
         addEventTrigger.ExitHoverSoundEffectSettings(videoCategoryButton.transform);
         addEventTrigger.ExitHoverSoundEffectSettings(graphicsCategoryButton.transform);
@@ -168,8 +167,8 @@ public class PlayerController : MonoBehaviour
         addEventTrigger.ExitHoverSoundEffectPause(homeButton.transform);
         addEventTrigger.ExitHoverSoundEffectPause(exitButton.transform);
 
-        Time.timeScale = 1f;
         CheckDoorStateOnResume();
+        Time.timeScale = 1f;
         RoundManager.instance.currentGameState = GameState.playing;
     }
 
@@ -191,10 +190,10 @@ public class PlayerController : MonoBehaviour
     {
         if (isDoorOpenedSoundPaused)
         {
-            AudioManager.instance.UnPauseSound(doorBase.doorClosedAudioSource);
+            AudioManager.instance.UnPauseSound(doorBase.doorOpenedAudioSource);
             isDoorOpenedSoundPaused = inactive;
         }
-        if (isDoorClosedSoundPaused)
+        else if (isDoorClosedSoundPaused)
         {
             AudioManager.instance.UnPauseSound(doorBase.doorClosedAudioSource);
             isDoorClosedSoundPaused = inactive;

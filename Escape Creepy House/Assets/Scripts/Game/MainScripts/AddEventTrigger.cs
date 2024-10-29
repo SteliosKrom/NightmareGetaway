@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public class AddEventTrigger : MonoBehaviour
 {
+    private bool active = true;
+
     [Header("BUTTONS")]
     [SerializeField] private Button playButton;
     [SerializeField] private Button settingsButton;
@@ -29,6 +31,9 @@ public class AddEventTrigger : MonoBehaviour
 
     private void Start()
     {
+        DOTween.Init();
+        DOTween.defaultTimeScaleIndependent = active;
+
         AttachButtonHoverEventsMenu(playButton);
         AttachButtonHoverEventsMenu(settingsButton);
         AttachButtonHoverEventsMenu(creditsButton);
@@ -52,54 +57,46 @@ public class AddEventTrigger : MonoBehaviour
 
     public void EnterHoverSoundEffectPause(Transform buttonTransform)
     {
-        buttonTransform.DOScale(1f, 0.2f);
-        Time.timeScale = 1f;
+        buttonTransform.DOScale(1f, 0.2f).SetUpdate(active);
         AudioManager.instance.PlaySound(hoverAudioSource, hoverAudioClip);
     }
 
     public void ExitHoverSoundEffectPause(Transform buttonTransform)
     {
-        buttonTransform.DOScale(0.8f, 0.2f);
-        Time.timeScale = 1f;
+        buttonTransform.DOScale(0.8f, 0.2f).SetUpdate(active);
     }
 
     public void EnterHoverSoundEffectOther(Transform buttonTransform)
     {
-        buttonTransform.DOScale(3.5f, 0.2f);
-        Time.timeScale = 1f;
+        buttonTransform.DOScale(3.5f, 0.2f).SetUpdate(active);
         AudioManager.instance.PlaySound(hoverAudioSource, hoverAudioClip);
     }
 
     public void ExitHoverSoundEffectOther(Transform buttonTransform)
     {
-        buttonTransform.DOScale(3.2f, 0.2f);
-        Time.timeScale = 1f;
+        buttonTransform.DOScale(3.2f, 0.2f).SetUpdate(active);
     }
 
     public void EnterHoverSoundEffectMenu(Transform buttonTransform)
     {
-        buttonTransform.DOScale(1.2f, 0.2f);
-        Time.timeScale = 1f;
+        buttonTransform.DOScale(1.2f, 0.2f).SetUpdate(active);
         AudioManager.instance.PlaySound(hoverAudioSource, hoverAudioClip);
     }
 
     public void ExitHoverSoundEffectMenu(Transform buttonTransform)
     {
-        buttonTransform.DOScale(1f, 0.2f);
-        Time.timeScale = 1f;
+        buttonTransform.DOScale(1f, 0.2f).SetUpdate(active);
     }
 
     public void EnterHoverSoundEffectSettings(Transform buttonTransform)
     {
-        buttonTransform.DOScale(4.5f, 0.2f);
-        Time.timeScale = 1f;
+        buttonTransform.DOScale(4.5f, 0.2f).SetUpdate(active);
         AudioManager.instance.PlaySound(hoverAudioSource, hoverAudioClip);
     }
 
     public void ExitHoverSoundEffectSettings(Transform buttonTransform)
     {
-        buttonTransform.DOScale(4f, 0.2f);
-        Time.timeScale = 1f;
+        buttonTransform.DOScale(4f, 0.2f).SetUpdate(active);
     }
 
     public void AttachButtonHoverEventsMenu(Button menuButtons)

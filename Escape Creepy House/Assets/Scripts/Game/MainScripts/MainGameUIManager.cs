@@ -11,6 +11,7 @@ public class MainGameUIManager : MonoBehaviour
     [Header("SCRIPT REFERENCES")]
     [SerializeField] private PlayerRespawn playerRespawn;
     [SerializeField] private KidsRoomLight kidsRoomLight;
+    [SerializeField] private PlayerController playerController;
 
     [Header("BUTTONS")]
     [SerializeField] private Button resumeButton;
@@ -60,7 +61,6 @@ public class MainGameUIManager : MonoBehaviour
 
     public void ResumeButton()
     {
-        Time.timeScale = 1.0f;
         DeactivateGameObject.deactivateInstance.DeactivateObject(pauseMenu);
         ActivateGameObject.activateInstance.ActivateObject(dot);
         ActivateGameObject.activateInstance.ActivateObject(taskChange);
@@ -68,6 +68,8 @@ public class MainGameUIManager : MonoBehaviour
         AudioManager.instance.UnpauseSoundInResumeGameFromPause();
 
         resumeButton.transform.DOScale(0.8f, 0.2f);
+        playerController.CheckDoorStateOnResume();
+        Time.timeScale = 1.0f;
         RoundManager.instance.currentGameState = GameState.playing;
     }
 

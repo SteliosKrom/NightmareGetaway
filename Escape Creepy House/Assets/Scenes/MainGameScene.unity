@@ -28406,6 +28406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRespawn: {fileID: 379504549}
   kidsRoomLight: {fileID: 2587337042884884402}
+  playerController: {fileID: 379504538}
   resumeButton: {fileID: 2084806073}
   settingsButton: {fileID: 152314458}
   homeButton: {fileID: 279216664}
