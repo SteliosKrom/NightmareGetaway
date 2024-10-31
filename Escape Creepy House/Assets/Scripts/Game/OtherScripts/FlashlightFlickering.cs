@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class FlashlightFlickering : MonoBehaviour
 {
-    private float flickerDuration = 3.0f;
+    private float flickerDuration = 5.0f;
     private float flickerDelay = 0.1f;
 
     [Header("SCRIPT REFERENCES")]
@@ -36,7 +36,7 @@ public class FlashlightFlickering : MonoBehaviour
     {
         float timePassed = 0;
 
-        while (timePassed < flickerDuration)
+        while (timePassed <= flickerDuration)
         {
             flashlight.ToggleFlicker();
             timePassed += flickerDelay;

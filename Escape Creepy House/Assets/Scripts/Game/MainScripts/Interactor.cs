@@ -1,18 +1,22 @@
 using System.Collections;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class Interactor : MonoBehaviour
 {
+    [Header("TYPES")]
     public float interactionRange;
     private float displayTextDelay = 1.5f;
     private float lockedUIDelay = 1f;
     private float doorCollidersDelay = 1f;
+    private float toggleDelay = 1f;
 
     private bool isLocked = false;
-    public bool hasFlashlight = false;
+    private bool canToggle = true;
     private bool active = true;
     private bool inactive = false;
+    public bool hasFlashlight = true;
 
     [Header("SCRIPT REFERENCES")]
     [SerializeField] private TaskManager taskManager;
@@ -88,18 +92,32 @@ public class Interactor : MonoBehaviour
 
     public void InputForFlashlight()
     {
-        if (hasFlashlight && Input.GetKeyDown(KeyCode.F))
+        bool noPause = RoundManager.instance.currentGameState != GameState.pause;
+        bool noOnSettingsGame = RoundManager.instance.currentGameState != GameState.onSettingsGame;
+        bool noOnMainMenu = RoundManager.instance.currentGameState != GameState.onMainMenu;
+
+        if (hasFlashlight && canToggle && Input.GetKeyDown(KeyCode.F))
         {
-            if (RoundManager.instance.currentGameState != GameState.pause && RoundManager.instance.currentGameState != GameState.onSettingsGame && RoundManager.instance.currentGameState != GameState.onMainMenu)
+            if (noPause && noOnSettingsGame && noOnMainMenu)
             {
                 flashlight.Toggle();
             }
+            StartCoroutine(ToggleDelay());
         }
+    }
+
+    private IEnumerator ToggleDelay()
+    {
+        canToggle = inactive;
+        yield return new WaitForSeconds(toggleDelay);
+        canToggle = active;
     }
 
     public void InputForInteraction()
     {
-        if (Input.GetKeyDown(KeyCode.E) && RoundManager.instance.currentGameState != GameState.pause)
+        bool noPause = RoundManager.instance.currentGameState != GameState.pause;
+
+        if (Input.GetKeyDown(KeyCode.E) && noPause)
         {
             TryInteract();
         }
