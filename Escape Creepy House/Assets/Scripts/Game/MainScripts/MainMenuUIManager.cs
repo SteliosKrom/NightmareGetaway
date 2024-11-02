@@ -2,7 +2,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-using Unity.VisualScripting;
 
 public class MainMenuUIManager : MonoBehaviour
 {
@@ -72,6 +71,7 @@ public class MainMenuUIManager : MonoBehaviour
         AudioManager.instance.Play(mainMenuAudioSource);
         AudioManager.instance.StopSound(mainGameAudioSource);
         AudioManager.instance.Play(rainAudioSource);
+        RoundManager.instance.currentGameState = GameState.onMainMenu;
     }
 
     private void Update()
