@@ -2,12 +2,13 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class MainMenuUIManager : MonoBehaviour
 {
     private readonly float movementSpeed = 1f;
     private readonly float movementRange = 0.5f;
-    private readonly float playButtonDelay = 1f; //8
+    private readonly float playButtonDelay = 5f; //8
     private readonly float gameIntroDelay = 1f;  //18
 
     private bool active = true;
