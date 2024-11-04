@@ -7,10 +7,11 @@ public class Transition : MonoBehaviour
     private bool inactive = false;
 
     [Header("GAME OBJECTS")]
-    public GameObject introPanel;
-    public GameObject theLegendKnightPanel;
-    public GameObject headsetPanel;
-    public GameObject seizurePanel;
+    [SerializeField] GameObject introPanel;
+    [SerializeField] GameObject theLegendKnightPanel;
+    [SerializeField] GameObject headsetPanel;
+    [SerializeField] GameObject seizurePanel;
+
 
     [Header("AUDIO")]
     public AudioSource secondSplashAudioSource;

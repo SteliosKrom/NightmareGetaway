@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Interactor : MonoBehaviour
@@ -13,7 +11,7 @@ public class Interactor : MonoBehaviour
     private float toggleDelay = 1f;
 
     private bool isLocked = false;
-    private bool canToggle = true;
+    public bool canToggle = true;
     private bool active = true;
     private bool inactive = false;
     public bool hasFlashlight = true;
@@ -29,14 +27,12 @@ public class Interactor : MonoBehaviour
     public AudioSource drinkAudioSource;
     public AudioSource eatAudioSource;
     public AudioSource lockedAudioSource;
-
     public AudioClip drinkAudioclip;
     public AudioClip eatAudioClip;
     public AudioClip equipKeysAudioClip;
     public AudioClip lockedAudioClip;
 
-    [Header("OTHER")]
-    [SerializeField] private Transform interactionSource;
+    [Header("GAME OBJECTS")]
     [SerializeField] private GameObject foundGarageKey;
     [SerializeField] private GameObject foundFlashlight;
     [SerializeField] private GameObject foundMainDoorKey;
@@ -51,9 +47,12 @@ public class Interactor : MonoBehaviour
     [SerializeField] private GameObject food;
     [SerializeField] private GameObject phone;
     [SerializeField] private GameObject doorBoxCollider;
+
+    [Header("OTHER")]
     [SerializeField] private BoxCollider fridgeCollider;
     [SerializeField] private BoxCollider[] doorColliders;
     [SerializeField] private BoxCollider[] doorHandleColliders;
+    [SerializeField] private Transform interactionSource;
 
     private void Start()
     {
@@ -63,23 +62,13 @@ public class Interactor : MonoBehaviour
 
     public void DisplayItems(GameObject roomKey, GameObject mainDoorKey, GameObject food, GameObject phone, GameObject waterGlass, GameObject garageKey)
     {
-        roomKey.SetActive(active);
-        mainDoorKey.SetActive(inactive);
-        food.SetActive(inactive);
-        phone.SetActive(inactive);
-        waterGlass.SetActive(inactive);
-        garageKey.SetActive(inactive);
+        ActivateGameObject.activateInstance.ActivateObject(roomKey);
+        DeactivateGameObject.deactivateInstance.DeactivateItems();
     }
 
     public void DisplayUI(GameObject foundFlashlight, GameObject foundRoomKey, GameObject foundMainDoorKey, GameObject foundGarageKey, GameObject lockedUI, GameObject foundPhone, GameObject interactionUI)
     {
-        foundFlashlight.SetActive(inactive);
-        foundRoomKey.SetActive(inactive);
-        foundMainDoorKey.SetActive(inactive);
-        foundGarageKey.SetActive(inactive);
-        lockedUI.SetActive(inactive);
-        foundPhone.SetActive(inactive);
-        interactionUI.SetActive(inactive);
+        DeactivateGameObject.deactivateInstance.DeactivateDisplayUI();
     }
 
     void Update()

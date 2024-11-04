@@ -15,6 +15,8 @@ public class DeactivateGameObject : MonoBehaviour
     [SerializeField] private GameObject[] objects7;
     [SerializeField] private GameObject[] objects8;
     [SerializeField] private GameObject[] objects9;
+    [SerializeField] private GameObject[] objects10;
+    [SerializeField] private GameObject[] objects11;
 
     private void Awake()
     {
@@ -100,6 +102,22 @@ public class DeactivateGameObject : MonoBehaviour
     public void DeactivateObjectsInPause()
     {
         foreach (GameObject obj in objects9)
+        {
+            obj.SetActive(inactive);
+        }
+    }
+
+    public void DeactivateItems()
+    {
+        foreach (GameObject obj in objects10)
+        {
+            obj.SetActive(inactive);
+        }
+    }
+
+    public void DeactivateDisplayUI()
+    {
+        foreach (GameObject obj in objects11)
         {
             obj.SetActive(inactive);
         }

@@ -8,13 +8,15 @@ public class MainMenuUIManager : MonoBehaviour
 {
     private readonly float movementSpeed = 1f;
     private readonly float movementRange = 0.5f;
-    private readonly float playButtonDelay = 5f; //8
+    private readonly float playButtonDelay = 8f; //8
     private readonly float gameIntroDelay = 1f;  //18
+    private readonly float loadingTextDelay = 0.00380f;
 
     private bool active = true;
     private bool inactive = false;
 
-    [Header("BUTTONS")]
+    [Header("USER INTERFACE")]
+    [SerializeField] private TextMeshProUGUI loadingText;
     [SerializeField] private Button playButton;
     [SerializeField] private Button settingsButton;
     [SerializeField] private Button creditsButton;
@@ -104,11 +106,29 @@ public class MainMenuUIManager : MonoBehaviour
         StartCoroutine(PlayButtonDelay());
     }
 
+    public IEnumerator LoadingTextDelay()
+    {
+        loadingText.text = "0%";
+        float totalTime = 4f;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < totalTime)
+        {
+            elapsedTime += Time.deltaTime;
+            float progress = Mathf.Clamp01(elapsedTime / totalTime);
+            loadingText.text = Mathf.RoundToInt(progress * 100) + "%";
+
+            yield return new WaitForSeconds(loadingTextDelay);
+        }
+        loadingText.text = "100%";
+    }
+
     public IEnumerator PlayButtonDelay()
     {
         ActivateGameObject.activateInstance.ActivateObject(loadingPanel);
         AudioManager.instance.PauseSound(rainAudioSource);
         AudioManager.instance.StopSound(mainMenuAudioSource);
+        StartCoroutine(LoadingTextDelay());
 
         yield return new WaitForSeconds(playButtonDelay);
 

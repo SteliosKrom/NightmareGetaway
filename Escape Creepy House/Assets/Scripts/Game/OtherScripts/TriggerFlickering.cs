@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class TriggerFlickering : MonoBehaviour
 {
+    [Header("TYPES")]
+    private bool inactive = false;
+    private bool active = true;
+
     [Header("SCRIPT REFERENCES")]
     [SerializeField] private FlashlightFlickering flashlightFlickering;
     [SerializeField] private Interactor interactor;
@@ -11,10 +15,11 @@ public class TriggerFlickering : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && interactor.hasFlashlight)
+        if (other.gameObject.CompareTag("Player") && interactor.hasFlashlight && interactor.canToggle)
         {
             flashlightFlickering.TriggerFlicker();
-            onTrigger.SetActive(false);
+            onTrigger.SetActive(inactive);
+            interactor.canToggle = inactive;
         }
     }
 }

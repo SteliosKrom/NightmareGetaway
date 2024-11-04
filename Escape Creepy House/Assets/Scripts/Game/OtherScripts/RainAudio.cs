@@ -12,7 +12,7 @@ public class RainAudio : MonoBehaviour
             if (!rainAudioSource.isPlaying)
             {
                 rainAudioSource.UnPause();
-                rainAudioSource.volume = 0.5f;
+                rainAudioSource.volume = 0.1f;
                 mainGameAudioSource.Pause();
             }
         }
