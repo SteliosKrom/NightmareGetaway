@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.Rendering.PostProcessing;
 
 public class SettingsManager : MonoBehaviour
 {
@@ -11,9 +12,7 @@ public class SettingsManager : MonoBehaviour
     private bool active = true;
     private bool inactive = false;
 
-    [Header("OTHER")]
-    [SerializeField] private AudioMixer myAudioMixer;
-
+    [Header("UI")]
     [SerializeField] private Toggle fullscreenToggle;
     [SerializeField] private Toggle vSyncToggle;
     [SerializeField] private Toggle framesToggle;
@@ -21,17 +20,21 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private Slider masterVolumeSlider;
     [SerializeField] private Slider sfxVolumeSlider;
     [SerializeField] private Slider menuVolumeSlider;
+    [SerializeField] private Slider brightnessSlider;
 
     [SerializeField] private TextMeshProUGUI masterValueText;
     [SerializeField] private TextMeshProUGUI sfxValueText;
     [SerializeField] private TextMeshProUGUI menuValueText;
     [SerializeField] private TextMeshProUGUI antiAliasingText;
     [SerializeField] private TextMeshProUGUI framesText;
+    [SerializeField] private TextMeshProUGUI brightnessText;
 
     [SerializeField] private TMP_Dropdown antiAliasingDropdown;
     [SerializeField] private TMP_Dropdown qualityDropdown;
 
+    [Header("OTHER")]
     [SerializeField] private GameObject displayFPS;
+    [SerializeField] private AudioMixer myAudioMixer;
 
     private void Start()
     {
