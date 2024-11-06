@@ -11,6 +11,8 @@ public class SettingsManager : MonoBehaviour
     private const string sfxVol = "SoundEffectsVolume";
     private const string menuVol = "MenuVolume";
 
+    private const float defaultBrightnessValue = 25f;
+
     private bool active = true;
     private bool inactive = false;
 
@@ -41,9 +43,10 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private AudioMixer myAudioMixer;
 
     [Header("POST PROCESSING")]
-    [SerializeField] private PostProcessVolume brightnessVolume;
-    [SerializeField] private PostProcessLayer brightnessLayer;
-    [SerializeField] private AutoExposure autoExposure;
+    [SerializeField] private PostProcessProfile mainMenuBrightnessVolume;
+    [SerializeField] private PostProcessLayer mainMenuBrightnessLayer;
+
+    private AutoExposure autoExposure;
 
     private void Start()
     {
@@ -52,6 +55,7 @@ public class SettingsManager : MonoBehaviour
         InitializeFPS();
         InitializeVsyncAndAA();
         InitialiazeFullscreen();
+        InitializeBrightness();
     }
 
     public void InitializeFPS()
@@ -85,6 +89,14 @@ public class SettingsManager : MonoBehaviour
     {
         QualitySettings.SetQualityLevel(4);
         qualityDropdown.value = 4;
+    }
+
+    public void InitializeBrightness()
+    {
+        mainMenuBrightnessVolume.TryGetSettings(out autoExposure);
+        brightnessSlider.value = defaultBrightnessValue;
+        autoExposure.keyValue.value = defaultBrightnessValue;
+        brightnessText.text = brightnessSlider.value.ToString("0.0");
     }
 
     public void LoadSettings()

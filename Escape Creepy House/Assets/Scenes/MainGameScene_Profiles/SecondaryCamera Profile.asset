@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SecondaryCamera Profile
   m_EditorClassIdentifier: 
   settings:
-  - {fileID: 4607414304312254068}
---- !u!114 &4607414304312254068
+  - {fileID: 495852201536873976}
+--- !u!114 &495852201536873976
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -31,17 +31,17 @@ MonoBehaviour:
     overrideState: 1
     value: 1
   filtering:
-    overrideState: 0
-    value: {x: 50, y: 95}
+    overrideState: 1
+    value: {x: 64.05141, y: 86.08933}
   minLuminance:
-    overrideState: 0
+    overrideState: 1
     value: 4.5
   maxLuminance:
-    overrideState: 0
+    overrideState: 1
     value: 9
   keyValue:
     overrideState: 1
-    value: 50
+    value: 25
   eyeAdaptation:
     overrideState: 1
     value: 1

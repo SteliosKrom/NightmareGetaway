@@ -22290,7 +22290,6 @@ GameObject:
   - component: {fileID: 366118863}
   - component: {fileID: 366118864}
   - component: {fileID: 366118865}
-  - component: {fileID: 366118866}
   m_Layer: 3
   m_Name: SecondaryCamera
   m_TagString: Untagged
@@ -22417,31 +22416,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 366118859}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e40fa316ea02a004fa7bf71b90ed9fd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  brightnessSlider: {fileID: 638987509}
-  brightnessText: {fileID: 1378956050}
-  brightnessProfile: {fileID: 11400000, guid: 3c194f8ac62c3644fb7a49db4847f519, type: 2}
-  brightnessLayer: {fileID: 366118866}
---- !u!114 &366118865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 366118859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: 3c194f8ac62c3644fb7a49db4847f519, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 4d0614b3d664e5b41999df3dd5353fe9, type: 2}
   isGlobal: 1
   blendDistance: 0
   weight: 1
   priority: 0
---- !u!114 &366118866
+--- !u!114 &366118865
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -22457,7 +22440,7 @@ MonoBehaviour:
   volumeLayer:
     serializedVersion: 2
     m_Bits: 8
-  stopNaNPropagation: 0
+  stopNaNPropagation: 1
   finalBlitToCameraTarget: 0
   antialiasingMode: 0
   temporalAntialiasing:
@@ -27498,13 +27481,13 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 50
   m_WholeNumbers: 1
-  m_Value: 5
+  m_Value: 8
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 963194234}
+      - m_Target: {fileID: 1763060353}
         m_TargetAssemblyTypeName: BrightnessController, Assembly-CSharp
-        m_MethodName: OnBrightnessChanged
+        m_MethodName: 
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -41525,7 +41508,6 @@ GameObject:
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
   - component: {fileID: 963194230}
-  - component: {fileID: 963194234}
   - component: {fileID: 963194231}
   - component: {fileID: 963194232}
   - component: {fileID: 963194233}
@@ -41660,7 +41642,7 @@ MonoBehaviour:
   volumeLayer:
     serializedVersion: 2
     m_Bits: 8
-  stopNaNPropagation: 1
+  stopNaNPropagation: 0
   finalBlitToCameraTarget: 0
   antialiasingMode: 0
   temporalAntialiasing:
@@ -41765,22 +41747,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!114 &963194234
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e40fa316ea02a004fa7bf71b90ed9fd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  brightnessSlider: {fileID: 638987509}
-  brightnessText: {fileID: 1378956050}
-  brightnessProfile: {fileID: 11400000, guid: 59594f02c3c25794d9007f06669d7a23, type: 2}
-  brightnessLayer: {fileID: 963194231}
 --- !u!1 &993762444
 GameObject:
   m_ObjectHideFlags: 0
@@ -59900,6 +59866,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a342ed0b3d2c2804f9d2afb304857077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displayFPS: {fileID: 2025379987}
   fullscreenToggle: {fileID: 256264209}
   vSyncToggle: {fileID: 570204446}
   framesToggle: {fileID: 860206743}
@@ -59915,8 +59882,9 @@ MonoBehaviour:
   brightnessText: {fileID: 1378956050}
   antiAliasingDropdown: {fileID: 1824538828}
   qualityDropdown: {fileID: 889530493}
-  displayFPS: {fileID: 2025379987}
   myAudioMixer: {fileID: 24100000, guid: ab31cbc55cac0aa4db2a64e1763fe7cc, type: 2}
+  mainMenuBrightnessVolume: {fileID: 11400000, guid: 59594f02c3c25794d9007f06669d7a23, type: 2}
+  mainMenuBrightnessLayer: {fileID: 963194231}
 --- !u!1 &1778526824
 GameObject:
   m_ObjectHideFlags: 0
