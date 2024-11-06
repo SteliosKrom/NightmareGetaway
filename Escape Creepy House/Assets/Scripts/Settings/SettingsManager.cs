@@ -11,7 +11,7 @@ public class SettingsManager : MonoBehaviour
     private const string sfxVol = "SoundEffectsVolume";
     private const string menuVol = "MenuVolume";
 
-    private const float defaultBrightnessValue = 25f;
+    private const float defaultBrightnessValue = 50f;
 
     private bool active = true;
     private bool inactive = false;
@@ -44,6 +44,8 @@ public class SettingsManager : MonoBehaviour
 
     [Header("POST PROCESSING")]
     [SerializeField] private PostProcessProfile mainMenuBrightnessVolume;
+    [SerializeField] private PostProcessProfile mainGameBrightnessVolume;
+    [SerializeField] private PostProcessLayer mainGameBrightnessLayer;
     [SerializeField] private PostProcessLayer mainMenuBrightnessLayer;
 
     private AutoExposure autoExposure;
@@ -93,10 +95,17 @@ public class SettingsManager : MonoBehaviour
 
     public void InitializeBrightness()
     {
-        mainMenuBrightnessVolume.TryGetSettings(out autoExposure);
-        brightnessSlider.value = defaultBrightnessValue;
-        autoExposure.keyValue.value = defaultBrightnessValue;
-        brightnessText.text = brightnessSlider.value.ToString("0.0");
+        if (mainMenuBrightnessVolume.TryGetSettings(out autoExposure) && mainGameBrightnessVolume.TryGetSettings(out autoExposure))
+        {
+            brightnessSlider.value = defaultBrightnessValue;
+            int roundedValue = Mathf.RoundToInt(brightnessSlider.value);
+            brightnessText.text = roundedValue.ToString() + "%";
+            autoExposure.keyValue.value = defaultBrightnessValue;
+        }
+        else
+        {
+            Debug.LogError("AutoExposure not found in PostProcessProfile.");
+        }
     }
 
     public void LoadSettings()
@@ -106,6 +115,7 @@ public class SettingsManager : MonoBehaviour
         float savedMenuVolume = PlayerPrefs.GetFloat("menuVolume");
 
         int savedQualitySettings = PlayerPrefs.GetInt("GraphicsQuality");
+        int savedBrightnessSettings = PlayerPrefs.GetInt("Brightness");
 
         myAudioMixer.SetFloat(masterVol, Mathf.Log10(savedMasterVolume) * 20);
         myAudioMixer.SetFloat(sfxVol, Mathf.Log10(savedSfxVolume) * 20);
@@ -115,6 +125,7 @@ public class SettingsManager : MonoBehaviour
         sfxVolumeSlider.value = savedSfxVolume;
         menuVolumeSlider.value = savedMenuVolume;
         qualityDropdown.value = savedQualitySettings;
+        brightnessSlider.value = savedBrightnessSettings;
     }
 
     public void MasterVolumeSlider()
@@ -139,6 +150,22 @@ public class SettingsManager : MonoBehaviour
         menuValueText.text = menuVolume.ToString("0.0");
         myAudioMixer.SetFloat(menuVol, Mathf.Log10(menuVolume) * 20);
         PlayerPrefs.SetFloat("menuVolume", menuVolume);
+    }
+
+    public void AdjustBrightnessSlider()
+    {
+        // Ensure autoExposure is not null
+        if (autoExposure != null)
+        {
+            int brightness = Mathf.RoundToInt(brightnessSlider.value);
+            brightnessText.text = brightness.ToString() + "%";
+            autoExposure.keyValue.value = brightness;
+            PlayerPrefs.SetInt("Brightness", brightness);
+        }
+        else
+        {
+            Debug.LogError("AutoExposure is not assigned or found in PostProcessProfile.");
+        }
     }
 
     public void SetFullscreen()

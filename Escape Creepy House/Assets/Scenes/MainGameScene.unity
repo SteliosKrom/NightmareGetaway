@@ -27479,16 +27479,16 @@ MonoBehaviour:
   m_HandleRect: {fileID: 630276437}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 50
+  m_MaxValue: 100
   m_WholeNumbers: 1
-  m_Value: 8
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1763060353}
-        m_TargetAssemblyTypeName: BrightnessController, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 0
+      - m_Target: {fileID: 1763060355}
+        m_TargetAssemblyTypeName: SettingsManager, Assembly-CSharp
+        m_MethodName: AdjustBrightnessSlider
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -41508,9 +41508,9 @@ GameObject:
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
   - component: {fileID: 963194230}
+  - component: {fileID: 963194233}
   - component: {fileID: 963194231}
   - component: {fileID: 963194232}
-  - component: {fileID: 963194233}
   m_Layer: 3
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -56417,7 +56417,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2.0
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
   m_sharedMaterial: {fileID: 7855358897793652092, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
@@ -59883,8 +59883,10 @@ MonoBehaviour:
   antiAliasingDropdown: {fileID: 1824538828}
   qualityDropdown: {fileID: 889530493}
   myAudioMixer: {fileID: 24100000, guid: ab31cbc55cac0aa4db2a64e1763fe7cc, type: 2}
-  mainMenuBrightnessVolume: {fileID: 11400000, guid: 59594f02c3c25794d9007f06669d7a23, type: 2}
-  mainMenuBrightnessLayer: {fileID: 963194231}
+  mainMenuBrightnessVolume: {fileID: 11400000, guid: 4d0614b3d664e5b41999df3dd5353fe9, type: 2}
+  mainGameBrightnessVolume: {fileID: 11400000, guid: 59594f02c3c25794d9007f06669d7a23, type: 2}
+  mainGameBrightnessLayer: {fileID: 963194231}
+  mainMenuBrightnessLayer: {fileID: 366118865}
 --- !u!1 &1778526824
 GameObject:
   m_ObjectHideFlags: 0
