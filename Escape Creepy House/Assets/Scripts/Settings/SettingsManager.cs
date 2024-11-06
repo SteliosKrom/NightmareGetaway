@@ -6,11 +6,16 @@ using UnityEngine.Rendering.PostProcessing;
 
 public class SettingsManager : MonoBehaviour
 {
+    [Header("TYPES")]
     private const string masterVol = "MasterVolume";
     private const string sfxVol = "SoundEffectsVolume";
     private const string menuVol = "MenuVolume";
+
     private bool active = true;
     private bool inactive = false;
+
+    [Header("GAME OBJECTS")]
+    [SerializeField] private GameObject displayFPS;
 
     [Header("UI")]
     [SerializeField] private Toggle fullscreenToggle;
@@ -32,9 +37,13 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private TMP_Dropdown antiAliasingDropdown;
     [SerializeField] private TMP_Dropdown qualityDropdown;
 
-    [Header("OTHER")]
-    [SerializeField] private GameObject displayFPS;
+    [Header("AUDIO")]
     [SerializeField] private AudioMixer myAudioMixer;
+
+    [Header("POST PROCESSING")]
+    [SerializeField] private PostProcessVolume brightnessVolume;
+    [SerializeField] private PostProcessLayer brightnessLayer;
+    [SerializeField] private AutoExposure autoExposure;
 
     private void Start()
     {

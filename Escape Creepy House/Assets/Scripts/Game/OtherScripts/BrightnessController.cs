@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class BrightnessController : MonoBehaviour
 {
-    [Header("TYPES")]
-    private const string brightnessKey = "Brightness";
-
     [Header("UI")]
     [SerializeField] private Slider brightnessSlider;
     [SerializeField] private TextMeshProUGUI brightnessText;
@@ -29,20 +26,16 @@ public class BrightnessController : MonoBehaviour
         if (postProcessVolume != null && postProcessVolume.profile.TryGetSettings(out exposure))
         {
             brightnessSlider.onValueChanged.AddListener(OnBrightnessChanged);
-            float savedBrightness = PlayerPrefs.GetFloat(brightnessKey);
+            float savedBrightness = PlayerPrefs.GetFloat("Brightness");
             brightnessText.text = savedBrightness.ToString("0.0");
-        }
-        else
-        {
-            Debug.LogWarning("Post Process Volume or Color Grading effect not found on the main camera.");
         }
     }
 
     public void OnBrightnessChanged(float value)
     {
         exposure.keyValue.value = value;
+        PlayerPrefs.SetFloat("Brightness", exposure.keyValue.value);
         brightnessText.text = brightnessSlider.value.ToString("0.0");
-        PlayerPrefs.SetFloat(brightnessKey, value);
     }
 
 }
