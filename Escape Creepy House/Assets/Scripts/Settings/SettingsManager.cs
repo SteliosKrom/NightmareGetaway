@@ -52,12 +52,13 @@ public class SettingsManager : MonoBehaviour
 
     private void Start()
     {
-        LoadSettings();
+        // Save brightness and brightness slider rather than declaring defaul value
         InitializeQualitySettings();
         InitializeFPS();
         InitializeVsyncAndAA();
         InitialiazeFullscreen();
         InitializeBrightness();
+        LoadSettings();
     }
 
     public void InitializeFPS()
@@ -95,17 +96,12 @@ public class SettingsManager : MonoBehaviour
 
     public void InitializeBrightness()
     {
-        if (mainMenuBrightnessVolume.TryGetSettings(out autoExposure) && mainGameBrightnessVolume.TryGetSettings(out autoExposure))
-        {
-            brightnessSlider.value = defaultBrightnessValue;
-            int roundedValue = Mathf.RoundToInt(brightnessSlider.value);
-            brightnessText.text = roundedValue.ToString() + "%";
-            autoExposure.keyValue.value = defaultBrightnessValue;
-        }
-        else
-        {
-            Debug.LogError("AutoExposure not found in PostProcessProfile.");
-        }
+        mainMenuBrightnessVolume.TryGetSettings(out autoExposure);
+        mainGameBrightnessVolume.TryGetSettings(out autoExposure);
+        brightnessSlider.value = defaultBrightnessValue;
+        autoExposure.keyValue.value = defaultBrightnessValue;
+        int roundedValue = Mathf.RoundToInt(brightnessSlider.value);
+        brightnessText.text = roundedValue.ToString() + "%";
     }
 
     public void LoadSettings()
@@ -115,7 +111,7 @@ public class SettingsManager : MonoBehaviour
         float savedMenuVolume = PlayerPrefs.GetFloat("menuVolume");
 
         int savedQualitySettings = PlayerPrefs.GetInt("GraphicsQuality");
-        int savedBrightnessSettings = PlayerPrefs.GetInt("Brightness");
+        int savedBrightnessSettings = PlayerPrefs.GetInt("BrightnessVolume");
 
         myAudioMixer.SetFloat(masterVol, Mathf.Log10(savedMasterVolume) * 20);
         myAudioMixer.SetFloat(sfxVol, Mathf.Log10(savedSfxVolume) * 20);
@@ -154,18 +150,10 @@ public class SettingsManager : MonoBehaviour
 
     public void AdjustBrightnessSlider()
     {
-        // Ensure autoExposure is not null
-        if (autoExposure != null)
-        {
-            int brightness = Mathf.RoundToInt(brightnessSlider.value);
-            brightnessText.text = brightness.ToString() + "%";
-            autoExposure.keyValue.value = brightness;
-            PlayerPrefs.SetInt("Brightness", brightness);
-        }
-        else
-        {
-            Debug.LogError("AutoExposure is not assigned or found in PostProcessProfile.");
-        }
+        int brightness = Mathf.RoundToInt(brightnessSlider.value);
+        brightnessText.text = brightness.ToString() + "%";
+        autoExposure.keyValue.value = brightness;
+        PlayerPrefs.SetInt("BrightnessVolume", brightness);
     }
 
     public void SetFullscreen()
