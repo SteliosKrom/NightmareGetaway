@@ -26,11 +26,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - PostProcessing
+  - GamePostProcessing
   - Water
   - UI
   - Ground
-  - 
+  - MenuPostProcessing
   - 
   - 
   - 
