@@ -11,7 +11,7 @@ public class SettingsManager : MonoBehaviour
     private const string sfxVol = "SoundEffectsVolume";
     private const string menuVol = "MenuVolume";
 
-    private const float defaultBrightnessValue = 50f;
+    private const float defaultBrightnessValue = 10;
 
     private bool active = true;
     private bool inactive = false;
@@ -100,8 +100,8 @@ public class SettingsManager : MonoBehaviour
         mainGameBrightnessVolume.TryGetSettings(out autoExposure);
         brightnessSlider.value = defaultBrightnessValue;
         autoExposure.keyValue.value = defaultBrightnessValue;
-        int roundedValue = Mathf.RoundToInt(brightnessSlider.value);
-        brightnessText.text = roundedValue.ToString() + "%";
+        int roundedBrightnessValue = Mathf.RoundToInt(brightnessSlider.value);
+        brightnessText.text = roundedBrightnessValue.ToString() + "%";
     }
 
     public void LoadSettings()
@@ -109,7 +109,7 @@ public class SettingsManager : MonoBehaviour
         float savedMasterVolume = PlayerPrefs.GetFloat("MasterVolume");
         float savedSfxVolume = PlayerPrefs.GetFloat("sfxVolume");
         float savedMenuVolume = PlayerPrefs.GetFloat("menuVolume");
-
+         
         int savedQualitySettings = PlayerPrefs.GetInt("GraphicsQuality");
         int savedBrightnessSettings = PlayerPrefs.GetInt("BrightnessVolume");
 
@@ -143,7 +143,7 @@ public class SettingsManager : MonoBehaviour
     public void MenuVolumeSlider()
     {
         float menuVolume = menuVolumeSlider.value;
-        menuValueText.text = menuVolume.ToString("0.0");
+        menuValueText.text = menuVolume.ToString("");
         myAudioMixer.SetFloat(menuVol, Mathf.Log10(menuVolume) * 20);
         PlayerPrefs.SetFloat("menuVolume", menuVolume);
     }
