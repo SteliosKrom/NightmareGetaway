@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 10034501}
   - component: {fileID: 10034500}
   m_Layer: 0
-  m_Name: VideoCategoryText
+  m_Name: GraphicsCategoryText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -350,7 +350,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: graphics
+  m_text: 'graphics '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
   m_sharedMaterial: {fileID: 7855358897793652092, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
@@ -8874,7 +8874,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "player movement  \t\t\t-\t\twasd"
+  m_text: "movement  \t\t\t\t\t-\t\twasd"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
   m_sharedMaterial: {fileID: 7855358897793652092, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
@@ -9514,7 +9514,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Audio
+  m_text: 'Audio '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
   m_sharedMaterial: {fileID: 7855358897793652092, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
@@ -22249,8 +22249,8 @@ GameObject:
   - component: {fileID: 366118860}
   - component: {fileID: 366118862}
   - component: {fileID: 366118863}
-  - component: {fileID: 366118864}
   - component: {fileID: 366118865}
+  - component: {fileID: 366118864}
   m_Layer: 7
   m_Name: SecondaryCamera
   m_TagString: Untagged
@@ -39042,7 +39042,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: display
+  m_text: 'video '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
   m_sharedMaterial: {fileID: 7855358897793652092, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
@@ -41295,7 +41295,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.017077632, y: -0.68174595, z: 0.01592227, w: 0.7312164}
-  m_LocalPosition: {x: -17.427, y: 80.854, z: -13.401}
+  m_LocalPosition: {x: -17.43, y: 80.928, z: -13.401}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -41402,7 +41402,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
@@ -42178,7 +42178,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "pause/resume\t\t\t\t-\t\t  esc"
+  m_text: "pause & resume\t\t\t\t-\t\t  esc"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
   m_sharedMaterial: {fileID: 7855358897793652092, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
@@ -56698,7 +56698,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1437513878
 RectTransform:
   m_ObjectHideFlags: 0
@@ -59286,10 +59286,6 @@ MonoBehaviour:
   antiAliasingDropdown: {fileID: 1824538828}
   qualityDropdown: {fileID: 889530493}
   myAudioMixer: {fileID: 24100000, guid: ab31cbc55cac0aa4db2a64e1763fe7cc, type: 2}
-  mainMenuBrightnessVolume: {fileID: 11400000, guid: 4d0614b3d664e5b41999df3dd5353fe9, type: 2}
-  mainGameBrightnessVolume: {fileID: 11400000, guid: 59594f02c3c25794d9007f06669d7a23, type: 2}
-  mainGameBrightnessLayer: {fileID: 963194231}
-  mainMenuBrightnessLayer: {fileID: 366118865}
 --- !u!1 &1778526824
 GameObject:
   m_ObjectHideFlags: 0
@@ -61916,7 +61912,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 3
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -67853,7 +67849,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 3
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535

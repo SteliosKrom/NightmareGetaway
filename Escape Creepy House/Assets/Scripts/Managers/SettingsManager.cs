@@ -38,22 +38,21 @@ public class SettingsManager : MonoBehaviour
     [Header("AUDIO")]
     [SerializeField] private AudioMixer myAudioMixer;
 
-    [Header("POST PROCESSING")]
-    [SerializeField] private PostProcessProfile mainMenuBrightnessVolume;
-    [SerializeField] private PostProcessProfile mainGameBrightnessVolume;
-    [SerializeField] private PostProcessLayer mainGameBrightnessLayer;
-    [SerializeField] private PostProcessLayer mainMenuBrightnessLayer;
-
-    private AutoExposure autoExposure;
-
     private void Start()
     {
         InitializeQualitySettings();
         InitializeFPS();
         InitializeVsyncAndAA();
         InitialiazeFullscreen();
-        InitializeBrightness();
+        InitializeResolution();
         LoadSettings();
+    }
+
+    public void InitializeResolution()
+    {
+        int screenHeight = Screen.currentResolution.height;
+        int screenWidth = Screen.currentResolution.width;
+        Screen.SetResolution(screenWidth, screenHeight, Screen.fullScreen);
     }
 
     public void InitializeFPS()
@@ -71,6 +70,7 @@ public class SettingsManager : MonoBehaviour
         else
         {
             fullscreenToggle.isOn = inactive;
+            fullscreenToggle.isOn = inactive;
         }
     }
 
@@ -87,12 +87,6 @@ public class SettingsManager : MonoBehaviour
     {
         QualitySettings.SetQualityLevel(4);
         qualityDropdown.value = 4;
-    }
-
-    public void InitializeBrightness()
-    {
-        mainMenuBrightnessVolume.TryGetSettings(out autoExposure);
-        autoExposure.keyValue.value = 10f;
     }
 
     public void LoadSettings()
