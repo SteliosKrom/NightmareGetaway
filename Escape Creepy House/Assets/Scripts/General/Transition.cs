@@ -1,17 +1,19 @@
+using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Transition : MonoBehaviour
 {
     private bool active = true;
     private bool inactive = false;
 
-    [Header("GAME OBJECTS")]
-    [SerializeField] GameObject introPanel;
-    [SerializeField] GameObject theLegendKnightPanel;
-    [SerializeField] GameObject headsetPanel;
-    [SerializeField] GameObject seizurePanel;
+    private float splashScreenDelay = 7f;
 
+    [Header("GAME OBJECTS")]
+    [SerializeField] private GameObject introPanel;
+    [SerializeField] private GameObject theLegendKnightPanel;
+    [SerializeField] private GameObject headsetPanel;
+    [SerializeField] private GameObject seizurePanel;
+    [SerializeField] private GameObject gammaPanel; 
 
     [Header("AUDIO")]
     public AudioSource secondSplashAudioSource;
@@ -19,17 +21,20 @@ public class Transition : MonoBehaviour
 
     private void Start()
     {
-        LoadIntroPanel();
-        Invoke("LoadIntroPanel", 7f);
-        Invoke("LoadTheLegendKnightPanel", 7f);
-        Invoke("LoadHeadsetPanel", 14f);
-        Invoke("LoadSeizureWarningPanel", 21f);
-        Invoke("LoadMainGameScene", 28f);
+        StartCoroutine(ShowSplashScreens());
     }
 
-    public void LoadMainGameScene()
+    public IEnumerator ShowSplashScreens()
     {
-        SceneManager.LoadScene("MainGameScene");
+        LoadIntroPanel();
+        yield return new WaitForSeconds(splashScreenDelay);
+        LoadTheLegendKnightPanel();
+        yield return new WaitForSeconds(splashScreenDelay);
+        LoadHeadsetPanel();
+        yield return new WaitForSeconds(splashScreenDelay);
+        LoadSeizureWarningPanel();
+        yield return new WaitForSeconds(splashScreenDelay);
+        LoadGammaPanel();
     }
 
     public void LoadIntroPanel()
@@ -55,6 +60,7 @@ public class Transition : MonoBehaviour
         introPanel.SetActive(inactive);
         theLegendKnightPanel.SetActive(inactive);
         seizurePanel.SetActive(inactive);
+        gammaPanel.SetActive(inactive);
     }
 
     public void LoadSeizureWarningPanel()
@@ -63,5 +69,14 @@ public class Transition : MonoBehaviour
         headsetPanel.SetActive(inactive);
         theLegendKnightPanel.SetActive(inactive);
         seizurePanel.SetActive(active);
+    }
+
+    public void LoadGammaPanel()
+    {
+        introPanel.SetActive(inactive);
+        headsetPanel.SetActive(inactive);
+        theLegendKnightPanel.SetActive(inactive);
+        seizurePanel.SetActive(inactive);
+        gammaPanel.SetActive(active);
     }
 }
