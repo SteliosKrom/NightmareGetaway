@@ -19,7 +19,6 @@ public class SplashEventTrigger : MonoBehaviour
     {
         DOTween.Init();
         DOTween.defaultTimeScaleIndependent = active;
-
         AttachButtonHoverEventsOther(continueButton);
     }
 
