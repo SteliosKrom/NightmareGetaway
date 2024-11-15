@@ -35,6 +35,9 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private TMP_Dropdown antiAliasingDropdown;
     [SerializeField] private TMP_Dropdown qualityDropdown;
 
+    [SerializeField] private Camera mainCamera;
+    [SerializeField] private Camera secondaryCamera;
+
     [Header("AUDIO")]
     [SerializeField] private AudioMixer myAudioMixer;
 
