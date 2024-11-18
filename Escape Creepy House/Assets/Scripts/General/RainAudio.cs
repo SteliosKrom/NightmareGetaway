@@ -7,7 +7,7 @@ public class RainAudio : MonoBehaviour
 
     private void Update()
     {
-        if (RoundManager.instance.currentEnvironmentState == EnvironmentState.outdoors && RoundManager.instance.currentGameState != GameState.pause && RoundManager.instance.currentGameState != GameState.onSettingsGame)
+        if (RoundManager.instance.currentEnvironmentState == EnvironmentState.outdoors && RoundManager.instance.currentGameState != GameState.pause)
         {
             if (!rainAudioSource.isPlaying)
             {
