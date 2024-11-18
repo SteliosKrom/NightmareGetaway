@@ -43,6 +43,7 @@ public class MainGameUIManager : MonoBehaviour
     [SerializeField] private GameObject graphicsButton;
     [SerializeField] private GameObject dot;
     [SerializeField] private GameObject taskChange;
+    [SerializeField] private GameObject fogParticle;
 
     [Header("OTHER")]
     [SerializeField] private Camera mainCamera;
@@ -83,6 +84,7 @@ public class MainGameUIManager : MonoBehaviour
 
     public void HomeButton()
     {
+        ParticlesManager.instance.ActivateParticle(fogParticle);
         Time.timeScale = 1f;
         ActivateGameObject.activateInstance.ActivateObject(mainMenu);
         DeactivateGameObject.deactivateInstance.DeactivateObjectsInHome();
