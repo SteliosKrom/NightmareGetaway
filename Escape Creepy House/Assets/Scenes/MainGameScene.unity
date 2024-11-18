@@ -740,6 +740,7 @@ Transform:
   - {fileID: 1570067287}
   - {fileID: 209964138}
   - {fileID: 1347558209}
+  - {fileID: 834009010}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &49993544
@@ -987,6 +988,7 @@ MonoBehaviour:
   taskChange: {fileID: 1682272802}
   loadingPanel: {fileID: 1054444096}
   gameIntroPanel: {fileID: 765461142}
+  fogParticle: {fileID: 643868656}
   secondaryCamera: {fileID: 366118862}
   mainCamera: {fileID: 963194227}
   hoverAudioSource: {fileID: 1738958847}
@@ -22252,7 +22254,7 @@ GameObject:
   - component: {fileID: 366118865}
   - component: {fileID: 366118864}
   m_Layer: 7
-  m_Name: SecondaryCamera
+  m_Name: MenuCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27360,7 +27362,7 @@ ParticleSystemRenderer:
   m_MeshDistribution: 0
   m_SortMode: 0
   m_MinParticleSize: 2
-  m_MaxParticleSize: 5
+  m_MaxParticleSize: 3
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
@@ -32357,6 +32359,7 @@ MonoBehaviour:
   graphicsButton: {fileID: 51739751}
   dot: {fileID: 480800219}
   taskChange: {fileID: 1682272802}
+  fogParticle: {fileID: 0}
   mainCamera: {fileID: 963194227}
   secondaryCamera: {fileID: 366118862}
   mainMenuAudioSource: {fileID: 1977907783}
@@ -38824,7 +38827,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 10
-  m_Range: 30
+  m_Range: 20
   m_SpotAngle: 70
   m_InnerSpotAngle: 1
   m_CookieSize: 10
@@ -39224,6 +39227,50 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 822909983}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &834009009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 834009010}
+  - component: {fileID: 834009011}
+  m_Layer: 0
+  m_Name: ParticlesManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &834009010
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834009009}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 45205889}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &834009011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 834009009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1524182430aa6c4887ceb229052b194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &835177914
 GameObject:
   m_ObjectHideFlags: 0
@@ -41402,7 +41449,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
@@ -59285,6 +59332,8 @@ MonoBehaviour:
   framesText: {fileID: 211976830}
   antiAliasingDropdown: {fileID: 1824538828}
   qualityDropdown: {fileID: 889530493}
+  mainCamera: {fileID: 0}
+  secondaryCamera: {fileID: 0}
   myAudioMixer: {fileID: 24100000, guid: ab31cbc55cac0aa4db2a64e1763fe7cc, type: 2}
 --- !u!1 &1778526824
 GameObject:
@@ -88511,7 +88560,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 5
+  m_Intensity: 10
   m_Range: 11.86681
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208

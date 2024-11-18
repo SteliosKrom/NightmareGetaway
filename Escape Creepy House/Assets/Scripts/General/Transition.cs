@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Transition : MonoBehaviour
 {
@@ -13,7 +14,6 @@ public class Transition : MonoBehaviour
     [SerializeField] private GameObject theLegendKnightPanel;
     [SerializeField] private GameObject headsetPanel;
     [SerializeField] private GameObject seizurePanel;
-    [SerializeField] private GameObject gammaPanel; 
 
     [Header("AUDIO")]
     public AudioSource secondSplashAudioSource;
@@ -34,7 +34,7 @@ public class Transition : MonoBehaviour
         yield return new WaitForSeconds(splashScreenDelay);
         LoadSeizureWarningPanel();
         yield return new WaitForSeconds(splashScreenDelay);
-        LoadGammaPanel();
+        LoadGame();
     }
 
     public void LoadIntroPanel()
@@ -60,7 +60,6 @@ public class Transition : MonoBehaviour
         introPanel.SetActive(inactive);
         theLegendKnightPanel.SetActive(inactive);
         seizurePanel.SetActive(inactive);
-        gammaPanel.SetActive(inactive);
     }
 
     public void LoadSeizureWarningPanel()
@@ -71,12 +70,8 @@ public class Transition : MonoBehaviour
         seizurePanel.SetActive(active);
     }
 
-    public void LoadGammaPanel()
+    public void LoadGame()
     {
-        introPanel.SetActive(inactive);
-        headsetPanel.SetActive(inactive);
-        theLegendKnightPanel.SetActive(inactive);
-        seizurePanel.SetActive(inactive);
-        gammaPanel.SetActive(active);
+        SceneManager.LoadScene("MainGameScene");
     }
 }
