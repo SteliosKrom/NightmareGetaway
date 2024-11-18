@@ -15,7 +15,7 @@ public class MainMenuUIManager : MonoBehaviour
     private bool active = true;
     private bool inactive = false;
 
-    [Header("UI")]
+    [Header("USER INTERFACE")]
     [SerializeField] private TextMeshProUGUI loadingText;
     [SerializeField] private Button playButton;
     [SerializeField] private Button settingsButton;
@@ -50,7 +50,6 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private GameObject taskChange;
     [SerializeField] private GameObject loadingPanel;
     [SerializeField] private GameObject gameIntroPanel;
-    [SerializeField] private GameObject fogParticle;
 
     [Header("OTHER")]
     [SerializeField] private Camera secondaryCamera;
@@ -66,7 +65,6 @@ public class MainMenuUIManager : MonoBehaviour
 
     private void Start()
     {
-        ParticlesManager.instance.ActivateParticle(fogParticle);
         Time.timeScale = 1f;
         ActivateGameObject.activateInstance.ActivateObject(mainMenu);
         DeactivateGameObject.deactivateInstance.DeactivateObject(taskChange);
@@ -119,6 +117,7 @@ public class MainMenuUIManager : MonoBehaviour
             elapsedTime += Time.deltaTime;
             float progress = Mathf.Clamp01(elapsedTime / totalTime);
             loadingText.text = Mathf.RoundToInt(progress * 100) + "%";
+
             yield return new WaitForSeconds(loadingTextDelay);
         }
         loadingText.text = "100%";
@@ -126,7 +125,6 @@ public class MainMenuUIManager : MonoBehaviour
 
     public IEnumerator PlayButtonDelay()
     {
-        ParticlesManager.instance.DeactivateParticle(fogParticle);
         ActivateGameObject.activateInstance.ActivateObject(loadingPanel);
         AudioManager.instance.PauseSound(rainAudioSource);
         AudioManager.instance.StopSound(mainMenuAudioSource);

@@ -5,13 +5,13 @@ public class FootstepsSystem : MonoBehaviour
 {
     private bool active = true;
     private bool inactive = false;
-    private bool holdingDown = true;
 
     [Header("SCRIPT REFERENCES")]
     public Crouching crouch;
 
     [Header("AUDIO SOURCES")]
     [SerializeField] private AudioSource footstepsAudioSource;
+
 
     private void Update()
     {
