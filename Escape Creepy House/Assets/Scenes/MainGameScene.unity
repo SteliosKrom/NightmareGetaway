@@ -988,6 +988,7 @@ MonoBehaviour:
   taskChange: {fileID: 1682272802}
   loadingPanel: {fileID: 1054444096}
   gameIntroPanel: {fileID: 765461142}
+  fogParticle: {fileID: 643868656}
   secondaryCamera: {fileID: 366118862}
   mainCamera: {fileID: 963194227}
   hoverAudioSource: {fileID: 1738958847}
@@ -32358,6 +32359,7 @@ MonoBehaviour:
   graphicsButton: {fileID: 51739751}
   dot: {fileID: 480800219}
   taskChange: {fileID: 1682272802}
+  fogParticle: {fileID: 643868656}
   mainCamera: {fileID: 963194227}
   secondaryCamera: {fileID: 366118862}
   mainMenuAudioSource: {fileID: 1977907783}
@@ -38869,7 +38871,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 10
-  m_Range: 30
+  m_Range: 20
   m_SpotAngle: 70
   m_InnerSpotAngle: 1
   m_CookieSize: 10
@@ -41447,7 +41449,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
@@ -55821,8 +55823,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10.306907, y: 3.1348343, z: 2.1449018}
-  m_Center: {x: -1.1980596, y: -0.111400604, z: 1.1458573}
+  m_Size: {x: 12.858428, y: 3.1348343, z: 2.1449018}
+  m_Center: {x: -2.4738197, y: -0.111400604, z: 1.1458573}
 --- !u!1 &1350022805
 GameObject:
   m_ObjectHideFlags: 0
@@ -130507,8 +130509,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.022152483, y: 0.00141835, z: 0.03006083}
-  m_Center: {x: -0.0000000081490725, y: 0.000000014901161, z: -0.014208716}
+  m_Size: {x: 0.040041476, y: 0.00141835, z: 0.03006083}
+  m_Center: {x: 0.00021797998, y: 0.000000014889741, z: -0.014208716}
 --- !u!4 &8920657867562971746
 Transform:
   m_ObjectHideFlags: 0

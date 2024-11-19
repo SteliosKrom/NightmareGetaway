@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ParticlesManager : MonoBehaviour
@@ -12,6 +9,17 @@ public class ParticlesManager : MonoBehaviour
     private bool active = true;
     private bool inactive = false;
 
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Debug.Log("Instance of the object is null");
+        }
+    }
     public void ActivateObject(GameObject obj)
     {
         obj.SetActive(active);
