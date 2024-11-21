@@ -28,11 +28,11 @@ public class Transition : MonoBehaviour
     {
         LoadIntroPanel();
         yield return new WaitForSeconds(splashScreenDelay);
-        LoadTheLegendKnightPanel();
+        LoadSeizureWarningPanel();
         yield return new WaitForSeconds(splashScreenDelay);
         LoadHeadsetPanel();
         yield return new WaitForSeconds(splashScreenDelay);
-        LoadSeizureWarningPanel();
+        LoadTheLegendKnightPanel();
         yield return new WaitForSeconds(splashScreenDelay);
         LoadGame();
     }
