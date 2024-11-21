@@ -10,7 +10,7 @@ public class MainMenuUIManager : MonoBehaviour
     private readonly float movementRange = 0.5f;
     private readonly float playButtonDelay = 8f; //8
     private readonly float gameIntroDelay = 1f;  //18
-    private readonly float loadingTextDelay = 0.00380f;
+    private readonly float loadingTextDelay = 0.005f;
 
     private bool active = true;
     private bool inactive = false;

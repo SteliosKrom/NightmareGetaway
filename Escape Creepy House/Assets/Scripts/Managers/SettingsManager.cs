@@ -129,7 +129,7 @@ public class SettingsManager : MonoBehaviour
     public void MenuVolumeSlider()
     {
         float menuVolume = menuVolumeSlider.value;
-        menuValueText.text = menuVolume.ToString("");
+        menuValueText.text = menuVolume.ToString("0.0");
         myAudioMixer.SetFloat(menuVol, Mathf.Log10(menuVolume) * 20);
         PlayerPrefs.SetFloat("menuVolume", menuVolume);
     }
