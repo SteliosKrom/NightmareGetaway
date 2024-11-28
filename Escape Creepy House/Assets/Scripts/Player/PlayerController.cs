@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject foundRoomKey;
     [SerializeField] private GameObject foundMainDoorKey;
     [SerializeField] private GameObject foundGarageDoorKey;
+    [SerializeField] private GameObject notesButton;
 
     [Header("OTHER")]
     [SerializeField] CharacterController characterController;
@@ -128,6 +129,7 @@ public class PlayerController : MonoBehaviour
     public void PauseGame()
     {
         ActivateGameObject.activateInstance.ActivateObject(pauseMenu);
+        ActivateGameObject.activateInstance.ActivateObject(notesButton);
         DeactivateGameObject.deactivateInstance.DeactivateObjectsInPause();
         AudioManager.instance.PauseSoundInPause();
         CheckDoorStateOnPause();
@@ -138,6 +140,7 @@ public class PlayerController : MonoBehaviour
     public void ResumeGameFromGameSettings()
     {
         ActivateGameObject.activateInstance.ActivateObject(pauseMenu);
+        ActivateGameObject.activateInstance.ActivateObject(notesButton);
         DeactivateGameObject.deactivateInstance.DeactivateObject(settingsMenu);
         DeactivateGameObject.deactivateInstance.DeactivateObject(controlsMenu);
         DeactivateGameObject.deactivateInstance.DeactivateObject(dot);
@@ -158,6 +161,7 @@ public class PlayerController : MonoBehaviour
     {
         ActivateGameObject.activateInstance.ActivateObject(dot);
         ActivateGameObject.activateInstance.ActivateObject(taskChange);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(notesButton);
         DeactivateGameObject.deactivateInstance.DeactivateObject(pauseMenu);
         AudioManager.instance.UnpauseSoundInResumeGameFromPause();
 

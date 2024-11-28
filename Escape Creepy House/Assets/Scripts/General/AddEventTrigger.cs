@@ -24,6 +24,8 @@ public class AddEventTrigger : MonoBehaviour
     [SerializeField] private Button pauseSettingsButton;
     [SerializeField] private Button pauseHomeButton;
     [SerializeField] private Button pauseExitButton;
+    [SerializeField] private Button notesButton;
+    [SerializeField] private Button backToGameButtonFromNotes;
 
     [Header("AUDIO")]
     [SerializeField] private AudioSource hoverAudioSource;
@@ -38,6 +40,7 @@ public class AddEventTrigger : MonoBehaviour
         AttachButtonHoverEventsMenu(settingsButton);
         AttachButtonHoverEventsMenu(creditsButton);
         AttachButtonHoverEventsMenu(exitButton);
+        AttachButtonHoverEventsMenu(notesButton);
 
         AttachButtonHoverEventsSettings(audioCategoryButton);
         AttachButtonHoverEventsSettings(videoCategoryButton);
@@ -45,6 +48,7 @@ public class AddEventTrigger : MonoBehaviour
         AttachButtonHoverEventsSettings(controlsCategoryButon);
 
         AttachButtonHoverEventsOther(backToGameButton);
+        AttachButtonHoverEventsOther(backToGameButtonFromNotes);
         AttachButtonHoverEventsOther(backToMenuButtonSettings);
         AttachButtonHoverEventsOther(backToPreviousButton);
         AttachButtonHoverEventsOther(backToMenuButtonCredits);

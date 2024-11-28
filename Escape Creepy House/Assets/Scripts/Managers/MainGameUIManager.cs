@@ -45,6 +45,8 @@ public class MainGameUIManager : MonoBehaviour
     [SerializeField] private GameObject dot;
     [SerializeField] private GameObject taskChange;
     [SerializeField] private GameObject fogParticle;
+    [SerializeField] private GameObject notesPanel;
+    [SerializeField] private GameObject notesButton;
 
     [Header("OTHER")]
     [SerializeField] private Camera mainCamera;
@@ -64,6 +66,7 @@ public class MainGameUIManager : MonoBehaviour
     public void ResumeButton()
     {
         DeactivateGameObject.deactivateInstance.DeactivateObject(pauseMenu);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(notesButton);
         ActivateGameObject.activateInstance.ActivateObject(dot);
         ActivateGameObject.activateInstance.ActivateObject(taskChange);
 
@@ -78,6 +81,7 @@ public class MainGameUIManager : MonoBehaviour
     public void SettingsButton()
     {
         DeactivateGameObject.deactivateInstance.DeactivateObjectsInGameSettings();
+        DeactivateGameObject.deactivateInstance.DeactivateObject(notesButton);
         ActivateGameObject.activateInstance.ActivateObjectsInGameSettings();
         settingsButton.transform.DOScale(0.8f, 0.2f);
         RoundManager.instance.currentGameState = GameState.onSettingsGame;
@@ -89,6 +93,7 @@ public class MainGameUIManager : MonoBehaviour
         Time.timeScale = 1f;
         ActivateGameObject.activateInstance.ActivateObject(mainMenu);
         DeactivateGameObject.deactivateInstance.DeactivateObjectsInHome();
+        DeactivateGameObject.deactivateInstance.DeactivateObject(notesButton);
 
         AudioManager.instance.Play(mainMenuAudioSource);
         mainCamera.enabled = inactive;
@@ -105,12 +110,20 @@ public class MainGameUIManager : MonoBehaviour
         Application.Quit();
     }
 
+    public void NotesButton()
+    {
+        ActivateGameObject.activateInstance.ActivateObject(notesPanel);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(notesButton);
+    }
+
     public void BackToGameButton()
     {
         ActivateGameObject.activateInstance.ActivateObject(pauseMenu);
+        ActivateGameObject.activateInstance.ActivateObject(notesButton);
         DeactivateGameObject.deactivateInstance.DeactivateObject(settings);
         DeactivateGameObject.deactivateInstance.DeactivateObject(taskChange);
         DeactivateGameObject.deactivateInstance.DeactivateObject(controlsMenu);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(notesPanel);
         backToGameButton.transform.DOScale(3.2f, 0.2f);
         RoundManager.instance.currentGameState = GameState.pause;
     }

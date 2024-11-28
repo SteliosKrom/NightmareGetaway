@@ -15,7 +15,7 @@ public class MainMenuUIManager : MonoBehaviour
     private bool active = true;
     private bool inactive = false;
 
-    [Header("USER INTERFACE")]
+    [Header("UI")]
     [SerializeField] private TextMeshProUGUI loadingText;
     [SerializeField] private Button playButton;
     [SerializeField] private Button settingsButton;
@@ -51,6 +51,8 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private GameObject loadingPanel;
     [SerializeField] private GameObject gameIntroPanel;
     [SerializeField] private GameObject fogParticle;
+    [SerializeField] private GameObject notesPanel;
+    [SerializeField] private GameObject notesButton;
 
     [Header("OTHER")]
     [SerializeField] private Camera secondaryCamera;
@@ -70,6 +72,8 @@ public class MainMenuUIManager : MonoBehaviour
         Time.timeScale = 1f;
         ActivateGameObject.activateInstance.ActivateObject(mainMenu);
         DeactivateGameObject.deactivateInstance.DeactivateObject(taskChange);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(notesPanel);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(notesButton);
         secondaryCamera.enabled = active;
         mainCamera.enabled = inactive;
         initialPos = secondaryCamera.transform.position;
@@ -140,7 +144,6 @@ public class MainMenuUIManager : MonoBehaviour
         RoundManager.instance.currentGameState = GameState.inIntro;
 
         yield return new WaitForSeconds(gameIntroDelay);
-
         EndGameIntro();
     }
 
