@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MainGameUIManager : MonoBehaviour
 {
-    [Header("TYPES")] 
+    [Header("TYPES")]
     private bool active = true;
     private bool inactive = false;
 
@@ -114,6 +114,7 @@ public class MainGameUIManager : MonoBehaviour
     {
         ActivateGameObject.activateInstance.ActivateObject(notesPanel);
         DeactivateGameObject.deactivateInstance.DeactivateObject(notesButton);
+        notesButton.transform.DOScale(1f, 0.2f);
     }
 
     public void BackToGameButton()

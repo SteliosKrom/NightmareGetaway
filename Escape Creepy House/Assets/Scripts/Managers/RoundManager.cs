@@ -7,7 +7,8 @@ public enum GameState
     onSettingsMenu,
     onSettingsGame,
     onMainMenu,
-    inIntro
+    inIntro,
+    onNotesPanel
 }
 
 public enum EnvironmentState
