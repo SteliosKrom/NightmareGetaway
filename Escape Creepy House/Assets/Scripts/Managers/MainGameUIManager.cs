@@ -69,7 +69,6 @@ public class MainGameUIManager : MonoBehaviour
         DeactivateGameObject.deactivateInstance.DeactivateObject(notesButton);
         ActivateGameObject.activateInstance.ActivateObject(dot);
         ActivateGameObject.activateInstance.ActivateObject(taskChange);
-
         AudioManager.instance.UnpauseSoundInResumeGameFromPause();
 
         resumeButton.transform.DOScale(0.8f, 0.2f);
