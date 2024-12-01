@@ -5,7 +5,7 @@ public enum GameState
     playing,
     pause,
     onSettingsMenu,
-    onSettingsGame,
+    onSettings,
     onMainMenu,
     inIntro,
 }

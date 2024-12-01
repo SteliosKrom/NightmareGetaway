@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject foundMainDoorKey;
     [SerializeField] private GameObject foundGarageDoorKey;
     [SerializeField] private GameObject notesButton;
+    [SerializeField] private GameObject notesPanel;
 
     [Header("OTHER")]
     [SerializeField] CharacterController characterController;
@@ -110,22 +111,25 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && canPause)
         {
             canPause = inactive;
-            if (RoundManager.instance.currentGameState == GameState.playing)
+
+            switch (RoundManager.instance.currentGameState)
             {
-                PauseGame();
-            }
-            else if (RoundManager.instance.currentGameState == GameState.pause)
-            {
-                ResumeGameFromPauseMenu();
-            }
-            else if (RoundManager.instance.currentGameState == GameState.onSettingsGame)
-            {
-                ResumeGameFromGameSettings();
+                case GameState.playing:
+                    PauseGame();
+                    break;
+
+                case GameState.pause:
+                    ResumeGameFromPauseMenu();
+                    break;
+
+                case GameState.onSettings:
+                    ResumeGameFromGameSettings();
+                    ResumeGameFromNotesPanel();
+                    break;
             }
             StartCoroutine(HandleCooldown());
-        }   
+        }
     }
-
     public void PauseGame()
     {
         ActivateGameObject.activateInstance.ActivateObject(pauseMenu);
@@ -173,6 +177,17 @@ public class PlayerController : MonoBehaviour
         CheckDoorStateOnResume();
         Time.timeScale = 1f;
         RoundManager.instance.currentGameState = GameState.playing;
+    }
+
+    public void ResumeGameFromNotesPanel()
+    {
+        ActivateGameObject.activateInstance.ActivateObject(pauseMenu);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(notesPanel);
+
+        addEventTrigger.ExitHoverSoundEffectOther(backToGameButton.transform);
+
+        Time.timeScale = 0f;
+        RoundManager.instance.currentGameState = GameState.pause;
     }
 
     public void CheckDoorStateOnPause()
