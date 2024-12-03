@@ -83,7 +83,7 @@ public class MainGameUIManager : MonoBehaviour
         DeactivateGameObject.deactivateInstance.DeactivateObject(notesButton);
         ActivateGameObject.activateInstance.ActivateObjectsInGameSettings();
         settingsButton.transform.DOScale(0.8f, 0.2f);
-        RoundManager.instance.currentGameState = GameState.onSettings;
+        RoundManager.instance.currentGameState = GameState.onSettingsGame;
     }
 
     public void HomeButton()
@@ -114,7 +114,7 @@ public class MainGameUIManager : MonoBehaviour
         ActivateGameObject.activateInstance.ActivateObject(notesPanel);
         DeactivateGameObject.deactivateInstance.DeactivateObject(notesButton);
         notesButton.transform.DOScale(1f, 0.2f);
-        RoundManager.instance.currentGameState = GameState.onSettings;
+        RoundManager.instance.currentGameState = GameState.onSettingsGame;
     }
 
     public void BackToGameButton()

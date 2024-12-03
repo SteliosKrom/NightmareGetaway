@@ -82,7 +82,7 @@ public class Interactor : MonoBehaviour
     public void InputForFlashlight()
     {
         bool noPause = RoundManager.instance.currentGameState != GameState.pause;
-        bool noOnSettingsGame = RoundManager.instance.currentGameState != GameState.onSettings;
+        bool noOnSettingsGame = RoundManager.instance.currentGameState != GameState.onSettingsGame;
         bool noOnMainMenu = RoundManager.instance.currentGameState != GameState.onMainMenu;
 
         if (hasFlashlight && canToggle && Input.GetKeyDown(KeyCode.F))

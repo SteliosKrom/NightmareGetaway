@@ -1,8 +1,5 @@
 using UnityEngine;
 using TMPro;
-using System.Timers;
-using System;
-using UnityEngine.Rendering;
 
 public class FPScounter : MonoBehaviour
 {

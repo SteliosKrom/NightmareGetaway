@@ -122,7 +122,7 @@ public class PlayerController : MonoBehaviour
                     ResumeGameFromPauseMenu();
                     break;
 
-                case GameState.onSettings:
+                case GameState.onSettingsGame:
                     ResumeGameFromGameSettings();
                     ResumeGameFromNotesPanel();
                     break;
