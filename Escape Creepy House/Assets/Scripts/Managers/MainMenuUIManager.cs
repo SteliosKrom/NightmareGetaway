@@ -8,7 +8,7 @@ public class MainMenuUIManager : MonoBehaviour
 {
     private readonly float movementSpeed = 1f;
     private readonly float movementRange = 0.5f;
-    private readonly float playButtonDelay = 8f; //8
+    private readonly float playButtonDelay = 10f; //8
     private readonly float gameIntroDelay = 1f;  //18
     private readonly float loadingTextDelay = 0.0010f;
 
@@ -114,7 +114,7 @@ public class MainMenuUIManager : MonoBehaviour
 
     public IEnumerator LoadingTextDelay()
     {
-        loadingText.text = "0%";
+        loadingText.text = " 0%";
         float totalTime = 4f;
         float elapsedTime = 0f;
 
@@ -122,10 +122,10 @@ public class MainMenuUIManager : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             float progress = Mathf.Clamp01(elapsedTime / totalTime);
-            loadingText.text = Mathf.RoundToInt(progress * 100) + "%";
+            loadingText.text = " " + Mathf.RoundToInt(progress * 100) + "%";
             yield return new WaitForSeconds(loadingTextDelay);
         }
-        loadingText.text = "100%";
+        loadingText.text = " 100%";
     }
 
     public IEnumerator PlayButtonDelay()
