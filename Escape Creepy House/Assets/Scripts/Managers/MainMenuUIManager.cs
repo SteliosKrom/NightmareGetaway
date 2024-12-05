@@ -10,7 +10,7 @@ public class MainMenuUIManager : MonoBehaviour
     private readonly float movementRange = 0.5f;
     private readonly float playButtonDelay = 8f; //8
     private readonly float gameIntroDelay = 1f;  //18
-    private readonly float loadingTextDelay = 0.005f;
+    private readonly float loadingTextDelay = 0.0010f;
 
     private bool active = true;
     private bool inactive = false;
@@ -123,7 +123,6 @@ public class MainMenuUIManager : MonoBehaviour
             elapsedTime += Time.deltaTime;
             float progress = Mathf.Clamp01(elapsedTime / totalTime);
             loadingText.text = Mathf.RoundToInt(progress * 100) + "%";
-
             yield return new WaitForSeconds(loadingTextDelay);
         }
         loadingText.text = "100%";
@@ -144,6 +143,7 @@ public class MainMenuUIManager : MonoBehaviour
         RoundManager.instance.currentGameState = GameState.inIntro;
 
         yield return new WaitForSeconds(gameIntroDelay);
+
         EndGameIntro();
     }
 

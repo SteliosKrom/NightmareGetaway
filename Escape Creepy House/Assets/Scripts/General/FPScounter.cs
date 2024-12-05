@@ -17,6 +17,32 @@ public class FPScounter : MonoBehaviour
 
     public void CountFPS()
     {
+        switch (RoundManager.instance.currentGameState)
+        {
+            case GameState.playing:
+                FPSCalculation();
+                break;
+
+            case GameState.pause:
+                FPSCalculation();
+                break;
+
+            case GameState.onMainMenu:
+                FPSCalculation();
+                break;
+
+            case GameState.onSettingsMenu:
+                FPSCalculation();
+                break;
+
+            case GameState.onSettingsGame:
+                FPSCalculation();
+                break;
+        }
+    }
+
+    public void FPSCalculation()
+    {
         frameCount++;
         elapsedTime += Time.deltaTime;
 
