@@ -144,7 +144,7 @@ public class SettingsManager : MonoBehaviour
             screenWidth = Screen.currentResolution.width;
             screenHeight = Screen.currentResolution.height;
             Screen.fullScreen = fullscreenToggle.isOn;
-            Screen.SetResolution(screenWidth, screenHeight, FullScreenMode.ExclusiveFullScreen);
+            Screen.SetResolution(screenWidth, screenHeight, FullScreenMode.FullScreenWindow);
         }
         else
         {
