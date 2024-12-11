@@ -13,6 +13,7 @@ public class MainGameUIManager : MonoBehaviour
     [SerializeField] private PlayerRespawn playerRespawn;
     [SerializeField] private KidsRoomLight kidsRoomLight;
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private SettingsManager settingsManager;
 
     [Header("BUTTONS")]
     [SerializeField] private Button resumeButton;
@@ -88,19 +89,27 @@ public class MainGameUIManager : MonoBehaviour
 
     public void HomeButton()
     {
+        SceneManager.LoadScene("MainGameScene");
+
         ParticlesManager.instance.ActivateObject(fogParticle);
-        Time.timeScale = 1f;
+        AudioManager.instance.Play(mainMenuAudioSource);
+
         ActivateGameObject.activateInstance.ActivateObject(mainMenu);
         DeactivateGameObject.deactivateInstance.DeactivateObjectsInHome();
         DeactivateGameObject.deactivateInstance.DeactivateObject(notesButton);
 
-        AudioManager.instance.Play(mainMenuAudioSource);
         mainCamera.enabled = inactive;
         secondaryCamera.enabled = active;
+        kidsRoomLight.enabled = inactive;
         playerRespawn.Respawn();
 
-        SceneManager.LoadScene("MainGameScene");
-        kidsRoomLight.enabled = inactive;
+        int savedVSyncValue = PlayerPrefs.GetInt("VSyncValue");
+        bool savedVSyncToggle = (PlayerPrefs.GetInt("VSyncToggleValue") != 0);
+
+        QualitySettings.vSyncCount = savedVSyncValue;
+        settingsManager.vSyncToggle.isOn = savedVSyncToggle;
+
+        Time.timeScale = 1f;
         RoundManager.instance.currentGameState = GameState.onMainMenu;
     }
 
@@ -125,6 +134,7 @@ public class MainGameUIManager : MonoBehaviour
         DeactivateGameObject.deactivateInstance.DeactivateObject(taskChange);
         DeactivateGameObject.deactivateInstance.DeactivateObject(controlsMenu);
         DeactivateGameObject.deactivateInstance.DeactivateObject(notesPanel);
+
         backToGameButton.transform.DOScale(3.2f, 0.2f);
         RoundManager.instance.currentGameState = GameState.pause;
     }

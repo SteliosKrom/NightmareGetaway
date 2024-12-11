@@ -2,7 +2,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
-using UnityEngine.Rendering.PostProcessing;
 
 public class SettingsManager : MonoBehaviour
 {
@@ -19,8 +18,8 @@ public class SettingsManager : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private Toggle fullscreenToggle;
-    [SerializeField] private Toggle vSyncToggle;
     [SerializeField] private Toggle framesToggle;
+    public Toggle vSyncToggle;
 
     [SerializeField] private Slider masterVolumeSlider;
     [SerializeField] private Slider sfxVolumeSlider;
@@ -45,7 +44,6 @@ public class SettingsManager : MonoBehaviour
     {
         InitializeQualitySettings();
         InitializeFPS();
-        InitializeVsyncAndAA();
         InitialiazeFullscreen();
         InitializeResolution();
         LoadSettings();
@@ -77,19 +75,10 @@ public class SettingsManager : MonoBehaviour
         }
     }
 
-    public void InitializeVsyncAndAA()
-    {
-        QualitySettings.vSyncCount = 0;
-        vSyncToggle.isOn = inactive;
-
-        QualitySettings.antiAliasing = 0;
-        antiAliasingDropdown.value = 0;
-    }
-
     public void InitializeQualitySettings()
     {
-        QualitySettings.SetQualityLevel(4);
-        qualityDropdown.value = 4;
+        QualitySettings.SetQualityLevel(3);
+        qualityDropdown.value = 3;
     }
 
     public void LoadSettings()
@@ -160,11 +149,17 @@ public class SettingsManager : MonoBehaviour
     {
         if (vSyncToggle.isOn)
         {
+            vSyncToggle.isOn = active;
             QualitySettings.vSyncCount = 1;
+            PlayerPrefs.SetInt("VSyncValue", QualitySettings.vSyncCount);
+            PlayerPrefs.SetInt("VSyncToggleValue", (vSyncToggle.isOn ? 1 : 0));
         }
         else
         {
+            vSyncToggle.isOn = inactive;
             QualitySettings.vSyncCount = 0;
+            PlayerPrefs.SetInt("VSyncValue", QualitySettings.vSyncCount);
+            PlayerPrefs.SetInt("VSyncToggleValue", (vSyncToggle.isOn ? 1 : 0));
         }
     }
 

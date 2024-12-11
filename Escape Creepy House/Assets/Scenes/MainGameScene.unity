@@ -27021,7 +27021,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 1
+  m_IsOn: 0
 --- !u!1 &572615666
 GameObject:
   m_ObjectHideFlags: 0
@@ -32955,6 +32955,7 @@ MonoBehaviour:
   playerRespawn: {fileID: 379504549}
   kidsRoomLight: {fileID: 2587337042884884402}
   playerController: {fileID: 379504538}
+  settingsManager: {fileID: 1763060355}
   resumeButton: {fileID: 2084806073}
   settingsButton: {fileID: 152314458}
   homeButton: {fileID: 279216664}
@@ -60956,8 +60957,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayFPS: {fileID: 2025379987}
   fullscreenToggle: {fileID: 256264209}
-  vSyncToggle: {fileID: 570204446}
   framesToggle: {fileID: 860206743}
+  vSyncToggle: {fileID: 570204446}
   masterVolumeSlider: {fileID: 1049550051}
   sfxVolumeSlider: {fileID: 1647394370}
   menuVolumeSlider: {fileID: 891853887}
