@@ -71,12 +71,15 @@ public class MainMenuUIManager : MonoBehaviour
         ParticlesManager.instance.ActivateObject(fogParticle);
         Time.timeScale = 1f;
         ActivateGameObject.activateInstance.ActivateObject(mainMenu);
+
         DeactivateGameObject.deactivateInstance.DeactivateObject(taskChange);
         DeactivateGameObject.deactivateInstance.DeactivateObject(notesPanel);
         DeactivateGameObject.deactivateInstance.DeactivateObject(notesButton);
+
         secondaryCamera.enabled = active;
         mainCamera.enabled = inactive;
         initialPos = secondaryCamera.transform.position;
+
         AudioManager.instance.Play(mainMenuAudioSource);
         AudioManager.instance.StopSound(mainGameAudioSource);
         AudioManager.instance.Play(rainAudioSource);
