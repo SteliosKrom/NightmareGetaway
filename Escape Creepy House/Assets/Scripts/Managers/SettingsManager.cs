@@ -75,7 +75,6 @@ public class SettingsManager : MonoBehaviour
         float savedSensitivityYValue = PlayerPrefs.GetFloat("SensitivityY");
 
         QualitySettings.vSyncCount = savedVSyncCount;
-        Screen.fullScreen = savedFullscreenValue;
 
         qualityDropdown.value = savedQualitySettings;
         cameraRotate.SensX = savedSensitivityXValue;
@@ -121,7 +120,6 @@ public class SettingsManager : MonoBehaviour
             screenHeight = Screen.currentResolution.height;
             Screen.fullScreen = fullscreenToggle.isOn;
             Screen.SetResolution(screenWidth, screenHeight, FullScreenMode.FullScreenWindow);
-            PlayerPrefs.SetInt("ScreenValue", (Screen.fullScreen ? 1 : 0));
             PlayerPrefs.SetInt("ScreenToggleValue", (fullscreenToggle.isOn ? 1 : 0));
         }
         else
@@ -131,7 +129,6 @@ public class SettingsManager : MonoBehaviour
             screenHeight = 720;
             Screen.fullScreen = !fullscreenToggle.isOn;
             Screen.SetResolution(screenWidth, screenHeight, FullScreenMode.Windowed);
-            PlayerPrefs.SetInt("ScreenValue", (Screen.fullScreen ? 1 : 0));
             PlayerPrefs.SetInt("ScreenToggleValue", (fullscreenToggle.isOn ? 1 : 0));
         }
     }

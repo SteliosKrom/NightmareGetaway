@@ -60955,6 +60955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a342ed0b3d2c2804f9d2afb304857077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraRotate: {fileID: 963194230}
   displayFPS: {fileID: 2025379987}
   fullscreenToggle: {fileID: 256264209}
   framesToggle: {fileID: 860206743}
