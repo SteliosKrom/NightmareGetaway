@@ -13,13 +13,16 @@ public class SettingsManager : MonoBehaviour
     private bool active = true;
     private bool inactive = false;
 
+    [Header("SCRIPT REFERENCES")]
+    [SerializeField] private CameraRotate cameraRotate;
+
     [Header("GAME OBJECTS")]
     [SerializeField] private GameObject displayFPS;
 
     [Header("UI")]
     [SerializeField] private Toggle fullscreenToggle;
     [SerializeField] private Toggle framesToggle;
-    public Toggle vSyncToggle;
+    [SerializeField] private Toggle vSyncToggle;
 
     [SerializeField] private Slider masterVolumeSlider;
     [SerializeField] private Slider sfxVolumeSlider;
@@ -42,52 +45,15 @@ public class SettingsManager : MonoBehaviour
 
     private void Start()
     {
-        InitializeQualitySettings();
-        InitializeFPS();
-        InitialiazeFullscreen();
-        InitializeResolution();
         LoadSettings();
-    }
-
-    public void InitializeResolution()
-    {
-        int screenHeight = Screen.currentResolution.height;
-        int screenWidth = Screen.currentResolution.width;
-        Screen.SetResolution(screenWidth, screenHeight, Screen.fullScreen);
-    }
-
-    public void InitializeFPS()
-    {
-        framesToggle.isOn = inactive;
-        displayFPS.SetActive(inactive);
-    }
-
-    public void InitialiazeFullscreen()
-    {
-        if (Screen.fullScreen)
-        {
-            fullscreenToggle.isOn = active;
-        }
-        else
-        {
-            fullscreenToggle.isOn = inactive;
-            fullscreenToggle.isOn = inactive;
-        }
-    }
-
-    public void InitializeQualitySettings()
-    {
-        QualitySettings.SetQualityLevel(3);
-        qualityDropdown.value = 3;
     }
 
     public void LoadSettings()
     {
+        // Load Audio values
         float savedMasterVolume = PlayerPrefs.GetFloat("MasterVolume");
         float savedSfxVolume = PlayerPrefs.GetFloat("sfxVolume");
         float savedMenuVolume = PlayerPrefs.GetFloat("menuVolume");
-         
-        int savedQualitySettings = PlayerPrefs.GetInt("GraphicsQuality");
 
         myAudioMixer.SetFloat(masterVol, Mathf.Log10(savedMasterVolume) * 20);
         myAudioMixer.SetFloat(sfxVol, Mathf.Log10(savedSfxVolume) * 20);
@@ -96,7 +62,27 @@ public class SettingsManager : MonoBehaviour
         masterVolumeSlider.value = savedMasterVolume;
         sfxVolumeSlider.value = savedSfxVolume;
         menuVolumeSlider.value = savedMenuVolume;
+
+        // Load Video & Graphics values
+        int savedQualitySettings = PlayerPrefs.GetInt("GraphicsQuality");
+        int savedVSyncCount = PlayerPrefs.GetInt("VSyncCount");
+
+        bool savedVSyncToggle = (PlayerPrefs.GetInt("VSyncToggleValue") != 0);
+        bool savedFullscreenValue = (PlayerPrefs.GetInt("ScreenValue") != 0);
+        bool savedFullscreenToggle = (PlayerPrefs.GetInt("ScreenToggleValue") != 0);
+
+        float savedSensitivityXValue = PlayerPrefs.GetFloat("SensitivityX");
+        float savedSensitivityYValue = PlayerPrefs.GetFloat("SensitivityY");
+
+        QualitySettings.vSyncCount = savedVSyncCount;
+        Screen.fullScreen = savedFullscreenValue;
+
         qualityDropdown.value = savedQualitySettings;
+        cameraRotate.SensX = savedSensitivityXValue;
+        cameraRotate.SensY = savedSensitivityYValue;
+
+        fullscreenToggle.isOn = savedFullscreenToggle;
+        vSyncToggle.isOn = savedVSyncToggle;
     }
 
     public void MasterVolumeSlider()
@@ -130,17 +116,23 @@ public class SettingsManager : MonoBehaviour
 
         if (fullscreenToggle.isOn)
         {
+            fullscreenToggle.isOn = active;
             screenWidth = Screen.currentResolution.width;
             screenHeight = Screen.currentResolution.height;
             Screen.fullScreen = fullscreenToggle.isOn;
             Screen.SetResolution(screenWidth, screenHeight, FullScreenMode.FullScreenWindow);
+            PlayerPrefs.SetInt("ScreenValue", (Screen.fullScreen ? 1 : 0));
+            PlayerPrefs.SetInt("ScreenToggleValue", (fullscreenToggle.isOn ? 1 : 0));
         }
         else
         {
+            fullscreenToggle.isOn = inactive;
             screenWidth = 1280;
             screenHeight = 720;
             Screen.fullScreen = !fullscreenToggle.isOn;
             Screen.SetResolution(screenWidth, screenHeight, FullScreenMode.Windowed);
+            PlayerPrefs.SetInt("ScreenValue", (Screen.fullScreen ? 1 : 0));
+            PlayerPrefs.SetInt("ScreenToggleValue", (fullscreenToggle.isOn ? 1 : 0));
         }
     }
 
@@ -151,14 +143,14 @@ public class SettingsManager : MonoBehaviour
         {
             vSyncToggle.isOn = active;
             QualitySettings.vSyncCount = 1;
-            PlayerPrefs.SetInt("VSyncValue", QualitySettings.vSyncCount);
+            PlayerPrefs.SetInt("VSyncCount", QualitySettings.vSyncCount);
             PlayerPrefs.SetInt("VSyncToggleValue", (vSyncToggle.isOn ? 1 : 0));
         }
         else
         {
             vSyncToggle.isOn = inactive;
             QualitySettings.vSyncCount = 0;
-            PlayerPrefs.SetInt("VSyncValue", QualitySettings.vSyncCount);
+            PlayerPrefs.SetInt("VSyncCount", QualitySettings.vSyncCount);
             PlayerPrefs.SetInt("VSyncToggleValue", (vSyncToggle.isOn ? 1 : 0));
         }
     }

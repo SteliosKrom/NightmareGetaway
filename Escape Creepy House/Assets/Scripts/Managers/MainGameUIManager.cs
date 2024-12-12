@@ -103,12 +103,6 @@ public class MainGameUIManager : MonoBehaviour
         kidsRoomLight.enabled = inactive;
         playerRespawn.Respawn();
 
-        int savedVSyncValue = PlayerPrefs.GetInt("VSyncValue");
-        bool savedVSyncToggle = (PlayerPrefs.GetInt("VSyncToggleValue") != 0);
-
-        QualitySettings.vSyncCount = savedVSyncValue;
-        settingsManager.vSyncToggle.isOn = savedVSyncToggle;
-
         Time.timeScale = 1f;
         RoundManager.instance.currentGameState = GameState.onMainMenu;
     }

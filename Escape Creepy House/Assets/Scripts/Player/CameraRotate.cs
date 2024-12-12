@@ -31,6 +31,20 @@ public class CameraRotate : MonoBehaviour
     private float mainCameraYRotation;
     private float mainCameraXRotation;
 
+    // Properties below
+
+    public float SensX
+    {
+        get { return sensX; }
+        set { sensX = value; }
+    }
+
+    public float SensY
+    {
+        get { return sensY; }
+        set { sensY = value; }
+    }
+
     private void Start()
     {
         xRotation = 0f;
@@ -102,7 +116,8 @@ public class CameraRotate : MonoBehaviour
     {
         sensX = sensitivitySlider.value;
         sensY = sensitivitySlider.value;
-
         sensitivityValueText.text = sensitivitySlider.value.ToString("0.0");
+        PlayerPrefs.SetFloat("SensitivityX", sensX);
+        PlayerPrefs.SetFloat("SensitivityY", sensY);
     }
 }
