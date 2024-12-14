@@ -17,7 +17,6 @@ public class CameraRotate : MonoBehaviour
     [SerializeField] private float sensY;
     [SerializeField] private float sensX;
 
-    private float defaultSensitivity = 1f;
     private float spotlightRotationSpeed = 10f;
     private float mainCameraRotationSpeed = 4f;
 
@@ -52,7 +51,6 @@ public class CameraRotate : MonoBehaviour
         zRotation = 0f;
 
         transform.localRotation = Quaternion.Euler(xRotation, yRotation, zRotation);
-        sensitivitySlider.value = defaultSensitivity;
 
         spotlightYRotation = yRotation;
         spotlightXRotation = xRotation;
@@ -63,16 +61,7 @@ public class CameraRotate : MonoBehaviour
 
     private void Update()
     {
-        if (RoundManager.instance.currentGameState == GameState.onMainMenu || RoundManager.instance.currentGameState == GameState.onSettingsGame ||RoundManager.instance.currentGameState == GameState.onSettingsMenu || RoundManager.instance.currentGameState == GameState.pause)
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
+
 
         if (RoundManager.instance.currentGameState == GameState.playing)
         {
@@ -117,7 +106,7 @@ public class CameraRotate : MonoBehaviour
         sensX = sensitivitySlider.value;
         sensY = sensitivitySlider.value;
         sensitivityValueText.text = sensitivitySlider.value.ToString("0.0");
-        PlayerPrefs.SetFloat("SensitivityX", sensX);
-        PlayerPrefs.SetFloat("SensitivityY", sensY);
+        PlayerPrefs.SetFloat("SensX", sensX);
+        PlayerPrefs.SetFloat("SensY", sensY);
     }
 }

@@ -71,8 +71,8 @@ public class SettingsManager : MonoBehaviour
         bool savedFullscreenValue = (PlayerPrefs.GetInt("ScreenValue") != 0);
         bool savedFullscreenToggle = (PlayerPrefs.GetInt("ScreenToggleValue") != 0);
 
-        float savedSensitivityXValue = PlayerPrefs.GetFloat("SensitivityX");
-        float savedSensitivityYValue = PlayerPrefs.GetFloat("SensitivityY");
+        float savedSensitivityXValue = PlayerPrefs.GetFloat("SensX");
+        float savedSensitivityYValue = PlayerPrefs.GetFloat("SensY");
 
         QualitySettings.vSyncCount = savedVSyncCount;
 
