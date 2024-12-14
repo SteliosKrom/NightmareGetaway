@@ -138,6 +138,8 @@ public class MainMenuUIManager : MonoBehaviour
         AudioManager.instance.PauseSound(rainAudioSource);
         AudioManager.instance.StopSound(mainMenuAudioSource);
         StartCoroutine(LoadingTextDelay());
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = inactive;
 
         yield return new WaitForSeconds(playButtonDelay);
 

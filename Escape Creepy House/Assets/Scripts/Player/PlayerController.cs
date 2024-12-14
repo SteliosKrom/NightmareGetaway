@@ -111,33 +111,43 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && canPause)
         {
             canPause = inactive;
-
-            switch (RoundManager.instance.currentGameState)
-            {
-                case GameState.playing:
-                    PauseGame();
-                    break;
-
-                case GameState.pause:
-                    ResumeGameFromPauseMenu();
-                    break;
-
-                case GameState.onSettingsGame:
-                    ResumeGameFromGameSettings();
-                    ResumeGameFromNotesPanel();
-                    break;
-            }
+            UpdateCursorDisplay();
             StartCoroutine(HandleCooldown());
         }
     }
+
+    public void UpdateCursorDisplay()
+    {
+        switch (RoundManager.instance.currentGameState)
+        {
+            case GameState.playing:
+                PauseGame();
+                break;
+
+            case GameState.pause:
+                ResumeGameFromPauseMenu();
+                break;
+
+            case GameState.onSettingsGame:
+                ResumeGameFromGameSettings();
+                ResumeGameFromNotesPanel();
+                break;
+        }
+    }
+
     public void PauseGame()
     {
+
         ActivateGameObject.activateInstance.ActivateObject(pauseMenu);
         ActivateGameObject.activateInstance.ActivateObject(notesButton);
         DeactivateGameObject.deactivateInstance.DeactivateObjectsInPause();
         AudioManager.instance.PauseSoundInPause();
+
         CheckDoorStateOnPause();
         Time.timeScale = 0f;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = active;
         RoundManager.instance.currentGameState = GameState.pause;
     }
 
@@ -158,11 +168,15 @@ public class PlayerController : MonoBehaviour
         addEventTrigger.ExitHoverSoundEffectOther(backToPreviousButton.transform);
 
         Time.timeScale = 0f;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = active;
         RoundManager.instance.currentGameState = GameState.pause;
     }
 
     public void ResumeGameFromPauseMenu()
     {
+
         ActivateGameObject.activateInstance.ActivateObject(dot);
         ActivateGameObject.activateInstance.ActivateObject(taskChange);
         DeactivateGameObject.deactivateInstance.DeactivateObject(notesButton);
@@ -176,6 +190,9 @@ public class PlayerController : MonoBehaviour
 
         CheckDoorStateOnResume();
         Time.timeScale = 1f;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = inactive;
         RoundManager.instance.currentGameState = GameState.playing;
     }
 
@@ -187,6 +204,9 @@ public class PlayerController : MonoBehaviour
         addEventTrigger.ExitHoverSoundEffectOther(backToGameButton.transform);
 
         Time.timeScale = 0f;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = active;
         RoundManager.instance.currentGameState = GameState.pause;
     }
 
