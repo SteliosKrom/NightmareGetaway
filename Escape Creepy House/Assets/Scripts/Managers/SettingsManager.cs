@@ -51,7 +51,7 @@ public class SettingsManager : MonoBehaviour
     public void LoadSettings()
     {
         // Load Audio values
-        float savedMasterVolume = PlayerPrefs.GetFloat("MasterVolume");
+        float savedMasterVolume = PlayerPrefs.GetFloat("masterVolume");
         float savedSfxVolume = PlayerPrefs.GetFloat("sfxVolume");
         float savedMenuVolume = PlayerPrefs.GetFloat("menuVolume");
 
@@ -71,14 +71,11 @@ public class SettingsManager : MonoBehaviour
         bool savedFullscreenValue = (PlayerPrefs.GetInt("ScreenValue") != 0);
         bool savedFullscreenToggle = (PlayerPrefs.GetInt("ScreenToggleValue") != 0);
 
-        float savedSensitivityXValue = PlayerPrefs.GetFloat("SensX");
-        float savedSensitivityYValue = PlayerPrefs.GetFloat("SensY");
+        float savedSensitivityValue = PlayerPrefs.GetFloat("SensValue");
 
         QualitySettings.vSyncCount = savedVSyncCount;
-
         qualityDropdown.value = savedQualitySettings;
-        cameraRotate.SensX = savedSensitivityXValue;
-        cameraRotate.SensY = savedSensitivityYValue;
+        cameraRotate.SensitivitySlider = savedSensitivityValue;
 
         fullscreenToggle.isOn = savedFullscreenToggle;
         vSyncToggle.isOn = savedVSyncToggle;
@@ -89,7 +86,7 @@ public class SettingsManager : MonoBehaviour
         float masterVolume = masterVolumeSlider.value;
         masterValueText.text = masterVolume.ToString("0.0");
         myAudioMixer.SetFloat(masterVol, Mathf.Log10(masterVolume) * 20);
-        PlayerPrefs.SetFloat("MasterVolume", masterVolume);
+        PlayerPrefs.SetFloat("masterVolume", masterVolume);
     }
 
     public void SFXVolumeSlider()

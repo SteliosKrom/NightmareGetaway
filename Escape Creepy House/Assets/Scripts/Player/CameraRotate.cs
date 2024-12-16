@@ -14,8 +14,6 @@ public class CameraRotate : MonoBehaviour
     [Header("TYPES")]
     [SerializeField] private float minX;
     [SerializeField] private float maxX;
-    [SerializeField] private float sensY;
-    [SerializeField] private float sensX;
 
     private float spotlightRotationSpeed = 10f;
     private float mainCameraRotationSpeed = 4f;
@@ -32,16 +30,10 @@ public class CameraRotate : MonoBehaviour
 
     // Properties below
 
-    public float SensX
+    public float SensitivitySlider
     {
-        get { return sensX; }
-        set { sensX = value; }
-    }
-
-    public float SensY
-    {
-        get { return sensY; }
-        set { sensY = value; }
+        get { return sensitivitySlider.value; }
+        set { sensitivitySlider.value = value; }
     }
 
     private void Start()
@@ -56,15 +48,15 @@ public class CameraRotate : MonoBehaviour
         spotlightXRotation = xRotation;
 
         mainCameraYRotation = yRotation;
-        mainCameraXRotation = xRotation; 
+        mainCameraXRotation = xRotation;
     }
 
     private void Update()
     {
         if (RoundManager.instance.currentGameState == GameState.playing)
         {
-            float mouseY = Input.GetAxis("Mouse Y") * sensY;
-            float mouseX = Input.GetAxis("Mouse X") * sensX;
+            float mouseY = Input.GetAxis("Mouse Y") * sensitivitySlider.value;
+            float mouseX = Input.GetAxis("Mouse X") * sensitivitySlider.value;
 
             xRotation -= mouseY;
             yRotation += mouseX;
@@ -101,10 +93,8 @@ public class CameraRotate : MonoBehaviour
 
     public void OnSensitivityChanged()
     {
-        sensX = sensitivitySlider.value;
-        sensY = sensitivitySlider.value;
         sensitivityValueText.text = sensitivitySlider.value.ToString("0.0");
-        PlayerPrefs.SetFloat("SensX", sensX);
-        PlayerPrefs.SetFloat("SensY", sensY);
+        PlayerPrefs.SetFloat("SensValue", sensitivitySlider.value);
+        PlayerPrefs.Save();
     }
 }
