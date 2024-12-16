@@ -75,6 +75,9 @@ public class MainGameUIManager : MonoBehaviour
         resumeButton.transform.DOScale(0.8f, 0.2f);
         playerController.CheckDoorStateOnResume();
         Time.timeScale = 1.0f;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = inactive;
         RoundManager.instance.currentGameState = GameState.playing;
     }
 

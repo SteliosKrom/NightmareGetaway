@@ -137,7 +137,6 @@ public class PlayerController : MonoBehaviour
 
     public void PauseGame()
     {
-
         ActivateGameObject.activateInstance.ActivateObject(pauseMenu);
         ActivateGameObject.activateInstance.ActivateObject(notesButton);
         DeactivateGameObject.deactivateInstance.DeactivateObjectsInPause();
@@ -168,15 +167,11 @@ public class PlayerController : MonoBehaviour
         addEventTrigger.ExitHoverSoundEffectOther(backToPreviousButton.transform);
 
         Time.timeScale = 0f;
-
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = active;
         RoundManager.instance.currentGameState = GameState.pause;
     }
 
     public void ResumeGameFromPauseMenu()
     {
-
         ActivateGameObject.activateInstance.ActivateObject(dot);
         ActivateGameObject.activateInstance.ActivateObject(taskChange);
         DeactivateGameObject.deactivateInstance.DeactivateObject(notesButton);
@@ -204,9 +199,6 @@ public class PlayerController : MonoBehaviour
         addEventTrigger.ExitHoverSoundEffectOther(backToGameButton.transform);
 
         Time.timeScale = 0f;
-
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = active;
         RoundManager.instance.currentGameState = GameState.pause;
     }
 

@@ -21,6 +21,8 @@ public class Transition : MonoBehaviour
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = inactive;
         StartCoroutine(ShowSplashScreens());
     }
 
@@ -72,6 +74,8 @@ public class Transition : MonoBehaviour
 
     public void LoadGame()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = active;
         SceneManager.LoadScene("MainGameScene");
     }
 }
