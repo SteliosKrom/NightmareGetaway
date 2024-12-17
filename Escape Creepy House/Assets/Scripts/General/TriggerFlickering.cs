@@ -4,7 +4,6 @@ public class TriggerFlickering : MonoBehaviour
 {
     [Header("TYPES")]
     private bool inactive = false;
-    private bool active = true;
 
     [Header("SCRIPT REFERENCES")]
     [SerializeField] private FlashlightFlickering flashlightFlickering;

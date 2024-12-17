@@ -45,7 +45,6 @@ public class MainGameUIManager : MonoBehaviour
     [SerializeField] private GameObject graphicsButton;
     [SerializeField] private GameObject dot;
     [SerializeField] private GameObject taskChange;
-    [SerializeField] private GameObject fogParticle;
     [SerializeField] private GameObject notesPanel;
     [SerializeField] private GameObject notesButton;
 
@@ -94,9 +93,7 @@ public class MainGameUIManager : MonoBehaviour
     {
         SceneManager.LoadScene("MainGameScene");
 
-        ParticlesManager.instance.ActivateObject(fogParticle);
         AudioManager.instance.Play(mainMenuAudioSource);
-
         ActivateGameObject.activateInstance.ActivateObject(mainMenu);
         DeactivateGameObject.deactivateInstance.DeactivateObjectsInHome();
         DeactivateGameObject.deactivateInstance.DeactivateObject(notesButton);

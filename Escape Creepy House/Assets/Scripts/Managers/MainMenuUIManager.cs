@@ -50,9 +50,9 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private GameObject taskChange;
     [SerializeField] private GameObject loadingPanel;
     [SerializeField] private GameObject gameIntroPanel;
-    [SerializeField] private GameObject fogParticle;
     [SerializeField] private GameObject notesPanel;
     [SerializeField] private GameObject notesButton;
+    [SerializeField] private GameObject outdoorLight;
 
     [Header("OTHER")]
     [SerializeField] private Camera secondaryCamera;
@@ -68,7 +68,6 @@ public class MainMenuUIManager : MonoBehaviour
 
     private void Start()
     {
-        ParticlesManager.instance.ActivateObject(fogParticle);
         Time.timeScale = 1f;
         ActivateGameObject.activateInstance.ActivateObject(mainMenu);
 
@@ -133,13 +132,13 @@ public class MainMenuUIManager : MonoBehaviour
 
     public IEnumerator PlayButtonDelay()
     {
-        ParticlesManager.instance.DeactivateObject(fogParticle);
         ActivateGameObject.activateInstance.ActivateObject(loadingPanel);
         AudioManager.instance.PauseSound(rainAudioSource);
         AudioManager.instance.StopSound(mainMenuAudioSource);
         StartCoroutine(LoadingTextDelay());
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = inactive;
+        outdoorLight.SetActive(inactive);
 
         yield return new WaitForSeconds(playButtonDelay);
 

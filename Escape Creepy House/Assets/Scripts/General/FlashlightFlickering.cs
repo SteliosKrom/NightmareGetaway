@@ -6,7 +6,6 @@ public class FlashlightFlickering : MonoBehaviour
     [Header("TYPES")]
     private float flickerDuration = 5.0f;
     private float flickerDelay = 0.1f;
-    private bool active = true;
 
     [Header("SCRIPT REFERENCES")]
     [SerializeField] private Flashlight flashlight;

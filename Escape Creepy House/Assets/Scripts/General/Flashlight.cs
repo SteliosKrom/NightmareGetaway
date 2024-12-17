@@ -3,7 +3,6 @@ using UnityEngine;
 public class Flashlight : MonoBehaviour
 {
     public bool isOn = false;
-    private bool active = true;
 
     [Header("AUDIO")]
     [SerializeField] private AudioSource flashlightAudioSource;
