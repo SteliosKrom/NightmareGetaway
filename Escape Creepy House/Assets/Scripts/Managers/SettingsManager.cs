@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class SettingsManager : MonoBehaviour
@@ -66,18 +67,22 @@ public class SettingsManager : MonoBehaviour
         // Load Video & Graphics values
         int savedQualitySettings = PlayerPrefs.GetInt("GraphicsQuality");
         int savedVSyncCount = PlayerPrefs.GetInt("VSyncCount");
+        int savedAntiAlias = PlayerPrefs.GetInt("AntiAlias");
 
         bool savedVSyncToggle = (PlayerPrefs.GetInt("VSyncToggleValue") != 0);
         bool savedFullscreenValue = (PlayerPrefs.GetInt("ScreenValue") != 0);
         bool savedFullscreenToggle = (PlayerPrefs.GetInt("ScreenToggleValue") != 0);
+        bool savedFramesToggle = (PlayerPrefs.GetInt("Frames") != 0);
 
         float savedSensitivityValue = PlayerPrefs.GetFloat("SensValue");
 
         QualitySettings.vSyncCount = savedVSyncCount;
         qualityDropdown.value = savedQualitySettings;
+        antiAliasingDropdown.value = savedAntiAlias;
         cameraRotate.SensitivitySlider = savedSensitivityValue;
 
         fullscreenToggle.isOn = savedFullscreenToggle;
+        framesToggle.isOn = savedFramesToggle;
         vSyncToggle.isOn = savedVSyncToggle;
     }
 
@@ -117,7 +122,6 @@ public class SettingsManager : MonoBehaviour
             screenHeight = Screen.currentResolution.height;
             Screen.fullScreen = fullscreenToggle.isOn;
             Screen.SetResolution(screenWidth, screenHeight, FullScreenMode.FullScreenWindow);
-            PlayerPrefs.SetInt("ScreenToggleValue", (fullscreenToggle.isOn ? 1 : 0));
         }
         else
         {
@@ -126,8 +130,8 @@ public class SettingsManager : MonoBehaviour
             screenHeight = 720;
             Screen.fullScreen = !fullscreenToggle.isOn;
             Screen.SetResolution(screenWidth, screenHeight, FullScreenMode.Windowed);
-            PlayerPrefs.SetInt("ScreenToggleValue", (fullscreenToggle.isOn ? 1 : 0));
         }
+        PlayerPrefs.SetInt("ScreenToggleValue", (fullscreenToggle.isOn ? 1 : 0));
     }
 
 
@@ -137,16 +141,14 @@ public class SettingsManager : MonoBehaviour
         {
             vSyncToggle.isOn = active;
             QualitySettings.vSyncCount = 1;
-            PlayerPrefs.SetInt("VSyncCount", QualitySettings.vSyncCount);
-            PlayerPrefs.SetInt("VSyncToggleValue", (vSyncToggle.isOn ? 1 : 0));
         }
         else
         {
             vSyncToggle.isOn = inactive;
             QualitySettings.vSyncCount = 0;
-            PlayerPrefs.SetInt("VSyncCount", QualitySettings.vSyncCount);
-            PlayerPrefs.SetInt("VSyncToggleValue", (vSyncToggle.isOn ? 1 : 0));
         }
+        PlayerPrefs.SetInt("VSyncCount", QualitySettings.vSyncCount);
+        PlayerPrefs.SetInt("VSyncToggleValue", (vSyncToggle.isOn ? 1 : 0));
     }
 
     public void SetAntiAliasing()
@@ -167,6 +169,7 @@ public class SettingsManager : MonoBehaviour
         {
             QualitySettings.antiAliasing = 8;
         }
+        PlayerPrefs.SetInt("AntiAlias", QualitySettings.antiAliasing);
     }
 
     public void SetGraphicsQuality()
@@ -186,5 +189,6 @@ public class SettingsManager : MonoBehaviour
         {
             displayFPS.SetActive(active);
         }
+        PlayerPrefs.SetInt("Frames", (framesToggle.isOn ? 1 : 0));
     }
 }
