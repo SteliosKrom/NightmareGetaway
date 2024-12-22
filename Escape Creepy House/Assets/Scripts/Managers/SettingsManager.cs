@@ -176,6 +176,35 @@ public class SettingsManager : MonoBehaviour
     {
         int qualityValue = qualityDropdown.value;
         QualitySettings.SetQualityLevel(qualityValue);
+
+        switch (qualityValue)
+        {
+            case 0:
+                QualitySettings.antiAliasing = 0;
+                antiAliasingDropdown.value = 0;
+                break;
+            case 1:
+                QualitySettings.antiAliasing = 2;
+                antiAliasingDropdown.value = 1;
+                break;
+            case 2:
+                QualitySettings.antiAliasing = 4;
+                antiAliasingDropdown.value = 2;
+                break;
+            case 3:
+                QualitySettings.antiAliasing = 4;
+                antiAliasingDropdown.value = 2;
+                break;
+            case 4:
+                QualitySettings.antiAliasing = 8;
+                antiAliasingDropdown.value = 3;
+                break;
+            case 5:
+                QualitySettings.antiAliasing = 8;
+                antiAliasingDropdown.value = 3;
+                break;
+        }
+
         PlayerPrefs.SetInt("GraphicsQuality", qualityValue);
     }
 
