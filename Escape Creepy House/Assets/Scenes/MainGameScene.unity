@@ -15551,7 +15551,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -635, y: -394}
+  m_AnchoredPosition: {x: -648, y: -320}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &212901344
@@ -15574,7 +15574,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '*Update Graphics Drivers for optimal performance.'
+  m_text: 5. Update Graphics Drivers for optimal performance.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: edb53545bb8563b4097facf77e2d27c6, type: 2}
   m_sharedMaterial: {fileID: -6683649535832547845, guid: edb53545bb8563b4097facf77e2d27c6, type: 2}
@@ -22411,14 +22411,14 @@ RectTransform:
   m_GameObject: {fileID: 355214819}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 729535656}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1120, y: -95}
+  m_AnchoredPosition: {x: -1106, y: -21}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &355214821
@@ -22441,8 +22441,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '*Anti-alias: "none" (performance), "2x" (low-cost), "4x" (balanced), "8x"
-    (best visuals, lower FPS).'
+  m_text: '3. set AA: "none" (performance), "2x"(low-cost), "4x"(balanced), "8x"(lower
+    fps).'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: edb53545bb8563b4097facf77e2d27c6, type: 2}
   m_sharedMaterial: {fileID: -6683649535832547845, guid: edb53545bb8563b4097facf77e2d27c6, type: 2}
@@ -25400,7 +25400,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -633.8, y: -545.2}
+  m_AnchoredPosition: {x: -646.8, y: -471.2}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &415925569
@@ -25423,7 +25423,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '*Close Background Apps to free system resources.'
+  m_text: 6. Close Background Apps to free system resources.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: edb53545bb8563b4097facf77e2d27c6, type: 2}
   m_sharedMaterial: {fileID: -6683649535832547845, guid: edb53545bb8563b4097facf77e2d27c6, type: 2}
@@ -37326,7 +37326,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
@@ -37414,7 +37414,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -609, y: 208}
+  m_AnchoredPosition: {x: -622, y: 282}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &971562315
@@ -37437,7 +37437,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '*Lower Graphics Quality to improve performance.'
+  m_text: 1. Lower Graphics Quality to improve performance.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: edb53545bb8563b4097facf77e2d27c6, type: 2}
   m_sharedMaterial: {fileID: -6683649535832547845, guid: edb53545bb8563b4097facf77e2d27c6, type: 2}
@@ -55037,7 +55037,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -509, y: -245}
+  m_AnchoredPosition: {x: -522, y: -171}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1689424682
@@ -55060,7 +55060,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '*Enable V-Sync to fix screen tearing.'
+  m_text: 4. Enable V-Sync to fix screen tearing.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: edb53545bb8563b4097facf77e2d27c6, type: 2}
   m_sharedMaterial: {fileID: -6683649535832547845, guid: edb53545bb8563b4097facf77e2d27c6, type: 2}
@@ -55317,7 +55317,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -662, y: 55}
+  m_AnchoredPosition: {x: -675, y: 129}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1699738897
@@ -55340,7 +55340,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '*Change anti-aliasing to "none" for better performance.'
+  m_text: 2. Change anti-aliasing to "none" for better performance.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: edb53545bb8563b4097facf77e2d27c6, type: 2}
   m_sharedMaterial: {fileID: -6683649535832547845, guid: edb53545bb8563b4097facf77e2d27c6, type: 2}
@@ -63771,7 +63771,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -765, y: 515}
+  m_AnchoredPosition: {x: -739, y: 591}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2026195246

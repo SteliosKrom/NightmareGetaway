@@ -66,8 +66,9 @@ public class SettingsManager : MonoBehaviour
 
         // Load Video & Graphics values
         int savedQualitySettings = PlayerPrefs.GetInt("GraphicsQuality");
-        int savedVSyncCount = PlayerPrefs.GetInt("VSyncCount");
-        int savedAntiAlias = PlayerPrefs.GetInt("AntiAlias");
+        int savedVSyncSettings = PlayerPrefs.GetInt("VSyncCount");
+        int savedAntiAliasSettings = PlayerPrefs.GetInt("AntiAlias");
+        int savedAntiAliasValue = PlayerPrefs.GetInt("AntiAliasValue");
 
         bool savedVSyncToggle = (PlayerPrefs.GetInt("VSyncToggleValue") != 0);
         bool savedFullscreenValue = (PlayerPrefs.GetInt("ScreenValue") != 0);
@@ -76,9 +77,12 @@ public class SettingsManager : MonoBehaviour
 
         float savedSensitivityValue = PlayerPrefs.GetFloat("SensValue");
 
-        QualitySettings.vSyncCount = savedVSyncCount;
+        QualitySettings.vSyncCount = savedVSyncSettings;
+        QualitySettings.antiAliasing = savedAntiAliasSettings;
+
         qualityDropdown.value = savedQualitySettings;
-        antiAliasingDropdown.value = savedAntiAlias;
+        antiAliasingDropdown.value = savedAntiAliasValue;
+
         cameraRotate.SensitivitySlider = savedSensitivityValue;
 
         fullscreenToggle.isOn = savedFullscreenToggle;
@@ -170,6 +174,7 @@ public class SettingsManager : MonoBehaviour
             QualitySettings.antiAliasing = 8;
         }
         PlayerPrefs.SetInt("AntiAlias", QualitySettings.antiAliasing);
+        PlayerPrefs.SetInt("AntiAliasValue", antiAliasingDropdown.value);
     }
 
     public void SetGraphicsQuality()
@@ -205,6 +210,8 @@ public class SettingsManager : MonoBehaviour
                 break;
         }
 
+        PlayerPrefs.SetInt("AntiAlias", QualitySettings.antiAliasing);
+        PlayerPrefs.SetInt("AntiAliasValue", antiAliasingDropdown.value);
         PlayerPrefs.SetInt("GraphicsQuality", qualityValue);
     }
 
