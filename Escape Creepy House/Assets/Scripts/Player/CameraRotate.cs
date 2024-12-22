@@ -15,8 +15,8 @@ public class CameraRotate : MonoBehaviour
     [SerializeField] private float minX;
     [SerializeField] private float maxX;
 
-    private float spotlightRotationSpeed = 10f;
-    private float mainCameraRotationSpeed = 4f;
+    private float spotlightRotationSpeed = 4f;
+    private float mainCameraRotationSpeed = 10f;
 
     private float xRotation;
     private float yRotation;
