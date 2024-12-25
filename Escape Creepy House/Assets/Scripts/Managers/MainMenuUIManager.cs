@@ -53,6 +53,7 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private GameObject notesPanel;
     [SerializeField] private GameObject notesButton;
     [SerializeField] private GameObject outdoorLight;
+    [SerializeField] private GameObject window;
 
     [Header("OTHER")]
     [SerializeField] private Camera secondaryCamera;
@@ -74,6 +75,7 @@ public class MainMenuUIManager : MonoBehaviour
         DeactivateGameObject.deactivateInstance.DeactivateObject(taskChange);
         DeactivateGameObject.deactivateInstance.DeactivateObject(notesPanel);
         DeactivateGameObject.deactivateInstance.DeactivateObject(notesButton);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(window);
 
         secondaryCamera.enabled = active;
         mainCamera.enabled = inactive;
@@ -133,6 +135,8 @@ public class MainMenuUIManager : MonoBehaviour
     public IEnumerator PlayButtonDelay()
     {
         ActivateGameObject.activateInstance.ActivateObject(loadingPanel);
+        ActivateGameObject.activateInstance.ActivateObject(window);
+
         AudioManager.instance.PauseSound(rainAudioSource);
         AudioManager.instance.StopSound(mainMenuAudioSource);
         StartCoroutine(LoadingTextDelay());
