@@ -992,6 +992,7 @@ MonoBehaviour:
   notesButton: {fileID: 1316226552}
   outdoorLight: {fileID: 1301081948858220774}
   window: {fileID: 1368767178995524598}
+  creature: {fileID: 1309487307694391}
   secondaryCamera: {fileID: 366118862}
   mainCamera: {fileID: 963194227}
   hoverAudioSource: {fileID: 1738958847}
@@ -20924,15 +20925,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400144, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 78.36
+      value: 80.14
       objectReference: {fileID: 0}
     - target: {fileID: 400144, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 42.61
+      value: 41.48
       objectReference: {fileID: 0}
     - target: {fileID: 400144, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 72.44
+      value: 71.99
       objectReference: {fileID: 0}
     - target: {fileID: 400144, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -20960,6 +20961,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400144, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1826eb2a0257f164c9e59e6ec411a991, type: 2}
+    - target: {fileID: 9500000, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
+      propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -24958,18 +24967,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ce1a59c4a25f2d4580628f4d0e0fde2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAnimator: {fileID: 370128361}
-  characterController: {fileID: 379504545}
-  playerController: {fileID: 379504538}
-  crouchingAudioSourceStart: {fileID: 0}
-  crouchingAudioSourceEnd: {fileID: 0}
-  crouchingAudioClipStart: {fileID: 8300000, guid: 9b910aa79c186384cb17f28fad642b0a, type: 3}
-  crouchingAudioClipEnd: {fileID: 8300000, guid: aac7fe48a39af6e46a2d48c5d2655976, type: 3}
-  isCrouching: 0
-  canCrouch: 1
-  crouchingDelay: 1
-  originalHeight: 0
-  crouchHeight: 1
 --- !u!1 &395587739
 GameObject:
   m_ObjectHideFlags: 0
@@ -70678,8 +70675,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1400595, y: 0.6733246, z: 1.9786533}
-  m_Center: {x: -0.07002942, y: 0.6810074, z: 0.3275199}
+  m_Size: {x: 1.1400595, y: 0.6733246, z: 1.5767975}
+  m_Center: {x: -0.07002942, y: 0.6810074, z: 0.3085963}
 --- !u!4 &4520318770962952
 Transform:
   m_ObjectHideFlags: 0

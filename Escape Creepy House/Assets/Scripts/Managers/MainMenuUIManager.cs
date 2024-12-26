@@ -54,6 +54,7 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private GameObject notesButton;
     [SerializeField] private GameObject outdoorLight;
     [SerializeField] private GameObject window;
+    [SerializeField] private GameObject creature;
 
     [Header("OTHER")]
     [SerializeField] private Camera secondaryCamera;
@@ -136,6 +137,8 @@ public class MainMenuUIManager : MonoBehaviour
     {
         ActivateGameObject.activateInstance.ActivateObject(loadingPanel);
         ActivateGameObject.activateInstance.ActivateObject(window);
+
+        DeactivateGameObject.deactivateInstance.DeactivateObject(creature);
 
         AudioManager.instance.PauseSound(rainAudioSource);
         AudioManager.instance.StopSound(mainMenuAudioSource);
