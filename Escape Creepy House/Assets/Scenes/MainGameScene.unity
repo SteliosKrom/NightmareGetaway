@@ -20909,7 +20909,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100144, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400144, guid: ce65fa103f0e84b4289374b2a4bf93f8, type: 3}
       propertyPath: m_LocalScale.x
@@ -25523,8 +25523,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 5667486173312248149, guid: ab31cbc55cac0aa4db2a64e1763fe7cc, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 662bb273dc9331f43a66774d49e5806a, type: 3}
-  m_Resource: {fileID: 8300000, guid: 662bb273dc9331f43a66774d49e5806a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 71dfda32b989bb44c8b9c16e9cb762eb, type: 3}
+  m_Resource: {fileID: 8300000, guid: 71dfda32b989bb44c8b9c16e9cb762eb, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.05
   m_Pitch: 1
@@ -25570,7 +25570,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.5
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -58097,7 +58097,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 05bf408ab187046f0b9183c91b9a485d, type: 3}
   m_Resource: {fileID: 8300000, guid: 05bf408ab187046f0b9183c91b9a485d, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -79698,7 +79698,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 18
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1369502614545038271
 GameObject:
   m_ObjectHideFlags: 0

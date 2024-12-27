@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
+using UnityEngine.Rendering.UI;
 
 public class MainMenuUIManager : MonoBehaviour
 {
@@ -72,6 +73,7 @@ public class MainMenuUIManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         ActivateGameObject.activateInstance.ActivateObject(mainMenu);
+        ActivateGameObject.activateInstance.ActivateObject(creature);
 
         DeactivateGameObject.deactivateInstance.DeactivateObject(taskChange);
         DeactivateGameObject.deactivateInstance.DeactivateObject(notesPanel);
