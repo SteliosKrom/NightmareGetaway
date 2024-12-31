@@ -8,7 +8,7 @@ public class TaskManager : MonoBehaviour
     private string[] tasks =
     {
         "Find the room key!",
-        "Go to the kitchen and drink water!",
+        "Head to the kitchen and drink water!",
         "Search for food in the kitchen!",
         "Find your mobile phone and call for help!",
         "Search for the main door key!",
