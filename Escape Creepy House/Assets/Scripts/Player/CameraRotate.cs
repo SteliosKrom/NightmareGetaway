@@ -10,12 +10,13 @@ public class CameraRotate : MonoBehaviour
     [SerializeField] private TextMeshProUGUI sensitivityValueText;
     [SerializeField] private Transform spotlight;
     [SerializeField] private Transform mainCamera;
+    [SerializeField] private Transform flashlight;
 
     [Header("TYPES")]
     [SerializeField] private float minX;
     [SerializeField] private float maxX;
 
-    private float spotlightRotationSpeed = 4f;
+    private float spotlightRotationSpeed = 10f;
     private float mainCameraRotationSpeed = 10f;
 
     private float xRotation;
@@ -66,19 +67,19 @@ public class CameraRotate : MonoBehaviour
 
             playerRotate.RotatePlayer(yRotation);
 
-            UpdateSpotlightRotation(yRotation, xRotation);
-            UpdateCameraRotation(yRotation, xRotation);
+            UpdateSpotlightRotation(xRotation, yRotation);
+            UpdateCameraRotation(xRotation, yRotation);
         }
     }
 
-    public void UpdateSpotlightRotation(float newYRotation, float newXRotation)
+    public void UpdateSpotlightRotation(float newXRotation, float newYRotation)
     {
         spotlightYRotation = Mathf.Lerp(spotlightYRotation, newYRotation, spotlightRotationSpeed * Time.deltaTime);
         spotlightXRotation = Mathf.Lerp(spotlightXRotation, newXRotation, spotlightRotationSpeed * Time.deltaTime);
         spotlight.rotation = Quaternion.Euler(spotlightXRotation, spotlightYRotation, zRotation);
     }
 
-    public void UpdateCameraRotation(float newYRotation, float newXRotation)
+    public void UpdateCameraRotation(float newXRotation, float newYRotation)
     {
         mainCameraYRotation = Mathf.Lerp(mainCameraYRotation, newYRotation, mainCameraRotationSpeed * Time.deltaTime);
         mainCameraXRotation = Mathf.Lerp(mainCameraXRotation, newXRotation, mainCameraRotationSpeed * Time.deltaTime);
