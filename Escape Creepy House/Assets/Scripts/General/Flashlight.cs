@@ -4,6 +4,9 @@ public class Flashlight : MonoBehaviour
 {
     public bool isOn = false;
 
+    [Header("GAME OBJECTS")]
+    [SerializeField] private GameObject flashlight;
+
     [Header("AUDIO")]
     [SerializeField] private AudioSource flashlightAudioSource;
     [SerializeField] private AudioClip flashlightAudioClip;
@@ -15,6 +18,7 @@ public class Flashlight : MonoBehaviour
     {
         newLight = GetComponent<Light>();
         newLight.enabled = false;
+        DeactivateGameObject.deactivateInstance.DeactivateObject(flashlight);
     }
 
     public void Toggle()

@@ -27,7 +27,7 @@ public class CameraRotate : MonoBehaviour
     private float spotlightXRotation;
 
     private float mainCameraYRotation;
-    private float mainCameraXRotation;
+    private float mainCameraXRotation; 
 
     // Properties below
 
@@ -74,15 +74,15 @@ public class CameraRotate : MonoBehaviour
 
     public void UpdateSpotlightRotation(float newXRotation, float newYRotation)
     {
-        spotlightYRotation = Mathf.Lerp(spotlightYRotation, newYRotation, spotlightRotationSpeed * Time.deltaTime);
-        spotlightXRotation = Mathf.Lerp(spotlightXRotation, newXRotation, spotlightRotationSpeed * Time.deltaTime);
+        spotlightYRotation = Mathf.Lerp(spotlightYRotation, newYRotation, spotlightRotationSpeed);
+        spotlightXRotation = Mathf.Lerp(spotlightXRotation, newXRotation, spotlightRotationSpeed);
         spotlight.rotation = Quaternion.Euler(spotlightXRotation, spotlightYRotation, zRotation);
     }
 
     public void UpdateCameraRotation(float newXRotation, float newYRotation)
     {
-        mainCameraYRotation = Mathf.Lerp(mainCameraYRotation, newYRotation, mainCameraRotationSpeed * Time.deltaTime);
-        mainCameraXRotation = Mathf.Lerp(mainCameraXRotation, newXRotation, mainCameraRotationSpeed * Time.deltaTime);
+        mainCameraYRotation = Mathf.Lerp(mainCameraYRotation, newYRotation, mainCameraRotationSpeed);
+        mainCameraXRotation = Mathf.Lerp(mainCameraXRotation, newXRotation, mainCameraRotationSpeed);
         mainCamera.rotation = Quaternion.Euler(mainCameraXRotation, mainCameraYRotation, zRotation);
     }
 

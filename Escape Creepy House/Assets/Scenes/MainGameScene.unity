@@ -21234,13 +21234,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274344834}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.012799144, y: 0.70699096, z: 0.70699096, w: 0.012799144}
-  m_LocalPosition: {x: 0.177, y: 1.112999, z: 0.269}
-  m_LocalScale: {x: 0.6666665, y: 0.66666657, z: 0.6666666}
+  m_LocalRotation: {x: -0.03233616, y: 0.7227011, z: 0.6897139, w: 0.030860245}
+  m_LocalPosition: {x: 0.598, y: -0.353, z: 0.751}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 792361154}
-  m_Father: {fileID: 379148921}
+  m_Father: {fileID: 963194228}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 177.926}
 --- !u!95 &274344836
 Animator:
@@ -23750,7 +23750,6 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 274344835}
   - {fileID: 379148813}
   - {fileID: 1466452039}
   - {fileID: 822909984}
@@ -24901,6 +24900,7 @@ MonoBehaviour:
   food: {fileID: 9182066677834488770}
   phone: {fileID: 5560905292141916821}
   doorBoxCollider: {fileID: 1752394301}
+  _flashlight: {fileID: 274344834}
   fridgeCollider: {fileID: 8386798335186017357}
   doorColliders:
   - {fileID: 1874971635}
@@ -34670,6 +34670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOn: 0
+  flashlight: {fileID: 274344834}
   flashlightAudioSource: {fileID: 687202150}
   flashlightAudioClip: {fileID: 8300000, guid: da5cf87e1f085734aade1b2d5b02d382, type: 3}
   newLight: {fileID: 792361155}
@@ -37082,7 +37083,8 @@ Transform:
   m_LocalPosition: {x: -17.448, y: 80.612, z: -13.452}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 274344835}
   m_Father: {fileID: 1499798710}
   m_LocalEulerAnglesHint: {x: 2.676, y: 3.05, z: 0}
 --- !u!114 &963194229

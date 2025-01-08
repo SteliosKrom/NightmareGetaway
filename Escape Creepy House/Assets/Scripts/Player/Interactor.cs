@@ -47,6 +47,7 @@ public class Interactor : MonoBehaviour
     [SerializeField] private GameObject food;
     [SerializeField] private GameObject phone;
     [SerializeField] private GameObject doorBoxCollider;
+    [SerializeField] private GameObject _flashlight;
 
     [Header("OTHER")]
     [SerializeField] private BoxCollider fridgeCollider;
@@ -60,13 +61,15 @@ public class Interactor : MonoBehaviour
         DisplayUI(foundFlashlight, foundRoomKey, foundMainDoorKey, foundGarageKey, lockedUI, foundPhone, interactionUI);
     }
 
-    public void DisplayItems(GameObject roomKey, GameObject mainDoorKey, GameObject food, GameObject phone, GameObject waterGlass, GameObject garageKey)
+    public void DisplayItems(GameObject roomKey, GameObject mainDoorKey, GameObject food, 
+        GameObject phone, GameObject waterGlass, GameObject garageKey)
     {
         ActivateGameObject.activateInstance.ActivateObject(roomKey);
         DeactivateGameObject.deactivateInstance.DeactivateItems();
     }
 
-    public void DisplayUI(GameObject foundFlashlight, GameObject foundRoomKey, GameObject foundMainDoorKey, GameObject foundGarageKey, GameObject lockedUI, GameObject foundPhone, GameObject interactionUI)
+    public void DisplayUI(GameObject foundFlashlight, GameObject foundRoomKey, GameObject foundMainDoorKey, GameObject foundGarageKey, 
+        GameObject lockedUI, GameObject foundPhone, GameObject interactionUI)
     {
         DeactivateGameObject.deactivateInstance.DeactivateDisplayUI();
     }
@@ -173,6 +176,7 @@ public class Interactor : MonoBehaviour
         else if (interactable.gameObject.CompareTag("Flashlight"))
         {
             hasFlashlight = active;
+            ActivateGameObject.activateInstance.ActivateObject(_flashlight);
             StartCoroutine(DisplayFoundFlashlightText());
         }
         else if (interactable.gameObject.CompareTag("GarageKey"))
