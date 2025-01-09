@@ -21218,7 +21218,7 @@ GameObject:
   - component: {fileID: 274344835}
   - component: {fileID: 274344838}
   - component: {fileID: 274344837}
-  - component: {fileID: 274344836}
+  - component: {fileID: 274344839}
   m_Layer: 0
   m_Name: Flashlight
   m_TagString: Untagged
@@ -21234,36 +21234,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274344834}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.03233616, y: 0.7227011, z: 0.6897139, w: 0.030860245}
-  m_LocalPosition: {x: 0.263, y: -0.216, z: 0.871}
+  m_LocalRotation: {x: 0, y: 0.72342515, z: 0.6904028, w: 0}
+  m_LocalPosition: {x: 0.259, y: -0.221, z: 0.525}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 792361154}
   m_Father: {fileID: 963194228}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 177.926}
---- !u!95 &274344836
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 274344834}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 9a3b57f0a1248be419dd9c4d54748512, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_LocalEulerAnglesHint: {x: -92.676, y: 0, z: 180}
 --- !u!23 &274344837
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -21320,6 +21298,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274344834}
   m_Mesh: {fileID: 4300000, guid: 9a3b57f0a1248be419dd9c4d54748512, type: 3}
+--- !u!95 &274344839
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274344834}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9df71bf0852a12248aa6edc40a88691b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &279216662
 GameObject:
   m_ObjectHideFlags: 0
@@ -24920,6 +24920,7 @@ MonoBehaviour:
   - {fileID: 8206306265329168610}
   - {fileID: 8781165241623197788}
   interactionSource: {fileID: 963194228}
+  flashlightAnimator: {fileID: 274344839}
 --- !u!114 &379504551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37051,7 +37052,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.6
+  near clip plane: 0.1
   far clip plane: 1000
   field of view: 55
   orthographic: 0
@@ -37080,7 +37081,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.016145993, y: -0.7221652, z: 0.016866283, w: 0.69132644}
-  m_LocalPosition: {x: -17.448, y: 80.612, z: -13.452}
+  m_LocalPosition: {x: -17.448, y: 81.06, z: -13.436}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -85816,7 +85817,7 @@ Light:
   serializedVersion: 11
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 5
+  m_Intensity: 10
   m_Range: 11.86681
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208

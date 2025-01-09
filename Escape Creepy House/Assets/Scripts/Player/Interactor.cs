@@ -54,6 +54,7 @@ public class Interactor : MonoBehaviour
     [SerializeField] private BoxCollider[] doorColliders;
     [SerializeField] private BoxCollider[] doorHandleColliders;
     [SerializeField] private Transform interactionSource;
+    [SerializeField] private Animator flashlightAnimator;
 
     private void Start()
     {
@@ -68,7 +69,7 @@ public class Interactor : MonoBehaviour
         DeactivateGameObject.deactivateInstance.DeactivateItems();
     }
 
-    public void DisplayUI(GameObject foundFlashlight, GameObject foundRoomKey, GameObject foundMainDoorKey, GameObject foundGarageKey, 
+    public void DisplayUI(GameObject foundFlashlight, GameObject foundRoomKey, GameObject foundMainDoorKey, GameObject foundGarageKey,
         GameObject lockedUI, GameObject foundPhone, GameObject interactionUI)
     {
         DeactivateGameObject.deactivateInstance.DeactivateDisplayUI();
@@ -112,6 +113,7 @@ public class Interactor : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && noPause)
         {
             TryInteract();
+            DeactivateGameObject.deactivateInstance.DeactivateObject(_flashlight);
         }
     }
 
