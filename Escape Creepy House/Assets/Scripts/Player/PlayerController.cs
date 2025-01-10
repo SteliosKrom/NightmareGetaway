@@ -108,7 +108,7 @@ public class PlayerController : MonoBehaviour
 
     public void PauseAndResume()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && canPause)
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P) && canPause)
         {
             canPause = inactive;
             UpdateCursorDisplay();
