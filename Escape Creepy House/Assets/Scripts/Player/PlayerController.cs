@@ -158,6 +158,7 @@ public class PlayerController : MonoBehaviour
         DeactivateGameObject.deactivateInstance.DeactivateObject(controlsMenu);
         DeactivateGameObject.deactivateInstance.DeactivateObject(dot);
         DeactivateGameObject.deactivateInstance.DeactivateObject(taskChange);
+        DeactivateGameObject.deactivateInstance.DeactivateObjectsInBackToMenu();
 
         addEventTrigger.ExitHoverSoundEffectSettings(audioCategoryButton.transform);
         addEventTrigger.ExitHoverSoundEffectSettings(videoCategoryButton.transform);
