@@ -113,7 +113,6 @@ public class Interactor : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && noPause)
         {
             TryInteract();
-            DeactivateGameObject.deactivateInstance.DeactivateObject(_flashlight);
         }
     }
 
