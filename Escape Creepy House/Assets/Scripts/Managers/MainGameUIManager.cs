@@ -29,24 +29,32 @@ public class MainGameUIManager : MonoBehaviour
 
     [Header("GAME OBJECTS")]
     [SerializeField] private GameObject settings;
+    [SerializeField] private GameObject backToGame;
+    [SerializeField] private GameObject backToPrevious;
+
     [SerializeField] private GameObject settingsMenu;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject mainMenu;
     [SerializeField] private GameObject backToMenu;
-    [SerializeField] private GameObject backToGame;
-    [SerializeField] private GameObject backToPrevious;
     [SerializeField] private GameObject audioMenu;
     [SerializeField] private GameObject videoMenu;
     [SerializeField] private GameObject graphicsMenu;
     [SerializeField] private GameObject controlsMenu;
+
     [SerializeField] private GameObject audioButton;
     [SerializeField] private GameObject videoButton;
     [SerializeField] private GameObject controlsButton;
     [SerializeField] private GameObject graphicsButton;
+    [SerializeField] private GameObject notesButton;
+
+    [SerializeField] private GameObject audioTitle;
+    [SerializeField] private GameObject displayTitle;
+    [SerializeField] private GameObject controlsTitle;
+    [SerializeField] private GameObject graphicsTitle;
+
     [SerializeField] private GameObject dot;
     [SerializeField] private GameObject taskChange;
     [SerializeField] private GameObject notesPanel;
-    [SerializeField] private GameObject notesButton;
 
     [Header("OTHER")]
     [SerializeField] private Camera mainCamera;
@@ -128,6 +136,7 @@ public class MainGameUIManager : MonoBehaviour
         DeactivateGameObject.deactivateInstance.DeactivateObject(taskChange);
         DeactivateGameObject.deactivateInstance.DeactivateObject(controlsMenu);
         DeactivateGameObject.deactivateInstance.DeactivateObject(notesPanel);
+        DeactivateGameObject.deactivateInstance.DeactivateObjectsInBackToMenu();
 
         backToGameButton.transform.DOScale(3.2f, 0.2f);
         RoundManager.instance.currentGameState = GameState.pause;

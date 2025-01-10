@@ -28392,12 +28392,12 @@ MonoBehaviour:
   backToPreviousButton: {fileID: 130000393}
   backToGameButton: {fileID: 111163248}
   settings: {fileID: 1405398497}
+  backToGame: {fileID: 111163246}
+  backToPrevious: {fileID: 130000391}
   settingsMenu: {fileID: 1437513877}
   pauseMenu: {fileID: 182284034}
   mainMenu: {fileID: 1873982493}
   backToMenu: {fileID: 1172468360}
-  backToGame: {fileID: 111163246}
-  backToPrevious: {fileID: 130000391}
   audioMenu: {fileID: 1089141708}
   videoMenu: {fileID: 186060432}
   graphicsMenu: {fileID: 1829775377}
@@ -28406,10 +28406,14 @@ MonoBehaviour:
   videoButton: {fileID: 1309515949}
   controlsButton: {fileID: 358003503}
   graphicsButton: {fileID: 51739751}
+  notesButton: {fileID: 1316226552}
+  audioTitle: {fileID: 1678645071}
+  displayTitle: {fileID: 730107242}
+  controlsTitle: {fileID: 154351172}
+  graphicsTitle: {fileID: 413034560}
   dot: {fileID: 480800219}
   taskChange: {fileID: 1682272802}
   notesPanel: {fileID: 729535655}
-  notesButton: {fileID: 1316226552}
   mainCamera: {fileID: 963194227}
   secondaryCamera: {fileID: 366118862}
   mainMenuAudioSource: {fileID: 1977907783}
@@ -37052,6 +37056,10 @@ MonoBehaviour:
   - {fileID: 316657281}
   - {fileID: 1869765278}
   - {fileID: 1682272802}
+  - {fileID: 1678645071}
+  - {fileID: 730107242}
+  - {fileID: 413034560}
+  - {fileID: 154351172}
   objects4:
   - {fileID: 1873982493}
   - {fileID: 1089141708}
