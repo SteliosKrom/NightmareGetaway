@@ -9,7 +9,6 @@ public class Interactor : MonoBehaviour
     private float lockedUIDelay = 1f;
     private float doorCollidersDelay = 1f;
     private float toggleDelay = 1f;
-    private float equipDelay = 1f;
 
     private bool active = true;
     private bool inactive = false;
@@ -120,18 +119,10 @@ public class Interactor : MonoBehaviour
                 else
                 {
                     flashlightAnimator.SetBool("Equipped", active);
-                    isEquipped = active;
+                    isEquipped = active; 
                 }
             }
-            StartCoroutine(EquipDelay());
         }
-    }
-
-    private IEnumerator EquipDelay()
-    {
-        isEquipped = inactive;
-        yield return new WaitForSeconds(equipDelay);
-        isEquipped = active;
     }
 
     private IEnumerator ToggleDelay()
@@ -213,6 +204,7 @@ public class Interactor : MonoBehaviour
         {
             hasFlashlight = active;
             isEquipped = active;
+            flashlightAnimator.SetBool("Equipped", active);
             ActivateGameObject.activateInstance.ActivateObject(_flashlight);
             StartCoroutine(DisplayFoundFlashlightText());
         }
