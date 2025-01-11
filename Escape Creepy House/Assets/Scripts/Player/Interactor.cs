@@ -9,12 +9,14 @@ public class Interactor : MonoBehaviour
     private float lockedUIDelay = 1f;
     private float doorCollidersDelay = 1f;
     private float toggleDelay = 1f;
+    private float equipDelay = 1f;
 
-    private bool isLocked = false;
-    public bool canToggle = true;
     private bool active = true;
     private bool inactive = false;
+    private bool isLocked = false;
+    public bool canToggle = true;
     public bool hasFlashlight = true;
+    public bool isEquipped = true;
 
     [Header("SCRIPT REFERENCES")]
     [SerializeField] private TaskManager taskManager;
@@ -69,8 +71,8 @@ public class Interactor : MonoBehaviour
         DeactivateGameObject.deactivateInstance.DeactivateItems();
     }
 
-    public void DisplayUI(GameObject foundFlashlight, GameObject foundRoomKey, GameObject foundMainDoorKey, GameObject foundGarageKey,
-        GameObject lockedUI, GameObject foundPhone, GameObject interactionUI)
+    public void DisplayUI(GameObject foundFlashlight, GameObject foundRoomKey, GameObject foundMainDoorKey,
+        GameObject foundGarageKey, GameObject lockedUI, GameObject foundPhone, GameObject interactionUI)
     {
         DeactivateGameObject.deactivateInstance.DeactivateDisplayUI();
     }
@@ -81,6 +83,7 @@ public class Interactor : MonoBehaviour
         DebugRaycast();
         InputForInteraction();
         InputForFlashlight();
+        InputForEquipFlashlight();
     }
 
     public void InputForFlashlight()
@@ -89,7 +92,7 @@ public class Interactor : MonoBehaviour
         bool noOnSettingsGame = RoundManager.instance.currentGameState != GameState.onSettingsGame;
         bool noOnMainMenu = RoundManager.instance.currentGameState != GameState.onMainMenu;
 
-        if (hasFlashlight && canToggle && Input.GetKeyDown(KeyCode.F))
+        if (hasFlashlight && canToggle && Input.GetKeyDown(KeyCode.F)) 
         {
             if (noPause && noOnSettingsGame && noOnMainMenu)
             {
@@ -97,6 +100,38 @@ public class Interactor : MonoBehaviour
             }
             StartCoroutine(ToggleDelay());
         }
+    }
+
+    public void InputForEquipFlashlight()
+    {
+        bool noPause = RoundManager.instance.currentGameState != GameState.pause;
+        bool noOnSettingsGame = RoundManager.instance.currentGameState != GameState.onSettingsGame;
+        bool noOnMainMenu = RoundManager.instance.currentGameState != GameState.onMainMenu;
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (noPause && noOnSettingsGame && noOnMainMenu)
+            {
+                if (isEquipped)
+                {
+                    flashlightAnimator.SetBool("Equipped", inactive);
+                    isEquipped = inactive;
+                }
+                else
+                {
+                    flashlightAnimator.SetBool("Equipped", active);
+                    isEquipped = active;
+                }
+            }
+            StartCoroutine(EquipDelay());
+        }
+    }
+
+    private IEnumerator EquipDelay()
+    {
+        isEquipped = inactive;
+        yield return new WaitForSeconds(equipDelay);
+        isEquipped = active;
     }
 
     private IEnumerator ToggleDelay()
@@ -177,6 +212,7 @@ public class Interactor : MonoBehaviour
         else if (interactable.gameObject.CompareTag("Flashlight"))
         {
             hasFlashlight = active;
+            isEquipped = active;
             ActivateGameObject.activateInstance.ActivateObject(_flashlight);
             StartCoroutine(DisplayFoundFlashlightText());
         }
