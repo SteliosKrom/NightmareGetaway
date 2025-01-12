@@ -91,7 +91,7 @@ public class Interactor : MonoBehaviour
         bool noOnSettingsGame = RoundManager.instance.currentGameState != GameState.onSettingsGame;
         bool noOnMainMenu = RoundManager.instance.currentGameState != GameState.onMainMenu;
 
-        if (hasFlashlight && canToggle && Input.GetKeyDown(KeyCode.F)) 
+        if (hasFlashlight && canToggle && isEquipped && Input.GetKeyDown(KeyCode.F)) 
         {
             if (noPause && noOnSettingsGame && noOnMainMenu)
             {
@@ -113,13 +113,18 @@ public class Interactor : MonoBehaviour
             {
                 if (isEquipped)
                 {
+                    flashlightAnimator.SetBool("Unequipped", active);
                     flashlightAnimator.SetBool("Equipped", inactive);
                     isEquipped = inactive;
+                    flashlight.newLight.enabled = inactive;
                 }
                 else
                 {
                     flashlightAnimator.SetBool("Equipped", active);
-                    isEquipped = active; 
+                    flashlightAnimator.SetBool("Unequipped", inactive);
+                    isEquipped = active;
+                    flashlight.newLight.enabled = inactive;
+                    flashlight.isOn = inactive;
                 }
             }
         }
@@ -204,7 +209,6 @@ public class Interactor : MonoBehaviour
         {
             hasFlashlight = active;
             isEquipped = active;
-            flashlightAnimator.SetBool("Equipped", active);
             ActivateGameObject.activateInstance.ActivateObject(_flashlight);
             StartCoroutine(DisplayFoundFlashlightText());
         }

@@ -12,7 +12,7 @@ public class Flashlight : MonoBehaviour
     [SerializeField] private AudioClip flashlightAudioClip;
 
     [Header("OTHER")]
-    [SerializeField] private Light newLight;
+    public Light newLight;
 
     private void Start()
     {

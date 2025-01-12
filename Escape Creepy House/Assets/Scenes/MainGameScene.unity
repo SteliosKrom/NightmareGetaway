@@ -21587,7 +21587,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 9df71bf0852a12248aa6edc40a88691b, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 2
+  m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -25067,6 +25067,7 @@ MonoBehaviour:
   - {fileID: 8781165241623197788}
   interactionSource: {fileID: 963194228}
   flashlightAnimator: {fileID: 274344839}
+  spotlight: {fileID: 792361155}
 --- !u!114 &379504551
 MonoBehaviour:
   m_ObjectHideFlags: 0
