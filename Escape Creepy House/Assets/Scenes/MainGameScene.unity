@@ -25067,7 +25067,6 @@ MonoBehaviour:
   - {fileID: 8781165241623197788}
   interactionSource: {fileID: 963194228}
   flashlightAnimator: {fileID: 274344839}
-  spotlight: {fileID: 792361155}
 --- !u!114 &379504551
 MonoBehaviour:
   m_ObjectHideFlags: 0
