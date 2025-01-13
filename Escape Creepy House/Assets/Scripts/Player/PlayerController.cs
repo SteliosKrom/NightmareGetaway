@@ -62,6 +62,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioSource lockedAudioSource;
     [SerializeField] private AudioSource clockAudioSource;
     [SerializeField] private AudioSource ceilingFanAudioSource;
+    [SerializeField] private AudioSource flickeringAudioSource;
+    [SerializeField] private AudioClip flickeringAudioClip;
 
     private void Start()
     {
@@ -141,6 +143,7 @@ public class PlayerController : MonoBehaviour
         ActivateGameObject.activateInstance.ActivateObject(notesButton);
         DeactivateGameObject.deactivateInstance.DeactivateObjectsInPause();
         AudioManager.instance.PauseSoundInPause();
+        AudioManager.instance.PauseSound(flickeringAudioSource);
 
         CheckDoorStateOnPause();
         Time.timeScale = 0f;
@@ -178,6 +181,7 @@ public class PlayerController : MonoBehaviour
         DeactivateGameObject.deactivateInstance.DeactivateObject(notesButton);
         DeactivateGameObject.deactivateInstance.DeactivateObject(pauseMenu);
         AudioManager.instance.UnpauseSoundInResumeGameFromPause();
+        AudioManager.instance.UnPauseSound(flickeringAudioSource);
 
         addEventTrigger.ExitHoverSoundEffectPause(resumeButton.transform);
         addEventTrigger.ExitHoverSoundEffectPause(settingsButton.transform);

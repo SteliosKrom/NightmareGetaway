@@ -24872,6 +24872,8 @@ MonoBehaviour:
   lockedAudioSource: {fileID: 1403184476}
   clockAudioSource: {fileID: 1221405377}
   ceilingFanAudioSource: {fileID: 7441240194846976226}
+  flickeringAudioSource: {fileID: 858029684}
+  flickeringAudioClip: {fileID: 8300000, guid: 468299f409f63ba49a4960a63cd7662f, type: 3}
 --- !u!114 &379504544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28510,6 +28512,7 @@ MonoBehaviour:
   eatAudioSource: {fileID: 1331450122}
   clockAudioSource: {fileID: 1221405377}
   hoverAudioSource: {fileID: 1738958847}
+  flickeringAudioSource: {fileID: 858029684}
   hoverAudioClip: {fileID: 8300000, guid: 307d84975c8c7f543842e311e1a709dc, type: 3}
 --- !u!1 &667829798
 GameObject:
@@ -52933,7 +52936,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rainAudioSource: {fileID: 429594847}
-  mainGameAudioSource: {fileID: 462325584}
 --- !u!65 &1356941524
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -59576,7 +59578,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rainAudioSource: {fileID: 429594847}
-  mainGameAudioSource: {fileID: 462325584}
 --- !u!1 &2009375548
 GameObject:
   m_ObjectHideFlags: 0

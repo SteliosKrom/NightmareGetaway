@@ -27,11 +27,6 @@ public class FlashlightFlickering : MonoBehaviour
             StartCoroutine(FlickerLight());
             AudioManager.instance.PlaySound(flickeringAudioSource, flickeringAudioClip);
         }
-        else
-        {
-            Time.timeScale = 0f;
-            AudioManager.instance.StopSound(flickeringAudioSource);
-        }
     }
 
     public IEnumerator FlickerLight()

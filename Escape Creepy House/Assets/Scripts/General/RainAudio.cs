@@ -3,25 +3,25 @@ using UnityEngine;
 public class RainAudio : MonoBehaviour
 {
     public AudioSource rainAudioSource;
-    public AudioSource mainGameAudioSource;
 
     private void Update()
     {
-        if (RoundManager.instance.currentEnvironmentState == EnvironmentState.outdoors && RoundManager.instance.currentGameState != GameState.pause && RoundManager.instance.currentGameState != GameState.onSettingsGame)
+        if (RoundManager.instance.currentEnvironmentState == EnvironmentState.outdoors 
+            && RoundManager.instance.currentGameState != GameState.pause 
+            && RoundManager.instance.currentGameState != GameState.onSettingsGame)
         {
             if (!rainAudioSource.isPlaying)
             {
                 rainAudioSource.UnPause();
-                rainAudioSource.volume = 0.1f;
-                mainGameAudioSource.Pause();
+                rainAudioSource.volume = 0.05f;
             }
         }
-        else if (RoundManager.instance.currentEnvironmentState == EnvironmentState.indoors && RoundManager.instance.currentGameState != GameState.pause)
+        else if (RoundManager.instance.currentEnvironmentState == EnvironmentState.indoors 
+            && RoundManager.instance.currentGameState != GameState.pause)
         {
             if (rainAudioSource.isPlaying)
             {
                 rainAudioSource.Pause();
-                mainGameAudioSource.UnPause();
             }
         }
     }

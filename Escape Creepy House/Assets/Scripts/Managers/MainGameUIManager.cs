@@ -69,6 +69,7 @@ public class MainGameUIManager : MonoBehaviour
     [SerializeField] private AudioSource eatAudioSource;
     [SerializeField] private AudioSource clockAudioSource;
     [SerializeField] private AudioSource hoverAudioSource;
+    [SerializeField] private AudioSource flickeringAudioSource;
     [SerializeField] private AudioClip hoverAudioClip;
 
     public void ResumeButton()
@@ -78,6 +79,7 @@ public class MainGameUIManager : MonoBehaviour
         ActivateGameObject.activateInstance.ActivateObject(dot);
         ActivateGameObject.activateInstance.ActivateObject(taskChange);
         AudioManager.instance.UnpauseSoundInResumeGameFromPause();
+        AudioManager.instance.UnPauseSound(flickeringAudioSource);
 
         resumeButton.transform.DOScale(0.8f, 0.2f);
         playerController.CheckDoorStateOnResume();
