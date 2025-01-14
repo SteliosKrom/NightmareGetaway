@@ -6,23 +6,16 @@ public class RainAudio : MonoBehaviour
 
     private void Update()
     {
-        if (RoundManager.instance.currentEnvironmentState == EnvironmentState.outdoors 
-            && RoundManager.instance.currentGameState != GameState.pause 
+        if (RoundManager.instance.currentEnvironmentState == EnvironmentState.outdoors
+            && RoundManager.instance.currentGameState != GameState.pause
             && RoundManager.instance.currentGameState != GameState.onSettingsGame)
         {
-            if (!rainAudioSource.isPlaying)
-            {
-                rainAudioSource.UnPause();
-                rainAudioSource.volume = 0.05f;
-            }
+            rainAudioSource.spatialBlend = 0f;
         }
-        else if (RoundManager.instance.currentEnvironmentState == EnvironmentState.indoors 
+        else if (RoundManager.instance.currentEnvironmentState == EnvironmentState.indoors
             && RoundManager.instance.currentGameState != GameState.pause)
         {
-            if (rainAudioSource.isPlaying)
-            {
-                rainAudioSource.Pause();
-            }
+            rainAudioSource.spatialBlend = 1f;
         }
     }
 

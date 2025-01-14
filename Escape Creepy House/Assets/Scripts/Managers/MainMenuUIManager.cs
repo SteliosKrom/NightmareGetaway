@@ -74,7 +74,6 @@ public class MainMenuUIManager : MonoBehaviour
     [Header("AUDIO")]
     [SerializeField] private AudioSource hoverAudioSource;
     [SerializeField] private AudioSource mainMenuAudioSource;
-    [SerializeField] private AudioSource mainGameAudioSource;
     [SerializeField] private AudioSource rainAudioSource;
     [SerializeField] private AudioClip hoverAudioClip;
 
@@ -94,7 +93,6 @@ public class MainMenuUIManager : MonoBehaviour
         initialPos = secondaryCamera.transform.position;
 
         AudioManager.instance.Play(mainMenuAudioSource);
-        AudioManager.instance.StopSound(mainGameAudioSource);
         AudioManager.instance.Play(rainAudioSource);
         RoundManager.instance.currentGameState = GameState.onMainMenu;
     }
@@ -120,7 +118,6 @@ public class MainMenuUIManager : MonoBehaviour
         secondaryCamera.enabled = inactive;
         mainCamera.enabled = active;
         playButton.transform.DOScale(1f, 0.2f);
-        AudioManager.instance.Play(mainGameAudioSource);
         RoundManager.instance.currentGameState = GameState.playing;
     }
 
@@ -150,9 +147,9 @@ public class MainMenuUIManager : MonoBehaviour
         ActivateGameObject.activateInstance.ActivateObject(loadingPanel);
         ActivateGameObject.activateInstance.ActivateObject(window);
         DeactivateGameObject.deactivateInstance.DeactivateObject(creature);
-
-        AudioManager.instance.PauseSound(rainAudioSource);
         AudioManager.instance.StopSound(mainMenuAudioSource);
+        AudioManager.instance.PauseSound(rainAudioSource);
+
         StartCoroutine(LoadingTextDelay());
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = inactive;
@@ -167,6 +164,8 @@ public class MainMenuUIManager : MonoBehaviour
         yield return new WaitForSeconds(gameIntroDelay);
 
         EndGameIntro();
+        AudioManager.instance.UnPauseSound(rainAudioSource);
+        rainAudioSource.spatialBlend = 1f;
     }
 
     public void ControlsButton()

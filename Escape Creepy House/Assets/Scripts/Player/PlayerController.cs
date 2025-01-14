@@ -144,6 +144,7 @@ public class PlayerController : MonoBehaviour
         DeactivateGameObject.deactivateInstance.DeactivateObjectsInPause();
         AudioManager.instance.PauseSoundInPause();
         AudioManager.instance.PauseSound(flickeringAudioSource);
+        AudioManager.instance.PauseSound(rainAudioSource);
 
         CheckDoorStateOnPause();
         Time.timeScale = 0f;
@@ -182,6 +183,7 @@ public class PlayerController : MonoBehaviour
         DeactivateGameObject.deactivateInstance.DeactivateObject(pauseMenu);
         AudioManager.instance.UnpauseSoundInResumeGameFromPause();
         AudioManager.instance.UnPauseSound(flickeringAudioSource);
+        AudioManager.instance.UnPauseSound(rainAudioSource);
 
         addEventTrigger.ExitHoverSoundEffectPause(resumeButton.transform);
         addEventTrigger.ExitHoverSoundEffectPause(settingsButton.transform);
