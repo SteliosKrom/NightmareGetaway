@@ -205,7 +205,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.4125977, y: 0.021972656}
+  m_AnchoredPosition: {x: 1.4125977, y: 1}
   m_SizeDelta: {x: 5.6104, y: 3.02}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &17036231
@@ -381,7 +381,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 16777215
+    rgba: 4294967295
   m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -890,7 +890,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &472270791
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1427,7 +1427,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 52, y: 184}
+  m_AnchoredPosition: {x: 52, y: 329}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1052586860
@@ -2139,7 +2139,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -805, y: -86}
+  m_AnchoredPosition: {x: -805, y: 59}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1708130150
@@ -2162,10 +2162,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: this game contains flashing lights and visual effects that may trigger
-    seizures in people with photosensitive epilepsy. Play at your own risk. If you
-    experience any symptoms like dizziness or vision problems, stop playing immediately
-    and seek medical advice.
+  m_text: "\t     the game may not be suitable for all players!\n\nthis game contains
+    flashing lights and visual effects that may trigger seizures in people with photosensitive
+    epilepsy. It is not recommended for individuals who are prone to seizures or
+    have a history of photosensitive conditions. Play at your own risk. If you experience
+    symptoms such as dizziness, vision problems, or discomfort, stop playing immediately
+    and seek medical advice. "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: edb53545bb8563b4097facf77e2d27c6, type: 2}
   m_sharedMaterial: {fileID: -6683649535832547845, guid: edb53545bb8563b4097facf77e2d27c6, type: 2}
