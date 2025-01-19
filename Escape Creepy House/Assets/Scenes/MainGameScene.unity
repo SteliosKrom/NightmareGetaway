@@ -57959,6 +57959,9 @@ MonoBehaviour:
   pauseExitButton: {fileID: 1825467470}
   notesButton: {fileID: 1316226554}
   backToGameButtonFromNotes: {fileID: 1079092180}
+  instagramButton: {fileID: 655670453}
+  twitterButon: {fileID: 731113649}
+  youtubeButton: {fileID: 1788576818}
   hoverAudioSource: {fileID: 1738958847}
   hoverAudioClip: {fileID: 8300000, guid: 307d84975c8c7f543842e311e1a709dc, type: 3}
 --- !u!1 &1824538826

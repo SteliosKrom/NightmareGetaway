@@ -24,7 +24,7 @@ public class FPScounter : MonoBehaviour
                 break;
 
             case GameState.pause:
-                FPSCalculation();
+                PauseFPSCalculation();
                 break;
 
             case GameState.onMainMenu:
@@ -54,5 +54,12 @@ public class FPScounter : MonoBehaviour
             frameCount = 0;
             elapsedTime = 0f;
         }
+    }
+
+    public void PauseFPSCalculation()
+    {
+        frameCount = 0;
+        elapsedTime = 0f;
+        fpsText.text = "FPS: 0";
     }
 }
