@@ -15883,7 +15883,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5. Update Graphics Drivers for optimal performance.
+  m_text: 5. Update Graphics Drivers for optimal performance
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: edb53545bb8563b4097facf77e2d27c6, type: 2}
   m_sharedMaterial: {fileID: -6683649535832547845, guid: edb53545bb8563b4097facf77e2d27c6, type: 2}
@@ -22474,7 +22474,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1015, y: -23}
+  m_AnchoredPosition: {x: -890, y: -23}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &355214821
@@ -22498,7 +22498,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: '3. set AA: "none" (performance), "2x"(low-cost), "4x"(balanced), "8x"(lower
-    fps).'
+    fps'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: edb53545bb8563b4097facf77e2d27c6, type: 2}
   m_sharedMaterial: {fileID: -6683649535832547845, guid: edb53545bb8563b4097facf77e2d27c6, type: 2}
@@ -25598,7 +25598,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 6. Close Background Apps to free system resources.
+  m_text: 6. Close Background Apps to free system resources
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: edb53545bb8563b4097facf77e2d27c6, type: 2}
   m_sharedMaterial: {fileID: -6683649535832547845, guid: edb53545bb8563b4097facf77e2d27c6, type: 2}
@@ -38001,7 +38001,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
@@ -38112,7 +38112,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1. Lower Graphics Quality to improve performance.
+  m_text: 1. Lower Graphics Quality to improve performance
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: edb53545bb8563b4097facf77e2d27c6, type: 2}
   m_sharedMaterial: {fileID: -6683649535832547845, guid: edb53545bb8563b4097facf77e2d27c6, type: 2}
@@ -61037,7 +61037,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -431, y: -173}
+  m_AnchoredPosition: {x: -619, y: -173}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1689424682
@@ -61060,7 +61060,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 4. Enable V-Sync to fix screen tearing.
+  m_text: 4. Disable V-Sync if you experience any performance issues
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: edb53545bb8563b4097facf77e2d27c6, type: 2}
   m_sharedMaterial: {fileID: -6683649535832547845, guid: edb53545bb8563b4097facf77e2d27c6, type: 2}
@@ -61340,7 +61340,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2. Change anti-aliasing to "none" for better performance.
+  m_text: 2. Change anti-aliasing to "none" for better performance
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: edb53545bb8563b4097facf77e2d27c6, type: 2}
   m_sharedMaterial: {fileID: -6683649535832547845, guid: edb53545bb8563b4097facf77e2d27c6, type: 2}
@@ -69883,7 +69883,7 @@ GameObject:
   - component: {fileID: 2026195247}
   - component: {fileID: 2026195246}
   m_Layer: 0
-  m_Name: Performance Tips and Troubleshooting
+  m_Name: Performance Tips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69905,7 +69905,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -739, y: 591}
+  m_AnchoredPosition: {x: -435, y: 591}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2026195246
@@ -69928,7 +69928,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Performance tips and troubleshooting!
+  m_text: Performance optimization!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
   m_sharedMaterial: {fileID: 7855358897793652092, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
