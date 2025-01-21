@@ -3604,7 +3604,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -461, y: 429}
+  m_AnchoredPosition: {x: -461, y: 489}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &81902626
@@ -35807,7 +35807,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -756, y: 100}
+  m_AnchoredPosition: {x: -756, y: 236}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &835177916
@@ -35830,12 +35830,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "It's late at night! Jack and I went for a walk a few hours ago, to that
-    place everyone talks about. \u039Ff course, the one where according to rumors
-    no one ever shows up, but now he's gone.\n\nMy name is Max, and I am Jack's 
-    friend. We were both here, at this strange place, but suddenly, he vanished without
-    a trace. I'm really worried about him. All I want is to bring him back!\n\n\nPraying
-    for you, Max\n\n"
+  m_text: "It\u2019s late at night. Ethan and I went to explore the abandoned area
+    everyone talks about. You know, the one where they say people vanish without
+    a trace. We didn\u2019t believe the rumors\u2014until now.\n\nOne moment, Ethan
+    was walking beside me. The next, he was gone. I didn\u2019t see where he went
+    or what took him. It all happened so fast\u2014like he was swallowed by the shadows.\n\nI
+    searched everywhere, calling his name, but there was nothing. No sign of him.
+    It\u2019s like the place itself took him.\n\nAll I can do now is hope he\u2019s
+    okay and pray he finds his way back.\n\nPraying for you, Ethan.\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -38001,7 +38003,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
@@ -63691,7 +63693,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1873982494
 RectTransform:
   m_ObjectHideFlags: 0
