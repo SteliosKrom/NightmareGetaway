@@ -520,7 +520,6 @@ Transform:
   - {fileID: 1855706511}
   - {fileID: 317598927}
   - {fileID: 366460643}
-  - {fileID: 1324612476}
   - {fileID: 1790531746}
   - {fileID: 1258318066}
   - {fileID: 1663274718}
@@ -38003,7 +38002,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
@@ -56974,59 +56973,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &1324612475
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1324612476}
-  - component: {fileID: 1324612477}
-  m_Layer: 6
-  m_Name: FloorCollider (10)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1324612476
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1324612475}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.26, y: -3.31, z: -49.7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 17818288}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1324612477
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1324612475}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 5.783066, y: 1.5362701, z: 3.735649}
-  m_Center: {x: 2.7012348, y: 0.26813507, z: 11.429359}
 --- !u!1 &1328176310
 GameObject:
   m_ObjectHideFlags: 0
@@ -57472,7 +57418,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1342430551}
   - component: {fileID: 1342430552}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GroundBound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92085,7 +92031,7 @@ GameObject:
   - component: {fileID: 4958979755838246469}
   - component: {fileID: 4710819748206065866}
   - component: {fileID: 4958979755838246470}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: grass_soil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
