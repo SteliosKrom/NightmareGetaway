@@ -55,6 +55,7 @@ public class MainGameUIManager : MonoBehaviour
     [SerializeField] private GameObject dot;
     [SerializeField] private GameObject taskChange;
     [SerializeField] private GameObject notesPanel;
+    [SerializeField] private GameObject tasksPanel;
 
     [Header("OTHER")]
     [SerializeField] private Camera mainCamera;
@@ -78,6 +79,7 @@ public class MainGameUIManager : MonoBehaviour
         DeactivateGameObject.deactivateInstance.DeactivateObject(notesButton);
         ActivateGameObject.activateInstance.ActivateObject(dot);
         ActivateGameObject.activateInstance.ActivateObject(taskChange);
+        ActivateGameObject.activateInstance.ActivateObject(tasksPanel);
         AudioManager.instance.UnpauseSoundInResumeGameFromPause();
         AudioManager.instance.UnPauseSound(flickeringAudioSource);
         AudioManager.instance.UnPauseSound(rainAudioSource);
@@ -139,6 +141,7 @@ public class MainGameUIManager : MonoBehaviour
         DeactivateGameObject.deactivateInstance.DeactivateObject(taskChange);
         DeactivateGameObject.deactivateInstance.DeactivateObject(controlsMenu);
         DeactivateGameObject.deactivateInstance.DeactivateObject(notesPanel);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(tasksPanel);
         DeactivateGameObject.deactivateInstance.DeactivateObjectsInBackToMenu();
 
         backToGameButton.transform.DOScale(3.2f, 0.2f);

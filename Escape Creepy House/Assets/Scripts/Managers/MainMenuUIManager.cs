@@ -58,6 +58,7 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private GameObject loadingPanel;
     [SerializeField] private GameObject gameIntroPanel;
     [SerializeField] private GameObject notesPanel;
+    [SerializeField] private GameObject tasksPanel;
 
     [SerializeField] private GameObject outdoorLight;
     [SerializeField] private GameObject window;
@@ -85,6 +86,7 @@ public class MainMenuUIManager : MonoBehaviour
 
         DeactivateGameObject.deactivateInstance.DeactivateObject(taskChange);
         DeactivateGameObject.deactivateInstance.DeactivateObject(notesPanel);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(tasksPanel);
         DeactivateGameObject.deactivateInstance.DeactivateObject(notesButton);
         DeactivateGameObject.deactivateInstance.DeactivateObject(window);
 
@@ -164,6 +166,7 @@ public class MainMenuUIManager : MonoBehaviour
         yield return new WaitForSeconds(gameIntroDelay);
 
         EndGameIntro();
+        ActivateGameObject.activateInstance.ActivateObject(tasksPanel);
         AudioManager.instance.UnPauseSound(rainAudioSource);
         rainAudioSource.spatialBlend = 1f;
     }

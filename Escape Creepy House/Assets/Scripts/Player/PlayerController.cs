@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject foundGarageDoorKey;
     [SerializeField] private GameObject notesButton;
     [SerializeField] private GameObject notesPanel;
+    [SerializeField] private GameObject tasksPanel;
 
     [Header("OTHER")]
     [SerializeField] CharacterController characterController;
@@ -142,6 +143,7 @@ public class PlayerController : MonoBehaviour
         ActivateGameObject.activateInstance.ActivateObject(pauseMenu);
         ActivateGameObject.activateInstance.ActivateObject(notesButton);
         DeactivateGameObject.deactivateInstance.DeactivateObjectsInPause();
+        DeactivateGameObject.deactivateInstance.DeactivateObject(tasksPanel);
         AudioManager.instance.PauseSoundInPause();
         AudioManager.instance.PauseSound(flickeringAudioSource);
         AudioManager.instance.PauseSound(rainAudioSource);
@@ -162,6 +164,7 @@ public class PlayerController : MonoBehaviour
         DeactivateGameObject.deactivateInstance.DeactivateObject(controlsMenu);
         DeactivateGameObject.deactivateInstance.DeactivateObject(dot);
         DeactivateGameObject.deactivateInstance.DeactivateObject(taskChange);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(tasksPanel);
         DeactivateGameObject.deactivateInstance.DeactivateObjectsInBackToMenu();
 
         addEventTrigger.ExitHoverSoundEffectSettings(audioCategoryButton.transform);
@@ -179,6 +182,7 @@ public class PlayerController : MonoBehaviour
     {
         ActivateGameObject.activateInstance.ActivateObject(dot);
         ActivateGameObject.activateInstance.ActivateObject(taskChange);
+        ActivateGameObject.activateInstance.ActivateObject(tasksPanel);
         DeactivateGameObject.deactivateInstance.DeactivateObject(notesButton);
         DeactivateGameObject.deactivateInstance.DeactivateObject(pauseMenu);
         AudioManager.instance.UnpauseSoundInResumeGameFromPause();
@@ -202,6 +206,7 @@ public class PlayerController : MonoBehaviour
     {
         ActivateGameObject.activateInstance.ActivateObject(pauseMenu);
         DeactivateGameObject.deactivateInstance.DeactivateObject(notesPanel);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(tasksPanel);
 
         addEventTrigger.ExitHoverSoundEffectOther(backToGameButton.transform);
 
