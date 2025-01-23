@@ -530,6 +530,7 @@ Transform:
   - {fileID: 249437247}
   - {fileID: 230825054}
   - {fileID: 1872056624}
+  - {fileID: 326265630}
   m_Father: {fileID: 195872784}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &17818289
@@ -22218,6 +22219,59 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 12.338459, y: 1, z: 11.446892}
   m_Center: {x: 5.6692295, y: 0, z: 5.223446}
+--- !u!1 &326265629
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 326265630}
+  - component: {fileID: 326265631}
+  m_Layer: 6
+  m_Name: CourtyardCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &326265630
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326265629}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -3.929, z: -49.32}
+  m_LocalScale: {x: 64.95549, y: 1, z: 119.29502}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 17818288}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &326265631
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 326265629}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &336544814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50522,8 +50576,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1.749939
-  MaxDistance: 3.069172
+  MinDistance: 1
+  MaxDistance: 3
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -92030,13 +92084,12 @@ GameObject:
   - component: {fileID: 1658548780890831166}
   - component: {fileID: 4958979755838246469}
   - component: {fileID: 4710819748206065866}
-  - component: {fileID: 4958979755838246470}
   m_Layer: 6
   m_Name: grass_soil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 18
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2562857601265391989
 Transform:
@@ -106399,27 +106452,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2560806085547070170}
   m_Mesh: {fileID: 5033852967984176584, guid: d1077cfdf7aaae940ab037f7a93c6025, type: 3}
---- !u!65 &4958979755838246470
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2560806085547070170}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.20499605, y: 0.3652054, z: 0}
-  m_Center: {x: -0.031747397, y: 0.09917041, z: -0.0022118392}
 --- !u!33 &4962096133404134634
 MeshFilter:
   m_ObjectHideFlags: 0
