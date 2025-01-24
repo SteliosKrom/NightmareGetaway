@@ -716,7 +716,7 @@ GameObject:
   m_Component:
   - component: {fileID: 34724028}
   m_Layer: 0
-  m_Name: -----------------------------------------------------
+  m_Name: --------------------------------------------------------------------------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1025,7 +1025,6 @@ MonoBehaviour:
   loadingPanel: {fileID: 1054444096}
   gameIntroPanel: {fileID: 765461142}
   notesPanel: {fileID: 729535655}
-  tasksPanel: {fileID: 1863029126}
   outdoorLight: {fileID: 1301081948858220774}
   window: {fileID: 1368767178995524598}
   creature: {fileID: 1309487307694391}
@@ -24994,7 +24993,6 @@ MonoBehaviour:
   foundGarageDoorKey: {fileID: 220954208}
   notesButton: {fileID: 1316226552}
   notesPanel: {fileID: 729535655}
-  tasksPanel: {fileID: 1863029126}
   characterController: {fileID: 379504545}
   playerAnimator: {fileID: 370128361}
   mainGameAudioSource: {fileID: 0}
@@ -27585,7 +27583,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 3
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -28777,7 +28775,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0.8999224, b: 0, a: 1}
+        key0: {r: 0.9433962, g: 0.37258923, b: 0.04004982, a: 1}
         key1: {r: 1, g: 1, b: 1, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -28807,7 +28805,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
       minGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0.64591235, b: 0, a: 1}
+        key0: {r: 1, g: 0.85201037, b: 0.023584902, a: 1}
         key1: {r: 1, g: 1, b: 1, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -33542,7 +33540,6 @@ MonoBehaviour:
   dot: {fileID: 480800219}
   taskChange: {fileID: 1682272802}
   notesPanel: {fileID: 729535655}
-  tasksPanel: {fileID: 1863029126}
   mainCamera: {fileID: 963194227}
   secondaryCamera: {fileID: 366118862}
   mainMenuAudioSource: {fileID: 1977907783}
@@ -42384,7 +42381,7 @@ GameObject:
   m_Component:
   - component: {fileID: 905332056}
   m_Layer: 0
-  m_Name: -----------------------------------------------------
+  m_Name: -------------------------------------------------------------------------------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43043,7 +43040,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
@@ -44902,7 +44899,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1079454573}
   m_Layer: 0
-  m_Name: -----------------------------------------------------
+  m_Name: ----------------------------------------------------------------------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56324,7 +56321,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1263731369}
   m_Layer: 0
-  m_Name: -----------------------------------------------------
+  m_Name: -------------------------------------------------------------------------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63750,7 +63747,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1409559044}
   m_Layer: 0
-  m_Name: -----------------------------------------------------
+  m_Name: ------------------------------------------------------------------------------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68789,81 +68786,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 33.417534, y: 1, z: 15.4194145}
   m_Center: {x: 4.2356873, y: 0, z: -5.4828053}
---- !u!1 &1863029126
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1863029127}
-  - component: {fileID: 1863029129}
-  - component: {fileID: 1863029128}
-  m_Layer: 5
-  m_Name: TaskPanel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1863029127
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1863029126}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -0.3, y: -0.03361909, z: -0.043292187}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1991336467}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 311.9, y: -24.5}
-  m_SizeDelta: {x: 2560, y: 1440}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1863029128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1863029126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.19607843}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1863029129
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1863029126}
-  m_CullTransparentMesh: 1
 --- !u!1 &1869765278
 GameObject:
   m_ObjectHideFlags: 0
@@ -69999,7 +69921,6 @@ RectTransform:
   - {fileID: 1054444097}
   - {fileID: 765461143}
   - {fileID: 729535656}
-  - {fileID: 1863029127}
   - {fileID: 1682272803}
   - {fileID: 7897117}
   - {fileID: 1798832668}
