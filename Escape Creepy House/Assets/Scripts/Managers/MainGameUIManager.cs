@@ -11,7 +11,6 @@ public class MainGameUIManager : MonoBehaviour
 
     [Header("SCRIPT REFERENCES")]
     [SerializeField] private PlayerRespawn playerRespawn;
-    [SerializeField] private KidsRoomLight kidsRoomLight;
     [SerializeField] private PlayerController playerController;
     [SerializeField] private SettingsManager settingsManager;
 
@@ -111,7 +110,6 @@ public class MainGameUIManager : MonoBehaviour
 
         mainCamera.enabled = inactive;
         secondaryCamera.enabled = active;
-        kidsRoomLight.enabled = inactive;
         playerRespawn.Respawn();
 
         Time.timeScale = 1f;
