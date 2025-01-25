@@ -13,7 +13,7 @@ public class LightingEffect : MonoBehaviour
 
     private void Start()
     {
-        startDelay = Random.Range(30, 60);
+        startDelay = Random.Range(40, 60);
         StartCoroutine(StartLightingDelay());
     }
 

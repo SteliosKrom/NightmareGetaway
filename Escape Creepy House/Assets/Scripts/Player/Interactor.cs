@@ -407,7 +407,9 @@ public class Interactor : MonoBehaviour
 
     public IEnumerator DoorCollidersDelay(BoxCollider collider)
     {
-        if (collider.CompareTag("KidsDoor") || collider.CompareTag("BathroomDoor") || collider.CompareTag("SecondBathroomDoor") || collider.CompareTag("SecondBedroomDoor") || collider.CompareTag("GarageDoor"))
+        if (collider.CompareTag("KidsDoor") 
+            || collider.CompareTag("BathroomDoor") || collider.CompareTag("SecondBathroomDoor") 
+            || collider.CompareTag("SecondBedroomDoor") || collider.CompareTag("GarageDoor"))
         {
             collider.enabled = inactive;
             yield return new WaitForSeconds(doorCollidersDelay);
@@ -424,7 +426,9 @@ public class Interactor : MonoBehaviour
     public IEnumerator doorHandleCollidersDelay(BoxCollider collider)
     {
 
-        if (collider.CompareTag("KidsDoor") || collider.CompareTag("BathroomDoor") || collider.CompareTag("SecondBathroomDoor") || collider.CompareTag("SecondBedroomDoor") || collider.CompareTag("GarageDoor"))
+        if (collider.CompareTag("KidsDoor") 
+            || collider.CompareTag("BathroomDoor") || collider.CompareTag("SecondBathroomDoor") 
+            || collider.CompareTag("SecondBedroomDoor") || collider.CompareTag("GarageDoor"))
         {
             collider.enabled = inactive;
             yield return new WaitForSeconds(doorCollidersDelay);
