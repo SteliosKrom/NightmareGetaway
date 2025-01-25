@@ -87,13 +87,11 @@ public class Interactor : MonoBehaviour
 
     public void InputForFlashlight()
     {
-        bool noPause = RoundManager.instance.currentGameState != GameState.pause;
-        bool noOnSettingsGame = RoundManager.instance.currentGameState != GameState.onSettingsGame;
-        bool noOnMainMenu = RoundManager.instance.currentGameState != GameState.onMainMenu;
+        bool onPlaying = RoundManager.instance.currentGameState == GameState.playing;
 
         if (hasFlashlight && canToggle && isEquipped && Input.GetKeyDown(KeyCode.F)) 
         {
-            if (noPause && noOnSettingsGame && noOnMainMenu)
+            if (onPlaying)
             {
                 flashlight.Toggle();
             }
@@ -103,13 +101,11 @@ public class Interactor : MonoBehaviour
 
     public void InputForEquipFlashlight()
     {
-        bool noPause = RoundManager.instance.currentGameState != GameState.pause;
-        bool noOnSettingsGame = RoundManager.instance.currentGameState != GameState.onSettingsGame;
-        bool noOnMainMenu = RoundManager.instance.currentGameState != GameState.onMainMenu;
+        bool onPlaying = RoundManager.instance.currentGameState == GameState.playing;
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (noPause && noOnSettingsGame && noOnMainMenu)
+            if (onPlaying)
             {
                 if (isEquipped)
                 {
@@ -123,9 +119,14 @@ public class Interactor : MonoBehaviour
                     flashlightAnimator.SetBool("Equipped", active);
                     flashlightAnimator.SetBool("Unequipped", inactive);
                     isEquipped = active;
-                    flashlight.newLight.enabled = inactive;
-                    flashlight.isOn = inactive;
+                    flashlight.newLight.enabled = active;
+                    flashlight.isOn = active;
                 }
+            }
+            else
+            {
+                onPlaying = RoundManager.instance.currentGameState != GameState.playing;
+                Debug.Log("You can't equip the flashlight right now! Game state is: " + onPlaying);
             }
         }
     }
