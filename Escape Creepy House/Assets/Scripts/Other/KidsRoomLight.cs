@@ -13,12 +13,4 @@ public class KidsRoomLight : MonoBehaviour
         kidsRoomLight = GetComponent<Light>();
         kidsRoomLight.enabled = inactive;
     }
-
-    private void Update()
-    {
-        if (RoundManager.instance.currentGameState == GameState.playing)
-        {
-            kidsRoomLight.enabled = active;
-        }
-    }
 }

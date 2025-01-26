@@ -69,6 +69,7 @@ public class MainMenuUIManager : MonoBehaviour
     [Header("OTHER")]
     [SerializeField] private Camera secondaryCamera;
     [SerializeField] private Camera mainCamera;
+    [SerializeField] private Light kidRoomLight;
     private Vector3 initialPos;
 
     [Header("AUDIO")]
@@ -164,6 +165,7 @@ public class MainMenuUIManager : MonoBehaviour
         yield return new WaitForSeconds(gameIntroDelay);
 
         EndGameIntro();
+        kidRoomLight.enabled = active;
         AudioManager.instance.UnPauseSound(rainAudioSource);
         rainAudioSource.spatialBlend = 1f;
     }

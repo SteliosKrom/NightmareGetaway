@@ -28,10 +28,12 @@ public class Interactor : MonoBehaviour
     public AudioSource drinkAudioSource;
     public AudioSource eatAudioSource;
     public AudioSource lockedAudioSource;
+    public AudioSource switchAudioSource;
     public AudioClip drinkAudioclip;
     public AudioClip eatAudioClip;
     public AudioClip equipKeysAudioClip;
     public AudioClip lockedAudioClip;
+    public AudioClip switchAudioClip;
 
     [Header("GAME OBJECTS")]
     [SerializeField] private GameObject foundGarageKey;
@@ -49,6 +51,7 @@ public class Interactor : MonoBehaviour
     [SerializeField] private GameObject phone;
     [SerializeField] private GameObject doorBoxCollider;
     [SerializeField] private GameObject _flashlight;
+    [SerializeField] private GameObject[] switchLights;
 
     [Header("OTHER")]
     [SerializeField] private BoxCollider fridgeCollider;
@@ -56,6 +59,7 @@ public class Interactor : MonoBehaviour
     [SerializeField] private BoxCollider[] doorHandleColliders;
     [SerializeField] private Transform interactionSource;
     [SerializeField] private Animator flashlightAnimator;
+    [SerializeField] private Light kidRoomLight;
 
     private void Start()
     {
@@ -142,7 +146,7 @@ public class Interactor : MonoBehaviour
     {
         bool noPause = RoundManager.instance.currentGameState != GameState.pause;
 
-        if (Input.GetKeyDown(KeyCode.E) && noPause)
+        if (Input.GetKeyDown(KeyCode.E) && noPause && canToggle)
         {
             TryInteract();
         }
@@ -157,15 +161,18 @@ public class Interactor : MonoBehaviour
         {
             Interactable interactable = hit.collider.GetComponent<Interactable>();
             DoorBase doorBase = hit.collider.GetComponent<DoorBase>();
-            HandleInteractableGameObject(interactable, doorBase);
+            OtherInteractable otherInteractable = hit.collider.GetComponent<OtherInteractable>();
+            OtherInteractableSwitches otherInteractableSwitches = hit.collider.GetComponent<OtherInteractableSwitches>();
+            HandleInteractableGameObject(interactable, doorBase, otherInteractable, otherInteractableSwitches);
         }
     }
 
-    public void HandleInteractableGameObject(Interactable interactable, DoorBase doorBase)
+    public void HandleInteractableGameObject(Interactable interactable, DoorBase doorBase, 
+        OtherInteractable otherInteractable, OtherInteractableSwitches otherInteractableSwitches)
     {
         if (interactable != null)
         {
-            HandleInteractableItems(interactable);
+            HandleInteractableCollectableItems(interactable);
         }
 
         if (doorBase != null)
@@ -173,9 +180,53 @@ public class Interactor : MonoBehaviour
             HandleLockedDoors(doorBase);
             HandleUnlockedDoors(doorBase);
         }
+
+        if (otherInteractable != null)
+        {
+            HandleInteractableItems(otherInteractable);
+        }
+
+        if (otherInteractableSwitches != null)
+        {
+            HandleInteractableItem(otherInteractableSwitches);
+        }
     }
 
-    public void HandleInteractableItems(Interactable interactable)
+    public void HandleInteractableItem(OtherInteractableSwitches otherInteractableSwitches)
+    {
+         if (otherInteractableSwitches.gameObject.CompareTag("Switches"))
+        {
+            if (kidRoomLight.enabled)
+            {
+                AudioManager.instance.PlaySound(switchAudioSource, switchAudioClip);
+            }
+            else
+            {
+                AudioManager.instance.PlaySound(switchAudioSource, switchAudioClip);
+            }
+            StartCoroutine(ToggleDelay());
+        }
+    }
+
+    public void HandleInteractableItems(OtherInteractable otherInteractable)
+    {
+        if (otherInteractable.gameObject.CompareTag("KidRoomSwitch"))
+        {
+            if (kidRoomLight.enabled)
+            {
+                kidRoomLight.enabled = inactive;
+                AudioManager.instance.PlaySound(switchAudioSource, switchAudioClip);
+            }
+            else
+            {
+                kidRoomLight.enabled = active;
+                AudioManager.instance.PlaySound(switchAudioSource, switchAudioClip);
+            }
+            StartCoroutine(ToggleDelay());
+        }
+    }
+
+    public void HandleInteractableCollectableItems(Interactable interactable)
     {
         interactable.OnInteract();
         if (interactable.gameObject.CompareTag("RoomKey"))
@@ -326,8 +377,10 @@ public class Interactor : MonoBehaviour
         {
             Interactable interactable = hit.collider.GetComponent<Interactable>();
             DoorBase doorBase = hit.collider.GetComponent<DoorBase>();
+            OtherInteractable otherInteractable = hit.collider.GetComponent<OtherInteractable>();
+            OtherInteractableSwitches otherInteractableSwitches = hit.collider.GetComponent<OtherInteractableSwitches>();
 
-            if (interactable != null || doorBase != null)
+            if (interactable != null || doorBase != null || otherInteractable != null || otherInteractableSwitches != null)
             {
                 if (RoundManager.instance.currentGameState == GameState.playing)
                 {
