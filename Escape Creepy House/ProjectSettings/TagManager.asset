@@ -22,6 +22,8 @@ TagManager:
   - BathroomDoor
   - MainDoor
   - BedroomDoor
+  - KidRoomSwitch
+  - Switches
   layers:
   - Default
   - TransparentFX
