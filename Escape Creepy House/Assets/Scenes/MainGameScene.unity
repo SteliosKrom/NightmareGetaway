@@ -25314,7 +25314,7 @@ MonoBehaviour:
   eatAudioClip: {fileID: 8300000, guid: 12716cf956cfcce4b8d10a0554fb6865, type: 3}
   equipKeysAudioClip: {fileID: 8300000, guid: 3c926fceff45f654a942ef45694a9ed6, type: 3}
   lockedAudioClip: {fileID: 8300000, guid: ba0dd6d8b717e403ca0fa3bdebe97dad, type: 3}
-  switchAudioClip: {fileID: 8300000, guid: 83fa26ff9f2d5194f9e39c54036ce99c, type: 3}
+  switchAudioClip: {fileID: 8300000, guid: 3c6689e3017415647a3987df80858413, type: 3}
   foundGarageKey: {fileID: 220954208}
   foundFlashlight: {fileID: 7897116}
   foundMainDoorKey: {fileID: 1254537102}
@@ -63693,8 +63693,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.6495132, y: 3.6924438, z: 1.0956268}
-  m_Center: {x: -0.3843956, y: -1.3462219, z: -0.047813416}
+  m_Size: {x: 5.6495132, y: 2.4770966, z: 1.0956268}
+  m_Center: {x: -0.3843956, y: -1.9538956, z: -0.047813416}
 --- !u!1 &1375201879
 GameObject:
   m_ObjectHideFlags: 0
@@ -67811,8 +67811,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.5880737, y: 3.8196945, z: 0.5880852}
-  m_Center: {x: -2.2940369, y: -0.22550583, z: 0.20595741}
+  m_Size: {x: 5.5880737, y: 2.7715912, z: 0.5880852}
+  m_Center: {x: -2.2940369, y: -0.7495575, z: 0.20595741}
 --- !u!1 &1763060353
 GameObject:
   m_ObjectHideFlags: 0
@@ -70625,8 +70625,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.6495132, y: 3.6924438, z: 1.0956268}
-  m_Center: {x: -0.3843956, y: -1.3462219, z: -0.047813416}
+  m_Size: {x: 5.6495132, y: 2.6515656, z: 1.0956268}
+  m_Center: {x: -0.3843956, y: -1.8666611, z: -0.047813416}
 --- !u!114 &2007810875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70802,7 +70802,7 @@ Transform:
   m_GameObject: {fileID: 2013784511}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 3.635, y: -0.58600616, z: -36.098}
+  m_LocalPosition: {x: 4.475, y: -0.58600616, z: -36.098}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -109427,7 +109427,7 @@ GameObject:
   - component: {fileID: 7690803251175710479}
   m_Layer: 0
   m_Name: Light_switch.004
-  m_TagString: Untagged
+  m_TagString: Switches
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 18
@@ -131054,8 +131054,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.02, y: 0.016809762, z: 0.03476395}
-  m_Center: {x: 0.00000071560106, y: 0.0053803395, z: -0.0000009537747}
+  m_Size: {x: 0.02, y: 0.020604696, z: 0.03476395}
+  m_Center: {x: 0.0000007156013, y: 0.007277797, z: -0.0000009537747}
 --- !u!114 &7690803251175710479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140720,8 +140720,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.02, y: 0.018217951, z: 0.03476395}
-  m_Center: {x: 0.00000047634882, y: 0.006083481, z: 0.0000009537747}
+  m_Size: {x: 0.024806052, y: 0.022428883, z: 0.03476395}
+  m_Center: {x: 0.00021940375, y: 0.008188945, z: 0.0000009537747}
 --- !u!114 &8811704390657626063
 MonoBehaviour:
   m_ObjectHideFlags: 0
