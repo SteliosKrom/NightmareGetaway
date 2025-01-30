@@ -7,12 +7,13 @@ public class TaskManager : MonoBehaviour
     private int currentTaskIndex = 0;
     private string[] tasks =
     {
-        "Find the room key!",
-        "Head to the kitchen and drink water!",
-        "Search for food in the kitchen!",
-        "Find your mobile phone and call for help!",
-        "Search for the main door key!",
-        "Escape the house!",
+        "Find the key to the locked room.",
+        "Something feels off… Get a drink from the kitchen.",
+        "Hunger gnaws at you… Find something to eat.",
+        "Where’s your phone? Find it and call for help.",
+        "The ritual is incomplete… Place the cursed objects.",
+        "Find the key to escape. But will it open the door?",
+        "Get out… before it’s too late. ",
     };
 
     private void Start()
