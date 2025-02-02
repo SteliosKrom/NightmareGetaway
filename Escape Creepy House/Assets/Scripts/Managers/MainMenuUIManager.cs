@@ -17,6 +17,7 @@ public class MainMenuUIManager : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI loadingText;
+    [SerializeField] private TextMeshProUGUI cursedItemsCounter;
 
     [SerializeField] private Button playButton;
     [SerializeField] private Button settingsButton;
@@ -88,7 +89,8 @@ public class MainMenuUIManager : MonoBehaviour
         DeactivateGameObject.deactivateInstance.DeactivateObject(notesPanel);
         DeactivateGameObject.deactivateInstance.DeactivateObject(notesButton);
         DeactivateGameObject.deactivateInstance.DeactivateObject(window);
-
+        
+        cursedItemsCounter.enabled = inactive;
         secondaryCamera.enabled = active;
         mainCamera.enabled = inactive;
         initialPos = secondaryCamera.transform.position;

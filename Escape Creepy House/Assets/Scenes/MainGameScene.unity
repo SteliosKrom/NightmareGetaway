@@ -189,7 +189,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -274, y: -694}
+  m_AnchoredPosition: {x: -81, y: -694}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7897119
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You found a flashlight!
+  m_text: Flashlight found!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
   m_sharedMaterial: {fileID: 7855358897793652092, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
@@ -990,6 +990,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingText: {fileID: 714899537}
+  cursedItemsCounter: {fileID: 1240649127}
   playButton: {fileID: 998161090}
   settingsButton: {fileID: 929470050}
   creditsButton: {fileID: 744182969}
@@ -15999,7 +16000,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -292, y: -695}
+  m_AnchoredPosition: {x: -141, y: -695}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &220954210
@@ -16022,7 +16023,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You found the garage key!
+  m_text: Garage key found!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
   m_sharedMaterial: {fileID: 7855358897793652092, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
@@ -16071,7 +16072,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -25580,6 +25581,8 @@ MonoBehaviour:
   clockAudio: {fileID: 379504551}
   flashlightFlickering: {fileID: 792361160}
   addEventTrigger: {fileID: 1810667849}
+  taskManager: {fileID: 1347558210}
+  cursedItemsCounter: {fileID: 1240649127}
   resumeButton: {fileID: 2084806073}
   settingsButton: {fileID: 152314458}
   homeButton: {fileID: 279216664}
@@ -25604,7 +25607,7 @@ MonoBehaviour:
   notesPanel: {fileID: 729535655}
   characterController: {fileID: 379504545}
   playerAnimator: {fileID: 370128361}
-  mainGameAudioSource: {fileID: 0}
+  taskAnimator: {fileID: 1682272806}
   rainAudioSource: {fileID: 429594847}
   keysAudioSource: {fileID: 1321917434}
   eatAudioSource: {fileID: 1331450122}
@@ -25830,6 +25833,7 @@ MonoBehaviour:
   - {fileID: 1684606623595393893}
   - {fileID: 2967676535530111525}
   - {fileID: 5837427361564472644}
+  cursedItemsCounter: {fileID: 1240649127}
   equipKeysAudioSource: {fileID: 1321917434}
   drinkAudioSource: {fileID: 890562420}
   eatAudioSource: {fileID: 1331450122}
@@ -25860,7 +25864,6 @@ MonoBehaviour:
   - {fileID: 8781165241623197788}
   interactionSource: {fileID: 963194228}
   flashlightAnimator: {fileID: 274344839}
-  taskAnimator: {fileID: 1682272806}
   kidRoomLight: {fileID: 2587337042884884401}
 --- !u!114 &379504551
 MonoBehaviour:
@@ -34067,6 +34070,8 @@ MonoBehaviour:
   playerRespawn: {fileID: 379504549}
   playerController: {fileID: 379504538}
   settingsManager: {fileID: 1763060355}
+  taskManager: {fileID: 1347558210}
+  cursedItemsCounter: {fileID: 1240649127}
   resumeButton: {fileID: 2084806073}
   settingsButton: {fileID: 152314458}
   homeButton: {fileID: 279216664}
@@ -34102,6 +34107,7 @@ MonoBehaviour:
   notesPanel: {fileID: 729535655}
   mainCamera: {fileID: 963194227}
   secondaryCamera: {fileID: 366118862}
+  taskAnimator: {fileID: 1682272806}
   mainMenuAudioSource: {fileID: 1977907783}
   lockedAudioSource: {fileID: 1403184476}
   keysAudioSource: {fileID: 1321917434}
@@ -42995,6 +43001,7 @@ MonoBehaviour:
   - {fileID: 7897116}
   - {fileID: 1798832667}
   - {fileID: 220954208}
+  - {fileID: 1153337676}
   - {fileID: 1254537102}
   - {fileID: 480800219}
   - {fileID: 1271235275}
@@ -46172,7 +46179,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -271, y: -696}
+  m_AnchoredPosition: {x: -28, y: -696}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1153337678
@@ -46195,7 +46202,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You found your phone!
+  m_text: Phone found!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
   m_sharedMaterial: {fileID: 7855358897793652092, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
@@ -46244,7 +46251,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -56708,6 +56715,142 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1240316398}
   m_CullTransparentMesh: 1
+--- !u!1 &1240649125
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1240649126}
+  - component: {fileID: 1240649128}
+  - component: {fileID: 1240649127}
+  m_Layer: 0
+  m_Name: CursedItemsCounter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1240649126
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240649125}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.75}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1991336467}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -401, y: 691.96}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1240649127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240649125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 0
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
+  m_sharedMaterial: {fileID: 7855358897793652092, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1240649128
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240649125}
+  m_CullTransparentMesh: 1
 --- !u!1 &1244439707
 GameObject:
   m_ObjectHideFlags: 0
@@ -56906,7 +57049,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -295, y: -695}
+  m_AnchoredPosition: {x: -129, y: -695}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1254537104
@@ -56929,7 +57072,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You found the main door key!
+  m_text: Main door key found!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
   m_sharedMaterial: {fileID: 7855358897793652092, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
@@ -56978,7 +57121,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -63723,8 +63866,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2857d70a1e0b91d4ea1dfdc12dba3e40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentTaskIndex: 0
+  tasks:
+  - Find the key to the locked room.
+  - "Something feels off\u2026 Get a drink from the kitchen."
+  - "Hunger gnaws at you\u2026 Find something to eat."
+  - "Where\u2019s your phone? Find it and call for help."
+  - "the ritual is incomplete\u2026 Place the cursed objects. (   / 3)"
+  - Find the key to escape. But will it open the door?
+  - "Get out\u2026 before it\u2019s too late."
   taskText: {fileID: 1682272804}
-  taskAnimator: {fileID: 1682272806}
 --- !u!1 &1349233409
 GameObject:
   m_ObjectHideFlags: 0
@@ -68759,7 +68910,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -274, y: -695}
+  m_AnchoredPosition: {x: -79, y: -695}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1798832669
@@ -68782,7 +68933,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You found the room key!
+  m_text: Room key found!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
   m_sharedMaterial: {fileID: 7855358897793652092, guid: 21d1ab4be33a6a24095ec21733c76146, type: 2}
@@ -68831,7 +68982,7 @@ MonoBehaviour:
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
-  m_ActiveFontFeatures: 00000000
+  m_ActiveFontFeatures: 6e72656b
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
   m_isRichText: 1
@@ -70753,6 +70904,7 @@ RectTransform:
   - {fileID: 1054444097}
   - {fileID: 765461143}
   - {fileID: 729535656}
+  - {fileID: 1240649126}
   - {fileID: 1682272803}
   - {fileID: 7897117}
   - {fileID: 1798832668}

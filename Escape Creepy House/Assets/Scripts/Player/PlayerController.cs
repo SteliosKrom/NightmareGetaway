@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,8 +21,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private ClockAudio clockAudio;
     [SerializeField] private FlashlightFlickering flashlightFlickering;
     [SerializeField] private AddEventTrigger addEventTrigger;
+    [SerializeField] private TaskManager taskManager;
 
-    [Header("BUTTONS")]
+    [Header("UI")]
+    [SerializeField] private TextMeshProUGUI cursedItemsCounter;
+
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button settingsButton;
     [SerializeField] private Button homeButton;
@@ -50,11 +54,11 @@ public class PlayerController : MonoBehaviour
     [Header("OTHER")]
     [SerializeField] CharacterController characterController;
     [SerializeField] Animator playerAnimator;
+    [SerializeField] Animator taskAnimator;
     public RaycastHit hit;
     private Vector3 velocity;
 
     [Header("AUDIO")]
-    [SerializeField] private AudioSource mainGameAudioSource;
     [SerializeField] private AudioSource rainAudioSource;
     [SerializeField] private AudioSource keysAudioSource;
     [SerializeField] private AudioSource eatAudioSource;
@@ -142,6 +146,9 @@ public class PlayerController : MonoBehaviour
         ActivateGameObject.activateInstance.ActivateObject(pauseMenu);
         ActivateGameObject.activateInstance.ActivateObject(notesButton);
         DeactivateGameObject.deactivateInstance.DeactivateObjectsInPause();
+
+        cursedItemsCounter.enabled = inactive;
+
         AudioManager.instance.PauseSoundInPause();
         AudioManager.instance.PauseSound(flickeringAudioSource);
         AudioManager.instance.PauseSound(rainAudioSource);
@@ -177,6 +184,9 @@ public class PlayerController : MonoBehaviour
 
     public void ResumeGameFromPauseMenu()
     {
+        if (taskManager.currentTaskIndex == 4)
+            cursedItemsCounter.enabled = active;
+
         ActivateGameObject.activateInstance.ActivateObject(dot);
         ActivateGameObject.activateInstance.ActivateObject(taskChange);
         DeactivateGameObject.deactivateInstance.DeactivateObject(notesButton);
@@ -192,6 +202,7 @@ public class PlayerController : MonoBehaviour
 
         CheckDoorStateOnResume();
         Time.timeScale = 1f;
+        taskAnimator.cullingMode = AnimatorCullingMode.CullCompletely;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = inactive;

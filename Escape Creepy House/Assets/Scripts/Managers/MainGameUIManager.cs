@@ -1,4 +1,5 @@
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -13,8 +14,11 @@ public class MainGameUIManager : MonoBehaviour
     [SerializeField] private PlayerRespawn playerRespawn;
     [SerializeField] private PlayerController playerController;
     [SerializeField] private SettingsManager settingsManager;
+    [SerializeField] private TaskManager taskManager;
 
-    [Header("BUTTONS")]
+    [Header("UI")]
+    [SerializeField] private TextMeshProUGUI cursedItemsCounter;
+
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button settingsButton;
     [SerializeField] private Button homeButton;
@@ -58,6 +62,7 @@ public class MainGameUIManager : MonoBehaviour
     [Header("OTHER")]
     [SerializeField] private Camera mainCamera;
     [SerializeField] private Camera secondaryCamera;
+    [SerializeField] private Animator taskAnimator;
 
     [Header("AUDIO")]
     [SerializeField] private AudioSource mainMenuAudioSource;
@@ -73,6 +78,9 @@ public class MainGameUIManager : MonoBehaviour
 
     public void ResumeButton()
     {
+        if (taskManager.currentTaskIndex == 4)
+            cursedItemsCounter.enabled = active;
+
         DeactivateGameObject.deactivateInstance.DeactivateObject(pauseMenu);
         DeactivateGameObject.deactivateInstance.DeactivateObject(notesButton);
         ActivateGameObject.activateInstance.ActivateObject(dot);
@@ -84,6 +92,7 @@ public class MainGameUIManager : MonoBehaviour
         resumeButton.transform.DOScale(0.8f, 0.2f);
         playerController.CheckDoorStateOnResume();
         Time.timeScale = 1.0f;
+        taskAnimator.cullingMode = AnimatorCullingMode.CullCompletely;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = inactive;

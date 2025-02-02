@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class Interactor : MonoBehaviour
@@ -43,6 +44,10 @@ public class Interactor : MonoBehaviour
     [SerializeField] private GameObject doorBoxCollider;
     [SerializeField] private GameObject _flashlight;
     [SerializeField] private GameObject[] switchLights;
+
+    [Header("UI")]
+    //[SerializeField] private TextMeshProUGUI cursedItemsToCollect;
+    [SerializeField] private TextMeshProUGUI cursedItemsCounter;
 
     [Header("AUDIO")]
     public AudioSource equipKeysAudioSource;
@@ -259,6 +264,7 @@ public class Interactor : MonoBehaviour
             taskManager.CompleteTask();
             mainDoorKey.SetActive(inactive);
             cursedBook.SetActive(active);
+            cursedItemsCounter.enabled = active;
             StartCoroutine(DisplayFoundPhoneText());
         }
         else if (interactable.gameObject.CompareTag("Flashlight"))
