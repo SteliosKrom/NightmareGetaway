@@ -23,18 +23,6 @@ public class Interactor : MonoBehaviour
     [SerializeField] private FlashlightFlickering flashlightFlickering;
     [SerializeField] private PlayerController playerController;
 
-    [Header("AUDIO")]
-    public AudioSource equipKeysAudioSource;
-    public AudioSource drinkAudioSource;
-    public AudioSource eatAudioSource;
-    public AudioSource lockedAudioSource;
-    public AudioSource switchAudioSource;
-    public AudioClip drinkAudioclip;
-    public AudioClip eatAudioClip;
-    public AudioClip equipKeysAudioClip;
-    public AudioClip lockedAudioClip;
-    public AudioClip switchAudioClip;
-
     [Header("GAME OBJECTS")]
     [SerializeField] private GameObject foundGarageKey;
     [SerializeField] private GameObject foundFlashlight;
@@ -49,9 +37,24 @@ public class Interactor : MonoBehaviour
     [SerializeField] private GameObject waterGlass;
     [SerializeField] private GameObject food;
     [SerializeField] private GameObject phone;
+    [SerializeField] private GameObject cursedBook;
+    [SerializeField] private GameObject cursedCrucifix;
+    [SerializeField] private GameObject cursedKnife;
     [SerializeField] private GameObject doorBoxCollider;
     [SerializeField] private GameObject _flashlight;
     [SerializeField] private GameObject[] switchLights;
+
+    [Header("AUDIO")]
+    public AudioSource equipKeysAudioSource;
+    public AudioSource drinkAudioSource;
+    public AudioSource eatAudioSource;
+    public AudioSource lockedAudioSource;
+    public AudioSource switchAudioSource;
+    public AudioClip drinkAudioclip;
+    public AudioClip eatAudioClip;
+    public AudioClip equipKeysAudioClip;
+    public AudioClip lockedAudioClip;
+    public AudioClip switchAudioClip;
 
     [Header("OTHER")]
     [SerializeField] private BoxCollider fridgeCollider;
@@ -254,14 +257,15 @@ public class Interactor : MonoBehaviour
         else if (interactable.gameObject.CompareTag("Phone"))
         {
             taskManager.CompleteTask();
-            mainDoorKey.SetActive(active);
+            mainDoorKey.SetActive(inactive);
+            cursedBook.SetActive(active);
             StartCoroutine(DisplayFoundPhoneText());
         }
         else if (interactable.gameObject.CompareTag("Flashlight"))
         {
             hasFlashlight = active;
             isEquipped = active;
-            ActivateGameObject.activateInstance.ActivateObject(_flashlight);
+            _flashlight.SetActive(active);
             StartCoroutine(DisplayFoundFlashlightText());
         }
         else if (interactable.gameObject.CompareTag("GarageKey"))

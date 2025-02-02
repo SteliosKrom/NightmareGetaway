@@ -24,6 +24,9 @@ TagManager:
   - BedroomDoor
   - KidRoomSwitch
   - Switches
+  - Cross
+  - Book
+  - Knife
   layers:
   - Default
   - TransparentFX

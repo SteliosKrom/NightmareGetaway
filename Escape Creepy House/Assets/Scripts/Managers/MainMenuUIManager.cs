@@ -65,18 +65,18 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private GameObject dot;
     [SerializeField] private GameObject taskChange;
 
-
-    [Header("OTHER")]
-    [SerializeField] private Camera secondaryCamera;
-    [SerializeField] private Camera mainCamera;
-    [SerializeField] private Light kidRoomLight;
-    private Vector3 initialPos;
-
     [Header("AUDIO")]
     [SerializeField] private AudioSource hoverAudioSource;
     [SerializeField] private AudioSource mainMenuAudioSource;
     [SerializeField] private AudioSource rainAudioSource;
     [SerializeField] private AudioClip hoverAudioClip;
+
+    [Header("OTHER")]
+    [SerializeField] private Camera secondaryCamera;
+    [SerializeField] private Camera mainCamera;
+    [SerializeField] private Light kidRoomLight;
+    [SerializeField] private Animator taskAnimator;
+    private Vector3 initialPos;
 
     private void Start()
     {
@@ -165,6 +165,7 @@ public class MainMenuUIManager : MonoBehaviour
         yield return new WaitForSeconds(gameIntroDelay);
 
         EndGameIntro();
+        taskAnimator.Play("TaskAnimation");
         kidRoomLight.enabled = active;
         AudioManager.instance.UnPauseSound(rainAudioSource);
         rainAudioSource.spatialBlend = 1f;
