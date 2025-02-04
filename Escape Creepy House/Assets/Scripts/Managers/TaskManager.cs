@@ -7,9 +7,14 @@ public class TaskManager : MonoBehaviour
     [Header("TYPES")]
     public int currentTaskIndex = 0;
 
+    private bool active = true;
+    private bool inactive = false;
+
+    private float taskDelay = 5f;
+
     public string[] tasks =
     {
-        "Find the key to the locked room.",
+        "Find the key to the locked room.", 
         "Something feels off… Get a drink from the kitchen.",
         "Hunger gnaws at you… Find something to eat.",
         "Where’s your phone? Find it and call for help.",
@@ -21,6 +26,9 @@ public class TaskManager : MonoBehaviour
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI taskText;
 
+    [Header("OTHER")]
+    [SerializeField] private Animator taskAnimator;
+
     private void Start()
     {
         taskText.text = tasks[currentTaskIndex];
@@ -30,13 +38,21 @@ public class TaskManager : MonoBehaviour
     {
         if (currentTaskIndex < tasks.Length)
         {
-            UpdateTaskUI();
+            StartCoroutine(TaskDelay());
         }
     }
 
-    public void UpdateTaskUI()
+    public IEnumerator TaskDelay()
     {
+        taskAnimator.SetBool("FadeOut", active);
+        taskAnimator.SetBool("FadeIn", inactive);
+
+        yield return new WaitForSeconds(taskDelay);
+
         currentTaskIndex++;
         taskText.text = tasks[currentTaskIndex];
+
+        taskAnimator.SetBool("FadeIn", active);
+        taskAnimator.SetBool("FadeOut", inactive);
     }
 }

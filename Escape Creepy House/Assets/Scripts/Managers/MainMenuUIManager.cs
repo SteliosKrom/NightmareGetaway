@@ -167,7 +167,7 @@ public class MainMenuUIManager : MonoBehaviour
         yield return new WaitForSeconds(gameIntroDelay);
 
         EndGameIntro();
-        taskAnimator.Play("TaskAnimation");
+        taskAnimator.Play("TaskFadeInAnimation");
         kidRoomLight.enabled = active;
         AudioManager.instance.UnPauseSound(rainAudioSource);
         rainAudioSource.spatialBlend = 1f;
