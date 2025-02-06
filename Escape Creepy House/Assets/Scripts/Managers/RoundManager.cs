@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public enum GameState
@@ -25,14 +26,36 @@ public enum KeyState
     none
 }
 
+public enum KidsDoorState
+{
+    unlocked,
+    locked
+}
+
+public enum GarageDoorState
+{
+    unlocked,
+    locked
+}
+
+public enum MainDoorState
+{
+    unlocked,
+    locked
+}
+
 class RoundManager : MonoBehaviour
 {
+    [Header("SCRIPT REFERENCES")]
     public static RoundManager instance;
 
     [Header("GAME STATES")]
     public GameState currentGameState;
     public EnvironmentState currentEnvironmentState;
     public KeyState currentKeyState;
+    public KidsDoorState currentKidsDoorState;
+    public GarageDoorState currentGarageDoorState;
+    public MainDoorState currentMainDoorState;
 
     private void Awake()
     {
@@ -52,6 +75,10 @@ class RoundManager : MonoBehaviour
         currentGameState = GameState.onMainMenu;
         currentEnvironmentState = EnvironmentState.none;
         currentKeyState = KeyState.none;
+
+        currentKidsDoorState = KidsDoorState.locked;
+        currentGarageDoorState = GarageDoorState.locked;
+        currentMainDoorState = MainDoorState.locked;
     }
 }
 

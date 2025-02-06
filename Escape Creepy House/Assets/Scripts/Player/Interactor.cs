@@ -46,7 +46,6 @@ public class Interactor : MonoBehaviour
     [SerializeField] private GameObject[] switchLights;
 
     [Header("UI")]
-    //[SerializeField] private TextMeshProUGUI cursedItemsToCollect;
     [SerializeField] private TextMeshProUGUI cursedItemsCounter;
 
     [Header("AUDIO")]
@@ -75,7 +74,7 @@ public class Interactor : MonoBehaviour
         DisplayUI(foundFlashlight, foundRoomKey, foundMainDoorKey, foundGarageKey, lockedUI, foundPhone, interactionUI);
     }
 
-    public void DisplayItems(GameObject roomKey, GameObject mainDoorKey, GameObject food, 
+    public void DisplayItems(GameObject roomKey, GameObject mainDoorKey, GameObject food,
         GameObject phone, GameObject waterGlass, GameObject garageKey)
     {
         ActivateGameObject.activateInstance.ActivateObject(roomKey);
@@ -101,7 +100,7 @@ public class Interactor : MonoBehaviour
     {
         bool onPlaying = RoundManager.instance.currentGameState == GameState.playing;
 
-        if (hasFlashlight && canToggle && isEquipped && Input.GetKeyDown(KeyCode.F)) 
+        if (hasFlashlight && canToggle && isEquipped && Input.GetKeyDown(KeyCode.F))
         {
             if (onPlaying)
             {
@@ -175,7 +174,7 @@ public class Interactor : MonoBehaviour
         }
     }
 
-    public void HandleInteractableGameObject(Interactable interactable, DoorBase doorBase, 
+    public void HandleInteractableGameObject(Interactable interactable, DoorBase doorBase,
         OtherInteractable otherInteractable, OtherInteractableSwitches otherInteractableSwitches)
     {
         if (interactable != null)
@@ -202,7 +201,7 @@ public class Interactor : MonoBehaviour
 
     public void HandleInteractableItem(OtherInteractableSwitches otherInteractableSwitches)
     {
-         if (otherInteractableSwitches.gameObject.CompareTag("Switches"))
+        if (otherInteractableSwitches.gameObject.CompareTag("Switches"))
         {
             if (kidRoomLight.enabled)
             {
@@ -294,33 +293,23 @@ public class Interactor : MonoBehaviour
     {
         if (doorBase.gameObject.CompareTag("SecondBedroomDoor"))
         {
-            doorBase.OnDoorInteract();
-            StartCoroutine(DoorCollidersDelay(doorColliders[4]));
-            StartCoroutine(doorHandleCollidersDelay(doorHandleColliders[4]));
+            InteractWithDoor(doorBase, 4);
         }
         else if (doorBase.gameObject.CompareTag("SecondBathroomDoor"))
         {
-            doorBase.OnDoorInteract();
-            StartCoroutine(DoorCollidersDelay(doorColliders[3]));
-            StartCoroutine(doorHandleCollidersDelay(doorHandleColliders[3]));
+            InteractWithDoor(doorBase, 3);
         }
         else if (doorBase.gameObject.CompareTag("ClothingsDoor"))
         {
-            doorBase.OnDoorInteract();
-            StartCoroutine(DoorCollidersDelay(doorColliders[1]));
-            StartCoroutine(doorHandleCollidersDelay(doorHandleColliders[1]));
+            InteractWithDoor(doorBase, 1);
         }
         else if (doorBase.gameObject.CompareTag("BedroomDoor"))
         {
-            doorBase.OnDoorInteract();
-            StartCoroutine(DoorCollidersDelay(doorColliders[2]));
-            StartCoroutine(doorHandleCollidersDelay(doorHandleColliders[2]));
+            InteractWithDoor(doorBase, 2);
         }
         else if (doorBase.gameObject.CompareTag("BathroomDoor"))
         {
-            doorBase.OnDoorInteract();
-            StartCoroutine(DoorCollidersDelay(doorColliders[6]));
-            StartCoroutine(doorHandleCollidersDelay(doorHandleColliders[6]));
+            InteractWithDoor(doorBase, 6);
         }
         else if (doorBase.gameObject.CompareTag("FridgeDoor"))
         {
@@ -331,51 +320,76 @@ public class Interactor : MonoBehaviour
 
     public void HandleLockedDoors(DoorBase doorBase)
     {
-        if (doorBase.gameObject.CompareTag("KidsDoor") 
-            && RoundManager.instance.currentKeyState != KeyState.kidsRoomKey && !isLocked)
+        if (doorBase.gameObject.CompareTag("KidsDoor"))
         {
-            StartCoroutine(LockedUIDelay());
-            AudioManager.instance.PlaySound(lockedAudioSource, lockedAudioClip);
+            if (RoundManager.instance.currentKidsDoorState == KidsDoorState.unlocked)
+            {
+                InteractWithDoor(doorBase, 0);
+            }
+            else
+            {
+                if (RoundManager.instance.currentKeyState != KeyState.kidsRoomKey && !isLocked)
+                {
+                    StartCoroutine(LockedUIDelay());
+                    AudioManager.instance.PlaySound(lockedAudioSource, lockedAudioClip);
+                }
+                else if (RoundManager.instance.currentKeyState == KeyState.kidsRoomKey && !isLocked)
+                {
+                    InteractWithDoor(doorBase, 0);
+                    RoundManager.instance.currentKeyState = KeyState.none;
+                    RoundManager.instance.currentKidsDoorState = KidsDoorState.unlocked;
+                }
+            }
         }
-        else if (doorBase.gameObject.CompareTag("KidsDoor") 
-            && RoundManager.instance.currentKeyState == KeyState.kidsRoomKey && !isLocked)
+        else if (doorBase.gameObject.CompareTag("GarageDoor"))
         {
-            doorBase.OnDoorInteract();
-            StartCoroutine(DoorCollidersDelay(doorColliders[0]));
-            StartCoroutine(doorHandleCollidersDelay(doorHandleColliders[0]));
-            isLocked = inactive;
-            RoundManager.instance.currentKeyState = KeyState.kidsRoomKey;
+            if (RoundManager.instance.currentGarageDoorState == GarageDoorState.unlocked)
+            {
+                InteractWithDoor(doorBase, 5);
+            }
+            else
+            {
+                if (RoundManager.instance.currentKeyState != KeyState.garageKey && !isLocked)
+                {
+                    StartCoroutine(LockedUIDelay());
+                    AudioManager.instance.PlaySound(lockedAudioSource, lockedAudioClip);
+                }
+                else if (RoundManager.instance.currentKeyState == KeyState.garageKey && !isLocked)
+                {
+                    InteractWithDoor(doorBase, 5);
+                    RoundManager.instance.currentKeyState = KeyState.none;
+                    RoundManager.instance.currentGarageDoorState = GarageDoorState.unlocked;
+                }
+            }
         }
+        else if (doorBase.gameObject.CompareTag("MainDoor"))
+        {
+            if (RoundManager.instance.currentMainDoorState == MainDoorState.unlocked)
+            {
+                doorBase.OnDoorInteract();
+            }
+            else
+            {
+                if (RoundManager.instance.currentKeyState != KeyState.mainDoorKey && !isLocked)
+                {
+                    StartCoroutine(LockedUIDelay());
+                    AudioManager.instance.PlaySound(lockedAudioSource, lockedAudioClip);
+                }
+                else if (RoundManager.instance.currentKeyState == KeyState.mainDoorKey && !isLocked)
+                {
+                    doorBase.OnDoorInteract();
+                    RoundManager.instance.currentKeyState = KeyState.none;
+                    RoundManager.instance.currentMainDoorState = MainDoorState.unlocked;
+                }
+            }
+        }
+    }
 
-        if (doorBase.gameObject.CompareTag("GarageDoor") 
-            && RoundManager.instance.currentKeyState != KeyState.garageKey && !isLocked)
-        {
-            StartCoroutine(LockedUIDelay());
-            AudioManager.instance.PlaySound(lockedAudioSource, lockedAudioClip);
-        }
-        else if (doorBase.gameObject.CompareTag("GarageDoor") 
-            && RoundManager.instance.currentKeyState == KeyState.garageKey && !isLocked)
-        {
-            doorBase.OnDoorInteract();
-            StartCoroutine(DoorCollidersDelay(doorColliders[5]));
-            StartCoroutine(doorHandleCollidersDelay(doorHandleColliders[5]));
-            isLocked = inactive;
-            RoundManager.instance.currentKeyState = KeyState.garageKey;
-        }
-
-        if (doorBase.gameObject.CompareTag("MainDoor") 
-            && RoundManager.instance.currentKeyState != KeyState.mainDoorKey && !isLocked)
-        {
-            StartCoroutine(LockedUIDelay());
-            AudioManager.instance.PlaySound(lockedAudioSource, lockedAudioClip);
-        }    
-        else if (doorBase.gameObject.CompareTag("MainDoor") 
-            && RoundManager.instance.currentKeyState == KeyState.mainDoorKey && !isLocked)
-        {
-            doorBase.OnDoorInteract();
-            isLocked = inactive;
-            RoundManager.instance.currentKeyState = KeyState.mainDoorKey;
-        }
+    public void InteractWithDoor(DoorBase doorBase, int colliderIndex)
+    {
+        doorBase.OnDoorInteract();
+        StartCoroutine(DoorCollidersDelay(doorColliders[colliderIndex]));
+        StartCoroutine(doorHandleCollidersDelay(doorHandleColliders[colliderIndex]));
     }
 
     public void DetectInteractable()
@@ -470,8 +484,8 @@ public class Interactor : MonoBehaviour
 
     public IEnumerator DoorCollidersDelay(BoxCollider collider)
     {
-        if (collider.CompareTag("KidsDoor") 
-            || collider.CompareTag("BathroomDoor") || collider.CompareTag("SecondBathroomDoor") 
+        if (collider.CompareTag("KidsDoor")
+            || collider.CompareTag("BathroomDoor") || collider.CompareTag("SecondBathroomDoor")
             || collider.CompareTag("SecondBedroomDoor") || collider.CompareTag("GarageDoor"))
         {
             collider.enabled = inactive;
@@ -489,8 +503,8 @@ public class Interactor : MonoBehaviour
     public IEnumerator doorHandleCollidersDelay(BoxCollider collider)
     {
 
-        if (collider.CompareTag("KidsDoor") 
-            || collider.CompareTag("BathroomDoor") || collider.CompareTag("SecondBathroomDoor") 
+        if (collider.CompareTag("KidsDoor")
+            || collider.CompareTag("BathroomDoor") || collider.CompareTag("SecondBathroomDoor")
             || collider.CompareTag("SecondBedroomDoor") || collider.CompareTag("GarageDoor"))
         {
             collider.enabled = inactive;

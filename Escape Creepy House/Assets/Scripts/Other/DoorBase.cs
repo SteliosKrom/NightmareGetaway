@@ -87,6 +87,6 @@ public class DoorBase : MonoBehaviour
     {
         yield return new WaitForSeconds(interactioDelay);
         canInteract = active;
-        Debug.Log("Can interact again.");
+        Debug.Log("Can interact with the door again.");
     }
 }
