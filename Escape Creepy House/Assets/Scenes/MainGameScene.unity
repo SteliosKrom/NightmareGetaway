@@ -25605,9 +25605,6 @@ MonoBehaviour:
   foundGarageDoorKey: {fileID: 220954208}
   notesButton: {fileID: 1316226552}
   notesPanel: {fileID: 729535655}
-  characterController: {fileID: 379504545}
-  playerAnimator: {fileID: 370128361}
-  taskAnimator: {fileID: 1682272806}
   rainAudioSource: {fileID: 429594847}
   keysAudioSource: {fileID: 1321917434}
   eatAudioSource: {fileID: 1331450122}
@@ -25617,6 +25614,9 @@ MonoBehaviour:
   ceilingFanAudioSource: {fileID: 7441240194846976226}
   flickeringAudioSource: {fileID: 858029684}
   flickeringAudioClip: {fileID: 8300000, guid: 468299f409f63ba49a4960a63cd7662f, type: 3}
+  characterController: {fileID: 379504545}
+  playerAnimator: {fileID: 370128361}
+  taskAnimator: {fileID: 1682272806}
 --- !u!114 &379504544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41285,7 +41285,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &822909984
 Transform:
   m_ObjectHideFlags: 0
@@ -43619,8 +43619,8 @@ MonoBehaviour:
   spotlight: {fileID: 792361154}
   mainCamera: {fileID: 963194228}
   flashlight: {fileID: 274344835}
-  minX: -50
-  maxX: 50
+  minX: -75
+  maxX: 75
 --- !u!114 &963194231
 MonoBehaviour:
   m_ObjectHideFlags: 0
