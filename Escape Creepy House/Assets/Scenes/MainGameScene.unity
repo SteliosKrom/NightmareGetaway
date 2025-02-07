@@ -65833,6 +65833,9 @@ MonoBehaviour:
   currentGameState: 0
   currentEnvironmentState: 0
   currentKeyState: 0
+  currentKidsDoorState: 0
+  currentGarageDoorState: 0
+  currentMainDoorState: 0
 --- !u!1 &1570831851
 GameObject:
   m_ObjectHideFlags: 0

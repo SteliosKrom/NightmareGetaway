@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -51,13 +52,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject notesButton;
     [SerializeField] private GameObject notesPanel;
 
-    [Header("OTHER")]
-    [SerializeField] CharacterController characterController;
-    [SerializeField] Animator playerAnimator;
-    [SerializeField] Animator taskAnimator;
-    public RaycastHit hit;
-    private Vector3 velocity;
-
     [Header("AUDIO")]
     [SerializeField] private AudioSource rainAudioSource;
     [SerializeField] private AudioSource keysAudioSource;
@@ -69,11 +63,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioSource flickeringAudioSource;
     [SerializeField] private AudioClip flickeringAudioClip;
 
-    private void Start()
-    {
-        characterController = GetComponent<CharacterController>();
-        playerAnimator = GetComponent<Animator>();
-    }
+    [Header("OTHER")]
+    [SerializeField] CharacterController characterController;
+    [SerializeField] Animator playerAnimator;
+    [SerializeField] Animator taskAnimator;
+    public RaycastHit hit;
+    private Vector3 velocity;
 
     private void Update()
     {
@@ -202,7 +197,6 @@ public class PlayerController : MonoBehaviour
 
         CheckDoorStateOnResume();
         Time.timeScale = 1f;
-        taskAnimator.cullingMode = AnimatorCullingMode.CullCompletely;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = inactive;
