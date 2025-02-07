@@ -43,6 +43,7 @@ public class Interactor : MonoBehaviour
     [SerializeField] private GameObject cursedKnife;
     [SerializeField] private GameObject doorBoxCollider;
     [SerializeField] private GameObject _flashlight;
+    [SerializeField] private GameObject candleLight;
     [SerializeField] private GameObject[] switchLights;
 
     [Header("UI")]
@@ -263,6 +264,7 @@ public class Interactor : MonoBehaviour
             taskManager.CompleteTask();
             mainDoorKey.SetActive(inactive);
             cursedBook.SetActive(active);
+            candleLight.SetActive(active);
             cursedItemsCounter.enabled = active;
             StartCoroutine(DisplayFoundPhoneText());
         }

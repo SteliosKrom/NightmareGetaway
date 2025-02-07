@@ -25819,6 +25819,7 @@ MonoBehaviour:
   cursedKnife: {fileID: 1704416752549222}
   doorBoxCollider: {fileID: 1752394301}
   _flashlight: {fileID: 274344834}
+  candleLight: {fileID: 571962565}
   switchLights:
   - {fileID: 1142198047816789309}
   - {fileID: 14504269789557090}
@@ -28039,7 +28040,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &571962566
 Transform:
   m_ObjectHideFlags: 0
