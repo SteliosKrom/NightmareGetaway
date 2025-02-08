@@ -25,7 +25,7 @@ public class ClockAudio : MonoBehaviour
 
                 if (clockTimer >= clockInterval)
                 {
-                    if (!clockAudioSource.isPlaying)
+                    while (!clockAudioSource.isPlaying)
                     {
                         AudioManager.instance.PlaySound(clockAudioSource, clockAudioClip);
                     }
