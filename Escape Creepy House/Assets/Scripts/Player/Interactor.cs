@@ -44,10 +44,8 @@ public class Interactor : MonoBehaviour
     [SerializeField] private GameObject doorBoxCollider;
     [SerializeField] private GameObject _flashlight;
     [SerializeField] private GameObject candleLight;
+    [SerializeField] private GameObject cursedItemsCounter;
     [SerializeField] private GameObject[] switchLights;
-
-    [Header("UI")]
-    [SerializeField] private TextMeshProUGUI cursedItemsCounter;
 
     [Header("AUDIO")]
     public AudioSource equipKeysAudioSource;
@@ -265,7 +263,7 @@ public class Interactor : MonoBehaviour
             mainDoorKey.SetActive(inactive);
             cursedBook.SetActive(active);
             candleLight.SetActive(active);
-            cursedItemsCounter.enabled = active;
+            StartCoroutine(CursedItemsCounterDelay());
             StartCoroutine(DisplayFoundPhoneText());
         }
         else if (interactable.gameObject.CompareTag("Flashlight"))
@@ -482,6 +480,12 @@ public class Interactor : MonoBehaviour
         yield return new WaitForSeconds(lockedUIDelay);
         lockedUI.SetActive(inactive);
         isLocked = inactive;
+    }
+
+    public IEnumerator CursedItemsCounterDelay()
+    {
+        yield return new WaitForSeconds(taskManager.taskDelay);
+        cursedItemsCounter.SetActive(active);
     }
 
     public IEnumerator DoorCollidersDelay(BoxCollider collider)

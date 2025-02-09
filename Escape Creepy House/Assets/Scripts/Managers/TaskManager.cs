@@ -10,7 +10,7 @@ public class TaskManager : MonoBehaviour
     private bool active = true;
     private bool inactive = false;
 
-    private float taskDelay = 5f;
+    public float taskDelay = 3f;
 
     public string[] tasks =
     {

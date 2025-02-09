@@ -25,8 +25,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private TaskManager taskManager;
 
     [Header("UI")]
-    [SerializeField] private TextMeshProUGUI cursedItemsCounter;
-
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button settingsButton;
     [SerializeField] private Button homeButton;
@@ -51,6 +49,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject foundGarageDoorKey;
     [SerializeField] private GameObject notesButton;
     [SerializeField] private GameObject notesPanel;
+    [SerializeField] private GameObject cursedItemsCounter;
 
     [Header("AUDIO")]
     [SerializeField] private AudioSource rainAudioSource;
@@ -142,7 +141,7 @@ public class PlayerController : MonoBehaviour
         ActivateGameObject.activateInstance.ActivateObject(notesButton);
         DeactivateGameObject.deactivateInstance.DeactivateObjectsInPause();
 
-        cursedItemsCounter.enabled = inactive;
+        cursedItemsCounter.SetActive(inactive);
 
         AudioManager.instance.PauseSoundInPause();
         AudioManager.instance.PauseSound(flickeringAudioSource);
@@ -180,7 +179,7 @@ public class PlayerController : MonoBehaviour
     public void ResumeGameFromPauseMenu()
     {
         if (taskManager.currentTaskIndex == 4)
-            cursedItemsCounter.enabled = active;
+            cursedItemsCounter.SetActive(active);
 
         ActivateGameObject.activateInstance.ActivateObject(dot);
         ActivateGameObject.activateInstance.ActivateObject(taskChange);

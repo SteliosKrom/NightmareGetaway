@@ -990,7 +990,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingText: {fileID: 714899537}
-  cursedItemsCounter: {fileID: 1240649127}
   playButton: {fileID: 998161090}
   settingsButton: {fileID: 929470050}
   creditsButton: {fileID: 744182969}
@@ -1031,6 +1030,7 @@ MonoBehaviour:
   creature: {fileID: 1309487307694391}
   dot: {fileID: 480800219}
   taskChange: {fileID: 1682272802}
+  cursedItemsCounter: {fileID: 1240649125}
   hoverAudioSource: {fileID: 1738958847}
   mainMenuAudioSource: {fileID: 1977907783}
   rainAudioSource: {fileID: 429594847}
@@ -25582,7 +25582,6 @@ MonoBehaviour:
   flashlightFlickering: {fileID: 792361160}
   addEventTrigger: {fileID: 1810667849}
   taskManager: {fileID: 1347558210}
-  cursedItemsCounter: {fileID: 1240649127}
   resumeButton: {fileID: 2084806073}
   settingsButton: {fileID: 152314458}
   homeButton: {fileID: 279216664}
@@ -25605,6 +25604,7 @@ MonoBehaviour:
   foundGarageDoorKey: {fileID: 220954208}
   notesButton: {fileID: 1316226552}
   notesPanel: {fileID: 729535655}
+  cursedItemsCounter: {fileID: 1240649125}
   rainAudioSource: {fileID: 429594847}
   keysAudioSource: {fileID: 1321917434}
   eatAudioSource: {fileID: 1331450122}
@@ -25820,6 +25820,7 @@ MonoBehaviour:
   doorBoxCollider: {fileID: 1752394301}
   _flashlight: {fileID: 274344834}
   candleLight: {fileID: 571962565}
+  cursedItemsCounter: {fileID: 1240649125}
   switchLights:
   - {fileID: 1142198047816789309}
   - {fileID: 14504269789557090}
@@ -25834,7 +25835,6 @@ MonoBehaviour:
   - {fileID: 1684606623595393893}
   - {fileID: 2967676535530111525}
   - {fileID: 5837427361564472644}
-  cursedItemsCounter: {fileID: 1240649127}
   equipKeysAudioSource: {fileID: 1321917434}
   drinkAudioSource: {fileID: 890562420}
   eatAudioSource: {fileID: 1331450122}
@@ -34072,7 +34072,6 @@ MonoBehaviour:
   playerController: {fileID: 379504538}
   settingsManager: {fileID: 1763060355}
   taskManager: {fileID: 1347558210}
-  cursedItemsCounter: {fileID: 1240649127}
   resumeButton: {fileID: 2084806073}
   settingsButton: {fileID: 152314458}
   homeButton: {fileID: 279216664}
@@ -34106,6 +34105,7 @@ MonoBehaviour:
   dot: {fileID: 480800219}
   taskChange: {fileID: 1682272802}
   notesPanel: {fileID: 729535655}
+  cursedItemsCounter: {fileID: 1240649125}
   mainCamera: {fileID: 963194227}
   secondaryCamera: {fileID: 366118862}
   taskAnimator: {fileID: 1682272806}
@@ -56727,6 +56727,7 @@ GameObject:
   - component: {fileID: 1240649126}
   - component: {fileID: 1240649128}
   - component: {fileID: 1240649127}
+  - component: {fileID: 1240649129}
   m_Layer: 0
   m_Name: CursedItemsCounter
   m_TagString: Untagged
@@ -56852,6 +56853,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1240649125}
   m_CullTransparentMesh: 1
+--- !u!95 &1240649129
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1240649125}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ccc9e38a8d88cae449a52b2b63b6d44d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1244439707
 GameObject:
   m_ObjectHideFlags: 0
@@ -63868,6 +63891,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentTaskIndex: 0
+  taskDelay: 5
   tasks:
   - Find the key to the locked room.
   - "Something feels off\u2026 Get a drink from the kitchen."
@@ -142739,7 +142763,7 @@ GameObject:
   - component: {fileID: 8883538104063839095}
   m_Layer: 0
   m_Name: Light_switch.006
-  m_TagString: Untagged
+  m_TagString: Switches
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 18

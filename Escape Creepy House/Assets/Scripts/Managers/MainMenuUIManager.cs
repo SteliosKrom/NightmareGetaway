@@ -17,7 +17,6 @@ public class MainMenuUIManager : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private TextMeshProUGUI loadingText;
-    [SerializeField] private TextMeshProUGUI cursedItemsCounter;
 
     [SerializeField] private Button playButton;
     [SerializeField] private Button settingsButton;
@@ -65,6 +64,7 @@ public class MainMenuUIManager : MonoBehaviour
     [SerializeField] private GameObject creature;
     [SerializeField] private GameObject dot;
     [SerializeField] private GameObject taskChange;
+    [SerializeField] private GameObject cursedItemsCounter;
 
     [Header("AUDIO")]
     [SerializeField] private AudioSource hoverAudioSource;
@@ -86,11 +86,11 @@ public class MainMenuUIManager : MonoBehaviour
         ActivateGameObject.activateInstance.ActivateObject(creature);
 
         DeactivateGameObject.deactivateInstance.DeactivateObject(taskChange);
+        DeactivateGameObject.deactivateInstance.DeactivateObject(cursedItemsCounter);
         DeactivateGameObject.deactivateInstance.DeactivateObject(notesPanel);
         DeactivateGameObject.deactivateInstance.DeactivateObject(notesButton);
         DeactivateGameObject.deactivateInstance.DeactivateObject(window);
         
-        cursedItemsCounter.enabled = inactive;
         secondaryCamera.enabled = active;
         mainCamera.enabled = inactive;
         initialPos = secondaryCamera.transform.position;

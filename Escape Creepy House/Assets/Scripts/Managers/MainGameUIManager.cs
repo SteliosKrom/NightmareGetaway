@@ -17,8 +17,6 @@ public class MainGameUIManager : MonoBehaviour
     [SerializeField] private TaskManager taskManager;
 
     [Header("UI")]
-    [SerializeField] private TextMeshProUGUI cursedItemsCounter;
-
     [SerializeField] private Button resumeButton;
     [SerializeField] private Button settingsButton;
     [SerializeField] private Button homeButton;
@@ -58,6 +56,7 @@ public class MainGameUIManager : MonoBehaviour
     [SerializeField] private GameObject dot;
     [SerializeField] private GameObject taskChange;
     [SerializeField] private GameObject notesPanel;
+    [SerializeField] private GameObject cursedItemsCounter;
 
     [Header("OTHER")]
     [SerializeField] private Camera mainCamera;
@@ -79,7 +78,7 @@ public class MainGameUIManager : MonoBehaviour
     public void ResumeButton()
     {
         if (taskManager.currentTaskIndex == 4)
-            cursedItemsCounter.enabled = active;
+            cursedItemsCounter.SetActive(active);
 
         DeactivateGameObject.deactivateInstance.DeactivateObject(pauseMenu);
         DeactivateGameObject.deactivateInstance.DeactivateObject(notesButton);
