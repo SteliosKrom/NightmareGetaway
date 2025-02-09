@@ -6,15 +6,14 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("TYPES")]
     public float playerSpeed;
     private float gravity;
-    private float cooldown = 1f;
 
     private bool active = true;
     private bool inactive = false;
     private bool isDoorOpenedSoundPaused = false;
     private bool isDoorClosedSoundPaused = false;
-    public bool canPause = true;
 
     [Header("SCRIPT REFERENCES")]
     [SerializeField] private DoorBase doorBase;
@@ -108,11 +107,9 @@ public class PlayerController : MonoBehaviour
 
     public void PauseAndResume()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P) && canPause)
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
-            canPause = inactive;
             UpdateCursorDisplay();
-            StartCoroutine(HandleCooldown());
         }
     }
 
@@ -239,11 +236,5 @@ public class PlayerController : MonoBehaviour
             AudioManager.instance.UnPauseSound(doorBase.doorClosedAudioSource);
             isDoorClosedSoundPaused = inactive;
         }
-    }
-
-    public IEnumerator HandleCooldown()
-    {
-        yield return new WaitForSecondsRealtime(cooldown);
-        canPause = active;
     }
 }
