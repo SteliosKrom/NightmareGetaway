@@ -9,11 +9,13 @@ public class PlayerController : MonoBehaviour
     [Header("TYPES")]
     public float playerSpeed;
     private float gravity;
+    private float pauseDelay = 0.25f;
 
     private bool active = true;
     private bool inactive = false;
     private bool isDoorOpenedSoundPaused = false;
     private bool isDoorClosedSoundPaused = false;
+    private bool canPause = true;
 
     [Header("SCRIPT REFERENCES")]
     [SerializeField] private DoorBase doorBase;
@@ -107,9 +109,9 @@ public class PlayerController : MonoBehaviour
 
     public void PauseAndResume()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && canPause)
         {
-            UpdateCursorDisplay();
+            StartCoroutine(PauseDelay());
         }
     }
 
@@ -182,6 +184,7 @@ public class PlayerController : MonoBehaviour
         ActivateGameObject.activateInstance.ActivateObject(taskChange);
         DeactivateGameObject.deactivateInstance.DeactivateObject(notesButton);
         DeactivateGameObject.deactivateInstance.DeactivateObject(pauseMenu);
+
         AudioManager.instance.UnpauseSoundInResumeGameFromPause();
         AudioManager.instance.UnPauseSound(flickeringAudioSource);
         AudioManager.instance.UnPauseSound(rainAudioSource);
@@ -236,5 +239,13 @@ public class PlayerController : MonoBehaviour
             AudioManager.instance.UnPauseSound(doorBase.doorClosedAudioSource);
             isDoorClosedSoundPaused = inactive;
         }
+    }
+
+    public IEnumerator PauseDelay()
+    {
+        canPause = inactive;
+        yield return new WaitForSecondsRealtime(pauseDelay);
+        UpdateCursorDisplay();
+        canPause = active;
     }
 }
